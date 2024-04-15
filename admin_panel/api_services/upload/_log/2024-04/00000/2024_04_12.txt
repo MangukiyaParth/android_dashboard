@@ -1,0 +1,342 @@
+
+2024-04-12 07:53:15: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 07:53:15: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 07:54:22: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 07:54:56: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 07:58:16: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 07:58:16: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 07:59:21: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 07:59:22: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 08:00:05: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 08:00:06: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 08:00:17: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 08:00:18: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 08:02:51: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 08:02:52: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 08:03:10: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 08:03:11: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 08:03:42: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 08:03:42: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 08:07:01: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 08:07:02: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 08:08:56: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 08:08:57: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 08:09:16: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 08:09:16: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 08:09:38: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 08:09:38: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 08:15:42: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 08:15:44: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 09:36:14: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 09:36:17: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 09:40:14: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 09:40:49: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 09:40:50: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 09:41:06: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 09:44:45: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 09:44:46: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 09:46:54: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 09:46:55: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 09:47:16: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 09:47:16: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 09:48:33: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 09:48:34: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 09:48:56: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 09:48:56: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 09:49:33: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 09:49:34: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 09:50:06: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 09:50:06: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 09:53:10: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 09:53:11: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 09:55:55: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 09:55:56: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 09:57:42: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 09:57:43: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 09:59:09: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 09:59:10: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 10:01:15: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 10:01:16: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 10:02:08: Page View: manage.php /product/HTML/android_dashboard/page/manage_play_store 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 10:02:11: Page View: manage.php /product/HTML/android_dashboard/page/manage_play_store 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 10:03:08: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 10:03:08: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 10:05:36: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 10:05:37: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 10:06:45: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 10:06:46: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 10:10:19: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 10:10:20: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 10:12:45: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 10:12:46: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 10:14:40: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 10:14:41: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 10:14:54: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 10:14:55: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 11:21:07: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 11:21:09: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 11:21:50: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 11:41:44: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 11:41:46: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 11:41:53: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 11:41:54: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 11:42:05: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 11:42:38: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 11:43:23: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 11:43:49: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 11:43:51: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 11:44:10: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 11:45:49: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 11:47:10: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 11:47:11: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 11:55:59: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 11:56:00: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 11:56:03: Page View: logout.php /product/HTML/android_dashboard/logout 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 11:56:03: Page View: logout.php /product/HTML/android_dashboard/logout 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 11:56:03: Page View: logout.php /product/HTML/android_dashboard/logout 
+2024-04-12 11:56:06: Page View: login.php /product/HTML/android_dashboard/login 
+2024-04-12 11:56:07: Page View: login.php /product/HTML/android_dashboard/login 
+2024-04-12 11:56:13: Array
+(
+    [QUERY_STRING] => 
+    [IP_ADDRESS] => ::1
+    [HTTP_USER_AGENT] => Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36
+    [op] => login_user
+    [email] => a
+    [password] => a
+    [version] => web
+    [from] => panel
+    [tz] => +5:30
+    [tzid] => Asia/Calcutta
+    [curr_time] => 12-04-2024
+)
+
+2024-04-12 11:56:13: ServiceErrorHandler Error: #[2] occurred in [E:\Project\product\HTML\android_dashboard\api_services\log_manage.php] at line [21]: [Undefined array key "user"]
+2024-04-12 11:56:13: ServiceErrorHandler Error: #[2] occurred in [E:\Project\product\HTML\android_dashboard\api_services\log_manage.php] at line [21]: [Trying to access array offset on value of type null]
+2024-04-12 11:56:13: audit_log_service > LOGID: 0
+2024-04-12 11:56:14: Page View: manage.php /product/HTML/android_dashboard/page/manage_dashboard 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 11:56:14: Page View: manage.php /product/HTML/android_dashboard/page/manage_dashboard 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 11:56:30: Page View: logout.php /product/HTML/android_dashboard/logout 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 11:56:30: Page View: logout.php /product/HTML/android_dashboard/logout 
+2024-04-12 11:56:30: Page View: logout.php /product/HTML/android_dashboard/logout 
+2024-04-12 11:56:31: Array
+(
+    [QUERY_STRING] => 
+    [IP_ADDRESS] => ::1
+    [HTTP_USER_AGENT] => Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36
+    [op] => logout_user
+    [original_user_id] => 0
+    [version] => web
+    [from] => panel
+    [tz] => +5:30
+    [tzid] => Asia/Calcutta
+    [curr_time] => 12-04-2024
+)
+
+2024-04-12 11:56:31: Array
+(
+    [0] => 1 Query Error: 
+    [1] => insert IGNORE into tbl_audit_logs (`user_id`, `action`, `date_added`, `date_modified`, `status`, `record_id`, `module_id`, `operation`, `from`) values ('0', 'Logout', '2024-04-12 11:56:31', '2024-04-12 11:56:31', '1', '0', '0', 'logout_user', 'panel')
+)
+
+2024-04-12 11:56:31: 
+2024-04-12 11:56:31: Array
+(
+    [0] => 2 Query Error: 
+    [1] => insert IGNORE into tbl_audit_logs (`user_id`, `action`, `date_added`, `date_modified`, `status`, `record_id`, `module_id`, `operation`, `from`) values ('0', 'Logout', '2024-04-12 11:56:31', '2024-04-12 11:56:31', '1', '0', '0', 'logout_user', 'panel')
+)
+
+2024-04-12 11:56:31: 
+2024-04-12 11:56:31: Array
+(
+    [0] => 3 Query Error: 
+    [1] => insert IGNORE into tbl_audit_logs (`user_id`, `action`, `date_added`, `date_modified`, `status`, `record_id`, `module_id`, `operation`, `from`) values ('0', 'Logout', '2024-04-12 11:56:31', '2024-04-12 11:56:31', '1', '0', '0', 'logout_user', 'panel')
+)
+
+2024-04-12 11:56:31: 
+2024-04-12 11:56:31: ServiceErrorHandler Error: #[2] occurred in [E:\Project\product\HTML\android_dashboard\api_services\manage.php] at line [298]: [Undefined array key "data"]
+2024-04-12 11:56:31: Page View: login.php /product/HTML/android_dashboard/login 
+2024-04-12 11:56:31: Page View: login.php /product/HTML/android_dashboard/login 
+2024-04-12 11:56:39: Array
+(
+    [QUERY_STRING] => 
+    [IP_ADDRESS] => ::1
+    [HTTP_USER_AGENT] => Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36
+    [op] => login_user
+    [email] => a
+    [password] => a
+    [version] => web
+    [from] => panel
+    [tz] => +5:30
+    [tzid] => Asia/Calcutta
+    [curr_time] => 12-04-2024
+)
+
+2024-04-12 11:56:39: ServiceErrorHandler Error: #[2] occurred in [E:\Project\product\HTML\android_dashboard\api_services\log_manage.php] at line [21]: [Undefined array key "user"]
+2024-04-12 11:56:39: ServiceErrorHandler Error: #[2] occurred in [E:\Project\product\HTML\android_dashboard\api_services\log_manage.php] at line [21]: [Trying to access array offset on value of type null]
+2024-04-12 11:56:39: audit_log_service > LOGID: 0
+2024-04-12 11:56:39: Page View: manage.php /product/HTML/android_dashboard/page/manage_dashboard 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 11:56:40: Page View: manage.php /product/HTML/android_dashboard/page/manage_dashboard 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 11:59:28: Page View: manage.php /product/HTML/android_dashboard/page/manage_dashboard 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 11:59:29: Page View: manage.php /product/HTML/android_dashboard/page/manage_dashboard 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:00:39: Page View: logout.php /product/HTML/android_dashboard/logout 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:00:39: Page View: logout.php /product/HTML/android_dashboard/logout 
+2024-04-12 12:00:41: Page View: login.php /product/HTML/android_dashboard/login 
+2024-04-12 12:00:41: Page View: login.php /product/HTML/android_dashboard/login 
+2024-04-12 12:01:04: Array
+(
+    [QUERY_STRING] => 
+    [IP_ADDRESS] => ::1
+    [HTTP_USER_AGENT] => Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36
+    [op] => login_user
+    [email] => a
+    [password] => a
+    [version] => web
+    [from] => panel
+    [tz] => +5:30
+    [tzid] => Asia/Calcutta
+    [curr_time] => 12-04-2024
+)
+
+2024-04-12 12:01:04: ServiceErrorHandler Error: #[2] occurred in [E:\Project\product\HTML\android_dashboard\api_services\log_manage.php] at line [21]: [Undefined array key "user"]
+2024-04-12 12:01:04: ServiceErrorHandler Error: #[2] occurred in [E:\Project\product\HTML\android_dashboard\api_services\log_manage.php] at line [21]: [Trying to access array offset on value of type null]
+2024-04-12 12:01:04: audit_log_service > LOGID: 0
+2024-04-12 12:01:04: Page View: manage.php /product/HTML/android_dashboard/page/manage_dashboard 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:01:04: Page View: manage.php /product/HTML/android_dashboard/page/manage_dashboard 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:05:01: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:05:03: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:06:32: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:06:33: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:13:28: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:13:29: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:14:20: Page View: logout.php /product/HTML/android_dashboard/logout 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:14:20: Page View: logout.php /product/HTML/android_dashboard/logout 
+2024-04-12 12:14:22: Page View: login.php /product/HTML/android_dashboard/login 
+2024-04-12 12:14:22: Page View: login.php /product/HTML/android_dashboard/login 
+2024-04-12 12:14:25: Array
+(
+    [QUERY_STRING] => 
+    [IP_ADDRESS] => ::1
+    [HTTP_USER_AGENT] => Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36
+    [op] => login_user
+    [email] => a
+    [password] => a
+    [version] => web
+    [from] => panel
+    [tz] => +5:30
+    [tzid] => Asia/Calcutta
+    [curr_time] => 12-04-2024
+)
+
+2024-04-12 12:14:25: ServiceErrorHandler Error: #[2] occurred in [E:\Project\product\HTML\android_dashboard\api_services\log_manage.php] at line [21]: [Undefined array key "user"]
+2024-04-12 12:14:25: ServiceErrorHandler Error: #[2] occurred in [E:\Project\product\HTML\android_dashboard\api_services\log_manage.php] at line [21]: [Trying to access array offset on value of type null]
+2024-04-12 12:14:25: audit_log_service > LOGID: 0
+2024-04-12 12:14:25: Page View: manage.php /product/HTML/android_dashboard/page/manage_dashboard 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:14:25: Page View: manage.php /product/HTML/android_dashboard/page/manage_dashboard 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:15:37: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:15:38: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:20:39: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:20:39: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:20:42: Page View: logout.php /product/HTML/android_dashboard/logout 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:20:43: Page View: logout.php /product/HTML/android_dashboard/logout 
+2024-04-12 12:20:45: Page View: login.php /product/HTML/android_dashboard/login 
+2024-04-12 12:20:45: Page View: login.php /product/HTML/android_dashboard/login 
+2024-04-12 12:20:57: Array
+(
+    [QUERY_STRING] => 
+    [IP_ADDRESS] => ::1
+    [HTTP_USER_AGENT] => Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36
+    [op] => login_user
+    [email] => a
+    [password] => a
+    [version] => web
+    [from] => panel
+    [tz] => +5:30
+    [tzid] => Asia/Calcutta
+    [curr_time] => 12-04-2024
+)
+
+2024-04-12 12:20:57: ServiceErrorHandler Error: #[2] occurred in [E:\Project\product\HTML\android_dashboard\api_services\log_manage.php] at line [21]: [Undefined array key "user"]
+2024-04-12 12:20:57: ServiceErrorHandler Error: #[2] occurred in [E:\Project\product\HTML\android_dashboard\api_services\log_manage.php] at line [21]: [Trying to access array offset on value of type null]
+2024-04-12 12:20:57: audit_log_service > LOGID: 0
+2024-04-12 12:20:57: Page View: manage.php /product/HTML/android_dashboard/page/manage_dashboard 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:20:57: Page View: manage.php /product/HTML/android_dashboard/page/manage_dashboard 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:21:00: Page View: logout.php /product/HTML/android_dashboard/logout 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:21:00: Page View: logout.php /product/HTML/android_dashboard/logout 
+2024-04-12 12:21:01: Page View: login.php /product/HTML/android_dashboard/login 
+2024-04-12 12:21:01: Page View: login.php /product/HTML/android_dashboard/login 
+2024-04-12 12:21:10: Page View: login.php /product/HTML/android_dashboard/login 
+2024-04-12 12:21:11: Page View: login.php /product/HTML/android_dashboard/login 
+2024-04-12 12:21:15: Array
+(
+    [QUERY_STRING] => 
+    [IP_ADDRESS] => ::1
+    [HTTP_USER_AGENT] => Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36
+    [op] => login_user
+    [email] => a
+    [password] => a
+    [version] => web
+    [from] => panel
+    [tz] => +5:30
+    [tzid] => Asia/Calcutta
+    [curr_time] => 12-04-2024
+)
+
+2024-04-12 12:21:15: ServiceErrorHandler Error: #[2] occurred in [E:\Project\product\HTML\android_dashboard\api_services\log_manage.php] at line [21]: [Undefined array key "user"]
+2024-04-12 12:21:15: ServiceErrorHandler Error: #[2] occurred in [E:\Project\product\HTML\android_dashboard\api_services\log_manage.php] at line [21]: [Trying to access array offset on value of type null]
+2024-04-12 12:21:15: audit_log_service > LOGID: 0
+2024-04-12 12:21:15: Page View: manage.php /product/HTML/android_dashboard/page/manage_dashboard 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:21:16: Page View: manage.php /product/HTML/android_dashboard/page/manage_dashboard 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:23:51: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:23:52: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:27:49: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:27:49: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:30:17: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:30:18: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:31:26: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:31:28: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:34:12: 
+2024-04-12 12:34:40: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:34:40: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:36:11: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:36:12: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:40:33: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:40:34: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:41:02: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:41:03: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:43:16: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 12:43:16: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 13:02:44: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 13:02:46: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 13:45:36: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 13:45:37: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 14:12:45: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 14:12:46: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 14:13:36: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 14:13:36: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 14:14:09: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 14:14:10: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 14:43:20: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 14:43:21: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 14:45:39: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 14:45:40: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 14:51:27: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 14:51:28: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 14:51:36: Page View: manage.php /product/HTML/android_dashboard/page/manage_dashboard 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 14:51:37: Page View: manage.php /product/HTML/android_dashboard/page/manage_dashboard 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 14:52:07: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 14:52:07: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 14:58:59: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 14:59:00: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 15:22:39: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 15:22:41: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 15:23:43: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 15:23:43: Page View: manage.php /product/HTML/android_dashboard/page/manage_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 15:36:45: Page View: manage.php /product/HTML/android_dashboard/page/manage_removed_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 15:36:46: Page View: manage.php /product/HTML/android_dashboard/page/manage_removed_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 15:37:50: Page View: manage.php /product/HTML/android_dashboard/page/manage_removed_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 15:37:51: Page View: manage.php /product/HTML/android_dashboard/page/manage_removed_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 15:38:35: Page View: manage.php /product/HTML/android_dashboard/page/manage_removed_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 15:38:36: Page View: manage.php /product/HTML/android_dashboard/page/manage_removed_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 15:39:17: Page View: manage.php /product/HTML/android_dashboard/page/manage_removed_apps 17019352-1247-1172-9a37-27852d564b27
+2024-04-12 15:39:17: Page View: manage.php /product/HTML/android_dashboard/page/manage_removed_apps 17019352-1247-1172-9a37-27852d564b27
