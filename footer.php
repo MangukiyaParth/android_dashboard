@@ -277,6 +277,7 @@ echo $include_javscript_at_bottom;
 				$('#preloader').delay(delay).fadeOut('slow');
 				setTimeout(() => {
 					pageData = pageData.replaceAll('[ADMIN_PANEL_URL]', ADMIN_PANEL_URL);
+					pageData = pageData.replaceAll('[ROOT_URL]', ROOT_URL);
 					$("#main_page_data").html(pageData);
 					if(rightIndex != -1 && !isAdmin){
 						editright = Urights[rightIndex].editright;

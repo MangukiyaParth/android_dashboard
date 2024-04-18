@@ -54,6 +54,7 @@ $include_javscript_library_before_custom_script_at_bottom = "<script>
 	var WEB_API_FOLDER = '" . API_SERVICE_URL . "';
 	var API_SERVICE_URL = '" . API_SERVICE_URL . "manage.php';
 	var ADMIN_PANEL_URL = '" . ADMIN_PANEL_URL . "';
+	var ROOT_URL = '" . ROOT_URL . "';
 	var USER_AVATAR = '" . ADMIN_PANEL_URL . "images/user_avtar.png';
 	var CURRENT_USER_ID = '".$current_user_id."';
 	var CURRENT_USERROLE_ID = '".$current_role_id."';

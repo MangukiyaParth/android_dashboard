@@ -376,3 +376,109 @@ img[src="#"] {
 .app-action{
 	margin-right: 30px;
 }
+
+.multi-box .box{
+	background-color: #FAFAFA;
+    border-radius: 10px;
+	padding: 5px;
+}
+
+.multi-box .box .box-header{
+	font-size: 18px;
+	padding: 12px 5px;
+	color: #000;
+	font-weight: 600;
+}
+
+.multi-box .box hr{
+	margin: 0;
+}
+
+.multi-box .box .box-body{
+	margin-top: 10px;
+}
+
+.multi-box .box td{
+	padding: 6px 5px;
+	color: #000;
+}
+
+#setting_table td{
+	position: relative;
+}
+
+#setting_table .delete-div{
+	position: absolute;
+    left: -2px;
+    padding-top: 2px;
+    color: #F00;
+	cursor: pointer;
+}
+
+/*************** Mobile Design ***************/
+.mobile-div{
+	position: relative;
+    height: 644px;
+    width: 315px;
+}
+
+.mobile-div .mobile-device {
+	background-image: url('../images/phone.png');
+	width: 100%;
+    height: 644px;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    z-index: 999;
+    position: absolute;
+}
+
+.mobile-div .mobile-design-preview{
+	width: 295px;
+    height: 630px;
+    margin-left: 10px;
+	padding-top: 15px;
+}
+
+.mobile-div .mobile-header{
+	padding-top: 35px;
+    padding-bottom: 1px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 700;
+    color: #FFF;
+    background-color: #FF7A4F;
+	border-radius: 20px 20px 0 0;
+}
+
+.mobile-div .mobile-body{
+	padding: 0 15px 15px 15px;
+}
+
+.mobile-div .Test-Ad-title {
+    font-size: 13px;
+    font-weight: 800;
+	color: #000;
+}
+
+.mobile-div .Test-Ad-subtitle {
+	font-size: 12px;
+    font-weight: 400;
+	color: #000;
+}
+
+.mobile-div .mobile-footer{
+	margin-top: 100px;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+    justify-content: space-between;
+    max-height: calc(100% - 450px);
+}
+
+.mobile-div .mobile-footer .start-app-btn{
+	padding-bottom: 50px;
+}
+
+.border-light{
+	border: 1px solid #EEE !important;
+}
