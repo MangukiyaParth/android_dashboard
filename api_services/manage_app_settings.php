@@ -23,6 +23,18 @@ function manage_app_settings()
 			
 			$qry_mrkt = "SELECT * FROM tbl_apps_settings WHERE app_id = '$id' AND `type` = 2";
 			$rows_mrkt = $db->execute($qry_mrkt);
+			
+			$qry_org_ad = "SELECT * FROM tbl_app_ad_settings WHERE app_id = '$id' AND `type` = 1 AND is_bifurcate = 0";
+			$rows_org_ad = $db->execute($qry_org_ad);
+			
+			$qry_org_bifurcate_ad = "SELECT * FROM tbl_app_ad_settings WHERE app_id = '$id' AND `type` = 1 AND is_bifurcate = 1";
+			$rows_org_bifurcate_ad = $db->execute($qry_org_bifurcate_ad);
+			
+			$qry_mrkt_ad = "SELECT * FROM tbl_app_ad_settings WHERE app_id = '$id' AND `type` = 2 AND is_bifurcate = 0";
+			$rows_mrkt_ad = $db->execute($qry_mrkt_ad);
+			
+			$qry_mrkt_bifurcate_ad = "SELECT * FROM tbl_app_ad_settings WHERE app_id = '$id' AND `type` = 2 AND is_bifurcate = 1";
+			$rows_mrkt_bifurcate_ad = $db->execute($qry_mrkt_bifurcate_ad);
 
 			$outputjson['success'] = 1;
 			$outputjson['status'] = 1;
@@ -30,6 +42,10 @@ function manage_app_settings()
 			$outputjson["data"] = $rows[0];
 			$outputjson["org_data"] = $rows_org[0];
 			$outputjson["mrkt_data"] = $rows_mrkt[0];
+			$outputjson["org_ad"] = $rows_org_ad[0];
+			$outputjson["org_bifurcate_ad"] = $rows_org_bifurcate_ad[0];
+			$outputjson["mrkt_ad"] = $rows_mrkt_ad[0];
+			$outputjson["mrkt_bifurcate_ad"] = $rows_mrkt_bifurcate_ad[0];
 		} else {
 			$outputjson["data"] = [];
 			$outputjson['message'] = "No Products found!";
@@ -301,6 +317,105 @@ function manage_app_settings()
 				"entry_date" => $date,
 			);
 			$res = $db->insert("tbl_apps_settings", $data);
+		}
+		$outputjson['result'] = $res;
+		$outputjson['success'] = 1;
+		$outputjson['message'] = "Data updated successfully";
+	}
+	else if($action == "save_ad_settings")
+	{
+		$app_id = $gh->read("id");
+		$type = $gh->read("type");
+		$is_bifurcate = $gh->read("is_bifurcate", 0);
+		$user_id = $gh->read("user_id", 0);
+		$bifurcate_location = $gh->read("bifurcate_location","");
+		$app_color = $gh->read("app_color","");
+		$app_background_color = $gh->read("app_background_color","");
+		$native_loading = $gh->read("native_loading","");
+		$bottom_banner = $gh->read("bottom_banner","");
+		$all_screen_native = $gh->read("all_screen_native","");
+		$list_native = $gh->read("list_native","");
+		$list_native_cnt = $gh->read("list_native_cnt","");
+		$exit_dialoge_native = $gh->read("exit_dialoge_native","");
+		$native_btn = $gh->read("native_btn","");
+		$native_btn_text = $gh->read("native_btn_text","");
+		$native_background_color = $gh->read("native_background_color","");
+		$native_text_color = $gh->read("native_text_color","");
+		$native_button_background_color = $gh->read("native_button_background_color","");
+		$native_button_text_color = $gh->read("native_button_text_color","");
+		$alternate_with_appopen = $gh->read("alternate_with_appopen","");
+		$inter_loading = $gh->read("inter_loading","");
+		$inter_interval = $gh->read("inter_interval","");
+		$block_click_inter = $gh->read("block_click_inter","");
+		$app_open_loading = $gh->read("app_open_loading","");
+		$splash_ads = $gh->read("splash_ads","");
+		$app_open = $gh->read("app_open","");
+		$date = date('Y-m-d H:i:s');
+			
+		$count_query = "SELECT id from tbl_app_ad_settings WHERE app_id = '$app_id' AND `type` = $type AND is_bifurcate = $is_bifurcate";
+		$id = $db->execute_scalar($count_query);
+		if($id > 0){
+			$data = array(
+				"bifurcate_location" => $bifurcate_location,
+				"app_color" => $app_color,
+				"app_background_color" => $app_background_color,
+				"native_loading" => $native_loading,
+				"bottom_banner" => $bottom_banner,
+				"all_screen_native" => $all_screen_native,
+				"list_native" => $list_native,
+				"list_native_cnt" => $list_native_cnt,
+				"exit_dialoge_native" => $exit_dialoge_native,
+				"native_btn" => $native_btn,
+				"native_btn_text" => $native_btn_text,
+				"native_background_color" => $native_background_color,
+				"native_text_color" => $native_text_color,
+				"native_button_background_color" => $native_button_background_color,
+				"native_button_text_color" => $native_button_text_color,
+				"alternate_with_appopen" => $alternate_with_appopen,
+				"inter_loading" => $inter_loading,
+				"inter_interval" => $inter_interval,
+				"block_click_inter" => $block_click_inter,
+				"app_open_loading" => $app_open_loading,
+				"splash_ads" => $splash_ads,
+				"app_open" => $app_open,
+				"update_uid" => $user_id,
+				"update_date" => $date,
+			);
+			$res = $db->update("tbl_app_ad_settings", $data, array("id"=>$id));
+		}
+		else{
+			$id=$gh->generateuuid();
+			$data = array(
+				"id" => $id,
+				"app_id" => $app_id,
+				"type" => $type,
+				"is_bifurcate" => $is_bifurcate,
+				"bifurcate_location" => $bifurcate_location,
+				"app_color" => $app_color,
+				"app_background_color" => $app_background_color,
+				"native_loading" => $native_loading,
+				"bottom_banner" => $bottom_banner,
+				"all_screen_native" => $all_screen_native,
+				"list_native" => $list_native,
+				"list_native_cnt" => $list_native_cnt,
+				"exit_dialoge_native" => $exit_dialoge_native,
+				"native_btn" => $native_btn,
+				"native_btn_text" => $native_btn_text,
+				"native_background_color" => $native_background_color,
+				"native_text_color" => $native_text_color,
+				"native_button_background_color" => $native_button_background_color,
+				"native_button_text_color" => $native_button_text_color,
+				"alternate_with_appopen" => $alternate_with_appopen,
+				"inter_loading" => $inter_loading,
+				"inter_interval" => $inter_interval,
+				"block_click_inter" => $block_click_inter,
+				"app_open_loading" => $app_open_loading,
+				"splash_ads" => $splash_ads,
+				"app_open" => $app_open,
+				"entry_uid" => $user_id,
+				"entry_date" => $date,
+			);
+			$res = $db->insert("tbl_app_ad_settings", $data);
 		}
 		$outputjson['result'] = $res;
 		$outputjson['success'] = 1;

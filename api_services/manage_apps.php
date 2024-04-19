@@ -146,6 +146,19 @@ function manage_apps()
 				$outputjson["data"] = $rows;
 			} 
 		} 
+	}else if($action == "update_status"){
+		$id = $gh->read("id");
+		$status = $gh->read("status");
+
+		$data = array(
+			"status" => $status
+		);
+		$rows = $db->update('tbl_apps', $data, array("id" => $id));
+
+		$outputjson['success'] = 1;
+		$outputjson['message'] = 'Data updated successfully.';
+		$outputjson["data"] = $rows;
+
 	}else if($action == "export_csv")
 	{
 		$filter = $gh->read("filter");

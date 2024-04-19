@@ -96,7 +96,7 @@ function get_data() {
                     var details ='';
                     if(row.file)
                     {
-                        details = "<a href='" + WEB_API_FOLDER + row.file + "' target='_blank'><img class='dataTable-app-img' src='" + WEB_API_FOLDER + row.file + "'></a>";
+                        details = "<a href='https://play.google.com/store/apps/details?id=" + row.package_name + "' target='_blank'><img class='dataTable-app-img' src='" + WEB_API_FOLDER + row.file + "'></a>";
                     }
                     return details;
                 }, name: 'logo', width: "5%", className: "tbl-img"
@@ -122,18 +122,21 @@ function get_data() {
             { data: 'status', name: 'status', width: "5%", orderable: false },
             { data: 'status', name: 'status', width: "5%", orderable: false },
             { data: 'notes', name: 'notes', width: "15%", orderable: false },
-            { data: 'days', name: 'entry_date', width: "10%" },
+            { data: 'days', name: 'entry_date', width: "7%" },
         ],
         "columnDefs": [{
             "targets": 10,
             "className": "text-end",
             "data": "id",
-            "width": "10%",
+            "width": "13%",
             "render": function (data, type, row, meta) {
                 var rowid="'"+row.id+"'";
                 var html='';
                 if(editright == 1)
                 {
+                    if(row.status == 1){
+                        html+='<button class="btn tbl-btn" onclick="update_status(\'' + row.id + '\', 2)"><i class="fa-solid fa-check color-success"></i></button>';
+                    }
                     html+='<button class="btn tbl-btn" onclick="edit_slider(' + meta.row + ')"><i class="fa-solid fa-pen"></i></button>';
                     html+='<button class="btn tbl-btn" onclick="openPage(\'manage_app_settings/' + row.id + '\')"><i class="fa-solid fa-gear"></i></button>';
                 }
@@ -294,6 +297,29 @@ function export_CSV1(){
             hideLoading();
             showError(data.message);
             console.log(data)
+            return false;
+        }
+    });
+}
+
+function update_status(id, new_status){
+    showLoading();
+    var req_data = {
+        op: CURRENT_PAGE
+        , action: "update_status"
+        , id: id
+        , status: new_status
+    };
+    doAPICall(req_data, async function(data){
+        if (data && data != null && data.success == true) {
+            showMessage(data.message);
+            hideLoading();
+            await table.clearPipeline().draw();
+            return false;
+        }
+        else if (data && data != null && data.success == false) {
+            hideLoading();
+            showError(data.message);
             return false;
         }
     });

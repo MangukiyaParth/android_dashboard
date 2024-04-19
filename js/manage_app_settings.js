@@ -4,6 +4,10 @@ let subView = 1;
 let extra_setting_fields = [];
 var OrgData = [];
 var MrktData = [];
+var OrgAdData = [];
+var OrgBifurcateData = [];
+var MrktAdData = [];
+var MrktBifurcateData = [];
 jQuery(function () {
     PRIMARY_ID = localStorage.getItem('primary_id');
     changeSubView(1);
@@ -26,6 +30,10 @@ function fill_app_details(){
             var appData = data.data;
             OrgData = data.org_data;
             MrktData = data.mrkt_data;
+            OrgAdData = data.org_ad;
+            OrgBifurcateData = data.org_bifurcate_ad;
+            MrktAdData = data.mrkt_ad;
+            MrktBifurcateData = data.mrkt_bifurcate_ad;
             var html = `<div class="app-title-div">
                             <div class="app-title">
                                 <img class="app-heading-img" src="${WEB_API_FOLDER+appData.file}" />
@@ -69,6 +77,10 @@ function changeSubView(v){
         $(".setting-o-view-btn").removeClass('btn-light').addClass('btn-outline-soft-warning').blur();
         $(".setting-div").removeClass('d-none');
         $(".user-div").addClass('d-none');
+        manageFormfields(1);
+        manage_preview_clr(1);
+        manageFormfields(2);
+        manage_preview_clr(2);
         FillSettingData();
     }
     else{
@@ -76,6 +88,10 @@ function changeSubView(v){
         $(".setting-m-view-btn").removeClass('btn-light').addClass('btn-outline-soft-warning').blur();
         $(".setting-div").removeClass('d-none');
         $(".user-div").addClass('d-none');
+        manageFormfields(1);
+        manage_preview_clr(1);
+        manageFormfields(2);
+        manage_preview_clr(2);
         FillSettingData();
     }
 }
@@ -89,28 +105,165 @@ function manageDefaultInit(){
         placeholder: 'Enter location ...',
         forceLowercase: false
     });
-    // // addTag
-    // $('#vpn_country').tagEditor('addTag', 'example');
 
-    // // removeTag
-    // $('#vpn_country').tagEditor('removeTag', 'example');
+    manageFormfields(1);
+    manage_preview_clr(1);
+    manageFormfields(2);
+    manage_preview_clr(2);
+    
+    $("#app_color, #app_background_color, #native_background_color, #native_text_color, #native_button_background_color, #native_button_text_color, #native_btn_text").on('input', function(){
+        manage_preview_clr(1);
+    });
+    $("[name='native_btn'], [name='bottom_banner']").on("change", function(){
+        manageFormfields(1);
+        manage_preview_clr(1);
+    });
+    $("#ad .clr-picker").on('change', function(){
+        manage_preview_clr(1);
+    });
 
-    // function resetform(){
-    //     var tags = $('#vpn_country').tagEditor('getTags')[0].tags;
-    //     if(tags){
-    //         for (i = 0; i < tags.length; i++) { $('#vpn_country').tagEditor('removeTag', tags[i]); }
-    //     }
-    //     $('#formevent').val('submit');
-    // }
+    $("#bifurcate_app_color, #bifurcate_app_background_color, #bifurcate_native_background_color, #bifurcate_native_text_color, #bifurcate_native_button_background_color, #bifurcate_native_button_text_color, #bifurcate_native_btn_text").on('input', function(){
+        manage_preview_clr(1);
+    });
+    $("[name='bifurcate_native_btn'], [name='bifurcate_bottom_banner']").on("change", function(){
+        manageFormfields(1);
+        manage_preview_clr(1);
+    });
+    $("#bifurcate .clr-picker").on('change', function(){
+        manage_preview_clr(2);
+    });
+}
+
+function manageFormfields(type = 1){
+    if(type == 1){
+        if($("[name='native_btn']:checked").val() == "default"){
+            $("#native_btn_text").val('');
+            $("#native_btn_text").prop('readonly', true);
+        }
+        else{
+            $("#native_btn_text").removeAttr('readonly');
+        } 
+    }
+    else{
+        if($("[name='bifurcate_native_btn']:checked").val() == "default"){
+            $("#bifurcate_native_btn_text").val('');
+            $("#bifurcate_native_btn_text").prop('readonly', true);
+        }
+        else{
+            $("#bifurcate_native_btn_text").removeAttr('readonly');
+        }
+    }
+}
+
+function manage_preview_clr(type = 1){
+    if(type == 1){
+        var header_bg = $("#app_color").val();
+        if(header_bg != "" && color_regex.test(header_bg)){
+            $(".ad-mobile-div .mobile-header").css('background-color', header_bg);
+        }
+        var app_bg = $("#app_background_color").val();
+        if(app_bg != "" && color_regex.test(app_bg)){
+            $(".ad-mobile-div .mobile-footer").css('background-color', app_bg);
+        }
+        var native_bg = $("#native_background_color").val();
+        if(native_bg != "" && color_regex.test(native_bg)){
+            $(".ad-mobile-div .mobile-body").css('background-color', native_bg);
+        }
+        var native_text = $("#native_text_color").val();
+        if(native_text != "" && color_regex.test(native_text)){
+            $(".ad-mobile-div .mobile-body .Test-Ad-title").css('color', native_text);
+            $(".ad-mobile-div .mobile-body .Test-Ad-subtitle").css('color', native_text);
+        }
+        var btn_bg = $("#native_button_background_color").val();
+        if(btn_bg != "" && color_regex.test(btn_bg)){
+            $(".ad-mobile-div .default-btn").css('background-color', btn_bg);
+        }
+        var btn_text = $("#native_button_text_color").val();
+        if(btn_text != "" && color_regex.test(btn_text)){
+            $(".ad-mobile-div .default-btn").css('color', btn_text);
+        }
+        var default_text_type = $("[name='native_btn']:checked").val();
+        if(default_text_type == 'default'){
+            $(".ad-mobile-div .default-btn").html('Defalut');
+        }
+        else {
+            var default_text_manual = $("#native_btn_text").val();
+            $(".ad-mobile-div .default-btn").html(default_text_manual);
+        }
+
+        if($("[name='bottom_banner']:checked").val() == "hide"){
+            $(".ad-mobile-div .bottom-ad").addClass('d-none');
+        }
+        else if($("[name='bottom_banner']:checked").val() == "native"){
+            $(".ad-mobile-div .bottom-ad").removeClass('d-none');
+            $(".ad-mobile-div .bottom-ad").prop('src', ROOT_URL + 'assets/images/nativeBanner.jpg');
+        }
+        else if($("[name='bottom_banner']:checked").val() == "banner"){
+            $(".ad-mobile-div .bottom-ad").removeClass('d-none');
+            $(".ad-mobile-div .bottom-ad").prop('src', ROOT_URL + 'assets/images/banner.jpg');
+        }
+    }
+    else {
+        var header_bg = $("#bifurcate_app_color").val();
+        if(header_bg != "" && color_regex.test(header_bg)){
+            $(".bifurcate-mobile-div .mobile-header").css('background-color', header_bg);
+        }
+        var app_bg = $("#bifurcate_app_background_color").val();
+        if(app_bg != "" && color_regex.test(app_bg)){
+            $(".bifurcate-mobile-div .mobile-footer").css('background-color', app_bg);
+        }
+        var native_bg = $("#bifurcate_native_background_color").val();
+        if(native_bg != "" && color_regex.test(native_bg)){
+            $(".bifurcate-mobile-div .mobile-body").css('background-color', native_bg);
+        }
+        var native_text = $("#bifurcate_native_text_color").val();
+        if(native_text != "" && color_regex.test(native_text)){
+            $(".bifurcate-mobile-div .mobile-body").css('color', native_text);
+        }
+        var btn_bg = $("#bifurcate_native_button_background_color").val();
+        if(btn_bg != "" && color_regex.test(btn_bg)){
+            $(".bifurcate-mobile-div .default-btn").css('background-color', btn_bg);
+        }
+        var btn_text = $("#bifurcate_native_button_text_color").val();
+        if(btn_text != "" && color_regex.test(btn_text)){
+            $(".bifurcate-mobile-div .default-btn").css('color', btn_text);
+        }
+        var default_text_type = $("[name='bifurcate_native_btn']:checked").val();
+        if(default_text_type == 'default'){
+            $(".bifurcate-mobile-div .default-btn").html('Defalut');
+        }
+        else {
+            var default_text_manual = $("#bifurcate_native_btn_text").val();
+            $(".bifurcate-mobile-div .default-btn").html(default_text_manual);
+        }
+
+        if($("[name='bifurcate_bottom_banner']:checked").val() == "hide"){
+            $(".bifurcate-mobile-div .bottom-ad").addClass('d-none');
+        }
+        else if($("[name='bifurcate_bottom_banner']:checked").val() == "native"){
+            $(".bifurcate-mobile-div .bottom-ad").removeClass('d-none');
+            $(".bifurcate-mobile-div .bottom-ad").prop('src', ROOT_URL + 'assets/images/nativeBanner.jpg');
+        }
+        else if($("[name='bifurcate_bottom_banner']:checked").val() == "banner"){
+            $(".bifurcate-mobile-div .bottom-ad").removeClass('d-none');
+            $(".bifurcate-mobile-div .bottom-ad").prop('src', ROOT_URL + 'assets/images/banner.jpg');
+        }
+    }
 }
 
 function FillSettingData(){
     let appSettingData = [];
+    let adData = [];
+    let adBifurcateData = [];
     if(subView == 3){
         appSettingData = OrgData;
+        adData = OrgAdData;
+        adBifurcateData = OrgBifurcateData;
     }
     else{
         appSettingData = MrktData;
+        adData = MrktAdData;
+        adBifurcateData = MrktBifurcateData;
     }
 
     $("#g1_percentage").val((appSettingData && appSettingData.g1_percentage) ? appSettingData.g1_percentage : '');
@@ -138,17 +291,17 @@ function FillSettingData(){
     $("#g2_appid").val((appSettingData && appSettingData.g2_appid) ? appSettingData.g2_appid : '');
     $("#g3_appid").val((appSettingData && appSettingData.g3_appid) ? appSettingData.g3_appid : '');
 
-    var all_ads = (appSettingData && appSettingData.all_ads) ? appSettingData.all_ads : 'false';
-    var fullscreen = (appSettingData && appSettingData.fullscreen) ? appSettingData.fullscreen : 'false';
-    var continue_screen = (appSettingData && appSettingData.continue_screen) ? appSettingData.continue_screen : 'false';
-    var lets_start_screen = (appSettingData && appSettingData.lets_start_screen) ? appSettingData.lets_start_screen : 'false';
-    var age_screen = (appSettingData && appSettingData.age_screen) ? appSettingData.age_screen : 'false';
-    var next_screen = (appSettingData && appSettingData.next_screen) ? appSettingData.next_screen : 'false';
-    var next_inner_screen = (appSettingData && appSettingData.next_inner_screen) ? appSettingData.next_inner_screen : 'false';
-    var contact_screen = (appSettingData && appSettingData.contact_screen) ? appSettingData.contact_screen : 'false';
-    var start_screen = (appSettingData && appSettingData.start_screen) ? appSettingData.start_screen : 'false';
-    var real_casting_flow = (appSettingData && appSettingData.real_casting_flow) ? appSettingData.real_casting_flow : 'false';
-    var app_stop = (appSettingData && appSettingData.app_stop) ? appSettingData.app_stop : 'false';
+    var all_ads = (appSettingData && appSettingData.all_ads) ? appSettingData.all_ads : 'hide';
+    var fullscreen = (appSettingData && appSettingData.fullscreen) ? appSettingData.fullscreen : 'hide';
+    var continue_screen = (appSettingData && appSettingData.continue_screen) ? appSettingData.continue_screen : 'hide';
+    var lets_start_screen = (appSettingData && appSettingData.lets_start_screen) ? appSettingData.lets_start_screen : 'hide';
+    var age_screen = (appSettingData && appSettingData.age_screen) ? appSettingData.age_screen : 'hide';
+    var next_screen = (appSettingData && appSettingData.next_screen) ? appSettingData.next_screen : 'hide';
+    var next_inner_screen = (appSettingData && appSettingData.next_inner_screen) ? appSettingData.next_inner_screen : 'hide';
+    var contact_screen = (appSettingData && appSettingData.contact_screen) ? appSettingData.contact_screen : 'hide';
+    var start_screen = (appSettingData && appSettingData.start_screen) ? appSettingData.start_screen : 'hide';
+    var real_casting_flow = (appSettingData && appSettingData.real_casting_flow) ? appSettingData.real_casting_flow : 'hide';
+    var app_stop = (appSettingData && appSettingData.app_stop) ? appSettingData.app_stop : 'hide';
 
     $("[name='all_ads'][value='"+all_ads+"']").prop('checked', true);
     $("[name='fullscreen'][value='"+fullscreen+"']").prop('checked', true);
@@ -163,9 +316,9 @@ function FillSettingData(){
     $("[name='real_casting_flow'][value='"+real_casting_flow+"']").prop('checked', true);
     $("[name='app_stop'][value='"+app_stop+"']").prop('checked', true);
 
-    var vpn = (appSettingData && appSettingData.vpn) ? appSettingData.vpn : 'false';
-    var vpn_dialog = (appSettingData && appSettingData.vpn_dialog) ? appSettingData.vpn_dialog : 'false';
-    var vpn_dialog_open = (appSettingData && appSettingData.vpn_dialog_open) ? appSettingData.vpn_dialog_open : 'false';
+    var vpn = (appSettingData && appSettingData.vpn) ? appSettingData.vpn : 'hide';
+    var vpn_dialog = (appSettingData && appSettingData.vpn_dialog) ? appSettingData.vpn_dialog : 'hide';
+    var vpn_dialog_open = (appSettingData && appSettingData.vpn_dialog_open) ? appSettingData.vpn_dialog_open : 'hide';
     $("[name='vpn'][value='"+vpn+"']").prop('checked', true);
     $("[name='vpn_dialog'][value='"+vpn_dialog+"']").prop('checked', true);
     $("[name='vpn_dialog_open'][value='"+vpn_dialog_open+"']").prop('checked', true);
@@ -181,7 +334,6 @@ function FillSettingData(){
     }
 
     var app_remove_flag = (appSettingData && appSettingData.app_remove_flag) ? appSettingData.app_remove_flag : 'normal';
-    console.log(app_remove_flag);
     $("[name='app_remove_flag'][value='"+app_remove_flag+"']").prop('checked', true);
     $("#app_version").val((appSettingData && appSettingData.app_version) ? appSettingData.app_version : '');
     $("#app_remove_title").val((appSettingData && appSettingData.app_remove_title) ? appSettingData.app_remove_title : '');
@@ -189,6 +341,81 @@ function FillSettingData(){
     $("#app_remove_url").val((appSettingData && appSettingData.app_remove_url) ? appSettingData.app_remove_url : '');
     $("#app_remove_button_name").val((appSettingData && appSettingData.app_remove_button_name) ? appSettingData.app_remove_button_name : '');
     $("#app_remove_skip_button_name").val((appSettingData && appSettingData.app_remove_skip_button_name) ? appSettingData.app_remove_skip_button_name : '');
+
+    /*** Ad Setting ***/
+    var native_loading = (adData && adData.native_loading) ? adData.native_loading : 'onload';
+    var bottom_banner = (adData && adData.bottom_banner) ? adData.bottom_banner : 'native';
+    var all_screen_native = (adData && adData.all_screen_native) ? adData.all_screen_native : 'hide';
+    var list_native = (adData && adData.list_native) ? adData.list_native : 'hide';
+    var exit_dialoge_native = (adData && adData.exit_dialoge_native) ? adData.exit_dialoge_native : 'hide';
+    var native_btn = (adData && adData.native_btn) ? adData.native_btn : 'default';
+    var alternate_with_appopen = (adData && adData.alternate_with_appopen) ? adData.alternate_with_appopen : 'hide';
+    var inter_loading = (adData && adData.inter_loading) ? adData.inter_loading : 'onload';
+    var app_open_loading = (adData && adData.app_open_loading) ? adData.app_open_loading : 'onload';
+    var splash_ads = (adData && adData.splash_ads) ? adData.splash_ads : 'hide';
+    var app_open = (adData && adData.app_open) ? adData.app_open : 'onetime';
+
+    $("#app_color").val((adData && adData.app_color) ? adData.app_color : '#000000');
+    $("#app_background_color").val((adData && adData.app_background_color) ? adData.app_background_color : '#FFFFFF');
+    $("[name='native_loading'][value='"+native_loading+"']").prop('checked', true);
+    $("[name='bottom_banner'][value='"+bottom_banner+"']").prop('checked', true);
+    $("[name='all_screen_native'][value='"+all_screen_native+"']").prop('checked', true);
+    $("[name='list_native'][value='"+list_native+"']").prop('checked', true);
+    $("#list_native_cnt").val((adData && adData.list_native_cnt) ? adData.list_native_cnt : '0');
+    $("[name='exit_dialoge_native'][value='"+exit_dialoge_native+"']").prop('checked', true);
+    $("[name='native_btn'][value='"+native_btn+"']").prop('checked', true);
+    $("#native_btn_text").val((adData && adData.native_btn_text) ? adData.native_btn_text : '');
+    $("#native_background_color").val((adData && adData.native_background_color) ? adData.native_background_color : '#FFFEFF');
+    $("#native_text_color").val((adData && adData.native_text_color) ? adData.native_text_color : '#808080');
+    $("#native_button_background_color").val((adData && adData.native_button_background_color) ? adData.native_button_background_color : '#4285F4');
+    $("#native_button_text_color").val((adData && adData.native_button_text_color) ? adData.native_button_text_color : '#FFFEFF');
+    $("[name='alternate_with_appopen'][value='"+alternate_with_appopen+"']").prop('checked', true);
+    $("[name='inter_loading'][value='"+inter_loading+"']").prop('checked', true);
+    $("#inter_interval").val((adData && adData.inter_interval) ? adData.inter_interval : '0');
+    $("#block_click_inter").val((adData && adData.block_click_inter) ? adData.block_click_inter : '0');
+    $("[name='app_open_loading'][value='"+app_open_loading+"']").prop('checked', true);
+    $("[name='splash_ads'][value='"+splash_ads+"']").prop('checked', true);
+    $("[name='app_open'][value='"+app_open+"']").prop('checked', true);
+    
+    var bifurcate_native_loading = (adBifurcateData && adBifurcateData.native_loading) ? adBifurcateData.native_loading : 'onload';
+    var bifurcate_bottom_banner = (adBifurcateData && adBifurcateData.bottom_banner) ? adBifurcateData.bottom_banner : 'native';
+    var bifurcate_all_screen_native = (adBifurcateData && adBifurcateData.all_screen_native) ? adBifurcateData.all_screen_native : 'hide';
+    var bifurcate_list_native = (adBifurcateData && adBifurcateData.list_native) ? adBifurcateData.list_native : 'hide';
+    var bifurcate_exit_dialoge_native = (adBifurcateData && adBifurcateData.exit_dialoge_native) ? adBifurcateData.exit_dialoge_native : 'hide';
+    var bifurcate_native_btn = (adBifurcateData && adBifurcateData.native_btn) ? adBifurcateData.native_btn : 'default';
+    var bifurcate_alternate_with_appopen = (adBifurcateData && adBifurcateData.alternate_with_appopen) ? adBifurcateData.alternate_with_appopen : 'hide';
+    var bifurcate_inter_loading = (adBifurcateData && adBifurcateData.inter_loading) ? adBifurcateData.inter_loading : 'onload';
+    var bifurcate_app_open_loading = (adBifurcateData && adBifurcateData.app_open_loading) ? adBifurcateData.app_open_loading : 'onload';
+    var bifurcate_splash_ads = (adBifurcateData && adBifurcateData.splash_ads) ? adBifurcateData.splash_ads : 'hide';
+    var bifurcate_app_open = (adBifurcateData && adBifurcateData.app_open) ? adBifurcateData.app_open : 'onetime';
+
+    $("#bifurcate_app_color").val((adBifurcateData && adBifurcateData.app_color) ? adBifurcateData.app_color : '#000000');
+    $("#bifurcate_app_background_color").val((adBifurcateData && adBifurcateData.app_background_color) ? adBifurcateData.app_background_color : '#FFFFFF');
+    $("[name='bifurcate_native_loading'][value='"+bifurcate_native_loading+"']").prop('checked', true);
+    $("[name='bifurcate_bottom_banner'][value='"+bifurcate_bottom_banner+"']").prop('checked', true);
+    $("[name='bifurcate_all_screen_native'][value='"+bifurcate_all_screen_native+"']").prop('checked', true);
+    $("[name='bifurcate_list_native'][value='"+bifurcate_list_native+"']").prop('checked', true);
+    $("#bifurcate_list_native_cnt").val((adBifurcateData && adBifurcateData.list_native_cnt) ? adBifurcateData.list_native_cnt : '0');
+    $("[name='bifurcate_exit_dialoge_native'][value='"+bifurcate_exit_dialoge_native+"']").prop('checked', true);
+    $("[name='bifurcate_native_btn'][value='"+bifurcate_native_btn+"']").prop('checked', true);
+    $("#bifurcate_native_btn_text").val((adBifurcateData && adBifurcateData.native_btn_text) ? adBifurcateData.native_btn_text : '');
+    $("#bifurcate_native_background_color").val((adBifurcateData && adBifurcateData.native_background_color) ? adBifurcateData.native_background_color : '#FFFEFF');
+    $("#bifurcate_native_text_color").val((adBifurcateData && adBifurcateData.native_text_color) ? adBifurcateData.native_text_color : '#808080');
+    $("#bifurcate_native_button_background_color").val((adBifurcateData && adBifurcateData.native_button_background_color) ? adBifurcateData.native_button_background_color : '#4285F4');
+    $("#bifurcate_native_button_text_color").val((adBifurcateData && adBifurcateData.native_button_text_color) ? adBifurcateData.native_button_text_color : '#FFFEFF');
+    $("[name='bifurcate_alternate_with_appopen'][value='"+bifurcate_alternate_with_appopen+"']").prop('checked', true);
+    $("[name='bifurcate_inter_loading'][value='"+bifurcate_inter_loading+"']").prop('checked', true);
+    $("#bifurcate_inter_interval").val((adBifurcateData && adBifurcateData.inter_interval) ? adBifurcateData.inter_interval : '0');
+    $("#bifurcate_block_click_inter").val((adBifurcateData && adBifurcateData.block_click_inter) ? adBifurcateData.block_click_inter : '0');
+    $("[name='bifurcate_app_open_loading'][value='"+bifurcate_app_open_loading+"']").prop('checked', true);
+    $("[name='bifurcate_splash_ads'][value='"+bifurcate_splash_ads+"']").prop('checked', true);
+    $("[name='bifurcate_app_open'][value='"+bifurcate_app_open+"']").prop('checked', true);
+
+    manageFormfields(1);
+    manage_preview_clr(1);
+    manageFormfields(2);
+    manage_preview_clr(2);
+    manageSelectedColor();
 }
 
 //================= Google Functions =================
@@ -424,6 +651,85 @@ function saveAppRemoveSettings(){
         , app_remove_button_name: $("#app_remove_button_name").val()
         , app_remove_skip_button_name: $("#app_remove_skip_button_name").val()
     };
+    doAPICall(req_data, async function(data){
+        if (data && data != null && data.success) {
+            hideLoading();
+            showMessage(data.message);
+            return false;
+        }
+        else if (data && data != null && !data.success) {
+            hideLoading();
+            showError(data.message);
+            return false;
+        }
+    });
+}
+
+//================= Ad Setting Functions =================
+
+function saveAdSettings(){
+    var req_data = {
+        bifurcate_location: ""
+        , app_color: $("#app_color").val()
+        , app_background_color: $("#app_background_color").val()
+        , native_loading: $("[name='native_loading']:checked").val()
+        , bottom_banner: $("[name='bottom_banner']:checked").val()
+        , all_screen_native: $("[name='all_screen_native']:checked").val()
+        , list_native: $("[name='list_native']:checked").val()
+        , list_native_cnt: $("#list_native_cnt").val()
+        , exit_dialoge_native: $("[name='exit_dialoge_native']:checked").val()
+        , native_btn: $("[name='native_btn']:checked").val()
+        , native_btn_text: $("#native_btn_text").val()
+        , native_background_color: $("#native_background_color").val()
+        , native_text_color: $("#native_text_color").val()
+        , native_button_background_color: $("#native_button_background_color").val()
+        , native_button_text_color: $("#native_button_text_color").val()
+        , alternate_with_appopen: $("[name='alternate_with_appopen']:checked").val()
+        , inter_loading: $("[name='inter_loading']:checked").val()
+        , inter_interval: $("#inter_interval").val()
+        , block_click_inter: $("#block_click_inter").val()
+        , app_open_loading: $("[name='app_open_loading']:checked").val()
+        , splash_ads: $("[name='splash_ads']:checked").val()
+        , app_open: $("[name='app_open']:checked").val()
+    };
+    saveAdsSettings(0, req_data);
+}
+
+function saveBifurcate_AdSettings(){
+    var req_data = {
+        bifurcate_location: $('#bifurcate_location').tagEditor('getTags')[0].tags.join(',')
+        , app_color: $("#bifurcate_app_color").val()
+        , app_background_color: $("#bifurcate_app_background_color").val()
+        , native_loading: $("[name='bifurcate_native_loading']:checked").val()
+        , bottom_banner: $("[name='bifurcate_bottom_banner']:checked").val()
+        , all_screen_native: $("[name='bifurcate_all_screen_native']:checked").val()
+        , list_native: $("[name='bifurcate_list_native']:checked").val()
+        , list_native_cnt: $("#bifurcate_list_native_cnt").val()
+        , exit_dialoge_native: $("[name='bifurcate_exit_dialoge_native']:checked").val()
+        , native_btn: $("[name='bifurcate_native_btn']:checked").val()
+        , native_btn_text: $("#bifurcate_native_btn_text").val()
+        , native_background_color: $("#bifurcate_native_background_color").val()
+        , native_text_color: $("#bifurcate_native_text_color").val()
+        , native_button_background_color: $("#bifurcate_native_button_background_color").val()
+        , native_button_text_color: $("#bifurcate_native_button_text_color").val()
+        , alternate_with_appopen: $("[name='bifurcate_alternate_with_appopen']:checked").val()
+        , inter_loading: $("[name='bifurcate_inter_loading']:checked").val()
+        , inter_interval: $("#bifurcate_inter_interval").val()
+        , block_click_inter: $("#bifurcate_block_click_inter").val()
+        , app_open_loading: $("[name='bifurcate_app_open_loading']:checked").val()
+        , splash_ads: $("[name='bifurcate_splash_ads']:checked").val()
+        , app_open: $("[name='bifurcate_app_open']:checked").val()
+    };
+    saveAdsSettings(1, req_data);
+}
+
+function saveAdsSettings(is_bifurcate = 0, req_data){
+    showLoading();
+    req_data['op'] = CURRENT_PAGE;
+    req_data['action'] = "save_ad_settings";
+    req_data['id'] = PRIMARY_ID;
+    req_data['type'] = (subView == 3) ? 1 : 2;
+    req_data['is_bifurcate'] = is_bifurcate;
     doAPICall(req_data, async function(data){
         if (data && data != null && data.success) {
             hideLoading();

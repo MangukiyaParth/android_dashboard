@@ -20,6 +20,7 @@ if(CURRENT_PAGE != 'logout' && CURRENT_PAGE != 'login')
 {
     openPage();
 }
+var color_regex = new RegExp('^#(?:[0-9a-fA-F]{3}){1,2}$');
 
 Dropzone.autoDiscover = false;
 /* document.onpaste = function(event){
@@ -73,6 +74,21 @@ function apply_after_page_load(){
 
     $('[data-plugin="dropzone"]').each(function () {
         setFileDropzone($(this));
+    });
+
+    manageSelectedColor();
+
+    $(".color-group .clr-picker").on('change', function(){
+        var selected_clr = $(this).val();
+        $(this).prev(".clr-input").val(selected_clr.toUpperCase());
+    });
+    
+    $(".color-group .clr-input").on('input', function(){
+        var selected_clr = $(this).val();
+        if(selected_clr && selected_clr != "" && color_regex.test(selected_clr))
+        {
+            $(this).next(".clr-picker").val(selected_clr);
+        }
     });
 
     // Datetime and date range picker
@@ -163,6 +179,20 @@ function apply_after_page_load(){
                 e.preventDefault();
                 return false;
             }
+        }
+    });
+}
+
+function manageSelectedColor() {
+    $(".color-group").each(function () {
+        var clr_input = $(this).find(".clr-input").val();
+        if(clr_input && clr_input != "" && color_regex.test(clr_input))
+        {
+            $(this).find(".clr-picker").val(clr_input);
+        }
+        else
+        {
+            $(this).find(".clr-picker").val('#FFFFFF');
         }
     });
 }

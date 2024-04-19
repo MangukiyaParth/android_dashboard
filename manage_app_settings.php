@@ -241,23 +241,29 @@
                                 <div class="row">
                                     <div class="col-lg-8 col-md-12">
                                         <div class="row">
-                                            <div class="col-sm-2"><h3>App Color</h3></div>
+                                            <div class="col-sm-2"><p class="tab-title m-0">App Color</p></div>
                                             <div class="col-sm-10">
                                                 <div class="row">
                                                     <div class="mb-3 col-sm-6">
                                                         <label class="form-label" for="app_color">App Color for Admin</label>
-                                                        <input type="text" id="app_color" name="app_color" class="form-control" placeholder="Enter app color" value="#000000">
+                                                        <div class="color-group d-flex">
+                                                            <input type="text" id="app_color" name="app_color" class="form-control clr-input" placeholder="Enter app color" value="#000000">
+                                                            <input type="color" class="clr-picker" />
+                                                        </div>
                                                     </div>
                                                     <div class="mb-3 col-sm-6">
                                                         <label class="form-label" for="app_background_color">Background Color</label>
-                                                        <input type="text" id="app_background_color" name="app_background_color" class="form-control" placeholder="Enter app background color" value="#FFFFFF">
+                                                        <div class="color-group d-flex">
+                                                            <input type="text" id="app_background_color" name="app_background_color" class="form-control  clr-input" placeholder="Enter app background color" value="#FFFFFF">
+                                                            <input type="color" class="clr-picker" />
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <hr>
                                         <div class="row">
-                                            <div class="col-sm-2"><h3>Native</h3></div>
+                                            <div class="col-sm-2"><p class="tab-title">Native</p></div>
                                             <div class="col-sm-10">
                                                 <table class="table table-centered table-borderless">
                                                     <tbody>
@@ -295,11 +301,11 @@
                                                             <td>All Screen Native</td>
                                                             <td>
                                                                 <div class="form-check form-radio-success form-check-inline">
-                                                                    <input type="radio" id="allScreenNativeShow" name="all_screen_native" class="form-check-input" value="true">
+                                                                    <input type="radio" id="allScreenNativeShow" name="all_screen_native" class="form-check-input" value="show">
                                                                     <label class="form-check-label" for="allScreenNativeShow">Show</label>
                                                                 </div>
                                                                 <div class="form-check form-radio-success form-check-inline">
-                                                                    <input type="radio" id="AllScreenNativeHide" name="all_screen_native" class="form-check-input" value="false" checked>
+                                                                    <input type="radio" id="AllScreenNativeHide" name="all_screen_native" class="form-check-input" value="hide" checked>
                                                                     <label class="form-check-label" for="AllScreenNativeHide">Hide</label>
                                                                 </div>
                                                             </td>
@@ -308,11 +314,11 @@
                                                             <td>List Native</td>
                                                             <td>
                                                                 <div class="form-check form-radio-success form-check-inline">
-                                                                    <input type="radio" id="listNativeShow" name="list_native" class="form-check-input" value="true">
+                                                                    <input type="radio" id="listNativeShow" name="list_native" class="form-check-input" value="show">
                                                                     <label class="form-check-label" for="listNativeShow">Show</label>
                                                                 </div>
                                                                 <div class="form-check form-radio-success form-check-inline">
-                                                                    <input type="radio" id="listNativeHide" name="list_native" class="form-check-input" value="false" checked>
+                                                                    <input type="radio" id="listNativeHide" name="list_native" class="form-check-input" value="hide" checked>
                                                                     <label class="form-check-label" for="listNativeHide">Hide</label>
                                                                 </div>
                                                                 <div class="form-check form-check-inline">
@@ -324,11 +330,11 @@
                                                             <td>Exit Dialoge Native</td>
                                                             <td>
                                                                 <div class="form-check form-radio-success form-check-inline">
-                                                                    <input type="radio" id="exitDialogeNativeShow" name="exit_dialoge_native" class="form-check-input" value="true">
+                                                                    <input type="radio" id="exitDialogeNativeShow" name="exit_dialoge_native" class="form-check-input" value="show">
                                                                     <label class="form-check-label" for="exitDialogeNativeShow">Show</label>
                                                                 </div>
                                                                 <div class="form-check form-radio-success form-check-inline">
-                                                                    <input type="radio" id="exitDialogeNativeHide" name="exit_dialoge_native" class="form-check-input" value="false" checked>
+                                                                    <input type="radio" id="exitDialogeNativeHide" name="exit_dialoge_native" class="form-check-input" value="hide" checked>
                                                                     <label class="form-check-label" for="exitDialogeNativeHide">Hide</label>
                                                                 </div>
                                                             </td>
@@ -358,21 +364,33 @@
                                                         <div class="row">
                                                             <div class="mb-3 col-sm-6">
                                                                 <label class="form-label" for="native_background_color">Background</label>
-                                                                <input type="text" id="native_background_color" name="native_background_color" class="form-control" placeholder="Enter background" value="#FFFEFF">
+                                                                <div class="color-group d-flex">
+                                                                    <input type="text" id="native_background_color" name="native_background_color" class="form-control clr-input" placeholder="Enter background" value="#FFFEFF">
+                                                                    <input type="color" class="clr-picker" />
+                                                                </div>
                                                             </div>
                                                             <div class="mb-3 col-sm-6">
                                                                 <label class="form-label" for="native_text_color">Text</label>
-                                                                <input type="text" id="native_text_color" name="native_text_color" class="form-control" placeholder="Enter text color" value="#808080">
+                                                                <div class="color-group d-flex">
+                                                                    <input type="text" id="native_text_color" name="native_text_color" class="form-control clr-input" placeholder="Enter text color" value="#808080">
+                                                                    <input type="color" class="clr-picker" />
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="mb-3 col-sm-6">
                                                                 <label class="form-label" for="native_button_background_color">Button Background</label>
-                                                                <input type="text" id="native_button_background_color" name="native_button_background_color" class="form-control" placeholder="Enter button background" value="#4285F4">
+                                                                <div class="color-group d-flex">
+                                                                    <input type="text" id="native_button_background_color" name="native_button_background_color" class="form-control clr-input" placeholder="Enter button background" value="#4285F4">
+                                                                    <input type="color" class="clr-picker" />
+                                                                </div>
                                                             </div>
                                                             <div class="mb-3 col-sm-6">
                                                                 <label class="form-label" for="native_button_text_color">Button Text</label>
-                                                                <input type="text" id="native_button_text_color" name="native_button_text_color" class="form-control" placeholder="Enter text color" value="#FFFEFF">
+                                                                <div class="color-group d-flex">
+                                                                    <input type="text" id="native_button_text_color" name="native_button_text_color" class="form-control clr-input" placeholder="Enter text color" value="#FFFEFF">
+                                                                    <input type="color" class="clr-picker" />
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -381,7 +399,7 @@
                                         </div>
                                         <hr>
                                         <div class="row">
-                                            <div class="col-sm-2"><h3>Inter</h3></div>
+                                            <div class="col-sm-2"><p class="tab-title">Inter</p></div>
                                             <div class="col-sm-10">
                                                 <table class="table table-centered table-borderless">
                                                     <tbody>
@@ -429,7 +447,7 @@
                                         </div>
                                         <hr>
                                         <div class="row">
-                                            <div class="col-sm-2"><h3>App Open</h3></div>
+                                            <div class="col-sm-2"><p class="tab-title">App Open</p></div>
                                             <div class="col-sm-10">
                                                 <table class="table table-centered table-borderless">
                                                     <tbody>
@@ -512,7 +530,7 @@
                                                 </div>
                                                 <div class="mobile-footer">
                                                     <div class="px-2 start-app-btn"><button class="btn btn-primary w-100 startapp-btn">Start App</button></div>
-                                                    <img src="[ROOT_URL]assets/images/banner.jpg" alt="" class="w-100">
+                                                    <img src="[ROOT_URL]assets/images/banner.jpg" alt="" class="bottom-ad" class="w-100">
                                                 </div>
                                             </div>
                                         </div>
@@ -524,7 +542,7 @@
                                 <div class="row">
                                     <div class="col-lg-8 col-md-12">
                                         <div class="row">
-                                            <div class="col-sm-2"><h3>Bifurcate</h3></div>
+                                            <div class="col-sm-2"><p class="tab-title m-0">Bifurcate</p></div>
                                             <div class="col-sm-10">
                                                 <div class="row">
                                                     <div class="mb-3 col-sm-12">
@@ -536,23 +554,29 @@
                                         </div>
                                         <hr>
                                         <div class="row">
-                                            <div class="col-sm-2"><h3>App Color</h3></div>
+                                            <div class="col-sm-2"><p class="tab-title m-0">App Color</p></div>
                                             <div class="col-sm-10">
                                                 <div class="row">
                                                     <div class="mb-3 col-sm-6">
                                                         <label class="form-label" for="bifurcate_app_color">App Color for Admin</label>
-                                                        <input type="text" id="bifurcate_app_color" name="bifurcate_app_color" class="form-control" placeholder="Enter app color" value="#000000">
+                                                        <div class="color-group d-flex">
+                                                            <input type="text" id="bifurcate_app_color" name="bifurcate_app_color" class="form-control clr-input" placeholder="Enter app color" value="#000000">
+                                                            <input type="color" class="clr-picker" />
+                                                        </div>
                                                     </div>
                                                     <div class="mb-3 col-sm-6">
                                                         <label class="form-label" for="bifurcate_app_background_color">Background Color</label>
-                                                        <input type="text" id="bifurcate_app_background_color" name="bifurcate_app_background_color" class="form-control" placeholder="Enter app background color" value="#FFFFFF">
+                                                        <div class="color-group d-flex">
+                                                            <input type="text" id="bifurcate_app_background_color" name="bifurcate_app_background_color" class="form-control clr-input" placeholder="Enter app background color" value="#FFFFFF">
+                                                            <input type="color" class="clr-picker" />
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <hr>
                                         <div class="row">
-                                            <div class="col-sm-2"><h3>Native</h3></div>
+                                            <div class="col-sm-2"><p class="tab-title">Native</p></div>
                                             <div class="col-sm-10">
                                                 <table class="table table-centered table-borderless">
                                                     <tbody>
@@ -590,11 +614,11 @@
                                                             <td>All Screen Native</td>
                                                             <td>
                                                                 <div class="form-check form-radio-success form-check-inline">
-                                                                    <input type="radio" id="bifurcate_allScreenNativeShow" name="bifurcate_all_screen_native" class="form-check-input" value="true">
+                                                                    <input type="radio" id="bifurcate_allScreenNativeShow" name="bifurcate_all_screen_native" class="form-check-input" value="show">
                                                                     <label class="form-check-label" for="bifurcate_allScreenNativeShow">Show</label>
                                                                 </div>
                                                                 <div class="form-check form-radio-success form-check-inline">
-                                                                    <input type="radio" id="bifurcate_AllScreenNativeHide" name="bifurcate_all_screen_native" class="form-check-input" value="false" checked>
+                                                                    <input type="radio" id="bifurcate_AllScreenNativeHide" name="bifurcate_all_screen_native" class="form-check-input" value="hide" checked>
                                                                     <label class="form-check-label" for="bifurcate_AllScreenNativeHide">Hide</label>
                                                                 </div>
                                                             </td>
@@ -603,11 +627,11 @@
                                                             <td>List Native</td>
                                                             <td>
                                                                 <div class="form-check form-radio-success form-check-inline">
-                                                                    <input type="radio" id="bifurcate_listNativeShow" name="bifurcate_list_native" class="form-check-input" value="true">
+                                                                    <input type="radio" id="bifurcate_listNativeShow" name="bifurcate_list_native" class="form-check-input" value="show">
                                                                     <label class="form-check-label" for="bifurcate_listNativeShow">Show</label>
                                                                 </div>
                                                                 <div class="form-check form-radio-success form-check-inline">
-                                                                    <input type="radio" id="bifurcate_listNativeHide" name="bifurcate_list_native" class="form-check-input" value="false" checked>
+                                                                    <input type="radio" id="bifurcate_listNativeHide" name="bifurcate_list_native" class="form-check-input" value="hide" checked>
                                                                     <label class="form-check-label" for="bifurcate_listNativeHide">Hide</label>
                                                                 </div>
                                                                 <div class="form-check form-check-inline">
@@ -619,11 +643,11 @@
                                                             <td>Exit Dialoge Native</td>
                                                             <td>
                                                                 <div class="form-check form-radio-success form-check-inline">
-                                                                    <input type="radio" id="bifurcate_exitDialogeNativeShow" name="bifurcate_exit_dialoge_native" class="form-check-input" value="true">
+                                                                    <input type="radio" id="bifurcate_exitDialogeNativeShow" name="bifurcate_exit_dialoge_native" class="form-check-input" value="show">
                                                                     <label class="form-check-label" for="bifurcate_exitDialogeNativeShow">Show</label>
                                                                 </div>
                                                                 <div class="form-check form-radio-success form-check-inline">
-                                                                    <input type="radio" id="bifurcate_exitDialogeNativeHide" name="bifurcate_exit_dialoge_native" class="form-check-input" value="false" checked>
+                                                                    <input type="radio" id="bifurcate_exitDialogeNativeHide" name="bifurcate_exit_dialoge_native" class="form-check-input" value="hide" checked>
                                                                     <label class="form-check-label" for="bifurcate_exitDialogeNativeHide">Hide</label>
                                                                 </div>
                                                             </td>
@@ -653,21 +677,33 @@
                                                         <div class="row">
                                                             <div class="mb-3 col-sm-6">
                                                                 <label class="form-label" for="bifurcate_native_background_color">Background</label>
-                                                                <input type="text" id="bifurcate_native_background_color" name="bifurcate_native_background_color" class="form-control" placeholder="Enter background" value="#FFFEFF">
+                                                                <div class="color-group d-flex">
+                                                                    <input type="text" id="bifurcate_native_background_color" name="bifurcate_native_background_color" class="form-control clr-input" placeholder="Enter background" value="#FFFEFF">
+                                                                    <input type="color" class="clr-picker" />
+                                                                </div>
                                                             </div>
                                                             <div class="mb-3 col-sm-6">
                                                                 <label class="form-label" for="bifurcate_native_text_color">Text</label>
-                                                                <input type="text" id="bifurcate_native_text_color" name="bifurcate_native_text_color" class="form-control" placeholder="Enter text color" value="#808080">
+                                                                <div class="color-group d-flex">
+                                                                    <input type="text" id="bifurcate_native_text_color" name="bifurcate_native_text_color" class="form-control clr-input" placeholder="Enter text color" value="#808080">
+                                                                    <input type="color" class="clr-picker" />
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="mb-3 col-sm-6">
                                                                 <label class="form-label" for="bifurcate_native_button_background_color">Button Background</label>
-                                                                <input type="text" id="bifurcate_native_button_background_color" name="bifurcate_native_button_background_color" class="form-control" placeholder="Enter button background" value="#4285F4">
+                                                                <div class="color-group d-flex">
+                                                                    <input type="text" id="bifurcate_native_button_background_color" name="bifurcate_native_button_background_color" class="form-control clr-input" placeholder="Enter button background" value="#4285F4">
+                                                                    <input type="color" class="clr-picker" />
+                                                                </div>
                                                             </div>
                                                             <div class="mb-3 col-sm-6">
                                                                 <label class="form-label" for="bifurcate_native_button_text_color">Button Text</label>
-                                                                <input type="text" id="bifurcate_native_button_text_color" name="bifurcate_native_button_text_color" class="form-control" placeholder="Enter text color" value="#FFFEFF">
+                                                                <div class="color-group d-flex">
+                                                                    <input type="text" id="bifurcate_native_button_text_color" name="bifurcate_native_button_text_color" class="form-control clr-input" placeholder="Enter text color" value="#FFFEFF">
+                                                                    <input type="color" class="clr-picker" />
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -676,7 +712,7 @@
                                         </div>
                                         <hr>
                                         <div class="row">
-                                            <div class="col-sm-2"><h3>Inter</h3></div>
+                                            <div class="col-sm-2"><p class="tab-title">Inter</p></div>
                                             <div class="col-sm-10">
                                                 <table class="table table-centered table-borderless">
                                                     <tbody>
@@ -724,7 +760,7 @@
                                         </div>
                                         <hr>
                                         <div class="row">
-                                            <div class="col-sm-2"><h3>App Open</h3></div>
+                                            <div class="col-sm-2"><p class="tab-title">App Open</p></div>
                                             <div class="col-sm-10">
                                                 <table class="table table-centered table-borderless">
                                                     <tbody>
@@ -807,7 +843,7 @@
                                                 </div>
                                                 <div class="mobile-footer">
                                                     <div class="px-2 start-app-btn"><button class="btn btn-primary w-100 startapp-btn">Start App</button></div>
-                                                    <img src="[ROOT_URL]assets/images/banner.jpg" alt="" class="w-100">
+                                                    <img src="[ROOT_URL]assets/images/banner.jpg" alt=""  class="bottom-ad" class="w-100">
                                                 </div>
                                             </div>
                                         </div>
@@ -817,7 +853,7 @@
                             
                             <div class="tab-pane" id="other" role="tabpanel">
                                 <div class="row">
-                                    <div class="col-sm-2"><h3>Setting</h3></div>
+                                    <div class="col-sm-2"><p class="tab-title">Setting</p></div>
                                     <div class="col-sm-10">
                                         <table class="table table-centered table-borderless">
                                             <tbody id="setting_table">
@@ -825,11 +861,11 @@
                                                     <td>All Ads</td>
                                                     <td>
                                                         <div class="form-check form-radio-success form-check-inline">
-                                                            <input type="radio" id="allAdsShow" name="all_ads" class="form-check-input" value="true">
+                                                            <input type="radio" id="allAdsShow" name="all_ads" class="form-check-input" value="show">
                                                             <label class="form-check-label" for="allAdsShow">Show</label>
                                                         </div>
                                                         <div class="form-check form-radio-success form-check-inline">
-                                                            <input type="radio" id="allAdsHide" name="all_ads" class="form-check-input" value="false" checked>
+                                                            <input type="radio" id="allAdsHide" name="all_ads" class="form-check-input" value="hide" checked>
                                                             <label class="form-check-label" for="allAdsHide">Hide</label>
                                                         </div>
                                                     </td>
@@ -838,11 +874,11 @@
                                                     <td>Full Screen (Navigation)</td>
                                                     <td>
                                                         <div class="form-check form-radio-success form-check-inline">
-                                                            <input type="radio" id="fullscreenShow" name="fullscreen" class="form-check-input" value="true">
+                                                            <input type="radio" id="fullscreenShow" name="fullscreen" class="form-check-input" value="show">
                                                             <label class="form-check-label" for="fullscreenShow">Show</label>
                                                         </div>
                                                         <div class="form-check form-radio-success form-check-inline">
-                                                            <input type="radio" id="fullscreenHide" name="fullscreen" class="form-check-input" value="false" checked>
+                                                            <input type="radio" id="fullscreenHide" name="fullscreen" class="form-check-input" value="hide" checked>
                                                             <label class="form-check-label" for="fullscreenHide">Hide</label>
                                                         </div>
                                                     </td>
@@ -857,11 +893,11 @@
                                                     <td>Continue Screen</td>
                                                     <td>
                                                         <div class="form-check form-radio-success form-check-inline">
-                                                            <input type="radio" id="continueSceenShow" name="continue_screen" class="form-check-input" value="true">
+                                                            <input type="radio" id="continueSceenShow" name="continue_screen" class="form-check-input" value="show">
                                                             <label class="form-check-label" for="continueSceenShow">Show</label>
                                                         </div>
                                                         <div class="form-check form-radio-success form-check-inline">
-                                                            <input type="radio" id="continueSceenHide" name="continue_screen" class="form-check-input" value="false" checked>
+                                                            <input type="radio" id="continueSceenHide" name="continue_screen" class="form-check-input" value="hide" checked>
                                                             <label class="form-check-label" for="continueSceenHide">Hide</label>
                                                         </div>
                                                     </td>
@@ -870,11 +906,11 @@
                                                     <td>Let's Start Screen</td>
                                                     <td>
                                                         <div class="form-check form-radio-success form-check-inline">
-                                                            <input type="radio" id="letsStartScreenShow" name="lets_start_screen" class="form-check-input" value="true">
+                                                            <input type="radio" id="letsStartScreenShow" name="lets_start_screen" class="form-check-input" value="show">
                                                             <label class="form-check-label" for="letsStartScreenShow">Show</label>
                                                         </div>
                                                         <div class="form-check form-radio-success form-check-inline">
-                                                            <input type="radio" id="letsStartScreenHide" name="lets_start_screen" class="form-check-input" value="false" checked>
+                                                            <input type="radio" id="letsStartScreenHide" name="lets_start_screen" class="form-check-input" value="hide" checked>
                                                             <label class="form-check-label" for="letsStartScreenHide">Hide</label>
                                                         </div>
                                                     </td>
@@ -883,11 +919,11 @@
                                                     <td>Age/Gender Start Screen</td>
                                                     <td>
                                                         <div class="form-check form-radio-success form-check-inline">
-                                                            <input type="radio" id="ageScreenShow" name="age_screen" class="form-check-input" value="true">
+                                                            <input type="radio" id="ageScreenShow" name="age_screen" class="form-check-input" value="show">
                                                             <label class="form-check-label" for="ageScreenShow">Show</label>
                                                         </div>
                                                         <div class="form-check form-radio-success form-check-inline">
-                                                            <input type="radio" id="ageScreenHide" name="age_screen" class="form-check-input" value="false" checked>
+                                                            <input type="radio" id="ageScreenHide" name="age_screen" class="form-check-input" value="hide" checked>
                                                             <label class="form-check-label" for="ageScreenHide">Hide</label>
                                                         </div>
                                                     </td>
@@ -896,11 +932,11 @@
                                                     <td>Next Screen</td>
                                                     <td>
                                                         <div class="form-check form-radio-success form-check-inline">
-                                                            <input type="radio" id="nextScreenShow" name="next_screen" class="form-check-input" value="true">
+                                                            <input type="radio" id="nextScreenShow" name="next_screen" class="form-check-input" value="show">
                                                             <label class="form-check-label" for="nextScreenShow">Show</label>
                                                         </div>
                                                         <div class="form-check form-radio-success form-check-inline">
-                                                            <input type="radio" id="nextScreenHide" name="next_screen" class="form-check-input" value="false" checked>
+                                                            <input type="radio" id="nextScreenHide" name="next_screen" class="form-check-input" value="hide" checked>
                                                             <label class="form-check-label" for="nextScreenHide">Hide</label>
                                                         </div>
                                                     </td>
@@ -909,11 +945,11 @@
                                                     <td>Next Inner Screen</td>
                                                     <td>
                                                         <div class="form-check form-radio-success form-check-inline">
-                                                            <input type="radio" id="nextInnerScreenShow" name="next_inner_screen" class="form-check-input" value="true">
+                                                            <input type="radio" id="nextInnerScreenShow" name="next_inner_screen" class="form-check-input" value="show">
                                                             <label class="form-check-label" for="nextInnerScreenShow">Show</label>
                                                         </div>
                                                         <div class="form-check form-radio-success form-check-inline">
-                                                            <input type="radio" id="nextInnerScreenHide" name="next_inner_screen" class="form-check-input" value="false" checked>
+                                                            <input type="radio" id="nextInnerScreenHide" name="next_inner_screen" class="form-check-input" value="hide" checked>
                                                             <label class="form-check-label" for="nextInnerScreenHide">Hide</label>
                                                         </div>
                                                     </td>
@@ -922,11 +958,11 @@
                                                     <td>Contact Screen</td>
                                                     <td>
                                                         <div class="form-check form-radio-success form-check-inline">
-                                                            <input type="radio" id="contactScreenShow" name="contact_screen" class="form-check-input" value="true">
+                                                            <input type="radio" id="contactScreenShow" name="contact_screen" class="form-check-input" value="show">
                                                             <label class="form-check-label" for="contactScreenShow">Show</label>
                                                         </div>
                                                         <div class="form-check form-radio-success form-check-inline">
-                                                            <input type="radio" id="contactScreenHide" name="contact_screen" class="form-check-input" value="false" checked>
+                                                            <input type="radio" id="contactScreenHide" name="contact_screen" class="form-check-input" value="hide" checked>
                                                             <label class="form-check-label" for="contactScreenHide">Hide</label>
                                                         </div>
                                                     </td>
@@ -935,11 +971,11 @@
                                                     <td>Start Screen</td>
                                                     <td>
                                                         <div class="form-check form-radio-success form-check-inline">
-                                                            <input type="radio" id="startScreenShow" name="start_screen" class="form-check-input" value="true">
+                                                            <input type="radio" id="startScreenShow" name="start_screen" class="form-check-input" value="show">
                                                             <label class="form-check-label" for="startScreenShow">Show</label>
                                                         </div>
                                                         <div class="form-check form-radio-success form-check-inline">
-                                                            <input type="radio" id="startScreenHide" name="start_screen" class="form-check-input" value="false" checked>
+                                                            <input type="radio" id="startScreenHide" name="start_screen" class="form-check-input" value="hide" checked>
                                                             <label class="form-check-label" for="startScreenHide">Hide</label>
                                                         </div>
                                                     </td>
@@ -948,11 +984,11 @@
                                                     <td>Real Casting Flow</td>
                                                     <td>
                                                         <div class="form-check form-radio-success form-check-inline">
-                                                            <input type="radio" id="realCastingFlowShow" name="real_casting_flow" class="form-check-input" value="true">
+                                                            <input type="radio" id="realCastingFlowShow" name="real_casting_flow" class="form-check-input" value="show">
                                                             <label class="form-check-label" for="realCastingFlowShow">Show</label>
                                                         </div>
                                                         <div class="form-check form-radio-success form-check-inline">
-                                                            <input type="radio" id="realCastingFlowHide" name="real_casting_flow" class="form-check-input" value="false" checked>
+                                                            <input type="radio" id="realCastingFlowHide" name="real_casting_flow" class="form-check-input" value="hide" checked>
                                                             <label class="form-check-label" for="realCastingFlowHide">Hide</label>
                                                         </div>
                                                     </td>
@@ -961,11 +997,11 @@
                                                     <td>Dialog For App Stop</td>
                                                     <td>
                                                         <div class="form-check form-radio-success form-check-inline">
-                                                            <input type="radio" id="appStopShow" name="app_stop" class="form-check-input" value="true">
+                                                            <input type="radio" id="appStopShow" name="app_stop" class="form-check-input" value="show">
                                                             <label class="form-check-label" for="appStopShow">Show</label>
                                                         </div>
                                                         <div class="form-check form-radio-success form-check-inline">
-                                                            <input type="radio" id="appStopHide" name="app_stop" class="form-check-input" value="false" checked>
+                                                            <input type="radio" id="appStopHide" name="app_stop" class="form-check-input" value="hide" checked>
                                                             <label class="form-check-label" for="appStopHide">Hide</label>
                                                         </div>
                                                     </td>
@@ -985,7 +1021,7 @@
                             
                             <div class="tab-pane" id="vpn" role="tabpanel">
                                 <div class="row">
-                                    <div class="col-sm-2"><h3>VPN Setting</h3></div>
+                                    <div class="col-sm-2"><p class="tab-title">VPN Setting</p></div>
                                     <div class="col-sm-10">
                                         <table class="table table-centered table-borderless">
                                             <tbody id="setting_table">
@@ -993,11 +1029,11 @@
                                                     <td>VPN</td>
                                                     <td>
                                                         <div class="form-check form-radio-success form-check-inline">
-                                                            <input type="radio" id="vpnShow" name="vpn" class="form-check-input" value="true">
+                                                            <input type="radio" id="vpnShow" name="vpn" class="form-check-input" value="show">
                                                             <label class="form-check-label" for="vpnShow">Show</label>
                                                         </div>
                                                         <div class="form-check form-radio-success form-check-inline">
-                                                            <input type="radio" id="vpnHide" name="vpn" class="form-check-input" value="false" checked>
+                                                            <input type="radio" id="vpnHide" name="vpn" class="form-check-input" value="hide" checked>
                                                             <label class="form-check-label" for="vpnHide">Hide</label>
                                                         </div>
                                                     </td>
@@ -1006,11 +1042,11 @@
                                                     <td>VPN Dialog</td>
                                                     <td>
                                                         <div class="form-check form-radio-success form-check-inline">
-                                                            <input type="radio" id="vpnDialogShow" name="vpn_dialog" class="form-check-input" value="true">
+                                                            <input type="radio" id="vpnDialogShow" name="vpn_dialog" class="form-check-input" value="show">
                                                             <label class="form-check-label" for="vpnDialogShow">Show</label>
                                                         </div>
                                                         <div class="form-check form-radio-success form-check-inline">
-                                                            <input type="radio" id="vpnDialogHide" name="vpn_dialog" class="form-check-input" value="false" checked>
+                                                            <input type="radio" id="vpnDialogHide" name="vpn_dialog" class="form-check-input" value="hide" checked>
                                                             <label class="form-check-label" for="vpnDialogHide">Hide</label>
                                                         </div>
                                                     </td>
@@ -1019,11 +1055,11 @@
                                                     <td>VPN Dialog Open</td>
                                                     <td>
                                                         <div class="form-check form-radio-success form-check-inline">
-                                                            <input type="radio" id="vpnDialogOpenShow" name="vpn_dialog_open" class="form-check-input" value="true">
+                                                            <input type="radio" id="vpnDialogOpenShow" name="vpn_dialog_open" class="form-check-input" value="show">
                                                             <label class="form-check-label" for="vpnDialogOpenShow">Show</label>
                                                         </div>
                                                         <div class="form-check form-radio-success form-check-inline">
-                                                            <input type="radio" id="vpnDialogOpenHide" name="vpn_dialog_open" class="form-check-input" value="false" checked>
+                                                            <input type="radio" id="vpnDialogOpenHide" name="vpn_dialog_open" class="form-check-input" value="hide" checked>
                                                             <label class="form-check-label" for="vpnDialogOpenHide">Hide</label>
                                                         </div>
                                                     </td>
@@ -1061,7 +1097,7 @@
 
                             <div class="tab-pane" id="app-remove" role="tabpanel">
                                 <div class="row">
-                                    <div class="col-sm-2"><h3>App Remove Flags</h3></div>
+                                    <div class="col-sm-2"><p class="tab-title">App Remove Flags</p></div>
                                     <div class="col-sm-10">
                                         <table class="table table-centered table-borderless">
                                             <tbody id="setting_table">
