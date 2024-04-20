@@ -295,7 +295,7 @@ function manage_app_user()
 					'startScreen' => $app_setting['start_screen'],
 					'castingFlow' => $app_setting['real_casting_flow'],
 					'dialogApp' => $app_setting['app_stop'],
-					'additionalFields' => $app_setting['additional_fields']
+					'additionalFields' => json_decode($app_setting['additional_fields'])
 				);
 			}
 			

@@ -315,6 +315,26 @@ function FillSettingData(){
     $("[name='start_screen'][value='"+start_screen+"']").prop('checked', true);
     $("[name='real_casting_flow'][value='"+real_casting_flow+"']").prop('checked', true);
     $("[name='app_stop'][value='"+app_stop+"']").prop('checked', true);
+    extra_setting_fields = [];
+    if(appSettingData.additional_fields != ""){
+        var additional_fields = JSON.parse(appSettingData.additional_fields);
+        var loop_idx = 0;
+        additional_fields.forEach((fields) => {
+            var new_index = Date.now().toString()+loop_idx;
+            var new_field = {
+                field_name: fields.field_name,
+                field_type: fields.field_type,
+                idx: new_index
+            };
+            extra_setting_fields.push(new_field);
+            add_extra_setting_field(new_field, new_index, fields.value, fields.value2);
+            loop_idx++;
+        });
+    }
+    else{
+        $("#setting_table tr.extra").remove();
+    }
+
 
     var vpn = (appSettingData && appSettingData.vpn) ? appSettingData.vpn : 'hide';
     var vpn_dialog = (appSettingData && appSettingData.vpn_dialog) ? appSettingData.vpn_dialog : 'hide';
@@ -516,6 +536,30 @@ function resetGoogleForm(){
 //================= Other Setting Functions =================
 function saveOtherSettings(){
     showLoading();
+    var extra_field = [];
+    $("#setting_table tr.extra").each(function() {
+        var idx = $(this).attr('data-index');
+        let obj = extra_setting_fields.find(o => o.idx === idx);
+        var val1 = "";
+        var val2 = "";
+        if(obj.field_type == 1){
+            val1 = $(this).find("[name='extra_field_"+idx+"']:checked").val();
+        }
+        else if(obj.field_type == 2){
+            val1 = $(this).find("#extraFieldText"+idx+"").val();
+        }
+        else if(obj.field_type == 3){
+            val1 = $(this).find("[name='extra_field_"+idx+"']:checked").val();
+            val2 = $(this).find("#extraFieldText"+idx+"").val();
+        }
+        extra_field.push({
+            field_name: obj.field_name,
+            field_type: obj.field_type,
+            value: val1,
+            value2: val2
+        });
+    });
+    
     var req_data = {
         op: CURRENT_PAGE
         , action: "save_oher_settings"
@@ -533,6 +577,7 @@ function saveOtherSettings(){
         , start_screen: $("[name='start_screen']:checked").val()
         , real_casting_flow: $("[name='real_casting_flow']:checked").val()
         , app_stop: $("[name='app_stop']:checked").val()
+        , additional_fields: JSON.stringify(extra_field)
     };
     doAPICall(req_data, async function(data){
         if (data && data != null && data.success) {
@@ -556,54 +601,62 @@ function append_setting_field(){
     var field_name = $("#add_setting_field_modal #field_name").val();
     var field_type = $("#add_setting_field_modal [name='field_type']:checked").val();
     if(field_name && field_name != ""){
+        var new_index = Date.now().toString();
         var new_field = {
             field_name: field_name,
-            field_type: field_type
+            field_type: field_type,
+            idx: new_index
         };
         extra_setting_fields.push(new_field);
         // var new_index = $("#setting_table tr.extra").length;
-        var new_index = Date.now().toString();
         add_extra_setting_field(new_field, new_index);
         $("#add_setting_field_modal").modal('hide');
     }
     else{showError("Please add field name")}
 }
 
-function add_extra_setting_field(fieldData, index = '0'){
-    var html = `<tr class="extra" id="extra${index}">
+function add_extra_setting_field(fieldData, index = '0', val1 = "", val2 = ""){
+    var html = `<tr class="extra" id="extra${index}" data-index="${index}">
                     <td>
-                        <span class="delete-div" data-index="${index}"><i class="fa fa-close"></i></span>
+                        <span class="delete-div" data-index="${index}" onclick="removeExtraField('${index}')"><i class="fa fa-close"></i></span>
                         ${fieldData.field_name}
                         <input type="hidden" class="fld_name" value="${fieldData.field_name}" />
                     </td>
                     <td>`;
                     if(fieldData.field_type == 3){
                         html+=`<div class="form-check form-radio-success form-check-inline">
-                                    <input type="radio" id="fullscreenShow" name="fullscreen" class="form-check-input">
-                                    <label class="form-check-label" for="fullscreenShow">Show</label>
+                                    <input type="radio" id="extraField${index}Show" name="extra_field_${index}" class="form-check-input" value="show" ${(val1 == 'show') ? 'checked' : ''}>
+                                    <label class="form-check-label" for="extraField${index}Show">Show</label>
                                 </div>
                                 <div class="form-check form-radio-success form-check-inline">
-                                    <input type="radio" id="fullscreenHide" name="fullscreen" class="form-check-input" checked>
-                                    <label class="form-check-label" for="fullscreenHide">Hide</label>
+                                    <input type="radio" id="extraField${index}Hide" name="extra_field_${index}" class="form-check-input" value="hide" ${(val1 != 'show') ? 'checked' : ''}>
+                                    <label class="form-check-label" for="extraField${index}Hide">Hide</label>
                                 </div>
-                                <input type="text" id="allAdsShow" name="adblock_version" class="form-control d-inline w-50" placeholder="0">`;
+                                <input type="text" id="extraFieldText${index}" name="extraFieldText${index}" class="form-control d-inline w-50" value="${val2}">`;
                     }
                     else if(fieldData.field_type == 2){
-                        html+=`<input type="text" id="allAdsShow" name="adblock_version" class="form-control" placeholder="0">`;
+                        html+=`<input type="text" id="extraFieldText${index}" name="extraFieldText${index}" class="form-control" value="${val1}">`;
                     }
                     else{
                         html+=`<div class="form-check form-radio-success form-check-inline">
-                                    <input type="radio" id="fullscreenShow" name="fullscreen" class="form-check-input">
-                                    <label class="form-check-label" for="fullscreenShow">Show</label>
+                                    <input type="radio" id="extraField${index}Show" name="extra_field_${index}" class="form-check-input" value="show" ${(val1 == 'show') ? 'checked' : ''}>
+                                    <label class="form-check-label" for="extraField${index}Show">Show</label>
                                 </div>
                                 <div class="form-check form-radio-success form-check-inline">
-                                    <input type="radio" id="fullscreenHide" name="fullscreen" class="form-check-input" checked>
-                                    <label class="form-check-label" for="fullscreenHide">Hide</label>
+                                    <input type="radio" id="extraField${index}Hide" name="extra_field_${index}" class="form-check-input" value="hide" ${(val1 != 'show') ? 'checked' : ''}>
+                                    <label class="form-check-label" for="extraField${index}Hide">Hide</label>
                                 </div>`;
                     }
             html+=`</td>
                 </tr>`;
     $("#setting_table").append(html);
+}
+
+function removeExtraField(index){
+    $("#setting_table #extra"+index).remove();
+    extra_setting_fields = $.grep(extra_setting_fields, function(e){ 
+        return e.idx != index; 
+   });
 }
 
 //================= VPN Setting Functions =================

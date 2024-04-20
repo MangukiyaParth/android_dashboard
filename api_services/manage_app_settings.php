@@ -171,6 +171,7 @@ function manage_app_settings()
 		$start_screen = $gh->read("start_screen", "false");
 		$real_casting_flow = $gh->read("real_casting_flow", "false");
 		$app_stop = $gh->read("app_stop", "false");
+		$additional_fields = $_POST['additional_fields'];
 		$date = date('Y-m-d H:i:s');
 			
 		$count_query = "SELECT id from tbl_apps_settings WHERE app_id = '$app_id' AND `type` = $type";
@@ -189,6 +190,7 @@ function manage_app_settings()
 				"start_screen" => $start_screen,
 				"real_casting_flow" => $real_casting_flow,
 				"app_stop" => $app_stop,
+				"additional_fields" => $additional_fields,
 				"update_uid" => $user_id,
 				"update_date" => $date,
 			);
@@ -212,6 +214,7 @@ function manage_app_settings()
 				"start_screen" => $start_screen,
 				"real_casting_flow" => $real_casting_flow,
 				"app_stop" => $app_stop,
+				"additional_fields" => $additional_fields,
 				"entry_uid" => $user_id,
 				"entry_date" => $date,
 			);
