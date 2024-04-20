@@ -51,6 +51,73 @@ function manage_app_settings()
 			$outputjson['message'] = "No Products found!";
 		}
 	}
+	else if($action == "get_user_data")
+	{
+		$id = $gh->read("id");
+		$start = $gh->read("start");
+		$length = $gh->read("length");
+		$searcharr = $gh->read("search");
+		$search = $searcharr['value'];
+		$orderarr = $gh->read("order");
+		$orderindex = $orderarr[0]['column'];
+		$orderdir = $orderarr[0]['dir'];
+		$columnsarr = $gh->read("columns");
+		$status = $gh->read("extra_option");
+		$ordercolumn = $columnsarr[$orderindex]['name'];
+		
+		$whereData = "";
+		if($status == 1)
+		{
+			$whereData .= " DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date('Y-m-d')."' AND ";
+		}
+		else if($status == 2) {
+			$whereData .= " DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date("Y-m-d", strtotime("-1 day"))."' AND ";
+		}
+		$whereData .= "(u.package LIKE '%" . $search . "%' OR 
+						u.as LIKE '%" . $search . "%' OR
+						u.asname LIKE '%" . $search . "%' OR
+						u.city LIKE '%" . $search . "%' OR
+						u.continent LIKE '%" . $search . "%' OR
+						u.country LIKE '%" . $search . "%' OR
+						u.countryCode LIKE '%" . $search . "%' OR
+						u.hosting LIKE '%" . $search . "%' OR
+						u.isp LIKE '%" . $search . "%' OR
+						u.mobile LIKE '%" . $search . "%' OR
+						u.org LIKE '%" . $search . "%' OR
+						u.proxy LIKE '%" . $search . "%' OR
+						u.query LIKE '%" . $search . "%' OR
+						u.regionName LIKE '%" . $search . "%' OR
+						u.installerinfo LIKE '%" . $search . "%' OR
+						u.installerurl LIKE '%" . $search . "%'
+						)";
+
+		$total_count = $db->get_row_count('tbl_app_users', "1=1");
+		$count_query = "SELECT count(DISTINCT u.id) as cnt FROM tbl_app_users as u WHERE " . $whereData;
+		$filtered_count = $db->execute_scalar($count_query);
+
+		$orderby = "";
+		if ($orderindex >0) {
+			$orderby = " ORDER BY ".$ordercolumn . " " . $orderdir;
+		}
+		$query_port_rates = "SELECT DISTINCT u.* FROM tbl_app_users as u
+			WHERE " . $whereData . " " . $orderby . " LIMIT " . $start . "," . $length . "";
+		$rows = $db->execute($query_port_rates);
+
+		if ($rows != null && is_array($rows) && count($rows) > 0) {
+			
+			$outputjson['recordsTotal'] = $total_count;
+			$outputjson['recordsFiltered'] = $filtered_count;
+			$outputjson['success'] = 1;
+			$outputjson['status'] = 1;
+			$outputjson['message'] = 'success.';
+			$outputjson["data"] = $rows;
+		} else {
+			$outputjson["data"] = [];
+			$outputjson['recordsTotal'] = $total_count;
+			$outputjson['recordsFiltered'] = 0;
+			$outputjson['message'] = "No Products found!";
+		}
+	}
 	else if($action == "save_google_data")
 	{
 		$app_id = $gh->read("id");

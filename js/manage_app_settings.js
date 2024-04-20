@@ -13,6 +13,7 @@ jQuery(function () {
     changeSubView(1);
     manageDefaultInit();
     fill_app_details();
+    get_user_data();
 });
 
 
@@ -94,6 +95,46 @@ function changeSubView(v){
         manage_preview_clr(2);
         FillSettingData();
     }
+}
+
+function get_user_data() {
+    table = $('#datatable').DataTable({
+        processing: true,
+        serverSide: true,
+        fixedHeader: true,
+        pagingType: "full_numbers",
+        responsive: !0,
+        language: { paginate: { previous: "<i class='mdi mdi-chevron-left'>", next: "<i class='mdi mdi-chevron-right'>" } },
+        drawCallback: function () { $(".dataTables_paginate > .pagination").addClass("pagination-rounded") },
+        ajax: $.fn.dataTable.pipeline({
+            url: API_SERVICE_URL,
+            pages: 1, // number of pages to cache
+            op: CURRENT_PAGE,
+            action: "get_user_data"
+        }),
+        columns: [
+            { data: 'id', name: 'id', "width": "0%", className: "d-none" },
+            { data: 'as', name: 'as', width: "5%" },
+            { data: 'asname', name: 'asname', width: "5%" },
+            { data: 'city', name: 'city', width: "5%" },
+            { data: 'continent', name: 'continent', width: "5%" },
+            { data: 'country', name: 'country', width: "5%" },
+            { data: 'countryCode', name: 'countryCode', width: "5%" },
+            { data: 'hosting', name: 'hosting', width: "5%" },
+            { data: 'isp', name: 'isp', width: "10%" },
+            { data: 'mobile', name: 'mobile', width: "5%" },
+            { data: 'org', name: 'org', width: "5%" },
+            { data: 'proxy', name: 'proxy', width: "5%" },
+            { data: 'query', name: 'query', width: "5%" },
+            { data: 'regionName', name: 'regionName', width: "5%" },
+            { data: 'installerinfo', name: 'installerinfo', width: "5%" },
+            { data: 'installerurl', name: 'installerurl', width: "5%" },
+        ]
+    });
+    $(".extra-option").css('right', ($("#datatable_filter label").width() + 50)+'px');
+    $("#extra_option").on('change', async function(){
+        await table.clearPipeline().draw();
+    });
 }
 
 function manageDefaultInit(){
@@ -316,7 +357,7 @@ function FillSettingData(){
     $("[name='real_casting_flow'][value='"+real_casting_flow+"']").prop('checked', true);
     $("[name='app_stop'][value='"+app_stop+"']").prop('checked', true);
     extra_setting_fields = [];
-    if(appSettingData.additional_fields != ""){
+    if(appSettingData && appSettingData.additional_fields != "" && appSettingData.additional_fields != null){
         var additional_fields = JSON.parse(appSettingData.additional_fields);
         var loop_idx = 0;
         additional_fields.forEach((fields) => {

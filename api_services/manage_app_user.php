@@ -75,8 +75,9 @@ function manage_app_user()
 			"retention" => $retention,
 			"installerinfo" => $installerinfo,
 			"installerurl" => $installerurl,
+			"entry_date" => date('Y-m-d H:i:s')
 		);
-		// $res = $db->insert("tbl_app_users", $data);
+		$db->insert("tbl_app_users", $data);
 		$type = (str_contains($installerurl, 'gclid')) ? 2 : 1;
 		
 		$qry_setting = "SELECT s.* FROM tbl_apps_settings s 

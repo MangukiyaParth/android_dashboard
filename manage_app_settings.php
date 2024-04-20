@@ -29,31 +29,62 @@
                 </div>
                 
                 <div class="user-div mt-3 d-none">
-                    <div class="row">
+                    <div class="row user_cnt_div">
                         <div class="col-sm-3">
                             <div class="card border-radius-15">
                                 <div class="card-body text-center p-2 d-flex align-items-center justify-content-center">
-                                    <span class="cnt-span">112</span> <span class="cnt-desc-span">Total cnt</span>
+                                    <span class="cnt-span tot-user">112</span> <span class="cnt-desc-span">Total cnt</span>
                                 </div> <!-- end card-body-->
                             </div>
                         </div> <!-- end card-->
                         <div class="col-sm-3">
                             <div class="card border-radius-15">
                                 <div class="card-body text-center p-2 d-flex align-items-center justify-content-center">
-                                    <span class="cnt-span">112</span> <span class="cnt-desc-span">Total cnt</span>
+                                    <span class="cnt-span org-user">112</span> <span class="cnt-desc-span">Organic cnt</span>
                                 </div> <!-- end card-body-->
                             </div>
                         </div> <!-- end card-->
                         <div class="col-sm-3">
                             <div class="card border-radius-15">
                                 <div class="card-body text-center p-2 d-flex align-items-center justify-content-center">
-                                    <span class="cnt-span">112</span> <span class="cnt-desc-span">Total cnt</span>
+                                    <span class="cnt-span mrk-user">112</span> <span class="cnt-desc-span">Marketing cnt</span>
                                 </div> <!-- end card-body-->
                             </div>
                         </div> <!-- end card-->
                     </div>
                     <div class="card border-radius-15">
                         <div class="card-body">
+                            <div class="table-responsive" id="detailsDiv">
+                                <div class="extra-option">
+                                    <select class="form-select" id="extra_option">
+                                        <option value="">All</option>
+                                        <option value="1">Today</option>
+                                        <option value="2">Yestarday</option>
+                                    </select>
+                                </div>
+                                <table id="datatable" class="table dt-responsive nowrap vertical-middle w-100">
+                                    <thead>
+                                        <tr>
+                                            <th class="d-none">id</th>
+                                            <th>As</th>
+                                            <th>As Name</th>
+                                            <th>City</th>
+                                            <th>Continent</th>
+                                            <th>Country</th>
+                                            <th>Country Code</th>
+                                            <th>Hosting</th>
+                                            <th>ISP</th>
+                                            <th>Mobile</th>
+                                            <th>Org</th>
+                                            <th>Proxy</th>
+                                            <th>Query</th>
+                                            <th>Region Name</th>
+                                            <th>Installer Info</th>
+                                            <th>Installer URL</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
