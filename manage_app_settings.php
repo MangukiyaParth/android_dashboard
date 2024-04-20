@@ -33,21 +33,21 @@
                         <div class="col-sm-3">
                             <div class="card border-radius-15">
                                 <div class="card-body text-center p-2 d-flex align-items-center justify-content-center">
-                                    <span class="cnt-span tot-user">112</span> <span class="cnt-desc-span">Total cnt</span>
+                                    <span class="cnt-span tot-user">0</span> <span class="cnt-desc-span">Total cnt</span>
                                 </div> <!-- end card-body-->
                             </div>
                         </div> <!-- end card-->
                         <div class="col-sm-3">
                             <div class="card border-radius-15">
                                 <div class="card-body text-center p-2 d-flex align-items-center justify-content-center">
-                                    <span class="cnt-span org-user">112</span> <span class="cnt-desc-span">Organic cnt</span>
+                                    <span class="cnt-span org-user">0</span> <span class="cnt-desc-span">Organic cnt</span>
                                 </div> <!-- end card-body-->
                             </div>
                         </div> <!-- end card-->
                         <div class="col-sm-3">
                             <div class="card border-radius-15">
                                 <div class="card-body text-center p-2 d-flex align-items-center justify-content-center">
-                                    <span class="cnt-span mrk-user">112</span> <span class="cnt-desc-span">Marketing cnt</span>
+                                    <span class="cnt-span mrk-user">0</span> <span class="cnt-desc-span">Marketing cnt</span>
                                 </div> <!-- end card-body-->
                             </div>
                         </div> <!-- end card-->
