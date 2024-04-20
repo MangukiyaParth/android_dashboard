@@ -346,7 +346,7 @@ function manage_app_settings()
 		$alternate_with_appopen = $gh->read("alternate_with_appopen","");
 		$inter_loading = $gh->read("inter_loading","");
 		$inter_interval = $gh->read("inter_interval","");
-		$block_click_inter = $gh->read("block_click_inter","");
+		$back_click_inter = $gh->read("back_click_inter","");
 		$app_open_loading = $gh->read("app_open_loading","");
 		$splash_ads = $gh->read("splash_ads","");
 		$app_open = $gh->read("app_open","");
@@ -374,7 +374,7 @@ function manage_app_settings()
 				"alternate_with_appopen" => $alternate_with_appopen,
 				"inter_loading" => $inter_loading,
 				"inter_interval" => $inter_interval,
-				"block_click_inter" => $block_click_inter,
+				"back_click_inter" => $back_click_inter,
 				"app_open_loading" => $app_open_loading,
 				"splash_ads" => $splash_ads,
 				"app_open" => $app_open,
@@ -408,7 +408,7 @@ function manage_app_settings()
 				"alternate_with_appopen" => $alternate_with_appopen,
 				"inter_loading" => $inter_loading,
 				"inter_interval" => $inter_interval,
-				"block_click_inter" => $block_click_inter,
+				"back_click_inter" => $back_click_inter,
 				"app_open_loading" => $app_open_loading,
 				"splash_ads" => $splash_ads,
 				"app_open" => $app_open,

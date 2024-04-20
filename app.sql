@@ -57,7 +57,7 @@ CREATE TABLE `tbl_app_ad_settings` (
   `alternate_with_appopen` varchar(10) DEFAULT NULL,
   `inter_loading` varchar(10) DEFAULT NULL,
   `inter_interval` int(11) DEFAULT NULL,
-  `block_click_inter` int(11) DEFAULT NULL,
+  `back_click_inter` int(11) DEFAULT NULL,
   `app_open_loading` varchar(10) DEFAULT NULL,
   `splash_ads` varchar(10) DEFAULT NULL,
   `app_open` varchar(10) DEFAULT NULL,
@@ -65,12 +65,56 @@ CREATE TABLE `tbl_app_ad_settings` (
   `entry_date` datetime DEFAULT NULL,
   `update_uid` varchar(50) DEFAULT NULL,
   `update_date` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  FULLTEXT KEY `bifurcate_location` (`bifurcate_location`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tbl_app_ad_settings` */
 
-insert  into `tbl_app_ad_settings`(`id`,`app_id`,`type`,`is_bifurcate`,`bifurcate_location`,`app_color`,`app_background_color`,`native_loading`,`bottom_banner`,`all_screen_native`,`list_native`,`list_native_cnt`,`exit_dialoge_native`,`native_btn`,`native_btn_text`,`native_background_color`,`native_text_color`,`native_button_background_color`,`native_button_text_color`,`alternate_with_appopen`,`inter_loading`,`inter_interval`,`block_click_inter`,`app_open_loading`,`splash_ads`,`app_open`,`entry_uid`,`entry_date`,`update_uid`,`update_date`) values ('17135007-0679-1356-3993-d30362c84f1d','17128887-3017-7352-897e-c7c144174289',1,0,'','#F58F00','#999CFF','onload','banner','show','show',0,'hide','manual','Test','#61D0FF','#EB0000','#0542A3','#FF6BFF','show','preload',1,1,'onload','openads','everytime','17019352-1247-1172-9a37-27852d564b27','2024-04-19 09:55:06',NULL,NULL);
+insert  into `tbl_app_ad_settings`(`id`,`app_id`,`type`,`is_bifurcate`,`bifurcate_location`,`app_color`,`app_background_color`,`native_loading`,`bottom_banner`,`all_screen_native`,`list_native`,`list_native_cnt`,`exit_dialoge_native`,`native_btn`,`native_btn_text`,`native_background_color`,`native_text_color`,`native_button_background_color`,`native_button_text_color`,`alternate_with_appopen`,`inter_loading`,`inter_interval`,`back_click_inter`,`app_open_loading`,`splash_ads`,`app_open`,`entry_uid`,`entry_date`,`update_uid`,`update_date`) values ('17135007-0679-1356-3993-d30362c84f1d','17128887-3017-7352-897e-c7c144174289',1,0,'','#F58F00','#999CFF','onload','banner','show','show',0,'hide','manual','Test','#61D0FF','#EB0000','#0542A3','#FF6BFF','show','preload',1,1,'onload','openads','everytime','17019352-1247-1172-9a37-27852d564b27','2024-04-19 09:55:06',NULL,NULL),('17135232-9163-5369-713a-c4819cdf414d','17128887-3017-7352-897e-c7c144174289',1,1,'ind,IN,Surat','#000000','#FFFFFF','onload','native','hide','hide',0,'hide','default','','#FFFEFF','#808080','#4285F4','#FFFEFF','hide','onload',0,0,'onload','hide','onetime','17019352-1247-1172-9a37-27852d564b27','2024-04-19 16:11:31',NULL,NULL);
+
+/*Table structure for table `tbl_app_users` */
+
+DROP TABLE IF EXISTS `tbl_app_users`;
+
+CREATE TABLE `tbl_app_users` (
+  `id` varchar(50) NOT NULL,
+  `package` varchar(150) DEFAULT NULL,
+  `as` varchar(150) DEFAULT NULL,
+  `asname` varchar(100) DEFAULT NULL,
+  `callingCode` varchar(10) DEFAULT NULL,
+  `city` varchar(50) DEFAULT NULL,
+  `continent` varchar(50) DEFAULT NULL,
+  `continentCode` varchar(10) DEFAULT NULL,
+  `country` varchar(50) DEFAULT NULL,
+  `countryCode` varchar(10) DEFAULT NULL,
+  `countryCode3` varchar(10) DEFAULT NULL,
+  `currency` varchar(10) DEFAULT NULL,
+  `currentTime` varchar(20) DEFAULT NULL,
+  `district` varchar(50) DEFAULT NULL,
+  `hosting` varchar(10) DEFAULT NULL,
+  `isp` varchar(50) DEFAULT NULL,
+  `lat` double DEFAULT NULL,
+  `lon` double DEFAULT NULL,
+  `mobile` varchar(10) DEFAULT NULL,
+  `offset` int(11) DEFAULT NULL,
+  `org` varchar(50) DEFAULT NULL,
+  `proxy` varchar(10) DEFAULT NULL,
+  `query` varchar(10) DEFAULT NULL,
+  `region` varchar(10) DEFAULT NULL,
+  `regionName` varchar(50) DEFAULT NULL,
+  `reverse` varchar(50) DEFAULT NULL,
+  `status` varchar(20) DEFAULT NULL,
+  `timezone` varchar(20) DEFAULT NULL,
+  `zip` varchar(10) DEFAULT NULL,
+  `device_id` varchar(20) DEFAULT NULL,
+  `retention` varchar(10) DEFAULT NULL,
+  `installerinfo` varchar(10) DEFAULT NULL,
+  `installerurl` varchar(250) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `tbl_app_users` */
 
 /*Table structure for table `tbl_apps` */
 
@@ -144,6 +188,7 @@ CREATE TABLE `tbl_apps_settings` (
   `start_screen` varchar(10) DEFAULT NULL,
   `real_casting_flow` varchar(10) DEFAULT NULL,
   `app_stop` varchar(10) DEFAULT NULL,
+  `additional_fields` longtext DEFAULT NULL,
   `vpn` varchar(10) DEFAULT NULL,
   `vpn_dialog` varchar(10) DEFAULT NULL,
   `vpn_dialog_open` varchar(10) DEFAULT NULL,
@@ -166,7 +211,7 @@ CREATE TABLE `tbl_apps_settings` (
 
 /*Data for the table `tbl_apps_settings` */
 
-insert  into `tbl_apps_settings`(`id`,`app_id`,`type`,`g1_percentage`,`g2_percentage`,`g3_percentage`,`g1_account_name`,`g2_account_name`,`g3_account_name`,`g1_banner`,`g2_banner`,`g3_banner`,`g1_inter`,`g2_inter`,`g3_inter`,`g1_native`,`g2_native`,`g3_native`,`g1_native2`,`g2_native2`,`g3_native2`,`g1_appopen`,`g2_appopen`,`g3_appopen`,`g1_appid`,`g2_appid`,`g3_appid`,`all_ads`,`fullscreen`,`adblock_version`,`continue_screen`,`lets_start_screen`,`age_screen`,`next_screen`,`next_inner_screen`,`contact_screen`,`start_screen`,`real_casting_flow`,`app_stop`,`vpn`,`vpn_dialog`,`vpn_dialog_open`,`vpn_country`,`vpn_url`,`vpn_carrier_id`,`app_remove_flag`,`app_version`,`app_remove_title`,`app_remove_description`,`app_remove_url`,`app_remove_button_name`,`app_remove_skip_button_name`,`entry_uid`,`entry_date`,`update_uid`,`update_date`) values ('17131726-0794-7250-5395-19dbeda042b8','17128887-3017-7352-897e-c7c144174289',1,'75','25','','Test','Test 2','','ca-app-pub-3940256099942544/630097811','ca-app-pub-3940256099942544/630097811','ca-app-pub-3940256099942544/630097811','ca-app-pub-3940256099942544/1033173712','ca-app-pub-3940256099942544/1033173712','ca-app-pub-3940256099942544/1033173712','ca-app-pub-3940256099942544/2247696110','ca-app-pub-3940256099942544/2247696110','ca-app-pub-3940256099942544/2247696110','ca-app-pub-3940256099942544/2247696110','ca-app-pub-3940256099942544/2247696110','ca-app-pub-3940256099942544/2247696110','ca-app-pub-3940256099942544/3419835294','ca-app-pub-3940256099942544/3419835294','ca-app-pub-3940256099942544/3419835294','qwe','','','true','true','123','true','false','true','true','false','false','true','true','false','true','true','false','[\"us\"]','sdf','dsfdsdfds','move_app','1.0.0','Title','This is title','www.google.com','Update','Skip','17019352-1247-1172-9a37-27852d564b27','2024-04-15 14:46:47','17019352-1247-1172-9a37-27852d564b27','2024-04-18 10:45:42');
+insert  into `tbl_apps_settings`(`id`,`app_id`,`type`,`g1_percentage`,`g2_percentage`,`g3_percentage`,`g1_account_name`,`g2_account_name`,`g3_account_name`,`g1_banner`,`g2_banner`,`g3_banner`,`g1_inter`,`g2_inter`,`g3_inter`,`g1_native`,`g2_native`,`g3_native`,`g1_native2`,`g2_native2`,`g3_native2`,`g1_appopen`,`g2_appopen`,`g3_appopen`,`g1_appid`,`g2_appid`,`g3_appid`,`all_ads`,`fullscreen`,`adblock_version`,`continue_screen`,`lets_start_screen`,`age_screen`,`next_screen`,`next_inner_screen`,`contact_screen`,`start_screen`,`real_casting_flow`,`app_stop`,`additional_fields`,`vpn`,`vpn_dialog`,`vpn_dialog_open`,`vpn_country`,`vpn_url`,`vpn_carrier_id`,`app_remove_flag`,`app_version`,`app_remove_title`,`app_remove_description`,`app_remove_url`,`app_remove_button_name`,`app_remove_skip_button_name`,`entry_uid`,`entry_date`,`update_uid`,`update_date`) values ('17131726-0794-7250-5395-19dbeda042b8','17128887-3017-7352-897e-c7c144174289',1,'75','25','','Test','Test 2','','ca-app-pub-3940256099942544/630097811','ca-app-pub-3940256099942544/630097811','ca-app-pub-3940256099942544/630097811','ca-app-pub-3940256099942544/1033173712','ca-app-pub-3940256099942544/1033173712','ca-app-pub-3940256099942544/1033173712','ca-app-pub-3940256099942544/2247696110','ca-app-pub-3940256099942544/2247696110','ca-app-pub-3940256099942544/2247696110','ca-app-pub-3940256099942544/2247696110','ca-app-pub-3940256099942544/2247696110','ca-app-pub-3940256099942544/2247696110','ca-app-pub-3940256099942544/3419835294','ca-app-pub-3940256099942544/3419835294','ca-app-pub-3940256099942544/3419835294','qwe','','','true','true','123','true','false','true','true','false','false','true','true','false',NULL,'true','true','false','[\"us\"]','sdf','dsfdsdfds','move_app','1.0.0','Title','This is title','www.google.com','Update','Skip','17019352-1247-1172-9a37-27852d564b27','2024-04-15 14:46:47','17019352-1247-1172-9a37-27852d564b27','2024-04-18 10:45:42');
 
 /*Table structure for table `tbl_audit_logs` */
 

@@ -372,7 +372,7 @@ function FillSettingData(){
     $("[name='alternate_with_appopen'][value='"+alternate_with_appopen+"']").prop('checked', true);
     $("[name='inter_loading'][value='"+inter_loading+"']").prop('checked', true);
     $("#inter_interval").val((adData && adData.inter_interval) ? adData.inter_interval : '0');
-    $("#block_click_inter").val((adData && adData.block_click_inter) ? adData.block_click_inter : '0');
+    $("#back_click_inter").val((adData && adData.back_click_inter) ? adData.back_click_inter : '0');
     $("[name='app_open_loading'][value='"+app_open_loading+"']").prop('checked', true);
     $("[name='splash_ads'][value='"+splash_ads+"']").prop('checked', true);
     $("[name='app_open'][value='"+app_open+"']").prop('checked', true);
@@ -406,7 +406,7 @@ function FillSettingData(){
     $("[name='bifurcate_alternate_with_appopen'][value='"+bifurcate_alternate_with_appopen+"']").prop('checked', true);
     $("[name='bifurcate_inter_loading'][value='"+bifurcate_inter_loading+"']").prop('checked', true);
     $("#bifurcate_inter_interval").val((adBifurcateData && adBifurcateData.inter_interval) ? adBifurcateData.inter_interval : '0');
-    $("#bifurcate_block_click_inter").val((adBifurcateData && adBifurcateData.block_click_inter) ? adBifurcateData.block_click_inter : '0');
+    $("#bifurcate_back_click_inter").val((adBifurcateData && adBifurcateData.back_click_inter) ? adBifurcateData.back_click_inter : '0');
     $("[name='bifurcate_app_open_loading'][value='"+bifurcate_app_open_loading+"']").prop('checked', true);
     $("[name='bifurcate_splash_ads'][value='"+bifurcate_splash_ads+"']").prop('checked', true);
     $("[name='bifurcate_app_open'][value='"+bifurcate_app_open+"']").prop('checked', true);
@@ -687,7 +687,7 @@ function saveAdSettings(){
         , alternate_with_appopen: $("[name='alternate_with_appopen']:checked").val()
         , inter_loading: $("[name='inter_loading']:checked").val()
         , inter_interval: $("#inter_interval").val()
-        , block_click_inter: $("#block_click_inter").val()
+        , back_click_inter: $("#back_click_inter").val()
         , app_open_loading: $("[name='app_open_loading']:checked").val()
         , splash_ads: $("[name='splash_ads']:checked").val()
         , app_open: $("[name='app_open']:checked").val()
@@ -715,7 +715,7 @@ function saveBifurcate_AdSettings(){
         , alternate_with_appopen: $("[name='bifurcate_alternate_with_appopen']:checked").val()
         , inter_loading: $("[name='bifurcate_inter_loading']:checked").val()
         , inter_interval: $("#bifurcate_inter_interval").val()
-        , block_click_inter: $("#bifurcate_block_click_inter").val()
+        , back_click_inter: $("#bifurcate_back_click_inter").val()
         , app_open_loading: $("[name='bifurcate_app_open_loading']:checked").val()
         , splash_ads: $("[name='bifurcate_splash_ads']:checked").val()
         , app_open: $("[name='bifurcate_app_open']:checked").val()

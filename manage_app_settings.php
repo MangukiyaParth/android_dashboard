@@ -436,9 +436,9 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Block Click Inter (0 = Hide)</td>
+                                                            <td>Back Click Inter (0 = Hide)</td>
                                                             <td>
-                                                                <input type="number" class="form-control" id="block_click_inter" name="block_click_inter" placeholder="Block Click Inter" value="0">
+                                                                <input type="number" class="form-control" id="back_click_inter" name="back_click_inter" placeholder="Block Click Inter" value="0">
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -749,9 +749,9 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Block Click Inter (0 = Hide)</td>
+                                                            <td>Back Click Inter (0 = Hide)</td>
                                                             <td>
-                                                                <input type="number" class="form-control" id="bifurcate_block_click_inter" name="bifurcate_block_click_inter" placeholder="Block Click Inter" value="0">
+                                                                <input type="number" class="form-control" id="bifurcate_back_click_inter" name="bifurcate_back_click_inter" placeholder="Back Click Inter" value="0">
                                                             </td>
                                                         </tr>
                                                     </tbody>

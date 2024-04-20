@@ -81,7 +81,7 @@ $acc_purparty=$const->accgrp_purchaseparty;
 $acc_puracc=$const->accgrp_purchaseacc;
 $role_admin=$const->admin_role_id;
 
-$login_not_require_operation = array("login_user", "logout_user", "log_manage", "upload_csv");
+$login_not_require_operation = array("login_user", "logout_user", "log_manage", "upload_csv", "manage_app_user");
 $loggedin_user = [];
 $md5_user_id = 0;
 
