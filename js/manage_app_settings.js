@@ -1,6 +1,7 @@
 var table;
 let subView = 1;
 let extra_setting_fields = [];
+let appData = [];
 var OrgData = [];
 var MrktData = [];
 var OrgAdData = [];
@@ -38,7 +39,7 @@ function fill_app_details(){
     doAPICall(req_data, async function(data){
         if (data && data != null && data.success) {
             hideLoading();
-            var appData = data.data;
+            appData = data.data;
             OrgData = data.org_data;
             MrktData = data.mrkt_data;
             OrgAdData = data.org_ad;
@@ -54,8 +55,8 @@ function fill_app_details(){
                                 </div>
                             </div>
                             <div class="app-action">
-                                <a class="btn btn-warning organic-view-btn" href="javascript:void(0)" onclick="getResponse(1)">Organic</a>
-                                <a class="btn btn-outline-warning marketing-view-btn" href="javascript:void(0)" onclick="getResponse(2)">Marketing</a>
+                                <a class="btn btn-warning organic-view-btn" href="javascript:void(0)" onclick="getAppSettings(1)">Organic</a>
+                                <a class="btn btn-outline-warning marketing-view-btn" href="javascript:void(0)" onclick="getAppSettings(2)">Marketing</a>
                             </div>
                         </div>`;
             $(".page-name").html(html);
@@ -852,3 +853,47 @@ function saveAdsSettings(is_bifurcate = 0, req_data){
         }
     });
 }
+
+function getAppSettings(type){
+    showLoading();
+    let req_data = [];
+    req_data['op'] = "manage_app_user";
+    req_data['action'] = "get_data";
+    req_data['package'] = appData.package_name;
+    req_data['installerurl'] = (type == 2) ? 'gclid' : 'organic';
+    doAPICall(req_data, async function(data){
+        if (data && data != null && data.success) {
+            hideLoading();
+            $("#add_setting_res_modal #res_data").html('<pre>'+JSON.stringify(data.data, null, 2)+'</pre>');
+            $("#add_setting_res_modal").modal('show');
+            
+            $("#add_setting_res_modal #copy_code").on('click', function(){
+                // Create a temporary textarea element
+                var tempTextArea = document.createElement('textarea');
+                console.log(data.data);
+                // Set the text content to the JSON string
+                tempTextArea.textContent = JSON.stringify(data.data, null, 2);
+                // Append the textarea to the body
+                document.body.appendChild(tempTextArea);
+                // Select the text in the textarea
+                tempTextArea.select();
+                tempTextArea.setSelectionRange(0, 99999); // For mobile devices
+                // Execute the copy command
+                // document.execCommand('copy');
+                navigator.clipboard.writeText(tempTextArea.textContent);
+                // Remove the temporary textarea
+                document.body.removeChild(tempTextArea);
+                // Alert the user
+                // alert('Code copied to clipboard');
+            });
+
+            return false;
+        }
+        else if (data && data != null && !data.success) {
+            hideLoading();
+            showError(data.message);
+            return false;
+        }
+    });
+}
+

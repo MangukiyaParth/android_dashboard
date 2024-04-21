@@ -39,45 +39,48 @@ function manage_app_user()
 		$retention = $gh->read("retention");
 		$installerinfo = $gh->read("installerinfo");
 		$installerurl = $gh->read("installerurl");
-		$id=$gh->generateuuid();
+		
+		if($as != ""){
+			$id=$gh->generateuuid();
 
-		$data = array(
-			"id" => $id,
-			"package" => $package,
-			"as" => $as,
-			"asname" => $asname,
-			"callingCode" => $callingCode,
-			"city" => $city,
-			"continent" => $continent,
-			"continentCode" => $continentCode,
-			"country" => $country,
-			"countryCode" => $countryCode,
-			"countryCode3" => $countryCode3,
-			"currency" => $currency,
-			"currentTime" => $currentTime,
-			"district" => $district,
-			"hosting" => $hosting,
-			"isp" => $isp,
-			"lat" => $lat,
-			"lon" => $lon,
-			"mobile" => $mobile,
-			"offset" => $offset,
-			"org" => $org,
-			"proxy" => $proxy,
-			"query" => $query,
-			"region" => $region,
-			"regionName" => $regionName,
-			"reverse" => $reverse,
-			"status" => $status,
-			"timezone" => $timezone,
-			"zip" => $zip,
-			"device_id" => $device_id,
-			"retention" => $retention,
-			"installerinfo" => $installerinfo,
-			"installerurl" => $installerurl,
-			"entry_date" => date('Y-m-d H:i:s')
-		);
-		$db->insert("tbl_app_users", $data);
+			$data = array(
+				"id" => $id,
+				"package" => $package,
+				"as" => $as,
+				"asname" => $asname,
+				"callingCode" => $callingCode,
+				"city" => $city,
+				"continent" => $continent,
+				"continentCode" => $continentCode,
+				"country" => $country,
+				"countryCode" => $countryCode,
+				"countryCode3" => $countryCode3,
+				"currency" => $currency,
+				"currentTime" => $currentTime,
+				"district" => $district,
+				"hosting" => $hosting,
+				"isp" => $isp,
+				"lat" => $lat,
+				"lon" => $lon,
+				"mobile" => $mobile,
+				"offset" => $offset,
+				"org" => $org,
+				"proxy" => $proxy,
+				"query" => $query,
+				"region" => $region,
+				"regionName" => $regionName,
+				"reverse" => $reverse,
+				"status" => $status,
+				"timezone" => $timezone,
+				"zip" => $zip,
+				"device_id" => $device_id,
+				"retention" => $retention,
+				"installerinfo" => $installerinfo,
+				"installerurl" => $installerurl,
+				"entry_date" => date('Y-m-d H:i:s')
+			);
+			$db->insert("tbl_app_users", $data);
+		}
 		$type = (str_contains($installerurl, 'gclid')) ? 2 : 1;
 		
 		$qry_setting = "SELECT s.* FROM tbl_apps_settings s 

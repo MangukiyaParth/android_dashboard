@@ -10,6 +10,12 @@
         font-size: 17px;
         color: #222;
     }
+
+    .copy-btn {
+        position: absolute;
+        right: 10px;
+        font-size: 12px;
+    }
 </style>
 <div class="content">
 
@@ -1241,6 +1247,21 @@
                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">close</button>
                 <button type="button" class="btn btn-primary" onclick="append_setting_field()">Add</button>
             </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div id="add_setting_res_modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title comman_list_model_header" id="multiple-twoModalLabel">Response</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <button class="btn copy-btn" type="button" id="copy_code">Copy <i class="fa-regular fa-clone"></i></button>
+                <div id="res_data"></div>
+            </div><!-- /.modal-body -->
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
