@@ -53,7 +53,6 @@ function manage_app_settings()
 	}
 	else if($action == "get_user_data")
 	{
-		$id = $gh->read("id");
 		$start = $gh->read("start");
 		$length = $gh->read("length");
 		$searcharr = $gh->read("search");
@@ -62,18 +61,31 @@ function manage_app_settings()
 		$orderindex = $orderarr[0]['column'];
 		$orderdir = $orderarr[0]['dir'];
 		$columnsarr = $gh->read("columns");
-		$status = $gh->read("extra_option");
+		$extra_option = $_POST["extra_option"];
 		$ordercolumn = $columnsarr[$orderindex]['name'];
-		
-		$whereData = "";
-		if($status == 1)
+		$filt_data = json_decode($extra_option, true);
+		$time_filter = $filt_data['time_filter'];
+		$app_id = $filt_data['app_id'];
+
+		$main_where = " a.id = '$app_id' ";
+		$whereData = $main_where;
+		$cntWhereData = "";
+
+		$today_con = " AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date('Y-m-d')."' ";
+		$yestarday_con = " AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date("Y-m-d", strtotime("-1 day"))."' ";
+		$org_con = " AND INSTR(installerurl,'gclid') > 0 ";
+		$mrk_con = " AND INSTR(installerurl,'gclid') = 0 ";
+
+		if($time_filter == 1)
 		{
-			$whereData .= " DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date('Y-m-d')."' AND ";
+			$whereData .= $today_con;
+			$cntWhereData .= $today_con;
 		}
-		else if($status == 2) {
-			$whereData .= " DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date("Y-m-d", strtotime("-1 day"))."' AND ";
+		else if($time_filter == 2) {
+			$whereData .= $yestarday_con;
+			$cntWhereData .= $yestarday_con;
 		}
-		$whereData .= "(u.package LIKE '%" . $search . "%' OR 
+		$whereData .= " AND (u.package LIKE '%" . $search . "%' OR 
 						u.as LIKE '%" . $search . "%' OR
 						u.asname LIKE '%" . $search . "%' OR
 						u.city LIKE '%" . $search . "%' OR
@@ -91,8 +103,15 @@ function manage_app_settings()
 						u.installerurl LIKE '%" . $search . "%'
 						)";
 
-		$total_count = $db->get_row_count('tbl_app_users', "1=1");
-		$count_query = "SELECT count(DISTINCT u.id) as cnt FROM tbl_app_users as u WHERE " . $whereData;
+		$total_count_query = "SELECT count(DISTINCT u.id) as cnt 
+			FROM tbl_app_users as u 
+			INNER JOIN tbl_apps as a ON a.package_name = u.package  
+			WHERE " . $main_where;
+		$total_count = $db->execute_scalar($total_count_query);
+		$count_query = "SELECT count(DISTINCT u.id) as cnt FROM 
+			tbl_app_users as u 
+			INNER JOIN tbl_apps as a ON a.package_name = u.package
+			WHERE " . $whereData;
 		$filtered_count = $db->execute_scalar($count_query);
 
 		$orderby = "";
@@ -100,13 +119,34 @@ function manage_app_settings()
 			$orderby = " ORDER BY ".$ordercolumn . " " . $orderdir;
 		}
 		$query_port_rates = "SELECT DISTINCT u.* FROM tbl_app_users as u
+			INNER JOIN tbl_apps as a ON a.package_name = u.package
 			WHERE " . $whereData . " " . $orderby . " LIMIT " . $start . "," . $length . "";
 		$rows = $db->execute($query_port_rates);
+
+		/***** extra cnt *****/
+		$all_count_query = "SELECT count(DISTINCT u.id) as cnt 
+			FROM tbl_app_users as u 
+			INNER JOIN tbl_apps as a ON a.package_name = u.package  
+			WHERE " . $main_where . $cntWhereData;
+		$all_count = $db->execute_scalar($all_count_query);
+		$org_count_query = "SELECT count(DISTINCT u.id) as cnt 
+			FROM tbl_app_users as u 
+			INNER JOIN tbl_apps as a ON a.package_name = u.package  
+			WHERE " . $main_where . $org_con . $cntWhereData;
+		$org_count = $db->execute_scalar($org_count_query);
+		$mrkt_count_query = "SELECT count(DISTINCT u.id) as cnt 
+			FROM tbl_app_users as u 
+			INNER JOIN tbl_apps as a ON a.package_name = u.package  
+			WHERE " . $main_where . $mrk_con .  $cntWhereData;
+		$mrkt_count = $db->execute_scalar($mrkt_count_query);
 
 		if ($rows != null && is_array($rows) && count($rows) > 0) {
 			
 			$outputjson['recordsTotal'] = $total_count;
 			$outputjson['recordsFiltered'] = $filtered_count;
+			$outputjson['all_count'] = $all_count;
+			$outputjson['org_count'] = $org_count;
+			$outputjson['mrkt_count'] = $mrkt_count;
 			$outputjson['success'] = 1;
 			$outputjson['status'] = 1;
 			$outputjson['message'] = 'success.';
@@ -115,6 +155,9 @@ function manage_app_settings()
 			$outputjson["data"] = [];
 			$outputjson['recordsTotal'] = $total_count;
 			$outputjson['recordsFiltered'] = 0;
+			$outputjson['all_count'] = $all_count;
+			$outputjson['org_count'] = $org_count;
+			$outputjson['mrkt_count'] = $mrkt_count;
 			$outputjson['message'] = "No Products found!";
 		}
 	}

@@ -1,5 +1,4 @@
 var table;
-var SUBPRIMARYID = 0;
 let subView = 1;
 let extra_setting_fields = [];
 var OrgData = [];
@@ -10,11 +9,22 @@ var MrktAdData = [];
 var MrktBifurcateData = [];
 jQuery(function () {
     PRIMARY_ID = localStorage.getItem('primary_id');
+    manageDataFilter(false);
     changeSubView(1);
     manageDefaultInit();
     fill_app_details();
     get_user_data();
 });
+
+async function manageDataFilter(resetDatatable = true){
+    var time_filter = $("#time_filter").val();
+    var filt = {
+        "time_filter": time_filter,
+        "app_id": PRIMARY_ID
+    }
+    $("#extra_option").val(JSON.stringify(filt));
+    if(resetDatatable) { await table.clearPipeline().draw(); }
+}
 
 
 //================= Initial Functions =================
@@ -65,19 +75,19 @@ function changeSubView(v){
         $(".sub-view-btn").addClass('btn-light').removeClass('btn-outline-soft-warning');
         $(".user-view-btn").removeClass('btn-light').addClass('btn-outline-soft-warning').blur();
         $(".setting-div").addClass('d-none');
-        $(".user-div").removeClass('d-none');
+        $(".user-div, .data-extra-filter").removeClass('d-none');
     }
     else if(v==2){
         $(".sub-view-btn").addClass('btn-light').removeClass('btn-outline-soft-warning');
         $(".retention-view-btn").removeClass('btn-light').addClass('btn-outline-soft-warning').blur();
         $(".setting-div").addClass('d-none');
-        $(".user-div").removeClass('d-none');
+        $(".user-div, .data-extra-filter").removeClass('d-none');
     }
     else if(v==3){
         $(".sub-view-btn").addClass('btn-light').removeClass('btn-outline-soft-warning');
         $(".setting-o-view-btn").removeClass('btn-light').addClass('btn-outline-soft-warning').blur();
         $(".setting-div").removeClass('d-none');
-        $(".user-div").addClass('d-none');
+        $(".user-div, .data-extra-filter").addClass('d-none');
         manageFormfields(1);
         manage_preview_clr(1);
         manageFormfields(2);
@@ -88,7 +98,7 @@ function changeSubView(v){
         $(".sub-view-btn").addClass('btn-light').removeClass('btn-outline-soft-warning');
         $(".setting-m-view-btn").removeClass('btn-light').addClass('btn-outline-soft-warning').blur();
         $(".setting-div").removeClass('d-none');
-        $(".user-div").addClass('d-none');
+        $(".user-div, .data-extra-filter").addClass('d-none');
         manageFormfields(1);
         manage_preview_clr(1);
         manageFormfields(2);
@@ -105,7 +115,12 @@ function get_user_data() {
         pagingType: "full_numbers",
         responsive: !0,
         language: { paginate: { previous: "<i class='mdi mdi-chevron-left'>", next: "<i class='mdi mdi-chevron-right'>" } },
-        drawCallback: function () { $(".dataTables_paginate > .pagination").addClass("pagination-rounded") },
+        drawCallback: function (res) {
+            $(".tot-user").html(res.json.all_count);
+            $(".org-user").html(res.json.org_count);
+            $(".mrk-user").html(res.json.mrkt_count);
+            $(".dataTables_paginate > .pagination").addClass("pagination-rounded") 
+        },
         ajax: $.fn.dataTable.pipeline({
             url: API_SERVICE_URL,
             pages: 1, // number of pages to cache
@@ -131,9 +146,9 @@ function get_user_data() {
             { data: 'installerurl', name: 'installerurl', width: "5%" },
         ]
     });
-    $(".extra-option").css('right', ($("#datatable_filter label").width() + 50)+'px');
-    $("#extra_option").on('change', async function(){
-        await table.clearPipeline().draw();
+    // $(".extra-option").css('right', ($("#datatable_filter label").width() + 50)+'px');
+    $("#time_filter").on('change', function(){
+        manageDataFilter();
     });
 }
 

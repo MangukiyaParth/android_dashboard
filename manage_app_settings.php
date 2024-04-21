@@ -18,12 +18,19 @@
         <div class="row mt-3">
             <div class="col-xl-12 col-lg-12">
                 <div class="card border-radius-15">
-                    <div class="card-body">
+                    <div class="card-body d-flex justify-content-between">
                         <div class="app-sub-action">
                             <a class="btn btn-outline-soft-warning user-view-btn sub-view-btn me-2" href="javascript:void(0)" onclick="changeSubView(1)">User</a>
                             <a class="btn btn-light retention-view-btn sub-view-btn me-2" href="javascript:void(0)" onclick="changeSubView(2)">Retention</a>
                             <a class="btn btn-light setting-o-view-btn sub-view-btn me-2" href="javascript:void(0)" onclick="changeSubView(3)">Setting (O)</a>
                             <a class="btn btn-light setting-m-view-btn sub-view-btn me-2" href="javascript:void(0)" onclick="changeSubView(4)">Setting (M)</a>
+                        </div>
+                        <div class="data-extra-filter float-right w-25">
+                            <select class="form-select" id="time_filter">
+                                <option value="">All</option>
+                                <option value="1">Today</option>
+                                <option value="2">Yestarday</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -55,13 +62,7 @@
                     <div class="card border-radius-15">
                         <div class="card-body">
                             <div class="table-responsive" id="detailsDiv">
-                                <div class="extra-option">
-                                    <select class="form-select" id="extra_option">
-                                        <option value="">All</option>
-                                        <option value="1">Today</option>
-                                        <option value="2">Yestarday</option>
-                                    </select>
-                                </div>
+                                <input type="hidden" id="extra_option" />
                                 <table id="datatable" class="table dt-responsive nowrap vertical-middle w-100">
                                     <thead>
                                         <tr>
