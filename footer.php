@@ -3,6 +3,40 @@ $include_javscript_at_bottom = '<script src="' . $gh->auto_version(ADMIN_PANEL_U
 $include_javscript_at_bottom = str_replace('<script ', '<script defer ', $include_javscript_at_bottom);
 include 'theme_settings.php';
 ?>
+<div class="offcanvas offcanvas-end border-0" tabindex="-1" id="notification-offcanvas">
+	<div class="d-flex align-items-center bg-primary p-3 offcanvas-header">
+		<h5 class="text-white m-0">Notifications</h5>
+		<button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+	</div>
+
+	<div class="offcanvas-body p-0">
+		<div data-simplebar class="h-100">
+			<div class="card mb-0 p-3 notification-list">
+				<div class="simplebar-wrapper" style="margin: 0px -24px;">
+					<div class="simplebar-height-auto-observer-wrapper">
+						<div class="simplebar-height-auto-observer"></div>
+					</div>
+
+					<div class="simplebar-mask">
+						<div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+							<div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" style="height: auto; overflow: hidden scroll;">
+								<a href="javascript: void(0);" class="text-dark text-decoration-underline me-3 my-2 float-end" onclick="clearAllNotification()"><small>Clear All</small></a>
+								<div id="notification_list" class="simplebar-content" style="padding: 24px;">
+
+									<div class="text-center noti-loader">
+										<i class="mdi mdi-dots-circle mdi-spin text-muted h3 mt-0"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="simplebar-placeholder" style="width: auto; height: 525px;"></div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
 <!-- file preview template -->
 <div class="d-none" id="uploadPreviewTemplate">
 	<div class="card mt-1 mb-0 shadow-none border">
@@ -89,6 +123,21 @@ include 'theme_settings.php';
 					<p class="mt-3">you want to delete data?</p>
 					<button type="button" class="btn btn-warning my-2" data-bs-dismiss="modal" onclick="delete_current_record()">Continue</button>
 					<button type="button" class="btn btn-default my-2" data-bs-dismiss="modal" onclick="PRIMARY_ID = 0;">close</button>
+				</div>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div>
+<div id="notification_delete_modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-sm">
+		<div class="modal-content">
+			<div class="modal-body p-4">
+				<div class="text-center">
+					<i class="ri-alert-line h1 text-warning"></i>
+					<h4 class="mt-2">Are you sure?</h4>
+					<p class="mt-3">you want to clear all notifications?</p>
+					<button type="button" class="btn btn-warning my-2" data-bs-dismiss="modal" onclick="delete_all_notification()">Continue</button>
+					<button type="button" class="btn btn-default my-2" data-bs-dismiss="modal">close</button>
 				</div>
 			</div>
 		</div><!-- /.modal-content -->

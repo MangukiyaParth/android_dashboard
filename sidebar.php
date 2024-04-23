@@ -40,12 +40,14 @@
             $manage_removed_apps_viewright =1;
             $manage_play_store_viewright =1;
             $manage_adx_viewright =1;
+            $manage_notification_viewright =1;
 
         }else{
             $manage_apps_Array = $gh->findArrayByValue($setrights, 'pagename','manage_apps');
             $manage_removed_apps_Array = $gh->findArrayByValue($setrights, 'pagename','manage_removed_apps');
             $manage_play_store_Array = $gh->findArrayByValue($setrights, 'pagename','manage_play_store');
             $manage_adx_Array = $gh->findArrayByValue($setrights, 'pagename','manage_adx');
+            $manage_notification_Array = $gh->findArrayByValue($setrights, 'pagename','manage_notification');
 
             //====================================================  View Rights ====================================================
             
@@ -53,6 +55,7 @@
             $manage_removed_apps_viewright =$manage_removed_apps_Array['viewright'];
             $manage_play_store_viewright =$manage_play_store_Array['viewright'];
             $manage_adx_viewright =$manage_adx_Array['viewright'];
+            $manage_notification_viewright =$manage_notification_Array['viewright'];
         }
         
         ?>
@@ -83,6 +86,12 @@
             {
                 ?>
                 <li class="side-nav-item"><a href="javascript:void(0);" onclick="openPage('manage_adx')" data-name="manage_adx"  class="side-nav-link"><i class="fa-solid fa-bullhorn"></i><span>ADX</span></a></li>
+                <?php
+            }
+            if($manage_notification_viewright == 1)
+            {
+                ?>
+                <li class="side-nav-item"><a href="javascript:void(0);" onclick="OpenNotification()" class="side-nav-link"><i class="fa-regular fa-bell"></i><span class="badge bg-success float-end noti-cnt d-none">0</span><span>Notification</span></a></li>
                 <?php
             }
             ?>

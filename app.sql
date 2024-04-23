@@ -61,6 +61,25 @@ CREATE TABLE `tbl_app_ad_settings` (
   `app_open_loading` varchar(10) DEFAULT NULL,
   `splash_ads` varchar(10) DEFAULT NULL,
   `app_open` varchar(10) DEFAULT NULL,
+  `all_ads` varchar(10) DEFAULT NULL,
+  `fullscreen` varchar(10) DEFAULT NULL,
+  `adblock_version` varchar(15) DEFAULT NULL,
+  `continue_screen` varchar(10) DEFAULT NULL,
+  `lets_start_screen` varchar(10) DEFAULT NULL,
+  `age_screen` varchar(10) DEFAULT NULL,
+  `next_screen` varchar(10) DEFAULT NULL,
+  `next_inner_screen` varchar(10) DEFAULT NULL,
+  `contact_screen` varchar(10) DEFAULT NULL,
+  `start_screen` varchar(10) DEFAULT NULL,
+  `real_casting_flow` varchar(10) DEFAULT NULL,
+  `app_stop` varchar(10) DEFAULT NULL,
+  `additional_fields` longtext DEFAULT NULL,
+  `vpn` varchar(10) DEFAULT NULL,
+  `vpn_dialog` varchar(10) DEFAULT NULL,
+  `vpn_dialog_open` varchar(10) DEFAULT NULL,
+  `vpn_country` longtext DEFAULT NULL,
+  `vpn_url` varchar(300) DEFAULT NULL,
+  `vpn_carrier_id` varchar(50) DEFAULT NULL,
   `entry_uid` varchar(50) DEFAULT NULL,
   `entry_date` datetime DEFAULT NULL,
   `update_uid` varchar(50) DEFAULT NULL,
@@ -71,7 +90,7 @@ CREATE TABLE `tbl_app_ad_settings` (
 
 /*Data for the table `tbl_app_ad_settings` */
 
-insert  into `tbl_app_ad_settings`(`id`,`app_id`,`type`,`is_bifurcate`,`bifurcate_location`,`app_color`,`app_background_color`,`native_loading`,`bottom_banner`,`all_screen_native`,`list_native`,`list_native_cnt`,`exit_dialoge_native`,`native_btn`,`native_btn_text`,`native_background_color`,`native_text_color`,`native_button_background_color`,`native_button_text_color`,`alternate_with_appopen`,`inter_loading`,`inter_interval`,`back_click_inter`,`app_open_loading`,`splash_ads`,`app_open`,`entry_uid`,`entry_date`,`update_uid`,`update_date`) values ('17135007-0679-1356-3993-d30362c84f1d','17128887-3017-7352-897e-c7c144174289',1,0,'','#F58F00','#999CFF','onload','banner','show','show',0,'hide','manual','Test','#61D0FF','#EB0000','#0542A3','#FF6BFF','show','preload',1,1,'onload','openads','everytime','17019352-1247-1172-9a37-27852d564b27','2024-04-19 09:55:06',NULL,NULL),('17135232-9163-5369-713a-c4819cdf414d','17128887-3017-7352-897e-c7c144174289',1,1,'ind,IN,Surat','#000000','#FFFFFF','onload','native','hide','hide',0,'hide','default','','#FFFEFF','#808080','#4285F4','#FFFEFF','hide','onload',0,0,'onload','hide','onetime','17019352-1247-1172-9a37-27852d564b27','2024-04-19 16:11:31',NULL,NULL);
+insert  into `tbl_app_ad_settings`(`id`,`app_id`,`type`,`is_bifurcate`,`bifurcate_location`,`app_color`,`app_background_color`,`native_loading`,`bottom_banner`,`all_screen_native`,`list_native`,`list_native_cnt`,`exit_dialoge_native`,`native_btn`,`native_btn_text`,`native_background_color`,`native_text_color`,`native_button_background_color`,`native_button_text_color`,`alternate_with_appopen`,`inter_loading`,`inter_interval`,`back_click_inter`,`app_open_loading`,`splash_ads`,`app_open`,`all_ads`,`fullscreen`,`adblock_version`,`continue_screen`,`lets_start_screen`,`age_screen`,`next_screen`,`next_inner_screen`,`contact_screen`,`start_screen`,`real_casting_flow`,`app_stop`,`additional_fields`,`vpn`,`vpn_dialog`,`vpn_dialog_open`,`vpn_country`,`vpn_url`,`vpn_carrier_id`,`entry_uid`,`entry_date`,`update_uid`,`update_date`) values ('17135007-0679-1356-3993-d30362c84f1d','17128887-3017-7352-897e-c7c144174289',1,0,'','#F58F00','#999CFF','onload','banner','show','show',0,'hide','manual','Test','#61D0FF','#EB0000','#0542A3','#FF6BFF','show','preload',1,1,'onload','openads','everytime','show','hide','123','hide','show','show','hide','hide','show','show','show','hide','[]',NULL,NULL,NULL,NULL,NULL,NULL,'17019352-1247-1172-9a37-27852d564b27','2024-04-19 09:55:06','17019352-1247-1172-9a37-27852d564b27','2024-04-23 15:17:18'),('17135232-9163-5369-713a-c4819cdf414d','17128887-3017-7352-897e-c7c144174289',1,1,'ind,IN,Surat','#000000','#FFFFFF','onload','native','hide','hide',0,'hide','default','','#FFFEFF','#808080','#4285F4','#FFFEFF','hide','onload',0,0,'onload','hide','onetime',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'17019352-1247-1172-9a37-27852d564b27','2024-04-19 16:11:31',NULL,NULL);
 
 /*Table structure for table `tbl_app_users` */
 
@@ -117,7 +136,7 @@ CREATE TABLE `tbl_app_users` (
 
 /*Data for the table `tbl_app_users` */
 
-insert  into `tbl_app_users`(`id`,`package`,`as`,`asname`,`callingCode`,`city`,`continent`,`continentCode`,`country`,`countryCode`,`countryCode3`,`currency`,`currentTime`,`district`,`hosting`,`isp`,`lat`,`lon`,`mobile`,`offset`,`org`,`proxy`,`query`,`region`,`regionName`,`reverse`,`status`,`timezone`,`zip`,`device_id`,`retention`,`installerinfo`,`installerurl`,`entry_date`) values ('17136051-0439-0071-2f06-79eaed4f4e7d','ldqloanemicalc.loanemitools.loanemicalculator.tssipcalculator','AS24560 Bharti Airtel Ltd., Telemedia Services','AIRTELBROADBAND-AS-AP','91','Ahmedabad','Asia','AS','India','IN','IND','INR','2023-07-25T16:14:55+','','false','Bharti Airtel Limited',23.0276,72.5871,'true',19800,'BHARTI','false','171.50.187','GJ','Gujarat','','success','Asia/Kolkata','380006','69bca4780574c969','false','false','utm_source=google-play&utm_medium=organic','2024-04-20 15:08:33');
+insert  into `tbl_app_users`(`id`,`package`,`as`,`asname`,`callingCode`,`city`,`continent`,`continentCode`,`country`,`countryCode`,`countryCode3`,`currency`,`currentTime`,`district`,`hosting`,`isp`,`lat`,`lon`,`mobile`,`offset`,`org`,`proxy`,`query`,`region`,`regionName`,`reverse`,`status`,`timezone`,`zip`,`device_id`,`retention`,`installerinfo`,`installerurl`,`entry_date`) values ('17136051-0439-0071-2f06-79eaed4f4e7d','ldqloanemicalc.loanemitools.loanemicalculator.tssipcalculator','AS24560 Bharti Airtel Ltd., Telemedia Services','AIRTELBROADBAND-AS-AP','91','Ahmedabad','Asia','AS','India','IN','IND','INR','2023-07-25T16:14:55+','','false','Bharti Airtel Limited',23.0276,72.5871,'true',19800,'BHARTI','false','171.50.187','GJ','Gujarat','','success','Asia/Kolkata','380006','69bca4780574c969','false','false','utm_source=google-play&utm_medium=organic','2024-04-20 15:08:33'),('17138515-7643-7755-319d-e0cf8b164a19','ldqloanemicalc.loanemitools.loanemicalculator.tssipcalculator','AS24560 Bharti Airtel Ltd., Telemedia Services','AIRTELBROADBAND-AS-AP','91','Ahmedabad','Asia','AS','India','IN','IND','INR','2023-07-25T16:14:55+','','false','Bharti Airtel Limited',23.0276,72.5871,'true',19800,'BHARTI','false','171.50.187','GJ','Gujarat','','success','Asia/Kolkata','380006','69bca4780574c969','false','false','utm_source=google-play&utm_medium=organic','2024-04-23 11:22:56');
 
 /*Table structure for table `tbl_apps` */
 
@@ -145,7 +164,7 @@ CREATE TABLE `tbl_apps` (
 
 /*Data for the table `tbl_apps` */
 
-insert  into `tbl_apps`(`id`,`playstore`,`adx`,`app_code`,`app_name`,`package_name`,`web_url`,`notes`,`status`,`file`,`file_data`,`is_deleted`,`entry_uid`,`entry_date`,`update_uid`,`update_date`) values ('17128887-3017-7352-897e-c7c144174289','17128160-3311-2597-5cb4-f07cb4164d21','17128327-9266-1036-73d7-310de75d4c9b','12345','Test 123','ldqloanemicalc.loanemitools.loanemicalculator.tssipcalculator','www.test.com','test',1,'upload/images/app/17128887-3017-7352-897e-c7c144174289/Screenshot 2024-03-19 101809.png','[{\"uuid\":\"88fd32ac-c8c8-4e2a-a53b-69af029c57b3\",\"name\":\"Screenshot 2024-03-19 101809.png\",\"filename\":\"Screenshot 2024-03-19 101809.png\",\"size\":386970,\"total\":386970,\"bytesSent\":386970,\"url\":\"upload/images/app/17128887-3017-7352-897e-c7c144174289/Screenshot 2024-03-19 101809.png\"}]',0,'17019352-1247-1172-9a37-27852d564b27','2024-04-12 07:55:30','17019352-1247-1172-9a37-27852d564b27','2024-04-19 14:29:42');
+insert  into `tbl_apps`(`id`,`playstore`,`adx`,`app_code`,`app_name`,`package_name`,`web_url`,`notes`,`status`,`file`,`file_data`,`is_deleted`,`entry_uid`,`entry_date`,`update_uid`,`update_date`) values ('17128887-3017-7352-897e-c7c144174289','17128160-3311-2597-5cb4-f07cb4164d21','17128327-9266-1036-73d7-310de75d4c9b','12345','Test 123','ldqloanemicalc.loanemitools.loanemicalculator.tssipcalculator','www.test.com','test',4,'upload/images/app/17128887-3017-7352-897e-c7c144174289/Screenshot 2024-03-19 101809.png','[{\"uuid\":\"88fd32ac-c8c8-4e2a-a53b-69af029c57b3\",\"name\":\"Screenshot 2024-03-19 101809.png\",\"filename\":\"Screenshot 2024-03-19 101809.png\",\"size\":386970,\"total\":386970,\"bytesSent\":386970,\"url\":\"upload/images/app/17128887-3017-7352-897e-c7c144174289/Screenshot 2024-03-19 101809.png\"}]',0,'17019352-1247-1172-9a37-27852d564b27','2024-04-12 07:55:30','17019352-1247-1172-9a37-27852d564b27','2024-04-23 10:51:44'),('17137879-9287-8269-df0c-06222d4c49a1','','','','sdfsdf','','','',1,'upload/images/app/17137879-9287-8269-df0c-06222d4c49a1/images.png','[{\"uuid\":\"ec47ffb9-93dd-49c3-963f-b7e0696ce650\",\"name\":\"images.png\",\"filename\":\"images.png\",\"size\":3475,\"total\":3475,\"bytesSent\":3475,\"url\":\"upload/images/app/17137879-9287-8269-df0c-06222d4c49a1/images.png\"}]',0,'17019352-1247-1172-9a37-27852d564b27','2024-04-22 17:43:12','17019352-1247-1172-9a37-27852d564b27','2024-04-22 17:51:28');
 
 /*Table structure for table `tbl_apps_settings` */
 
@@ -179,25 +198,6 @@ CREATE TABLE `tbl_apps_settings` (
   `g1_appid` varchar(50) DEFAULT NULL,
   `g2_appid` varchar(50) DEFAULT NULL,
   `g3_appid` varchar(50) DEFAULT NULL,
-  `all_ads` varchar(10) DEFAULT NULL,
-  `fullscreen` varchar(10) DEFAULT NULL,
-  `adblock_version` varchar(15) DEFAULT NULL,
-  `continue_screen` varchar(10) DEFAULT NULL,
-  `lets_start_screen` varchar(10) DEFAULT NULL,
-  `age_screen` varchar(10) DEFAULT NULL,
-  `next_screen` varchar(10) DEFAULT NULL,
-  `next_inner_screen` varchar(10) DEFAULT NULL,
-  `contact_screen` varchar(10) DEFAULT NULL,
-  `start_screen` varchar(10) DEFAULT NULL,
-  `real_casting_flow` varchar(10) DEFAULT NULL,
-  `app_stop` varchar(10) DEFAULT NULL,
-  `additional_fields` longtext DEFAULT NULL,
-  `vpn` varchar(10) DEFAULT NULL,
-  `vpn_dialog` varchar(10) DEFAULT NULL,
-  `vpn_dialog_open` varchar(10) DEFAULT NULL,
-  `vpn_country` longtext DEFAULT NULL,
-  `vpn_url` varchar(300) DEFAULT NULL,
-  `vpn_carrier_id` varchar(50) DEFAULT NULL,
   `app_remove_flag` varchar(10) DEFAULT NULL,
   `app_version` varchar(10) DEFAULT NULL,
   `app_remove_title` varchar(100) DEFAULT NULL,
@@ -214,7 +214,7 @@ CREATE TABLE `tbl_apps_settings` (
 
 /*Data for the table `tbl_apps_settings` */
 
-insert  into `tbl_apps_settings`(`id`,`app_id`,`type`,`g1_percentage`,`g2_percentage`,`g3_percentage`,`g1_account_name`,`g2_account_name`,`g3_account_name`,`g1_banner`,`g2_banner`,`g3_banner`,`g1_inter`,`g2_inter`,`g3_inter`,`g1_native`,`g2_native`,`g3_native`,`g1_native2`,`g2_native2`,`g3_native2`,`g1_appopen`,`g2_appopen`,`g3_appopen`,`g1_appid`,`g2_appid`,`g3_appid`,`all_ads`,`fullscreen`,`adblock_version`,`continue_screen`,`lets_start_screen`,`age_screen`,`next_screen`,`next_inner_screen`,`contact_screen`,`start_screen`,`real_casting_flow`,`app_stop`,`additional_fields`,`vpn`,`vpn_dialog`,`vpn_dialog_open`,`vpn_country`,`vpn_url`,`vpn_carrier_id`,`app_remove_flag`,`app_version`,`app_remove_title`,`app_remove_description`,`app_remove_url`,`app_remove_button_name`,`app_remove_skip_button_name`,`entry_uid`,`entry_date`,`update_uid`,`update_date`) values ('17131726-0794-7250-5395-19dbeda042b8','17128887-3017-7352-897e-c7c144174289',1,'75','25','','Test','Test 2','','ca-app-pub-3940256099942544/630097811','ca-app-pub-3940256099942544/630097811','ca-app-pub-3940256099942544/630097811','ca-app-pub-3940256099942544/1033173712','ca-app-pub-3940256099942544/1033173712','ca-app-pub-3940256099942544/1033173712','ca-app-pub-3940256099942544/2247696110','ca-app-pub-3940256099942544/2247696110','ca-app-pub-3940256099942544/2247696110','ca-app-pub-3940256099942544/2247696110','ca-app-pub-3940256099942544/2247696110','ca-app-pub-3940256099942544/2247696110','ca-app-pub-3940256099942544/3419835294','ca-app-pub-3940256099942544/3419835294','ca-app-pub-3940256099942544/3419835294','qwe','','','hide','hide','123','hide','hide','hide','hide','hide','hide','hide','hide','hide','[{\"field_name\":\"Test\",\"field_type\":\"1\",\"value\":\"hide\",\"value2\":\"\"},{\"field_name\":\"Test2\",\"field_type\":\"2\",\"value\":\"TSD\",\"value2\":\"\"},{\"field_name\":\"Test3\",\"field_type\":\"3\",\"value\":\"show\",\"value2\":\"12345\"}]','true','true','false','[\"us\"]','sdf','dsfdsdfds','move_app','1.0.0','Title','This is title','www.google.com','Update','Skip','17019352-1247-1172-9a37-27852d564b27','2024-04-15 14:46:47','17019352-1247-1172-9a37-27852d564b27','2024-04-20 13:39:56');
+insert  into `tbl_apps_settings`(`id`,`app_id`,`type`,`g1_percentage`,`g2_percentage`,`g3_percentage`,`g1_account_name`,`g2_account_name`,`g3_account_name`,`g1_banner`,`g2_banner`,`g3_banner`,`g1_inter`,`g2_inter`,`g3_inter`,`g1_native`,`g2_native`,`g3_native`,`g1_native2`,`g2_native2`,`g3_native2`,`g1_appopen`,`g2_appopen`,`g3_appopen`,`g1_appid`,`g2_appid`,`g3_appid`,`app_remove_flag`,`app_version`,`app_remove_title`,`app_remove_description`,`app_remove_url`,`app_remove_button_name`,`app_remove_skip_button_name`,`entry_uid`,`entry_date`,`update_uid`,`update_date`) values ('17131726-0794-7250-5395-19dbeda042b8','17128887-3017-7352-897e-c7c144174289',1,'75','25','','Test','Test 2','','ca-app-pub-3940256099942544/630097811','ca-app-pub-3940256099942544/630097811','ca-app-pub-3940256099942544/630097811','ca-app-pub-3940256099942544/1033173712','ca-app-pub-3940256099942544/1033173712','ca-app-pub-3940256099942544/1033173712','ca-app-pub-3940256099942544/2247696110','ca-app-pub-3940256099942544/2247696110','ca-app-pub-3940256099942544/2247696110','ca-app-pub-3940256099942544/2247696110','ca-app-pub-3940256099942544/2247696110','ca-app-pub-3940256099942544/2247696110','ca-app-pub-3940256099942544/3419835294','ca-app-pub-3940256099942544/3419835294','ca-app-pub-3940256099942544/3419835294','qwe','','','move_app','1.0.0','Title','This is title','www.google.com','Update','Skip','17019352-1247-1172-9a37-27852d564b27','2024-04-15 14:46:47','17019352-1247-1172-9a37-27852d564b27','2024-04-20 13:39:56');
 
 /*Table structure for table `tbl_audit_logs` */
 
@@ -252,7 +252,27 @@ CREATE TABLE `tbl_menumaster` (
 
 /*Data for the table `tbl_menumaster` */
 
-insert  into `tbl_menumaster`(`id`,`menuname`,`pagename`) values ('17024612-6799-0841-dfbc-c6f078474330','Apps','manage_apps'),('17024613-1815-4677-e481-26bd85c4440c','Removed Apps','manage_removed_apps'),('17024613-2381-8465-ffdf-d46967d64445','Play Store','manage_play_store'),('17024613-2714-6516-4c0c-e0ea67124fe1','ADX','manage_adx');
+insert  into `tbl_menumaster`(`id`,`menuname`,`pagename`) values ('17024612-6799-0841-dfbc-c6f078474330','Apps','manage_apps'),('17024613-1815-4677-e481-26bd85c4440c','Removed Apps','manage_removed_apps'),('17024613-2381-8465-ffdf-d46967d64445','Play Store','manage_play_store'),('17024613-2714-6516-4c0c-e0ea67124fe1','ADX','manage_adx'),('17138720-3655-8054-8401-cf9d19ca438f','Notification','manage_notification');
+
+/*Table structure for table `tbl_notification` */
+
+DROP TABLE IF EXISTS `tbl_notification`;
+
+CREATE TABLE `tbl_notification` (
+  `id` varchar(50) NOT NULL,
+  `app_id` varchar(50) DEFAULT NULL,
+  `app_name` varchar(150) DEFAULT NULL,
+  `app_package` varchar(150) DEFAULT NULL,
+  `app_logo` varchar(150) DEFAULT NULL,
+  `type` int(11) DEFAULT 1,
+  `is_read` tinyint(4) DEFAULT 0,
+  `entry_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `tbl_notification` */
+
+insert  into `tbl_notification`(`id`,`app_id`,`app_name`,`app_package`,`app_logo`,`type`,`is_read`,`entry_date`) values ('17138719-8128-6958-270e-ea4b04a14437','17128887-3017-7352-897e-c7c144174289','Test 123','ldqloanemicalc.loanemitools.loanemicalculator.tssipcalculator','upload/images/app/17128887-3017-7352-897e-c7c144174289/Screenshot 2024-03-19 101809.png',2,0,'2024-04-23 17:03:01');
 
 /*Table structure for table `tbl_play_store` */
 
@@ -396,7 +416,7 @@ CREATE TABLE `tbl_users` (
 
 /*Data for the table `tbl_users` */
 
-insert  into `tbl_users`(`id`,`name`,`username`,`password`,`role_id`,`last_logged_in`,`last_login_offset`,`insert_at`,`phone`,`email`,`token`,`otp`) values ('17019352-1247-1172-9a37-27852d564b27','Admin','a','0cc175b9c0f1b6a831c399e269772661','17019350-1059-3172-f8de-9c507e9e4901','2024-04-19 12:58:05','330','2023-02-01 11:49:50',NULL,'admin@admin.com','',386110);
+insert  into `tbl_users`(`id`,`name`,`username`,`password`,`role_id`,`last_logged_in`,`last_login_offset`,`insert_at`,`phone`,`email`,`token`,`otp`) values ('17019352-1247-1172-9a37-27852d564b27','Admin','a','0cc175b9c0f1b6a831c399e269772661','17019350-1059-3172-f8de-9c507e9e4901','2024-04-22 17:14:05','330','2023-02-01 11:49:50',NULL,'admin@admin.com','',386110);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

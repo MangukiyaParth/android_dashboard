@@ -518,6 +518,12 @@ function doAPICall(obj, callback, is_async) {
             showError(JSON.stringify(response.error), "ERROR");
         }
         else {
+            if(response.noti_count && response.noti_count > 0){
+                $(".noti-cnt").removeClass('d-none').html(response.noti_count);
+            }
+            else{
+                $(".noti-cnt").addClass('d-none').html(0);
+            }
             callback(response);
         }
     }).fail(function (err) {
@@ -905,4 +911,106 @@ function clearTageditor(ele){
     if(tags){
         for (i = 0; i < tags.length; i++) { $(ele).tagEditor('removeTag', tags[i]); }
     }
+}
+
+function OpenNotification() {
+    var req_data = {
+        op: "manage_notification"
+        , action: "get_data"
+    };
+    doAPICall(req_data, async function(data){
+        if (data && data != null && data.success) {
+            hideLoading();
+            var notiData = data.data;
+            var html = "";
+            notiData.forEach((notification) => {
+                var logo_url = (notification.app_logo.includes("upload/")) ? WEB_API_FOLDER + notification.app_logo : notification.app_logo;
+                html += `<a href="javascript: void(0);" class="dropdown-item p-0 notify-item card unread-noti ${(notification.type == 2) ? 'noti-warning' : 'noti-success'} shadow-none mb-2 noti-${notification.id}">
+                            <div class="card-body">
+                                <span class="float-end noti-close-btn text-danger" onclick="remove_notification('${notification.id}')"><i class="mdi mdi-close"></i></span>
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-shrink-0">
+                                        <div class="notify-icon bg-primary">
+                                            <img src="${logo_url}" class="noti-icon" onclick="openAppInPlaystore('${notification.app_package}')"> 
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow-1 text-truncate ms-2">
+                                        <div class="d-flex justify-content-between me-2">
+                                            <h5 class="noti-item-title fw-semibold font-15" onclick="openAppInPlaystore('${notification.app_package}')"> ${notification.app_name}</h5>
+                                            <small class="fw-normal text-muted ms-1">${notification.date_formated}</small>
+                                        </div>
+                                        <small class="noti-item-subtitle text-muted" onclick="openAppInPlaystore('${notification.app_package}')">${notification.app_package}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>`;
+            });
+            $("#notification_list").html(html);
+            $("#notification-offcanvas").offcanvas('toggle');
+            return false;
+        }
+        else if (data && data != null && !data.success) {
+            hideLoading();
+            return false;
+        }
+    });
+}
+
+function openAppInPlaystore(package){
+    window.open("https://play.google.com/store/apps/details?id="+package, '_blank');
+}
+
+function clearAllNotification(){
+    $("#notification_delete_modal").modal('show');
+}
+
+function delete_all_notification(){
+    var req_data = {
+        op: "manage_notification"
+        , action: "delete_all"
+    };
+    doAPICall(req_data, async function(data){
+        if (data && data != null && data.success) {
+            hideLoading();
+            $(".noti-cnt").addClass('d-none').html(0);
+            $("#notification_list").html("");
+            $("#notification_delete_modal").modal('hide');
+            showMessage(data.message);
+            return false;
+        }
+        else if (data && data != null && !data.success) {
+            hideLoading();
+            showError(data.message);
+            return false;
+        }
+    });
+}
+
+function remove_notification(id){
+    var req_data = {
+        op: "manage_notification"
+        , action: "delete_data"
+        , id: id
+    };
+    doAPICall(req_data, async function(data){
+        if (data && data != null && data.success) {
+            hideLoading();
+            var curr_cnt = $(".noti-cnt").html();
+            var new_cnt = curr_cnt - 1;
+            if(new_cnt > 0){
+                $(".noti-cnt").removeClass('d-none').html(new_cnt);
+            }
+            else{
+                $(".noti-cnt").addClass('d-none').html(0);
+            }
+            $(".noti-"+id).remove();
+            showMessage(data.message);
+            return false;
+        }
+        else if (data && data != null && !data.success) {
+            hideLoading();
+            showError(data.message);
+            return false;
+        }
+    });
 }

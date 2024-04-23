@@ -256,6 +256,10 @@ if ($debug_mode >= 1) {
 	$outputjson["query_info"] = array();
 }
 
+$noti_count_query = "SELECT count(DISTINCT id) as cnt FROM tbl_notification WHERE is_read = 0";
+$noti_count = $db->execute_scalar($noti_count_query);
+$outputjson["noti_count"] = $noti_count;
+
 try {
 	if (!isset($operation) || empty($operation)) {
 		$outputjson['error'] = "Operation missing in request.";

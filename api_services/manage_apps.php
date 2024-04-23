@@ -5,8 +5,7 @@ function manage_apps()
 	global $outputjson, $gh, $db;
 	$outputjson['success'] = 0;
 	$action = $gh->read("action");
-	if($action == "get_data")
-	{ 
+	if($action == "get_data"){ 
 		$start = $gh->read("start");
 		$length = $gh->read("length");
 		$searcharr = $gh->read("search");
@@ -108,8 +107,7 @@ function manage_apps()
 			$outputjson['recordsFiltered'] = 0;
 			$outputjson['message'] = "No Products found!";
 		}
-	}else if($action == "add_data")
-	{
+	}else if($action == "add_data"){
 		$id = $gh->read("id");
 		$user_id = $gh->read("user_id", 0);
 		$playstore = $gh->read("playstore");
@@ -256,8 +254,7 @@ function manage_apps()
 		$outputjson['message'] = 'Data updated successfully.';
 		$outputjson["data"] = $rows[0];
 
-	}else if($action == "export_csv")
-	{
+	}else if($action == "export_csv"){
 		$filter = $gh->read("filter");
 		$whereData = "";
 		if($filter != ""){

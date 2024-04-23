@@ -545,3 +545,17 @@ img[src="#"] {
 	font-size: 20px;
 	font-weight: 500;
 }
+
+.noti-icon{
+	width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.noti-warning {
+	background-color: rgba(255, 195, 90, 0.18) !important;
+}
+
+.noti-success {
+	background-color: rgba(10, 207, 151, 0.18) !important;
+}
