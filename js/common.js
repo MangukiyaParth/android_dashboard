@@ -229,7 +229,9 @@ function setFileDropzone(element){
         previewsContainer: previewsContainer,
         maxFiles: (multiple) ? null : 1,
         dictMaxFilesExceeded: "You can not upload any more then {{maxFiles}} files.",
-        paramName: pname,
+        headers: {
+            'Auth-Token': AUTH_TOKEN
+        },
         params(files, xhr, chunk) {
             var uuid = files.map(function (el) { return el.upload.uuid; });
             return {

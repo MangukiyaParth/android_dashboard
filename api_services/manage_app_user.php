@@ -92,79 +92,47 @@ function manage_app_user()
 			$app_setting = $rows_setting[0];
 		}
 
-		// $qry_bifurcate = "SELECT s.* FROM tbl_app_ad_settings s 
-		// INNER JOIN tbl_apps a ON a.id = s.app_id 
-		// WHERE a.package_name = '$package' AND s.`type` = $type AND s.is_bifurcate = 1
-		// AND (
-		// 	'$as' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"') OR
-		// 	'$asname' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"') OR
-		// 	'$callingCode' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"') OR
-		// 	'$city' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"') OR
-		// 	'$continent' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"') OR
-		// 	'$continentCode' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"') OR
-		// 	'$country' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"') OR
-		// 	'$countryCode' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"') OR
-		// 	'$countryCode3' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"') OR
-		// 	'$currency' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"') OR
-		// 	'$currentTime' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"') OR
-		// 	'$district' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"') OR
-		// 	'$hosting' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"') OR
-		// 	'$isp' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"') OR
-		// 	'$lat' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"') OR
-		// 	'$lon' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"') OR
-		// 	'$mobile' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"') OR
-		// 	'$offset' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"') OR
-		// 	'$org' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"') OR
-		// 	'$proxy' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"') OR
-		// 	'$query' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"') OR
-		// 	'$region' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"') OR
-		// 	'$regionName' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"') OR
-		// 	'$reverse' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"') OR
-		// 	'$status' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"') OR
-		// 	'$timezone' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"') OR
-		// 	'$zip' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"') OR
-		// 	'$device_id' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"') OR
-		// 	'$retention' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"') OR
-		// 	'$installerinfo' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"') OR
-		// 	'$installerurl' IN CONCAT('\"',REPLACE(`bifurcate_location`, ',', '\",\"'),'\"')
-		// 	)";
-		$qry_bifurcate = "SELECT s.* FROM tbl_app_ad_settings s 
-		INNER JOIN tbl_apps a ON a.id = s.app_id 
-		WHERE a.package_name = '$package' AND s.`type` = $type AND s.is_bifurcate = 1
-		AND (
-			FIND_IN_SET('$as', s.`bifurcate_location`) OR
-			FIND_IN_SET('$asname', s.`bifurcate_location`) OR
-			FIND_IN_SET('$callingCode', s.`bifurcate_location`) OR
-			FIND_IN_SET('$city', s.`bifurcate_location`) OR
-			FIND_IN_SET('$continent', s.`bifurcate_location`) OR
-			FIND_IN_SET('$continentCode', s.`bifurcate_location`) OR
-			FIND_IN_SET('$country', s.`bifurcate_location`) OR
-			FIND_IN_SET('$countryCode', s.`bifurcate_location`) OR
-			FIND_IN_SET('$countryCode3', s.`bifurcate_location`) OR
-			FIND_IN_SET('$currency', s.`bifurcate_location`) OR
-			FIND_IN_SET('$currentTime', s.`bifurcate_location`) OR
-			FIND_IN_SET('$district', s.`bifurcate_location`) OR
-			FIND_IN_SET('$hosting', s.`bifurcate_location`) OR
-			FIND_IN_SET('$isp', s.`bifurcate_location`) OR
-			FIND_IN_SET('$lat', s.`bifurcate_location`) OR
-			FIND_IN_SET('$lon', s.`bifurcate_location`) OR
-			FIND_IN_SET('$mobile', s.`bifurcate_location`) OR
-			FIND_IN_SET('$offset', s.`bifurcate_location`) OR
-			FIND_IN_SET('$org', s.`bifurcate_location`) OR
-			FIND_IN_SET('$proxy', s.`bifurcate_location`) OR
-			FIND_IN_SET('$query', s.`bifurcate_location`) OR
-			FIND_IN_SET('$region', s.`bifurcate_location`) OR
-			FIND_IN_SET('$regionName', s.`bifurcate_location`) OR
-			FIND_IN_SET('$reverse', s.`bifurcate_location`) OR
-			FIND_IN_SET('$status', s.`bifurcate_location`) OR
-			FIND_IN_SET('$timezone', s.`bifurcate_location`) OR
-			FIND_IN_SET('$zip', s.`bifurcate_location`) OR
-			FIND_IN_SET('$device_id', s.`bifurcate_location`) OR
-			FIND_IN_SET('$retention', s.`bifurcate_location`) OR
-			FIND_IN_SET('$installerinfo', s.`bifurcate_location`) OR
-			FIND_IN_SET('$installerurl', s.`bifurcate_location`)
-			)";
-		$rows_bifurcate = $db->execute($qry_bifurcate);
+		$rows_bifurcate = null;
+
+		if($as != ""){
+			$qry_bifurcate = "SELECT s.* FROM tbl_app_ad_settings s 
+			INNER JOIN tbl_apps a ON a.id = s.app_id 
+			WHERE a.package_name = '$package' AND s.`type` = $type AND s.is_bifurcate = 1
+			AND (
+				FIND_IN_SET('$as', s.`bifurcate_location`) OR
+				FIND_IN_SET('$asname', s.`bifurcate_location`) OR
+				FIND_IN_SET('$callingCode', s.`bifurcate_location`) OR
+				FIND_IN_SET('$city', s.`bifurcate_location`) OR
+				FIND_IN_SET('$continent', s.`bifurcate_location`) OR
+				FIND_IN_SET('$continentCode', s.`bifurcate_location`) OR
+				FIND_IN_SET('$country', s.`bifurcate_location`) OR
+				FIND_IN_SET('$countryCode', s.`bifurcate_location`) OR
+				FIND_IN_SET('$countryCode3', s.`bifurcate_location`) OR
+				FIND_IN_SET('$currency', s.`bifurcate_location`) OR
+				FIND_IN_SET('$currentTime', s.`bifurcate_location`) OR
+				FIND_IN_SET('$district', s.`bifurcate_location`) OR
+				FIND_IN_SET('$hosting', s.`bifurcate_location`) OR
+				FIND_IN_SET('$isp', s.`bifurcate_location`) OR
+				FIND_IN_SET('$lat', s.`bifurcate_location`) OR
+				FIND_IN_SET('$lon', s.`bifurcate_location`) OR
+				FIND_IN_SET('$mobile', s.`bifurcate_location`) OR
+				FIND_IN_SET('$offset', s.`bifurcate_location`) OR
+				FIND_IN_SET('$org', s.`bifurcate_location`) OR
+				FIND_IN_SET('$proxy', s.`bifurcate_location`) OR
+				FIND_IN_SET('$query', s.`bifurcate_location`) OR
+				FIND_IN_SET('$region', s.`bifurcate_location`) OR
+				FIND_IN_SET('$regionName', s.`bifurcate_location`) OR
+				FIND_IN_SET('$reverse', s.`bifurcate_location`) OR
+				FIND_IN_SET('$status', s.`bifurcate_location`) OR
+				FIND_IN_SET('$timezone', s.`bifurcate_location`) OR
+				FIND_IN_SET('$zip', s.`bifurcate_location`) OR
+				FIND_IN_SET('$device_id', s.`bifurcate_location`) OR
+				FIND_IN_SET('$retention', s.`bifurcate_location`) OR
+				FIND_IN_SET('$installerinfo', s.`bifurcate_location`) OR
+				FIND_IN_SET('$installerurl', s.`bifurcate_location`)
+				)";
+			$rows_bifurcate = $db->execute($qry_bifurcate);
+		}
 		$ad_setting = [];
 		if ($rows_bifurcate != null && is_array($rows_bifurcate) && count($rows_bifurcate) > 0) {
 			$ad_setting = $rows_bifurcate[0]; 
@@ -174,7 +142,7 @@ function manage_app_user()
 				INNER JOIN tbl_apps a ON a.id = s.app_id 
 				WHERE a.package_name = '$package' AND s.`type` = $type AND s.is_bifurcate = 0";
 			$rows_ad = $db->execute($qry_ad);
-			if ($rows_bifurcate != null && is_array($rows_bifurcate) && count($rows_bifurcate) > 0) {
+			if ($rows_ad != null && is_array($rows_ad) && count($rows_ad) > 0) {
 				$ad_setting = $rows_ad[0]; 
 			}
 		}
@@ -188,9 +156,6 @@ function manage_app_user()
 		
 		if($app_setting){
 			$google = [];
-			$app_remove = [];
-			$other_settings = [];
-			$vpn_settings = [];
 
 			/**************** Google Ads ****************/
 			$google['google1'] = null;
@@ -251,7 +216,6 @@ function manage_app_user()
 					'google_appId' => $app_setting['g3_appid'],
 				);
 			}
-			$res_data['google'] = $google;
 
 			/************ App Remove Flag ************/
 			if($app_setting['app_remove_flag'] != "" || 
@@ -271,63 +235,11 @@ function manage_app_user()
 					'skip_button_name' => $app_setting['app_remove_skip_button_name'],
 				);
 			}
-			
-			/************ Other Settings ************/
-			if($app_setting['all_ads'] != "" || 
-				$app_setting['fullscreen'] != "" || 
-				$app_setting['adblock_version'] != "" || 
-				$app_setting['continue_screen'] != "" || 
-				$app_setting['lets_start_screen'] != "" || 
-				$app_setting['age_screen'] != "" || 
-				$app_setting['next_screen'] != "" ||
-				$app_setting['next_inner_screen'] != "" ||
-				$app_setting['contact_screen'] != "" ||
-				$app_setting['start_screen'] != "" ||
-				$app_setting['real_casting_flow'] != "" ||
-				$app_setting['app_stop'] != "" ||
-				$app_setting['additional_fields'] != ""){
-				$other_settings = array(
-					'allAds' => $app_setting['all_ads'],
-					'screenNavigationFull' => $app_setting['fullscreen'],
-					'versionCodeforAdblock' => $app_setting['adblock_version'],
-					'continueScreen' => $app_setting['continue_screen'],
-					'letStartScreen' => $app_setting['lets_start_screen'],
-					'genderScreen' => $app_setting['age_screen'],
-					'nextScreen' => $app_setting['next_screen'],
-					'nextInnerScreen' => $app_setting['next_inner_screen'],
-					'connectScreen' => $app_setting['contact_screen'],
-					'startScreen' => $app_setting['start_screen'],
-					'castingFlow' => $app_setting['real_casting_flow'],
-					'dialogApp' => $app_setting['app_stop'],
-					'additionalFields' => json_decode($app_setting['additional_fields'])
-				);
-			}
-			
-			/************ VPN Settings ************/
-			if($app_setting['vpn'] != "" || 
-				$app_setting['vpn_dialog'] != "" || 
-				$app_setting['vpn_dialog_open'] != "" || 
-				$app_setting['vpn_country'] != "" || 
-				$app_setting['vpn_url'] != "" || 
-				$app_setting['vpn_carrier_id'] != ""){
-				$vpn_settings = array(
-					'vpn' => $app_setting['vpn'],
-					'vpn_dialog' => $app_setting['vpn_dialog'],
-					'vpn_dialog_open' => $app_setting['vpn_dialog_open'],
-					'vpn_country' => json_decode($app_setting['vpn_country'], true),
-					'vpn_url' => $app_setting['vpn_url'],
-					'vpn_carrier_id' => $app_setting['vpn_carrier_id']
-				);
-			}
 		}
-		$res_data['google'] = $google;
-		$res_data['app_remove'] = $app_remove;
-		$res_data['other_settings'] = $other_settings;
-		$res_data['vpn_settings'] = $vpn_settings;
 
 		/******************************* Ad Setting *******************************/
+		$ads_settings = null;
 		if($ad_setting){
-			$ads_settings = [];
 			$ads_settings['app_color'] = null;
 			if($ad_setting['app_color'] != "" || 
 				$ad_setting['app_background_color'] != ""){
@@ -397,8 +309,62 @@ function manage_app_user()
 					'app_open_loading' => $ad_setting['app_open_loading']
 				);
 			}
+
+			/************ Other Settings ************/
+			if($ad_setting['all_ads'] != "" || 
+				$ad_setting['fullscreen'] != "" || 
+				$ad_setting['adblock_version'] != "" || 
+				$ad_setting['continue_screen'] != "" || 
+				$ad_setting['lets_start_screen'] != "" || 
+				$ad_setting['age_screen'] != "" || 
+				$ad_setting['next_screen'] != "" ||
+				$ad_setting['next_inner_screen'] != "" ||
+				$ad_setting['contact_screen'] != "" ||
+				$ad_setting['start_screen'] != "" ||
+				$ad_setting['real_casting_flow'] != "" ||
+				$ad_setting['app_stop'] != "" ||
+				$ad_setting['additional_fields'] != ""){
+				$other_settings = array(
+					'allAds' => $ad_setting['all_ads'],
+					'screenNavigationFull' => $ad_setting['fullscreen'],
+					'versionCodeforAdblock' => $ad_setting['adblock_version'],
+					'continueScreen' => $ad_setting['continue_screen'],
+					'letStartScreen' => $ad_setting['lets_start_screen'],
+					'genderScreen' => $ad_setting['age_screen'],
+					'nextScreen' => $ad_setting['next_screen'],
+					'nextInnerScreen' => $ad_setting['next_inner_screen'],
+					'connectScreen' => $ad_setting['contact_screen'],
+					'startScreen' => $ad_setting['start_screen'],
+					'castingFlow' => $ad_setting['real_casting_flow'],
+					'dialogApp' => $ad_setting['app_stop'],
+					'additionalFields' => json_decode($ad_setting['additional_fields'])
+				);
+			}
+			
+			/************ VPN Settings ************/
+			if($ad_setting['vpn'] != "" || 
+				$ad_setting['vpn_dialog'] != "" || 
+				$ad_setting['vpn_dialog_open'] != "" || 
+				$ad_setting['vpn_country'] != "" || 
+				$ad_setting['vpn_url'] != "" || 
+				$ad_setting['vpn_carrier_id'] != ""){
+				$vpn_settings = array(
+					'vpn' => $ad_setting['vpn'],
+					'vpn_dialog' => $ad_setting['vpn_dialog'],
+					'vpn_dialog_open' => $ad_setting['vpn_dialog_open'],
+					'vpn_country' => json_decode($ad_setting['vpn_country'], true),
+					'vpn_url' => $ad_setting['vpn_url'],
+					'vpn_carrier_id' => $ad_setting['vpn_carrier_id']
+				);
+			}
 		}
+		
+		
+		$res_data['google'] = $google;
+		$res_data['app_remove'] = $app_remove;
 		$res_data['ads_settings'] = $ads_settings;
+		$res_data['other_settings'] = $other_settings;
+		$res_data['vpn_settings'] = $vpn_settings;
 
 		$outputjson['success'] = 1;
 		$outputjson['status'] = 1;

@@ -9000,7 +9000,7 @@ fieldset:disabled .btn {
     display: inline-block;
     min-height: 1em;
     vertical-align: middle;
-    cursor: wait;
+    /* cursor: wait; */
     background-color: currentcolor;
     opacity: .5
 }
@@ -16803,7 +16803,7 @@ html[data-topbar-color=dark] .navbar-custom .logo-topbar .logo-dark {
     display: none
 }
 
-@media (max-width:375px) {
+@media (max-width:992px) {
     .navbar-custom .topbar-menu .nav-link {
         margin: 0 5px
     }

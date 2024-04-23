@@ -100,32 +100,32 @@
                     <div class="card-body">
                         <ul class="nav nav-tabs nav-bordered mb-3" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <a href="#google" class="nav-link active" data-bs-toggle="tab" role="tab" aria-controls="nav-google" aria-selected="true">
+                                <a href="#google" class="nav-link active" data-bs-toggle="tab" role="tab" aria-controls="nav-google" aria-selected="true" onclick="set_is_bifurcate(0)">
                                     Google
                                 </a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a href="#ad" class="nav-link" data-bs-toggle="tab" role="tab" aria-controls="nav-ad" aria-selected="false" tabindex="-1">
+                                <a href="#ad" class="nav-link" data-bs-toggle="tab" role="tab" aria-controls="nav-ad" aria-selected="false" tabindex="-1" onclick="set_is_bifurcate(0)">
                                     Ad Setting
                                 </a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a href="#bifurcate" class="nav-link" data-bs-toggle="tab" role="tab" aria-controls="nav-bifurcate" aria-selected="false" tabindex="-1">
+                                <a href="#bifurcate" class="nav-link" data-bs-toggle="tab" role="tab" aria-controls="nav-bifurcate" aria-selected="false" tabindex="-1" onclick="set_is_bifurcate(1)">
                                     Bifurcate
                                 </a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a href="#other" class="nav-link" data-bs-toggle="tab" role="tab" aria-controls="nav-other" aria-selected="false" tabindex="-1">
+                                <a href="#other" class="nav-link" data-bs-toggle="tab" role="tab" aria-controls="nav-other" aria-selected="false" tabindex="-1" onclick="set_is_bifurcate(0)">
                                     Other Setting
                                 </a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a href="#vpn" class="nav-link" data-bs-toggle="tab" role="tab" aria-controls="nav-vpn" aria-selected="false" tabindex="-1">
+                                <a href="#vpn" class="nav-link" data-bs-toggle="tab" role="tab" aria-controls="nav-vpn" aria-selected="false" tabindex="-1" onclick="set_is_bifurcate(0)">
                                     VPN
                                 </a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a href="#app-remove" class="nav-link" data-bs-toggle="tab" role="tab" aria-controls="nav-app-remove" aria-selected="false" tabindex="-1">
+                                <a href="#app-remove" class="nav-link" data-bs-toggle="tab" role="tab" aria-controls="nav-app-remove" aria-selected="false" tabindex="-1" onclick="set_is_bifurcate(0)">
                                     App Remove Flags
                                 </a>
                             </li>
@@ -858,6 +858,234 @@
                                             </div>
                                         </div>
                                         <hr>
+                                        <div class="row">
+                                            <div class="col-sm-2"><p class="tab-title">Other Setting</p></div>
+                                            <div class="col-sm-10">
+                                                <table class="table table-centered table-borderless">
+                                                    <tbody id="bifurcate_setting_table">
+                                                        <tr>
+                                                            <td>All Ads</td>
+                                                            <td>
+                                                                <div class="form-check form-radio-success form-check-inline">
+                                                                    <input type="radio" id="bifurcate_allAdsShow" name="bifurcate_all_ads" class="form-check-input" value="show">
+                                                                    <label class="form-check-label" for="bifurcate_allAdsShow">Show</label>
+                                                                </div>
+                                                                <div class="form-check form-radio-success form-check-inline">
+                                                                    <input type="radio" id="bifurcate_allAdsHide" name="bifurcate_all_ads" class="form-check-input" value="hide" checked>
+                                                                    <label class="form-check-label" for="bifurcate_allAdsHide">Hide</label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Full Screen (Navigation)</td>
+                                                            <td>
+                                                                <div class="form-check form-radio-success form-check-inline">
+                                                                    <input type="radio" id="bifurcate_fullscreenShow" name="bifurcate_fullscreen" class="form-check-input" value="show">
+                                                                    <label class="form-check-label" for="bifurcate_fullscreenShow">Show</label>
+                                                                </div>
+                                                                <div class="form-check form-radio-success form-check-inline">
+                                                                    <input type="radio" id="bifurcate_fullscreenHide" name="bifurcate_fullscreen" class="form-check-input" value="hide" checked>
+                                                                    <label class="form-check-label" for="bifurcate_fullscreenHide">Hide</label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>VersionCode for adBlock</td>
+                                                            <td>
+                                                                <input type="text" id="bifurcate_adblock_version" name="bifurcate_adblock_version" class="form-control" placeholder="0">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Continue Screen</td>
+                                                            <td>
+                                                                <div class="form-check form-radio-success form-check-inline">
+                                                                    <input type="radio" id="bifurcate_continueSceenShow" name="bifurcate_continue_screen" class="form-check-input" value="show">
+                                                                    <label class="form-check-label" for="bifurcate_continueSceenShow">Show</label>
+                                                                </div>
+                                                                <div class="form-check form-radio-success form-check-inline">
+                                                                    <input type="radio" id="bifurcate_continueSceenHide" name="bifurcate_continue_screen" class="form-check-input" value="hide" checked>
+                                                                    <label class="form-check-label" for="bifurcate_continueSceenHide">Hide</label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Let's Start Screen</td>
+                                                            <td>
+                                                                <div class="form-check form-radio-success form-check-inline">
+                                                                    <input type="radio" id="bifurcate_letsStartScreenShow" name="bifurcate_lets_start_screen" class="form-check-input" value="show">
+                                                                    <label class="form-check-label" for="bifurcate_letsStartScreenShow">Show</label>
+                                                                </div>
+                                                                <div class="form-check form-radio-success form-check-inline">
+                                                                    <input type="radio" id="bifurcate_letsStartScreenHide" name="bifurcate_lets_start_screen" class="form-check-input" value="hide" checked>
+                                                                    <label class="form-check-label" for="bifurcate_letsStartScreenHide">Hide</label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Age/Gender Start Screen</td>
+                                                            <td>
+                                                                <div class="form-check form-radio-success form-check-inline">
+                                                                    <input type="radio" id="bifurcate_ageScreenShow" name="bifurcate_age_screen" class="form-check-input" value="show">
+                                                                    <label class="form-check-label" for="bifurcate_ageScreenShow">Show</label>
+                                                                </div>
+                                                                <div class="form-check form-radio-success form-check-inline">
+                                                                    <input type="radio" id="bifurcate_ageScreenHide" name="bifurcate_age_screen" class="form-check-input" value="hide" checked>
+                                                                    <label class="form-check-label" for="bifurcate_ageScreenHide">Hide</label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Next Screen</td>
+                                                            <td>
+                                                                <div class="form-check form-radio-success form-check-inline">
+                                                                    <input type="radio" id="bifurcate_nextScreenShow" name="bifurcate_next_screen" class="form-check-input" value="show">
+                                                                    <label class="form-check-label" for="bifurcate_nextScreenShow">Show</label>
+                                                                </div>
+                                                                <div class="form-check form-radio-success form-check-inline">
+                                                                    <input type="radio" id="bifurcate_nextScreenHide" name="bifurcate_next_screen" class="form-check-input" value="hide" checked>
+                                                                    <label class="form-check-label" for="bifurcate_nextScreenHide">Hide</label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Next Inner Screen</td>
+                                                            <td>
+                                                                <div class="form-check form-radio-success form-check-inline">
+                                                                    <input type="radio" id="bifurcate_nextInnerScreenShow" name="bifurcate_next_inner_screen" class="form-check-input" value="show">
+                                                                    <label class="form-check-label" for="bifurcate_nextInnerScreenShow">Show</label>
+                                                                </div>
+                                                                <div class="form-check form-radio-success form-check-inline">
+                                                                    <input type="radio" id="bifurcate_nextInnerScreenHide" name="bifurcate_next_inner_screen" class="form-check-input" value="hide" checked>
+                                                                    <label class="form-check-label" for="bifurcate_nextInnerScreenHide">Hide</label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Contact Screen</td>
+                                                            <td>
+                                                                <div class="form-check form-radio-success form-check-inline">
+                                                                    <input type="radio" id="bifurcate_contactScreenShow" name="bifurcate_contact_screen" class="form-check-input" value="show">
+                                                                    <label class="form-check-label" for="bifurcate_contactScreenShow">Show</label>
+                                                                </div>
+                                                                <div class="form-check form-radio-success form-check-inline">
+                                                                    <input type="radio" id="bifurcate_contactScreenHide" name="bifurcate_contact_screen" class="form-check-input" value="hide" checked>
+                                                                    <label class="form-check-label" for="bifurcate_contactScreenHide">Hide</label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Start Screen</td>
+                                                            <td>
+                                                                <div class="form-check form-radio-success form-check-inline">
+                                                                    <input type="radio" id="bifurcate_startScreenShow" name="bifurcate_start_screen" class="form-check-input" value="show">
+                                                                    <label class="form-check-label" for="bifurcate_startScreenShow">Show</label>
+                                                                </div>
+                                                                <div class="form-check form-radio-success form-check-inline">
+                                                                    <input type="radio" id="bifurcate_startScreenHide" name="bifurcate_start_screen" class="form-check-input" value="hide" checked>
+                                                                    <label class="form-check-label" for="bifurcate_startScreenHide">Hide</label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Real Casting Flow</td>
+                                                            <td>
+                                                                <div class="form-check form-radio-success form-check-inline">
+                                                                    <input type="radio" id="bifurcate_realCastingFlowShow" name="bifurcate_real_casting_flow" class="form-check-input" value="show">
+                                                                    <label class="form-check-label" for="bifurcate_realCastingFlowShow">Show</label>
+                                                                </div>
+                                                                <div class="form-check form-radio-success form-check-inline">
+                                                                    <input type="radio" id="bifurcate_realCastingFlowHide" name="bifurcate_real_casting_flow" class="form-check-input" value="hide" checked>
+                                                                    <label class="form-check-label" for="bifurcate_realCastingFlowHide">Hide</label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Dialog For App Stop</td>
+                                                            <td>
+                                                                <div class="form-check form-radio-success form-check-inline">
+                                                                    <input type="radio" id="bifurcate_appStopShow" name="bifurcate_app_stop" class="form-check-input" value="show">
+                                                                    <label class="form-check-label" for="bifurcate_appStopShow">Show</label>
+                                                                </div>
+                                                                <div class="form-check form-radio-success form-check-inline">
+                                                                    <input type="radio" id="bifurcate_appStopHide" name="bifurcate_app_stop" class="form-check-input" value="hide" checked>
+                                                                    <label class="form-check-label" for="bifurcate_appStopHide">Hide</label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <button type="button" class="btn btn-outline-info rounded-pill" onclick="add_setting_field()"><span class="fa-plus"></span> Add Field</button>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-2"><p class="tab-title">VPN Setting</p></div>
+                                            <div class="col-sm-10">
+                                                <table class="table table-centered table-borderless">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>VPN</td>
+                                                            <td>
+                                                                <div class="form-check form-radio-success form-check-inline">
+                                                                    <input type="radio" id="bifurcate_vpnShow" name="bifurcate_vpn" class="form-check-input" value="show">
+                                                                    <label class="form-check-label" for="bifurcate_vpnShow">Show</label>
+                                                                </div>
+                                                                <div class="form-check form-radio-success form-check-inline">
+                                                                    <input type="radio" id="bifurcate_vpnHide" name="bifurcate_vpn" class="form-check-input" value="hide" checked>
+                                                                    <label class="form-check-label" for="bifurcate_vpnHide">Hide</label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>VPN Dialog</td>
+                                                            <td>
+                                                                <div class="form-check form-radio-success form-check-inline">
+                                                                    <input type="radio" id="bifurcate_vpnDialogShow" name="bifurcate_vpn_dialog" class="form-check-input" value="show">
+                                                                    <label class="form-check-label" for="bifurcate_vpnDialogShow">Show</label>
+                                                                </div>
+                                                                <div class="form-check form-radio-success form-check-inline">
+                                                                    <input type="radio" id="bifurcate_vpnDialogHide" name="bifurcate_vpn_dialog" class="form-check-input" value="hide" checked>
+                                                                    <label class="form-check-label" for="bifurcate_vpnDialogHide">Hide</label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>VPN Dialog Open</td>
+                                                            <td>
+                                                                <div class="form-check form-radio-success form-check-inline">
+                                                                    <input type="radio" id="bifurcate_vpnDialogOpenShow" name="bifurcate_vpn_dialog_open" class="form-check-input" value="show">
+                                                                    <label class="form-check-label" for="bifurcate_vpnDialogOpenShow">Show</label>
+                                                                </div>
+                                                                <div class="form-check form-radio-success form-check-inline">
+                                                                    <input type="radio" id="bifurcate_vpnDialogOpenHide" name="bifurcate_vpn_dialog_open" class="form-check-input" value="hide" checked>
+                                                                    <label class="form-check-label" for="bifurcate_vpnDialogOpenHide">Hide</label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        
+                                                        <tr>
+                                                            <td>VPN List Country</td>
+                                                            <td>
+                                                                <input type="text" id="bifurcate_vpn_country" name="bifurcate_vpn_country" class="form-control">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>VPN URL</td>
+                                                            <td>
+                                                                <input type="text" id="bifurcate_vpn_url" name="bifurcate_vpn_url" class="form-control" placeholder="VPN URL">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>VPN Carrier Id</td>
+                                                            <td>
+                                                                <input type="text" id="bifurcate_vpn_carrier_id" name="bifurcate_vpn_carrier_id" class="form-control" placeholder="VPN Carrier Id">
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <hr>
                                         <div class="row mt-2">
                                             <div class="col-sm-12 text-end">
                                                 <button type="button" class="btn btn-primary" onclick="saveBifurcate_AdSettings()">Update</button>
@@ -1062,7 +1290,7 @@
                                     <div class="col-sm-2"><p class="tab-title">VPN Setting</p></div>
                                     <div class="col-sm-10">
                                         <table class="table table-centered table-borderless">
-                                            <tbody id="setting_table">
+                                            <tbody>
                                                 <tr>
                                                     <td>VPN</td>
                                                     <td>
@@ -1138,7 +1366,7 @@
                                     <div class="col-sm-2"><p class="tab-title">App Remove Flags</p></div>
                                     <div class="col-sm-10">
                                         <table class="table table-centered table-borderless">
-                                            <tbody id="setting_table">
+                                            <tbody>
                                                 <tr>
                                                     <td>flags</td>
                                                     <td>

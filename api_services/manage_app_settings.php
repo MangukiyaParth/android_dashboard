@@ -73,8 +73,8 @@ function manage_app_settings()
 
 		$today_con = " AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date('Y-m-d')."' ";
 		$yestarday_con = " AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date("Y-m-d", strtotime("-1 day"))."' ";
-		$org_con = " AND INSTR(installerurl,'gclid') > 0 ";
-		$mrk_con = " AND INSTR(installerurl,'gclid') = 0 ";
+		$org_con = " AND INSTR(installerurl,'gclid') = 0 ";
+		$mrk_con = " AND INSTR(installerurl,'gclid') > 0 ";
 
 		if($time_filter == 1)
 		{
@@ -284,7 +284,7 @@ function manage_app_settings()
 		$additional_fields = $_POST['additional_fields'];
 		$date = date('Y-m-d H:i:s');
 			
-		$count_query = "SELECT id from tbl_apps_settings WHERE app_id = '$app_id' AND `type` = $type";
+		$count_query = "SELECT id from tbl_app_ad_settings WHERE app_id = '$app_id' AND `type` = $type AND is_bifurcate = 0";
 		$id = $db->execute_scalar($count_query);
 		if($id > 0){
 			$data = array(
@@ -304,7 +304,7 @@ function manage_app_settings()
 				"update_uid" => $user_id,
 				"update_date" => $date,
 			);
-			$res = $db->update("tbl_apps_settings", $data, array("id"=>$id));
+			$res = $db->update("tbl_app_ad_settings", $data, array("id"=>$id));
 		}
 		else{
 			$id=$gh->generateuuid();
@@ -328,7 +328,7 @@ function manage_app_settings()
 				"entry_uid" => $user_id,
 				"entry_date" => $date,
 			);
-			$res = $db->insert("tbl_apps_settings", $data);
+			$res = $db->insert("tbl_app_ad_settings", $data);
 		}
 		$outputjson['result'] = $res;
 		$outputjson['success'] = 1;
@@ -347,7 +347,7 @@ function manage_app_settings()
 		$vpn_carrier_id = $gh->read("vpn_carrier_id", "");
 		$date = date('Y-m-d H:i:s');
 			
-		$count_query = "SELECT id from tbl_apps_settings WHERE app_id = '$app_id' AND `type` = $type";
+		$count_query = "SELECT id from tbl_app_ad_settings WHERE app_id = '$app_id' AND `type` = $type AND is_bifurcate = 0";
 		$id = $db->execute_scalar($count_query);
 		if($id > 0){
 			$data = array(
@@ -360,7 +360,7 @@ function manage_app_settings()
 				"update_uid" => $user_id,
 				"update_date" => $date,
 			);
-			$res = $db->update("tbl_apps_settings", $data, array("id"=>$id));
+			$res = $db->update("tbl_app_ad_settings", $data, array("id"=>$id));
 		}
 		else{
 			$id=$gh->generateuuid();
@@ -377,7 +377,7 @@ function manage_app_settings()
 				"entry_uid" => $user_id,
 				"entry_date" => $date,
 			);
-			$res = $db->insert("tbl_apps_settings", $data);
+			$res = $db->insert("tbl_app_ad_settings", $data);
 		}
 		$outputjson['result'] = $res;
 		$outputjson['success'] = 1;
@@ -463,71 +463,92 @@ function manage_app_settings()
 		$app_open_loading = $gh->read("app_open_loading","");
 		$splash_ads = $gh->read("splash_ads","");
 		$app_open = $gh->read("app_open","");
+
+		$all_ads = $gh->read("all_ads", "false");
+		$fullscreen = $gh->read("fullscreen", "false");
+		$adblock_version = $gh->read("adblock_version", "");
+		$continue_screen = $gh->read("continue_screen", "false");
+		$lets_start_screen = $gh->read("lets_start_screen", "false");
+		$age_screen = $gh->read("age_screen", "false");
+		$next_screen = $gh->read("next_screen", "false");
+		$next_inner_screen = $gh->read("next_inner_screen", "false");
+		$contact_screen = $gh->read("contact_screen", "false");
+		$start_screen = $gh->read("start_screen", "false");
+		$real_casting_flow = $gh->read("real_casting_flow", "false");
+		$app_stop = $gh->read("app_stop", "false");
+		$additional_fields = $_POST['additional_fields'];
+		$vpn = $gh->read("vpn", "false");
+		$vpn_dialog = $gh->read("vpn_dialog", "false");
+		$vpn_dialog_open = $gh->read("vpn_dialog_open", "false");
+		$vpn_country = $_POST["vpn_country"];
+		$vpn_url = $gh->read("vpn_url", "");
+		$vpn_carrier_id = $gh->read("vpn_carrier_id", "");
+
 		$date = date('Y-m-d H:i:s');
 			
 		$count_query = "SELECT id from tbl_app_ad_settings WHERE app_id = '$app_id' AND `type` = $type AND is_bifurcate = $is_bifurcate";
 		$id = $db->execute_scalar($count_query);
+		$data = array(
+			"bifurcate_location" => $bifurcate_location,
+			"app_color" => $app_color,
+			"app_background_color" => $app_background_color,
+			"native_loading" => $native_loading,
+			"bottom_banner" => $bottom_banner,
+			"all_screen_native" => $all_screen_native,
+			"list_native" => $list_native,
+			"list_native_cnt" => $list_native_cnt,
+			"exit_dialoge_native" => $exit_dialoge_native,
+			"native_btn" => $native_btn,
+			"native_btn_text" => $native_btn_text,
+			"native_background_color" => $native_background_color,
+			"native_text_color" => $native_text_color,
+			"native_button_background_color" => $native_button_background_color,
+			"native_button_text_color" => $native_button_text_color,
+			"alternate_with_appopen" => $alternate_with_appopen,
+			"inter_loading" => $inter_loading,
+			"inter_interval" => $inter_interval,
+			"back_click_inter" => $back_click_inter,
+			"app_open_loading" => $app_open_loading,
+			"splash_ads" => $splash_ads,
+			"app_open" => $app_open
+		);
+
+		if($is_bifurcate){
+			$data['all_ads'] = $all_ads;
+			$data['fullscreen'] = $fullscreen;
+			$data['adblock_version'] = $adblock_version;
+			$data['continue_screen'] = $continue_screen;
+			$data['lets_start_screen'] = $lets_start_screen;
+			$data['age_screen'] = $age_screen;
+			$data['next_screen'] = $next_screen;
+			$data['next_inner_screen'] = $next_inner_screen;
+			$data['contact_screen'] = $contact_screen;
+			$data['start_screen'] = $start_screen;
+			$data['real_casting_flow'] = $real_casting_flow;
+			$data['app_stop'] = $app_stop;
+			$data['additional_fields'] = $additional_fields;
+
+			$data['vpn'] = $vpn;
+			$data['vpn_dialog'] = $vpn_dialog;
+			$data['vpn_dialog_open'] = $vpn_dialog_open;
+			$data['vpn_country'] = $vpn_country;
+			$data['vpn_url'] = $vpn_url;
+			$data['vpn_carrier_id'] = $vpn_carrier_id;
+		}
+
 		if($id > 0){
-			$data = array(
-				"bifurcate_location" => $bifurcate_location,
-				"app_color" => $app_color,
-				"app_background_color" => $app_background_color,
-				"native_loading" => $native_loading,
-				"bottom_banner" => $bottom_banner,
-				"all_screen_native" => $all_screen_native,
-				"list_native" => $list_native,
-				"list_native_cnt" => $list_native_cnt,
-				"exit_dialoge_native" => $exit_dialoge_native,
-				"native_btn" => $native_btn,
-				"native_btn_text" => $native_btn_text,
-				"native_background_color" => $native_background_color,
-				"native_text_color" => $native_text_color,
-				"native_button_background_color" => $native_button_background_color,
-				"native_button_text_color" => $native_button_text_color,
-				"alternate_with_appopen" => $alternate_with_appopen,
-				"inter_loading" => $inter_loading,
-				"inter_interval" => $inter_interval,
-				"back_click_inter" => $back_click_inter,
-				"app_open_loading" => $app_open_loading,
-				"splash_ads" => $splash_ads,
-				"app_open" => $app_open,
-				"update_uid" => $user_id,
-				"update_date" => $date,
-			);
+			$data["update_uid"] = $user_id;
+			$data["update_date"] = $date;
 			$res = $db->update("tbl_app_ad_settings", $data, array("id"=>$id));
 		}
 		else{
 			$id=$gh->generateuuid();
-			$data = array(
-				"id" => $id,
-				"app_id" => $app_id,
-				"type" => $type,
-				"is_bifurcate" => $is_bifurcate,
-				"bifurcate_location" => $bifurcate_location,
-				"app_color" => $app_color,
-				"app_background_color" => $app_background_color,
-				"native_loading" => $native_loading,
-				"bottom_banner" => $bottom_banner,
-				"all_screen_native" => $all_screen_native,
-				"list_native" => $list_native,
-				"list_native_cnt" => $list_native_cnt,
-				"exit_dialoge_native" => $exit_dialoge_native,
-				"native_btn" => $native_btn,
-				"native_btn_text" => $native_btn_text,
-				"native_background_color" => $native_background_color,
-				"native_text_color" => $native_text_color,
-				"native_button_background_color" => $native_button_background_color,
-				"native_button_text_color" => $native_button_text_color,
-				"alternate_with_appopen" => $alternate_with_appopen,
-				"inter_loading" => $inter_loading,
-				"inter_interval" => $inter_interval,
-				"back_click_inter" => $back_click_inter,
-				"app_open_loading" => $app_open_loading,
-				"splash_ads" => $splash_ads,
-				"app_open" => $app_open,
-				"entry_uid" => $user_id,
-				"entry_date" => $date,
-			);
+			$data["id"] = $user_id;
+			$data["app_id"] = $app_id;
+			$data["type"] = $type;
+			$data["is_bifurcate"] = $is_bifurcate;
+			$data["entry_uid"] = $user_id;
+			$data["entry_date"] = $date;
 			$res = $db->insert("tbl_app_ad_settings", $data);
 		}
 		$outputjson['result'] = $res;

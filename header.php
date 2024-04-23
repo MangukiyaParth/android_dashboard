@@ -9,6 +9,8 @@ $admin_role_id=$const->admin_role_id;
 $current_file_name = basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']);
 // $current_page = basename($_SERVER['PHP_SELF']);
 $current_page = basename($_SERVER['REQUEST_URI']);
+$current_page = str_replace('manage.php?id=','',$current_page);
+$current_page = str_replace('.php','',$current_page);
 $pname=explode('.',$current_page);
 $pagename=$pname[0];
 $user_id = isset($userObj["id"]) ? $userObj["id"] : '';

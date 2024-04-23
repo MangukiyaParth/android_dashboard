@@ -19,8 +19,34 @@ function manage_apps()
 		$ordercolumn = $columnsarr[$orderindex]['name'];
 		
 		$whereData = " a.is_deleted=0 AND ";
+		$todayCnt = "";
+		$yestardayCnt = "";
+		$prevYestardayCnt = "";
+		$weekdayCnt = "";
+		$prevWeekdayCnt = "";
+		$monthdayCnt = "";
+		$prevMonthdayCnt = "";
 		if($status != ""){
 			$whereData .= " a.status = $status AND ";
+			if($status == 3){
+				$qry_cnt = "SELECT
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE DATE_FORMAT(entry_date, '%Y-%m-%d') = '".date('Y-m-d')."') AS today_cnt,
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE DATE_FORMAT(entry_date, '%Y-%m-%d') = '".date("Y-m-d", strtotime("-1 day"))."') AS yestarday_cnt,
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE DATE_FORMAT(entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-2 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d', strtotime("-1 day"))."','%Y-%m-%d') ) AS prev_yestarday_cnt,
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE DATE_FORMAT(entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-6 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d')."','%Y-%m-%d') ) AS weekday_cnt,
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE DATE_FORMAT(entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-13 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d', strtotime("-7 day"))."','%Y-%m-%d') ) AS prev_weekday_cnt,
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE DATE_FORMAT(entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-29 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d')."','%Y-%m-%d') ) AS monthday_cnt,
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE DATE_FORMAT(entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-59 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d', strtotime("-30 day"))."','%Y-%m-%d') ) AS prev_monthday_cnt";
+				$rows_cnt = $db->execute($qry_cnt);
+				$counts = $rows_cnt[0];
+				$todayCnt = $counts['today_cnt'];
+				$yestardayCnt = $counts['yestarday_cnt'];
+				$prevYestardayCnt = $counts['prev_yestarday_cnt'];
+				$weekdayCnt = $counts['weekday_cnt'];
+				$prevWeekdayCnt = $counts['prev_weekday_cnt'];
+				$monthdayCnt = $counts['monthday_cnt'];
+				$prevMonthdayCnt = $counts['prev_monthday_cnt'];
+			}
 		}
 		$whereData .= "(a.playstore LIKE '%" . $search . "%' OR 
 					a.adx LIKE '%" . $search . "%' OR 
@@ -44,7 +70,10 @@ function manage_apps()
 			$orderby = " ORDER BY ".$ordercolumn . " " . $orderdir;
 		}
 		$query_port_rates = "SELECT DISTINCT a.*,p.name AS playstore_name, adx.name AS adx_name,
-			CASE WHEN DATEDIFF(CURDATE(),STR_TO_DATE(a.entry_date, '%Y-%m-%d')) = 0 THEN 'Today' ELSE CONCAT(DATEDIFF(CURDATE(),STR_TO_DATE(a.entry_date, '%Y-%m-%d')),' Days') END AS `days`
+			CASE WHEN DATEDIFF(CURDATE(),STR_TO_DATE(a.entry_date, '%Y-%m-%d')) = 0 THEN 'Today' ELSE CONCAT(DATEDIFF(CURDATE(),STR_TO_DATE(a.entry_date, '%Y-%m-%d')),' Days') END AS `days`,
+			IFNULL((SELECT count(DISTINCT u.id) FROM tbl_app_users as u WHERE u.package = a.package_name),0) AS total_cnt, 
+			IFNULL((SELECT count(DISTINCT u.id) FROM tbl_app_users as u WHERE u.package = a.package_name AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date('Y-m-d')."' ),0) AS today_cnt, 
+			IFNULL((SELECT count(DISTINCT u.id) FROM tbl_app_users as u WHERE u.package = a.package_name AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date("Y-m-d", strtotime("-1 day"))."' ),0) AS yestarday_cnt
 			FROM tbl_apps as a 
 			LEFT JOIN tbl_play_store as p ON p.id = a.playstore
 			LEFT JOIN tbl_adx as adx ON adx.id = a.adx
@@ -55,6 +84,13 @@ function manage_apps()
 			
 			$outputjson['recordsTotal'] = $total_count;
 			$outputjson['recordsFiltered'] = $filtered_count;
+			$outputjson['todayCnt'] = $todayCnt;
+			$outputjson['yestardayCnt'] = $yestardayCnt;
+			$outputjson['prevYestardayCnt'] = $prevYestardayCnt;
+			$outputjson['weekdayCnt'] = $weekdayCnt;
+			$outputjson['prevWeekdayCnt'] = $prevWeekdayCnt;
+			$outputjson['monthdayCnt'] = $monthdayCnt;
+			$outputjson['prevMonthdayCnt'] = $prevMonthdayCnt;
 			$outputjson['success'] = 1;
 			$outputjson['status'] = 1;
 			$outputjson['message'] = 'success.';
@@ -62,6 +98,13 @@ function manage_apps()
 		} else {
 			$outputjson["data"] = [];
 			$outputjson['recordsTotal'] = $total_count;
+			$outputjson['todayCnt'] = $todayCnt;
+			$outputjson['yestardayCnt'] = $yestardayCnt;
+			$outputjson['prevYestardayCnt'] = $prevYestardayCnt;
+			$outputjson['weekdayCnt'] = $weekdayCnt;
+			$outputjson['prevWeekdayCnt'] = $prevWeekdayCnt;
+			$outputjson['monthdayCnt'] = $monthdayCnt;
+			$outputjson['prevMonthdayCnt'] = $prevMonthdayCnt;
 			$outputjson['recordsFiltered'] = 0;
 			$outputjson['message'] = "No Products found!";
 		}
@@ -130,11 +173,20 @@ function manage_apps()
 					"update_uid" => $user_id,
 					"update_date" => $date,
 				);
-				if(isset($_POST["file"]) && str_contains($_POST["file"], 'tmp/'))
+				if(isset($_POST["file"]))
 				{
-					$newData = uploadDropzoneFiles($_POST["file"],$id);
-					$data['file'] = $newData['file_url'][0];
-					$data['file_data'] = $newData['file_data'];
+					if(str_contains($_POST["file"], 'tmp/')){
+						$newData = uploadDropzoneFiles($_POST["file"],$id);
+						$data['file'] = $newData['file_url'][0];
+						$data['file_data'] = $newData['file_data'];
+						if ($existing_data != null && $existing_data != []) {
+							unlink($existing_data['file']);
+						}
+					}
+				}
+				else {
+					$data['file'] = "";
+					$data['file_data'] = "";
 					if ($existing_data != null && $existing_data != []) {
 						unlink($existing_data['file']);
 					}
@@ -158,6 +210,51 @@ function manage_apps()
 		$outputjson['success'] = 1;
 		$outputjson['message'] = 'Data updated successfully.';
 		$outputjson["data"] = $rows;
+
+	}else if($action == "get_user_counts"){
+		$package_name = $gh->read("package_name");
+		$time_type = $gh->read("time_type");
+
+		$extra_qry = "";
+		if($time_type == 2){
+			// Yestarday
+			$extra_qry = " AND DATE_FORMAT(entry_date, '%Y-%m-%d') = '".date("Y-m-d", strtotime("-1 day"))."' ";
+		}
+		else if($time_type == 1){
+			$extra_qry = " AND DATE_FORMAT(entry_date, '%Y-%m-%d') = '".date('Y-m-d')."' ";
+		}
+
+		$qry = "SELECT
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE package = '$package_name' $extra_qry AND DATE_FORMAT(entry_date, '%H:%i:%s') BETWEEN '00:00:00' AND '00:59:59') AS monehr,
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE package = '$package_name' $extra_qry AND DATE_FORMAT(entry_date, '%H:%i:%s') BETWEEN '01:00:00' AND '01:59:59') AS mtwohr,
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE package = '$package_name' $extra_qry AND DATE_FORMAT(entry_date, '%H:%i:%s') BETWEEN '02:00:00' AND '02:59:59') AS mthreehr,
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE package = '$package_name' $extra_qry AND DATE_FORMAT(entry_date, '%H:%i:%s') BETWEEN '03:00:00' AND '03:59:59') AS mfourhr,
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE package = '$package_name' $extra_qry AND DATE_FORMAT(entry_date, '%H:%i:%s') BETWEEN '04:00:00' AND '04:59:59') AS mfivehr,
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE package = '$package_name' $extra_qry AND DATE_FORMAT(entry_date, '%H:%i:%s') BETWEEN '05:00:00' AND '05:59:59') AS msixhr,
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE package = '$package_name' $extra_qry AND DATE_FORMAT(entry_date, '%H:%i:%s') BETWEEN '06:00:00' AND '06:59:59') AS msevenhr,
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE package = '$package_name' $extra_qry AND DATE_FORMAT(entry_date, '%H:%i:%s') BETWEEN '07:00:00' AND '07:59:59') AS meighthr,
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE package = '$package_name' $extra_qry AND DATE_FORMAT(entry_date, '%H:%i:%s') BETWEEN '08:00:00' AND '08:59:59') AS mninehr,
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE package = '$package_name' $extra_qry AND DATE_FORMAT(entry_date, '%H:%i:%s') BETWEEN '09:00:00' AND '09:59:59') AS mtenhr,
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE package = '$package_name' $extra_qry AND DATE_FORMAT(entry_date, '%H:%i:%s') BETWEEN '10:00:00' AND '10:59:59') AS melevenhr,
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE package = '$package_name' $extra_qry AND DATE_FORMAT(entry_date, '%H:%i:%s') BETWEEN '11:00:00' AND '11:59:59') AS mtwelvehr,
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE package = '$package_name' $extra_qry AND DATE_FORMAT(entry_date, '%H:%i:%s') BETWEEN '12:00:00' AND '12:59:59') AS aonehr,
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE package = '$package_name' $extra_qry AND DATE_FORMAT(entry_date, '%H:%i:%s') BETWEEN '13:00:00' AND '13:59:59') AS atwohr,
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE package = '$package_name' $extra_qry AND DATE_FORMAT(entry_date, '%H:%i:%s') BETWEEN '14:00:00' AND '14:59:59') AS athreehr,
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE package = '$package_name' $extra_qry AND DATE_FORMAT(entry_date, '%H:%i:%s') BETWEEN '15:00:00' AND '15:59:59') AS afourhr,
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE package = '$package_name' $extra_qry AND DATE_FORMAT(entry_date, '%H:%i:%s') BETWEEN '16:00:00' AND '16:59:59') AS afivehr,
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE package = '$package_name' $extra_qry AND DATE_FORMAT(entry_date, '%H:%i:%s') BETWEEN '17:00:00' AND '17:59:59') AS asixhr,
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE package = '$package_name' $extra_qry AND DATE_FORMAT(entry_date, '%H:%i:%s') BETWEEN '18:00:00' AND '18:59:59') AS asevenhr,
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE package = '$package_name' $extra_qry AND DATE_FORMAT(entry_date, '%H:%i:%s') BETWEEN '19:00:00' AND '19:59:59') AS aeighthr,
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE package = '$package_name' $extra_qry AND DATE_FORMAT(entry_date, '%H:%i:%s') BETWEEN '20:00:00' AND '20:59:59') AS aninehr,
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE package = '$package_name' $extra_qry AND DATE_FORMAT(entry_date, '%H:%i:%s') BETWEEN '21:00:00' AND '21:59:59') AS atenhr,
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE package = '$package_name' $extra_qry AND DATE_FORMAT(entry_date, '%H:%i:%s') BETWEEN '22:00:00' AND '22:59:59') AS aelevenhr,
+				(SELECT COUNT(id) FROM `tbl_app_users` WHERE package = '$package_name' $extra_qry AND DATE_FORMAT(entry_date, '%H:%i:%s') BETWEEN '23:00:00' AND '23:59:59') AS atwelvehr";
+		$rows = $db->execute($qry);
+
+		$outputjson['qry'] = $qry;
+		$outputjson['success'] = 1;
+		$outputjson['message'] = 'Data updated successfully.';
+		$outputjson["data"] = $rows[0];
 
 	}else if($action == "export_csv")
 	{

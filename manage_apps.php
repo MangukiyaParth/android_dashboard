@@ -100,15 +100,51 @@
                             </form>
                         </div>
                         <div class="table-responsive" id="detailsDiv">
-                            <ul class="table-filter">
-                                <li class="table-filter-data active" data-filter-type="1">Developing Apps</li>
-                                <li class="table-filter-data" data-filter-type="2">Upload Apps</li>
-                                <li class="table-filter-data" data-filter-type="3">Live Apps</li>
-                                <li class="table-filter-data" data-filter-type="4">Suspended Apps</li>
-                                <li class="table-filter-data" data-filter-type="5">CTR-0</li>
-                            </ul>
+                            <div class="row mx-1">
+                                <ul class="table-filter col-lg-10">
+                                    <li class="table-filter-data active" data-filter-type="1">Developing Apps</li>
+                                    <li class="table-filter-data" data-filter-type="2">Upload Apps</li>
+                                    <li class="table-filter-data" data-filter-type="3">Live Apps</li>
+                                    <li class="table-filter-data" data-filter-type="4">Suspended Apps</li>
+                                    <li class="table-filter-data" data-filter-type="5">CTR-0</li>
+                                </ul>
+                                <div class="col-lg-2 text-end"><button class="btn btn-outline-dark" onclick="export_CSV()"><img src="[ADMIN_PANEL_URL]assets/images/excel-icon.png"/> Export List</button></div>
+                            </div>
                             <input type="hidden" id="extra_option" value="1">
-                            <button class="btn btn-outline-dark extra-btn" onclick="export_CSV()"><img src="[ADMIN_PANEL_URL]assets/images/excel-icon.png"/> Export List</button>
+                            <div class="row mx-1 user-states d-none">
+                                <div class="col-lg-3">
+                                    <div class="card border-radius-15 shadow-none border-dark status-data">
+                                        <div class="card-body today_cnt_div">
+                                            <div class="status-cnt-div"><span class="today_cnt status-cnt">261</span><span class="today_diff status-diff up">76.4%</span><i class="status-diff-symbole fa-solid fa-caret-up"></i></div>
+                                            <div class="status-title">Today</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="card border-radius-15 shadow-none border-dark status-data">
+                                        <div class="card-body yestarday_cnt_div">
+                                            <div class="status-cnt-div"><span class="yestarday_cnt status-cnt">261</span><span class="today_diff status-diff up">76.4%</span><i class="status-diff-symbole fa-solid fa-caret-up"></i></div>
+                                            <div class="status-title">Yestarday</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="card border-radius-15 shadow-none border-dark status-data">
+                                        <div class="card-body week_cnt_div">
+                                            <div class="status-cnt-div"><span class="week_cnt status-cnt">261</span><span class="today_diff status-diff down">76.4%</span><i class="status-diff-symbole fa-solid fa-caret-down"></i></div>
+                                            <div class="status-title">Last 7 Days</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="card border-radius-15 shadow-none border-dark status-data">
+                                        <div class="card-body month_cnt_div">
+                                            <div class="status-cnt-div"><span class="month_cnt status-cnt">261</span><span class="today_diff status-diff up">76.4%</span><i class="status-diff-symbole fa-solid fa-caret-up"></i></div>
+                                            <div class="status-title">Last 30 Days</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <table id="datatable" class="table dt-responsive nowrap vertical-middle w-100">
                                 <thead>
                                     <tr>
@@ -139,3 +175,16 @@
 
 </div>
 <!-- content -->
+
+<div id="user_cnt_modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title comman_list_model_header" id="multiple-twoModalLabel">Count</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            </div><!-- /.modal-body -->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

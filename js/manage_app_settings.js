@@ -1,6 +1,8 @@
 var table;
 let subView = 1;
+let is_bifurcate = 0;
 let extra_setting_fields = [];
+let extra_bifurcate_setting_fields = [];
 let appData = [];
 var OrgData = [];
 var MrktData = [];
@@ -25,6 +27,10 @@ async function manageDataFilter(resetDatatable = true){
     }
     $("#extra_option").val(JSON.stringify(filt));
     if(resetDatatable) { await table.clearPipeline().draw(); }
+}
+
+async function set_is_bifurcate(val = 0){
+    is_bifurcate = val;
 }
 
 
@@ -160,6 +166,10 @@ function manageDefaultInit(){
     });
     $('#bifurcate_location').tagEditor({
         placeholder: 'Enter location ...',
+        forceLowercase: false
+    });
+    $('#bifurcate_vpn_country').tagEditor({
+        placeholder: 'Enter countries ...',
         forceLowercase: false
     });
 
@@ -348,21 +358,21 @@ function FillSettingData(){
     $("#g2_appid").val((appSettingData && appSettingData.g2_appid) ? appSettingData.g2_appid : '');
     $("#g3_appid").val((appSettingData && appSettingData.g3_appid) ? appSettingData.g3_appid : '');
 
-    var all_ads = (appSettingData && appSettingData.all_ads) ? appSettingData.all_ads : 'hide';
-    var fullscreen = (appSettingData && appSettingData.fullscreen) ? appSettingData.fullscreen : 'hide';
-    var continue_screen = (appSettingData && appSettingData.continue_screen) ? appSettingData.continue_screen : 'hide';
-    var lets_start_screen = (appSettingData && appSettingData.lets_start_screen) ? appSettingData.lets_start_screen : 'hide';
-    var age_screen = (appSettingData && appSettingData.age_screen) ? appSettingData.age_screen : 'hide';
-    var next_screen = (appSettingData && appSettingData.next_screen) ? appSettingData.next_screen : 'hide';
-    var next_inner_screen = (appSettingData && appSettingData.next_inner_screen) ? appSettingData.next_inner_screen : 'hide';
-    var contact_screen = (appSettingData && appSettingData.contact_screen) ? appSettingData.contact_screen : 'hide';
-    var start_screen = (appSettingData && appSettingData.start_screen) ? appSettingData.start_screen : 'hide';
-    var real_casting_flow = (appSettingData && appSettingData.real_casting_flow) ? appSettingData.real_casting_flow : 'hide';
-    var app_stop = (appSettingData && appSettingData.app_stop) ? appSettingData.app_stop : 'hide';
+    var all_ads = (adData && adData.all_ads) ? adData.all_ads : 'hide';
+    var fullscreen = (adData && adData.fullscreen) ? adData.fullscreen : 'hide';
+    var continue_screen = (adData && adData.continue_screen) ? adData.continue_screen : 'hide';
+    var lets_start_screen = (adData && adData.lets_start_screen) ? adData.lets_start_screen : 'hide';
+    var age_screen = (adData && adData.age_screen) ? adData.age_screen : 'hide';
+    var next_screen = (adData && adData.next_screen) ? adData.next_screen : 'hide';
+    var next_inner_screen = (adData && adData.next_inner_screen) ? adData.next_inner_screen : 'hide';
+    var contact_screen = (adData && adData.contact_screen) ? adData.contact_screen : 'hide';
+    var start_screen = (adData && adData.start_screen) ? adData.start_screen : 'hide';
+    var real_casting_flow = (adData && adData.real_casting_flow) ? adData.real_casting_flow : 'hide';
+    var app_stop = (adData && adData.app_stop) ? adData.app_stop : 'hide';
 
     $("[name='all_ads'][value='"+all_ads+"']").prop('checked', true);
     $("[name='fullscreen'][value='"+fullscreen+"']").prop('checked', true);
-    $("#adblock_version").val((appSettingData && appSettingData.adblock_version) ? appSettingData.adblock_version : '');
+    $("#adblock_version").val((adData && adData.adblock_version) ? adData.adblock_version : '');
     $("[name='continue_screen'][value='"+continue_screen+"']").prop('checked', true);
     $("[name='lets_start_screen'][value='"+lets_start_screen+"']").prop('checked', true);
     $("[name='age_screen'][value='"+age_screen+"']").prop('checked', true);
@@ -373,8 +383,8 @@ function FillSettingData(){
     $("[name='real_casting_flow'][value='"+real_casting_flow+"']").prop('checked', true);
     $("[name='app_stop'][value='"+app_stop+"']").prop('checked', true);
     extra_setting_fields = [];
-    if(appSettingData && appSettingData.additional_fields != "" && appSettingData.additional_fields != null){
-        var additional_fields = JSON.parse(appSettingData.additional_fields);
+    if(adData && adData.additional_fields != "" && adData.additional_fields != null){
+        var additional_fields = JSON.parse(adData.additional_fields);
         var loop_idx = 0;
         additional_fields.forEach((fields) => {
             var new_index = Date.now().toString()+loop_idx;
@@ -384,7 +394,7 @@ function FillSettingData(){
                 idx: new_index
             };
             extra_setting_fields.push(new_field);
-            add_extra_setting_field(new_field, new_index, fields.value, fields.value2);
+            add_extra_setting_field(new_field, new_index, fields.value, fields.value2, 0);
             loop_idx++;
         });
     }
@@ -393,19 +403,18 @@ function FillSettingData(){
     }
 
 
-    var vpn = (appSettingData && appSettingData.vpn) ? appSettingData.vpn : 'hide';
-    var vpn_dialog = (appSettingData && appSettingData.vpn_dialog) ? appSettingData.vpn_dialog : 'hide';
-    var vpn_dialog_open = (appSettingData && appSettingData.vpn_dialog_open) ? appSettingData.vpn_dialog_open : 'hide';
+    var vpn = (adData && adData.vpn) ? adData.vpn : 'hide';
+    var vpn_dialog = (adData && adData.vpn_dialog) ? adData.vpn_dialog : 'hide';
+    var vpn_dialog_open = (adData && adData.vpn_dialog_open) ? adData.vpn_dialog_open : 'hide';
     $("[name='vpn'][value='"+vpn+"']").prop('checked', true);
     $("[name='vpn_dialog'][value='"+vpn_dialog+"']").prop('checked', true);
     $("[name='vpn_dialog_open'][value='"+vpn_dialog_open+"']").prop('checked', true);
-    $("#vpn_url").val((appSettingData && appSettingData.vpn_url) ? appSettingData.vpn_url : '');
-    $("#vpn_carrier_id").val((appSettingData && appSettingData.vpn_carrier_id) ? appSettingData.vpn_carrier_id : '');
+    $("#vpn_url").val((adData && adData.vpn_url) ? adData.vpn_url : '');
+    $("#vpn_carrier_id").val((adData && adData.vpn_carrier_id) ? adData.vpn_carrier_id : '');
     
-    // Remove Existing tags
     clearTageditor('#vpn_country');
-    if(appSettingData && appSettingData.vpn_country != ""){
-        JSON.parse(appSettingData.vpn_country).forEach(tag => {
+    if(adData && adData.vpn_country && adData.vpn_country != ""){
+        JSON.parse(adData.vpn_country).forEach(tag => {
             $('#vpn_country').tagEditor('addTag', tag); 
         });
     }
@@ -454,6 +463,14 @@ function FillSettingData(){
     $("[name='splash_ads'][value='"+splash_ads+"']").prop('checked', true);
     $("[name='app_open'][value='"+app_open+"']").prop('checked', true);
     
+
+    clearTageditor('#bifurcate_location');
+    if(adBifurcateData && adBifurcateData.bifurcate_location && adBifurcateData.bifurcate_location != ""){
+        adBifurcateData.bifurcate_location.split(',').forEach(tag => {
+            $('#bifurcate_location').tagEditor('addTag', tag); 
+        });
+    }
+
     var bifurcate_native_loading = (adBifurcateData && adBifurcateData.native_loading) ? adBifurcateData.native_loading : 'onload';
     var bifurcate_bottom_banner = (adBifurcateData && adBifurcateData.bottom_banner) ? adBifurcateData.bottom_banner : 'native';
     var bifurcate_all_screen_native = (adBifurcateData && adBifurcateData.all_screen_native) ? adBifurcateData.all_screen_native : 'hide';
@@ -487,6 +504,66 @@ function FillSettingData(){
     $("[name='bifurcate_app_open_loading'][value='"+bifurcate_app_open_loading+"']").prop('checked', true);
     $("[name='bifurcate_splash_ads'][value='"+bifurcate_splash_ads+"']").prop('checked', true);
     $("[name='bifurcate_app_open'][value='"+bifurcate_app_open+"']").prop('checked', true);
+
+    var all_ads = (adBifurcateData && adBifurcateData.all_ads) ? adBifurcateData.all_ads : 'hide';
+    var fullscreen = (adBifurcateData && adBifurcateData.fullscreen) ? adBifurcateData.fullscreen : 'hide';
+    var continue_screen = (adBifurcateData && adBifurcateData.continue_screen) ? adBifurcateData.continue_screen : 'hide';
+    var lets_start_screen = (adBifurcateData && adBifurcateData.lets_start_screen) ? adBifurcateData.lets_start_screen : 'hide';
+    var age_screen = (adBifurcateData && adBifurcateData.age_screen) ? adBifurcateData.age_screen : 'hide';
+    var next_screen = (adBifurcateData && adBifurcateData.next_screen) ? adBifurcateData.next_screen : 'hide';
+    var next_inner_screen = (adBifurcateData && adBifurcateData.next_inner_screen) ? adBifurcateData.next_inner_screen : 'hide';
+    var contact_screen = (adBifurcateData && adBifurcateData.contact_screen) ? adBifurcateData.contact_screen : 'hide';
+    var start_screen = (adBifurcateData && adBifurcateData.start_screen) ? adBifurcateData.start_screen : 'hide';
+    var real_casting_flow = (adBifurcateData && adBifurcateData.real_casting_flow) ? adBifurcateData.real_casting_flow : 'hide';
+    var app_stop = (adBifurcateData && adBifurcateData.app_stop) ? adBifurcateData.app_stop : 'hide';
+
+    $("[name='bifurcate_all_ads'][value='"+all_ads+"']").prop('checked', true);
+    $("[name='bifurcate_fullscreen'][value='"+fullscreen+"']").prop('checked', true);
+    $("#bifurcate_adblock_version").val((adBifurcateData && adBifurcateData.adblock_version) ? adBifurcateData.adblock_version : '');
+    $("[name='bifurcate_continue_screen'][value='"+continue_screen+"']").prop('checked', true);
+    $("[name='bifurcate_lets_start_screen'][value='"+lets_start_screen+"']").prop('checked', true);
+    $("[name='bifurcate_age_screen'][value='"+age_screen+"']").prop('checked', true);
+    $("[name='bifurcate_next_screen'][value='"+next_screen+"']").prop('checked', true);
+    $("[name='bifurcate_next_inner_screen'][value='"+next_inner_screen+"']").prop('checked', true);
+    $("[name='bifurcate_contact_screen'][value='"+contact_screen+"']").prop('checked', true);
+    $("[name='bifurcate_start_screen'][value='"+start_screen+"']").prop('checked', true);
+    $("[name='bifurcate_real_casting_flow'][value='"+real_casting_flow+"']").prop('checked', true);
+    $("[name='bifurcate_app_stop'][value='"+app_stop+"']").prop('checked', true);
+    extra_bifurcate_setting_fields = [];
+    if(adBifurcateData && adBifurcateData.additional_fields != "" && adBifurcateData.additional_fields != null){
+        var additional_fields = JSON.parse(adBifurcateData.additional_fields);
+        var loop_idx = 0;
+        additional_fields.forEach((fields) => {
+            var new_index = Date.now().toString()+loop_idx;
+            var new_field = {
+                field_name: fields.field_name,
+                field_type: fields.field_type,
+                idx: new_index
+            };
+            extra_bifurcate_setting_fields.push(new_field);
+            add_extra_setting_field(new_field, new_index, fields.value, fields.value2, 1);
+            loop_idx++;
+        });
+    }
+    else{
+        $("#bifurcate_setting_table tr.extra").remove();
+    }
+
+
+    var vpn = (adBifurcateData && adBifurcateData.vpn) ? adBifurcateData.vpn : 'hide';
+    var vpn_dialog = (adBifurcateData && adBifurcateData.vpn_dialog) ? adBifurcateData.vpn_dialog : 'hide';
+    var vpn_dialog_open = (adBifurcateData && adBifurcateData.vpn_dialog_open) ? adBifurcateData.vpn_dialog_open : 'hide';
+    $("[name='bifurcate_vpn'][value='"+vpn+"']").prop('checked', true);
+    $("[name='bifurcate_vpn_dialog'][value='"+vpn_dialog+"']").prop('checked', true);
+    $("[name='bifurcate_vpn_dialog_open'][value='"+vpn_dialog_open+"']").prop('checked', true);
+    $("#bifurcate_vpn_url").val((adBifurcateData && adBifurcateData.vpn_url) ? adBifurcateData.vpn_url : '');
+    $("#bifurcate_vpn_carrier_id").val((adBifurcateData && adBifurcateData.vpn_carrier_id) ? adBifurcateData.vpn_carrier_id : '');
+    clearTageditor('#bifurcate_vpn_country');
+    if(adBifurcateData && adBifurcateData.vpn_country && adBifurcateData.vpn_country != ""){
+        JSON.parse(adBifurcateData.vpn_country).forEach(tag => {
+            $('#bifurcate_vpn_country').tagEditor('addTag', tag); 
+        });
+    }
 
     manageFormfields(1);
     manage_preview_clr(1);
@@ -658,22 +735,31 @@ function append_setting_field(){
     var field_name = $("#add_setting_field_modal #field_name").val();
     var field_type = $("#add_setting_field_modal [name='field_type']:checked").val();
     if(field_name && field_name != ""){
-        var new_index = Date.now().toString();
+        var extra = (is_bifurcate) ? "1" : "";
+        var new_index = extra + Date.now().toString();
         var new_field = {
             field_name: field_name,
             field_type: field_type,
             idx: new_index
         };
-        extra_setting_fields.push(new_field);
+        if(is_bifurcate){
+            extra_bifurcate_setting_fields.push(new_field);
+        }
+        else {
+            extra_setting_fields.push(new_field);
+        }
         // var new_index = $("#setting_table tr.extra").length;
-        add_extra_setting_field(new_field, new_index);
+        add_extra_setting_field(new_field, new_index, "", "", (is_bifurcate) ? 1 : 0);
+        $("#add_setting_field_modal #field_name").val("");
+        $("#add_setting_field_modal [name='field_type'][value='1']").prop('checked', true);
         $("#add_setting_field_modal").modal('hide');
     }
     else{showError("Please add field name")}
 }
 
-function add_extra_setting_field(fieldData, index = '0', val1 = "", val2 = ""){
-    var html = `<tr class="extra" id="extra${index}" data-index="${index}">
+function add_extra_setting_field(fieldData, index = '0', val1 = "", val2 = "", bifurcate_flag = 0){
+    var prefix = (bifurcate_flag) ? "bifurcate_" : "";
+    var html = `<tr class="extra" id="${prefix}extra${index}" data-index="${index}">
                     <td>
                         <span class="delete-div" data-index="${index}" onclick="removeExtraField('${index}')"><i class="fa fa-close"></i></span>
                         ${fieldData.field_name}
@@ -682,38 +768,51 @@ function add_extra_setting_field(fieldData, index = '0', val1 = "", val2 = ""){
                     <td>`;
                     if(fieldData.field_type == 3){
                         html+=`<div class="form-check form-radio-success form-check-inline">
-                                    <input type="radio" id="extraField${index}Show" name="extra_field_${index}" class="form-check-input" value="show" ${(val1 == 'show') ? 'checked' : ''}>
+                                    <input type="radio" id="${prefix}extraField${index}Show" name="${prefix}extra_field_${index}" class="form-check-input" value="show" ${(val1 == 'show') ? 'checked' : ''}>
                                     <label class="form-check-label" for="extraField${index}Show">Show</label>
                                 </div>
                                 <div class="form-check form-radio-success form-check-inline">
-                                    <input type="radio" id="extraField${index}Hide" name="extra_field_${index}" class="form-check-input" value="hide" ${(val1 != 'show') ? 'checked' : ''}>
+                                    <input type="radio" id="${prefix}extraField${index}Hide" name="${prefix}extra_field_${index}" class="form-check-input" value="hide" ${(val1 != 'show') ? 'checked' : ''}>
                                     <label class="form-check-label" for="extraField${index}Hide">Hide</label>
                                 </div>
-                                <input type="text" id="extraFieldText${index}" name="extraFieldText${index}" class="form-control d-inline w-50" value="${val2}">`;
+                                <input type="text" id="${prefix}extraFieldText${index}" name="${prefix}extraFieldText${index}" class="form-control d-inline w-50" value="${val2}">`;
                     }
                     else if(fieldData.field_type == 2){
-                        html+=`<input type="text" id="extraFieldText${index}" name="extraFieldText${index}" class="form-control" value="${val1}">`;
+                        html+=`<input type="text" id="${prefix}extraFieldText${index}" name="${prefix}extraFieldText${index}" class="form-control" value="${val1}">`;
                     }
                     else{
                         html+=`<div class="form-check form-radio-success form-check-inline">
-                                    <input type="radio" id="extraField${index}Show" name="extra_field_${index}" class="form-check-input" value="show" ${(val1 == 'show') ? 'checked' : ''}>
+                                    <input type="radio" id="${prefix}extraField${index}Show" name="${prefix}extra_field_${index}" class="form-check-input" value="show" ${(val1 == 'show') ? 'checked' : ''}>
                                     <label class="form-check-label" for="extraField${index}Show">Show</label>
                                 </div>
                                 <div class="form-check form-radio-success form-check-inline">
-                                    <input type="radio" id="extraField${index}Hide" name="extra_field_${index}" class="form-check-input" value="hide" ${(val1 != 'show') ? 'checked' : ''}>
+                                    <input type="radio" id="${prefix}extraField${index}Hide" name="${prefix}extra_field_${index}" class="form-check-input" value="hide" ${(val1 != 'show') ? 'checked' : ''}>
                                     <label class="form-check-label" for="extraField${index}Hide">Hide</label>
                                 </div>`;
                     }
             html+=`</td>
                 </tr>`;
-    $("#setting_table").append(html);
+    if(bifurcate_flag){
+        $("#bifurcate_setting_table").append(html);
+    }
+    else{
+        $("#setting_table").append(html);
+    }
 }
 
 function removeExtraField(index){
-    $("#setting_table #extra"+index).remove();
-    extra_setting_fields = $.grep(extra_setting_fields, function(e){ 
-        return e.idx != index; 
-   });
+    if(is_bifurcate){
+        $("#bifurcate_setting_table #bifurcate_extra"+index).remove();
+        extra_bifurcate_setting_fields = $.grep(extra_bifurcate_setting_fields, function(e){ 
+            return e.idx != index; 
+        });
+    }
+    else{
+        $("#setting_table #extra"+index).remove();
+        extra_setting_fields = $.grep(extra_setting_fields, function(e){ 
+            return e.idx != index; 
+        });
+    }
 }
 
 //================= VPN Setting Functions =================
@@ -806,6 +905,29 @@ function saveAdSettings(){
 }
 
 function saveBifurcate_AdSettings(){
+    var extra_field = [];
+    $("#bifurcate_setting_table tr.extra").each(function() {
+        var idx = $(this).attr('data-index');
+        let obj = extra_setting_fields.find(o => o.idx === idx);
+        var val1 = "";
+        var val2 = "";
+        if(obj.field_type == 1){
+            val1 = $(this).find("[name='bifurcate_extra_field_"+idx+"']:checked").val();
+        }
+        else if(obj.field_type == 2){
+            val1 = $(this).find("#bifurcate_extraFieldText"+idx+"").val();
+        }
+        else if(obj.field_type == 3){
+            val1 = $(this).find("[name='bifurcate_extra_field_"+idx+"']:checked").val();
+            val2 = $(this).find("#bifurcate_extraFieldText"+idx+"").val();
+        }
+        extra_field.push({
+            field_name: obj.field_name,
+            field_type: obj.field_type,
+            value: val1,
+            value2: val2
+        });
+    });
     var req_data = {
         bifurcate_location: $('#bifurcate_location').tagEditor('getTags')[0].tags.join(',')
         , app_color: $("#bifurcate_app_color").val()
@@ -829,6 +951,25 @@ function saveBifurcate_AdSettings(){
         , app_open_loading: $("[name='bifurcate_app_open_loading']:checked").val()
         , splash_ads: $("[name='bifurcate_splash_ads']:checked").val()
         , app_open: $("[name='bifurcate_app_open']:checked").val()
+        , all_ads: $("[name='bifurcate_all_ads']:checked").val()
+        , fullscreen: $("[name='bifurcate_fullscreen']:checked").val()
+        , adblock_version: $("#bifurcate_adblock_version").val()
+        , continue_screen: $("[name='bifurcate_continue_screen']:checked").val()
+        , lets_start_screen: $("[name='bifurcate_lets_start_screen']:checked").val()
+        , age_screen: $("[name='bifurcate_age_screen']:checked").val()
+        , next_screen: $("[name='bifurcate_next_screen']:checked").val()
+        , next_inner_screen: $("[name='bifurcate_next_inner_screen']:checked").val()
+        , contact_screen: $("[name='bifurcate_contact_screen']:checked").val()
+        , start_screen: $("[name='bifurcate_start_screen']:checked").val()
+        , real_casting_flow: $("[name='bifurcate_real_casting_flow']:checked").val()
+        , app_stop: $("[name='bifurcate_app_stop']:checked").val()
+        , additional_fields: JSON.stringify(extra_field)
+        , vpn: $("[name='bifurcate_vpn']:checked").val()
+        , vpn_dialog: $("[name='bifurcate_vpn_dialog']:checked").val()
+        , vpn_dialog_open: $("[name='bifurcate_vpn_dialog_open']:checked").val()
+        , vpn_url: $("#bifurcate_vpn_url").val()
+        , vpn_carrier_id: $("#bifurcate_vpn_carrier_id").val()
+        , vpn_country: JSON.stringify($('#bifurcate_vpn_country').tagEditor('getTags')[0].tags)
     };
     saveAdsSettings(1, req_data);
 }
