@@ -29,13 +29,13 @@ function manage_apps()
 			$whereData .= " a.status = $status AND ";
 			if($status == 3){
 				$qry_cnt = "SELECT
-				(SELECT COUNT(id) FROM `tbl_app_users` WHERE DATE_FORMAT(entry_date, '%Y-%m-%d') = '".date('Y-m-d')."') AS today_cnt,
-				(SELECT COUNT(id) FROM `tbl_app_users` WHERE DATE_FORMAT(entry_date, '%Y-%m-%d') = '".date("Y-m-d", strtotime("-1 day"))."') AS yestarday_cnt,
-				(SELECT COUNT(id) FROM `tbl_app_users` WHERE DATE_FORMAT(entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-2 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d', strtotime("-1 day"))."','%Y-%m-%d') ) AS prev_yestarday_cnt,
-				(SELECT COUNT(id) FROM `tbl_app_users` WHERE DATE_FORMAT(entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-6 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d')."','%Y-%m-%d') ) AS weekday_cnt,
-				(SELECT COUNT(id) FROM `tbl_app_users` WHERE DATE_FORMAT(entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-13 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d', strtotime("-7 day"))."','%Y-%m-%d') ) AS prev_weekday_cnt,
-				(SELECT COUNT(id) FROM `tbl_app_users` WHERE DATE_FORMAT(entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-29 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d')."','%Y-%m-%d') ) AS monthday_cnt,
-				(SELECT COUNT(id) FROM `tbl_app_users` WHERE DATE_FORMAT(entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-59 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d', strtotime("-30 day"))."','%Y-%m-%d') ) AS prev_monthday_cnt";
+				(SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`package_name` = u.`package` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date('Y-m-d')."') AS today_cnt,
+				(SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`package_name` = u.`package` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date("Y-m-d", strtotime("-1 day"))."') AS yestarday_cnt,
+				(SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`package_name` = u.`package` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-2 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d', strtotime("-1 day"))."','%Y-%m-%d') ) AS prev_yestarday_cnt,
+				(SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`package_name` = u.`package` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-6 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d')."','%Y-%m-%d') ) AS weekday_cnt,
+				(SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`package_name` = u.`package` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-13 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d', strtotime("-7 day"))."','%Y-%m-%d') ) AS prev_weekday_cnt,
+				(SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`package_name` = u.`package` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-29 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d')."','%Y-%m-%d') ) AS monthday_cnt,
+				(SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`package_name` = u.`package` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-59 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d', strtotime("-30 day"))."','%Y-%m-%d') ) AS prev_monthday_cnt";
 				$rows_cnt = $db->execute($qry_cnt);
 				$counts = $rows_cnt[0];
 				$todayCnt = $counts['today_cnt'];
@@ -183,10 +183,10 @@ function manage_apps()
 					}
 				}
 				else {
-					$data['file'] = "";
+					// $data['file'] = "";
 					$data['file_data'] = "";
 					if ($existing_data != null && $existing_data != []) {
-						unlink($existing_data['file']);
+						// unlink($existing_data['file']);
 					}
 				}
 				$rows = $db->update('tbl_apps', $data, array("id" => $id));

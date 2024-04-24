@@ -199,7 +199,8 @@ function get_data() {
                     var details ='';
                     if(row.file)
                     {
-                        details = "<a href='https://play.google.com/store/apps/details?id=" + row.package_name + "' target='_blank'><img class='dataTable-app-img' src='" + WEB_API_FOLDER + row.file + "'></a>";
+                        var logo_url = (row.file.includes("upload/")) ? WEB_API_FOLDER + row.file : row.file;
+                        details = "<a href='https://play.google.com/store/apps/details?id=" + row.package_name + "' target='_blank'><img class='dataTable-app-img' src='" + logo_url + "'></a>";
                     }
                     else{
                         details = "<a href='https://play.google.com/store/apps/details?id=" + row.package_name + "' target='_blank'><img class='dataTable-app-img' src='" + ADMIN_PANEL_URL + "assets/images/defaultApp.png'></a>";

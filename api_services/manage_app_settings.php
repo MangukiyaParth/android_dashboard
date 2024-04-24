@@ -543,7 +543,7 @@ function manage_app_settings()
 		}
 		else{
 			$id=$gh->generateuuid();
-			$data["id"] = $user_id;
+			$data["id"] = $id;
 			$data["app_id"] = $app_id;
 			$data["type"] = $type;
 			$data["is_bifurcate"] = $is_bifurcate;

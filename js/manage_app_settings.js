@@ -52,9 +52,10 @@ function fill_app_details(){
             OrgBifurcateData = data.org_bifurcate_ad;
             MrktAdData = data.mrkt_ad;
             MrktBifurcateData = data.mrkt_bifurcate_ad;
+            var logo_url = (appData.file.includes("upload/")) ? WEB_API_FOLDER + appData.file : appData.file;
             var html = `<div class="app-title-div">
                             <div class="app-title">
-                                <img class="app-heading-img" src="${WEB_API_FOLDER+appData.file}" />
+                                <img class="app-heading-img" src="${logo_url}" />
                                 <div class="app-details-div">
                                     <h4>${appData.app_name}</h4>
                                     <h5>${appData.package_name}</h5>
