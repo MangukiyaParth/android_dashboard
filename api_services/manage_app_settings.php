@@ -18,34 +18,12 @@ function manage_app_settings()
 
 		if ($rows != null && is_array($rows) && count($rows) > 0) {
 
-			$qry_org = "SELECT * FROM tbl_apps_settings WHERE app_id = '$id' AND `type` = 1";
-			$rows_org = $db->execute($qry_org);
-			
-			$qry_mrkt = "SELECT * FROM tbl_apps_settings WHERE app_id = '$id' AND `type` = 2";
-			$rows_mrkt = $db->execute($qry_mrkt);
-			
-			$qry_org_ad = "SELECT * FROM tbl_app_ad_settings WHERE app_id = '$id' AND `type` = 1 AND is_bifurcate = 0";
-			$rows_org_ad = $db->execute($qry_org_ad);
-			
-			$qry_org_bifurcate_ad = "SELECT * FROM tbl_app_ad_settings WHERE app_id = '$id' AND `type` = 1 AND is_bifurcate = 1";
-			$rows_org_bifurcate_ad = $db->execute($qry_org_bifurcate_ad);
-			
-			$qry_mrkt_ad = "SELECT * FROM tbl_app_ad_settings WHERE app_id = '$id' AND `type` = 2 AND is_bifurcate = 0";
-			$rows_mrkt_ad = $db->execute($qry_mrkt_ad);
-			
-			$qry_mrkt_bifurcate_ad = "SELECT * FROM tbl_app_ad_settings WHERE app_id = '$id' AND `type` = 2 AND is_bifurcate = 1";
-			$rows_mrkt_bifurcate_ad = $db->execute($qry_mrkt_bifurcate_ad);
+			get_all_setting_data($id);
 
 			$outputjson['success'] = 1;
 			$outputjson['status'] = 1;
 			$outputjson['message'] = 'success.';
 			$outputjson["data"] = $rows[0];
-			$outputjson["org_data"] = $rows_org[0];
-			$outputjson["mrkt_data"] = $rows_mrkt[0];
-			$outputjson["org_ad"] = $rows_org_ad[0];
-			$outputjson["org_bifurcate_ad"] = $rows_org_bifurcate_ad[0];
-			$outputjson["mrkt_ad"] = $rows_mrkt_ad[0];
-			$outputjson["mrkt_bifurcate_ad"] = $rows_mrkt_bifurcate_ad[0];
 		} else {
 			$outputjson["data"] = [];
 			$outputjson['message'] = "No Products found!";
@@ -260,6 +238,8 @@ function manage_app_settings()
 			);
 			$res = $db->insert("tbl_apps_settings", $data);
 		}
+
+		get_all_setting_data($app_id);
 		$outputjson['result'] = $res;
 		$outputjson['success'] = 1;
 		$outputjson['message'] = "Data updated successfully";
@@ -330,6 +310,7 @@ function manage_app_settings()
 			);
 			$res = $db->insert("tbl_app_ad_settings", $data);
 		}
+		get_all_setting_data($app_id);
 		$outputjson['result'] = $res;
 		$outputjson['success'] = 1;
 		$outputjson['message'] = "Data updated successfully";
@@ -379,6 +360,7 @@ function manage_app_settings()
 			);
 			$res = $db->insert("tbl_app_ad_settings", $data);
 		}
+		get_all_setting_data($app_id);
 		$outputjson['result'] = $res;
 		$outputjson['success'] = 1;
 		$outputjson['message'] = "Data updated successfully";
@@ -431,6 +413,7 @@ function manage_app_settings()
 			);
 			$res = $db->insert("tbl_apps_settings", $data);
 		}
+		get_all_setting_data($app_id);
 		$outputjson['result'] = $res;
 		$outputjson['success'] = 1;
 		$outputjson['message'] = "Data updated successfully";
@@ -551,6 +534,8 @@ function manage_app_settings()
 			$data["entry_date"] = $date;
 			$res = $db->insert("tbl_app_ad_settings", $data);
 		}
+
+		get_all_setting_data($app_id);
 		$outputjson['result'] = $res;
 		$outputjson['success'] = 1;
 		$outputjson['message'] = "Data updated successfully";
@@ -560,6 +545,35 @@ function manage_app_settings()
 		$outputjson['message'] = "Error!";
 	}
 		
+}
+
+function get_all_setting_data($app_id){
+	global $outputjson, $db;
+
+	$qry_org = "SELECT * FROM tbl_apps_settings WHERE app_id = '$app_id' AND `type` = 1";
+	$rows_org = $db->execute($qry_org);
+	
+	$qry_mrkt = "SELECT * FROM tbl_apps_settings WHERE app_id = '$app_id' AND `type` = 2";
+	$rows_mrkt = $db->execute($qry_mrkt);
+	
+	$qry_org_ad = "SELECT * FROM tbl_app_ad_settings WHERE app_id = '$app_id' AND `type` = 1 AND is_bifurcate = 0";
+	$rows_org_ad = $db->execute($qry_org_ad);
+	
+	$qry_org_bifurcate_ad = "SELECT * FROM tbl_app_ad_settings WHERE app_id = '$app_id' AND `type` = 1 AND is_bifurcate = 1";
+	$rows_org_bifurcate_ad = $db->execute($qry_org_bifurcate_ad);
+	
+	$qry_mrkt_ad = "SELECT * FROM tbl_app_ad_settings WHERE app_id = '$app_id' AND `type` = 2 AND is_bifurcate = 0";
+	$rows_mrkt_ad = $db->execute($qry_mrkt_ad);
+	
+	$qry_mrkt_bifurcate_ad = "SELECT * FROM tbl_app_ad_settings WHERE app_id = '$app_id' AND `type` = 2 AND is_bifurcate = 1";
+	$rows_mrkt_bifurcate_ad = $db->execute($qry_mrkt_bifurcate_ad);
+
+	$outputjson["org_data"] = $rows_org[0];
+	$outputjson["mrkt_data"] = $rows_mrkt[0];
+	$outputjson["org_ad"] = $rows_org_ad[0];
+	$outputjson["org_bifurcate_ad"] = $rows_org_bifurcate_ad[0];
+	$outputjson["mrkt_ad"] = $rows_mrkt_ad[0];
+	$outputjson["mrkt_bifurcate_ad"] = $rows_mrkt_bifurcate_ad[0];
 }
 
 function outputCsv( $assocDataArray ) {

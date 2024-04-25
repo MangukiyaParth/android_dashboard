@@ -46,12 +46,7 @@ function fill_app_details(){
         if (data && data != null && data.success) {
             hideLoading();
             appData = data.data;
-            OrgData = data.org_data;
-            MrktData = data.mrkt_data;
-            OrgAdData = data.org_ad;
-            OrgBifurcateData = data.org_bifurcate_ad;
-            MrktAdData = data.mrkt_ad;
-            MrktBifurcateData = data.mrkt_bifurcate_ad;
+            setDataVariable(data);
             var logo_url = (appData.file.includes("upload/")) ? WEB_API_FOLDER + appData.file : appData.file;
             var html = `<div class="app-title-div">
                             <div class="app-title">
@@ -75,6 +70,15 @@ function fill_app_details(){
             return false;
         }
     });
+}
+
+function setDataVariable(data){
+    OrgData = data.org_data;
+    MrktData = data.mrkt_data;
+    OrgAdData = data.org_ad;
+    OrgBifurcateData = data.org_bifurcate_ad;
+    MrktAdData = data.mrkt_ad;
+    MrktBifurcateData = data.mrkt_bifurcate_ad;
 }
 
 function changeSubView(v){
@@ -182,7 +186,7 @@ function manageDefaultInit(){
     $("#app_color, #app_background_color, #native_background_color, #native_text_color, #native_button_background_color, #native_button_text_color, #native_btn_text").on('input', function(){
         manage_preview_clr(1);
     });
-    $("[name='native_btn'], [name='bottom_banner']").on("change", function(){
+    $("[name='native_btn'], [name='bottom_banner'], [name='list_native']").on("change", function(){
         manageFormfields(1);
         manage_preview_clr(1);
     });
@@ -191,11 +195,11 @@ function manageDefaultInit(){
     });
 
     $("#bifurcate_app_color, #bifurcate_app_background_color, #bifurcate_native_background_color, #bifurcate_native_text_color, #bifurcate_native_button_background_color, #bifurcate_native_button_text_color, #bifurcate_native_btn_text").on('input', function(){
-        manage_preview_clr(1);
+        manage_preview_clr(2);
     });
-    $("[name='bifurcate_native_btn'], [name='bifurcate_bottom_banner']").on("change", function(){
-        manageFormfields(1);
-        manage_preview_clr(1);
+    $("[name='bifurcate_native_btn'], [name='bifurcate_bottom_banner'], [name='bifurcate_list_native']").on("change", function(){
+        manageFormfields(2);
+        manage_preview_clr(2);
     });
     $("#bifurcate .clr-picker").on('change', function(){
         manage_preview_clr(2);
@@ -211,6 +215,14 @@ function manageFormfields(type = 1){
         else{
             $("#native_btn_text").removeAttr('readonly');
         } 
+
+        if($("[name='list_native']:checked").val() == "hide"){
+            $("#list_native_cnt").val('');
+            $("#list_native_cnt").prop('readonly', true);
+        }
+        else{
+            $("#list_native_cnt").removeAttr('readonly');
+        } 
     }
     else{
         if($("[name='bifurcate_native_btn']:checked").val() == "default"){
@@ -220,6 +232,14 @@ function manageFormfields(type = 1){
         else{
             $("#bifurcate_native_btn_text").removeAttr('readonly');
         }
+
+        if($("[name='bifurcate_list_native']:checked").val() == "hide"){
+            $("#bifurcate_list_native_cnt").val('');
+            $("#bifurcate_list_native_cnt").prop('readonly', true);
+        }
+        else{
+            $("#bifurcate_list_native_cnt").removeAttr('readonly');
+        } 
     }
 }
 
@@ -384,6 +404,7 @@ function FillSettingData(){
     $("[name='real_casting_flow'][value='"+real_casting_flow+"']").prop('checked', true);
     $("[name='app_stop'][value='"+app_stop+"']").prop('checked', true);
     extra_setting_fields = [];
+    $("#setting_table tr.extra").remove();
     if(adData && adData.additional_fields != "" && adData.additional_fields != null){
         var additional_fields = JSON.parse(adData.additional_fields);
         var loop_idx = 0;
@@ -398,9 +419,6 @@ function FillSettingData(){
             add_extra_setting_field(new_field, new_index, fields.value, fields.value2, 0);
             loop_idx++;
         });
-    }
-    else{
-        $("#setting_table tr.extra").remove();
     }
 
 
@@ -531,6 +549,7 @@ function FillSettingData(){
     $("[name='bifurcate_real_casting_flow'][value='"+real_casting_flow+"']").prop('checked', true);
     $("[name='bifurcate_app_stop'][value='"+app_stop+"']").prop('checked', true);
     extra_bifurcate_setting_fields = [];
+    $("#bifurcate_setting_table tr.extra").remove();
     if(adBifurcateData && adBifurcateData.additional_fields != "" && adBifurcateData.additional_fields != null){
         var additional_fields = JSON.parse(adBifurcateData.additional_fields);
         var loop_idx = 0;
@@ -545,9 +564,6 @@ function FillSettingData(){
             add_extra_setting_field(new_field, new_index, fields.value, fields.value2, 1);
             loop_idx++;
         });
-    }
-    else{
-        $("#bifurcate_setting_table tr.extra").remove();
     }
 
 
@@ -609,6 +625,7 @@ function saveGoogleId(){
     doAPICall(req_data, async function(data){
         if (data && data != null && data.success) {
             hideLoading();
+            setDataVariable(data);
             showMessage(data.message);
             return false;
         }
@@ -717,6 +734,7 @@ function saveOtherSettings(){
     doAPICall(req_data, async function(data){
         if (data && data != null && data.success) {
             hideLoading();
+            setDataVariable(data);
             showMessage(data.message);
             return false;
         }
@@ -834,6 +852,7 @@ function saveVPNSettings(){
     doAPICall(req_data, async function(data){
         if (data && data != null && data.success) {
             hideLoading();
+            setDataVariable(data);
             showMessage(data.message);
             return false;
         }
@@ -864,6 +883,7 @@ function saveAppRemoveSettings(){
     doAPICall(req_data, async function(data){
         if (data && data != null && data.success) {
             hideLoading();
+            setDataVariable(data);
             showMessage(data.message);
             return false;
         }
@@ -985,6 +1005,7 @@ function saveAdsSettings(is_bifurcate = 0, req_data){
     doAPICall(req_data, async function(data){
         if (data && data != null && data.success) {
             hideLoading();
+            setDataVariable(data);
             showMessage(data.message);
             return false;
         }

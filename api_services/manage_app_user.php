@@ -266,7 +266,7 @@ function manage_app_user()
 					'list_native' => $ad_setting['list_native'],
 					'static_native_count' => $ad_setting['list_native_cnt'],
 					'exit_dialog_native' => $ad_setting['exit_dialoge_native'],
-					'native_button_text' => $ad_setting['native_btn'],
+					'native_button_text' => ($ad_setting['native_btn'] == "default") ? $ad_setting['native_btn'] : $ad_setting['native_btn_text'],
 					'native_color' => null
 				);
 
