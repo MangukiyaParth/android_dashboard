@@ -9,7 +9,10 @@ var MODULE_NAME = "login";
     .card {
         background: var(--ct-card-transparent-bg);
         border: 1px solid var(--ct-card-bg);
-        border-radius: 8px;
+        border-radius: 20px;
+    }
+    .card-header {
+        border-radius: 20px 20px 0 0 !important;
     }
     .card-body {
         background: var(--ct-card-transparent-bg);

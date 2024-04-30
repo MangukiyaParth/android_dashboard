@@ -432,6 +432,7 @@ function manage_app_settings()
 		$all_screen_native = $gh->read("all_screen_native","");
 		$list_native = $gh->read("list_native","");
 		$list_native_cnt = $gh->read("list_native_cnt","");
+		$list_native_cnt = ($list_native_cnt != "") ? $list_native_cnt : 0;
 		$exit_dialoge_native = $gh->read("exit_dialoge_native","");
 		$native_btn = $gh->read("native_btn","");
 		$native_btn_text = $gh->read("native_btn_text","");
@@ -442,7 +443,9 @@ function manage_app_settings()
 		$alternate_with_appopen = $gh->read("alternate_with_appopen","");
 		$inter_loading = $gh->read("inter_loading","");
 		$inter_interval = $gh->read("inter_interval","");
+		$inter_interval = ($inter_interval != "") ? $inter_interval : 0;
 		$back_click_inter = $gh->read("back_click_inter","");
+		$back_click_inter = ($back_click_inter != "") ? $back_click_inter : 0;
 		$app_open_loading = $gh->read("app_open_loading","");
 		$splash_ads = $gh->read("splash_ads","");
 		$app_open = $gh->read("app_open","");

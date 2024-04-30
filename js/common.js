@@ -72,6 +72,8 @@ function remove_file(url, ismupltiple = false) {
 
 function apply_after_page_load(){
 
+    $("#main_page_data").css('padding-top', 'revert-layer');
+
     $('[data-plugin="dropzone"]').each(function () {
         setFileDropzone($(this));
     });

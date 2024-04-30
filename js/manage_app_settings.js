@@ -1,9 +1,9 @@
 var table;
-let subView = 1;
-let is_bifurcate = 0;
-let extra_setting_fields = [];
-let extra_bifurcate_setting_fields = [];
-let appData = [];
+var subView = 1;
+var is_bifurcate = 0;
+var extra_setting_fields = [];
+var extra_bifurcate_setting_fields = [];
+var appData = [];
 var OrgData = [];
 var MrktData = [];
 var OrgAdData = [];
@@ -12,6 +12,7 @@ var MrktAdData = [];
 var MrktBifurcateData = [];
 jQuery(function () {
     PRIMARY_ID = localStorage.getItem('primary_id');
+    if($(".button-toggle-menu-mobile:visible").length > 0){  $("#main_page_data").css('padding-top', '140px'); }
     manageDataFilter(false);
     changeSubView(1);
     manageDefaultInit();
@@ -485,9 +486,10 @@ function FillSettingData(){
 
     clearTageditor('#bifurcate_location');
     if(adBifurcateData && adBifurcateData.bifurcate_location && adBifurcateData.bifurcate_location != ""){
-        adBifurcateData.bifurcate_location.split(',').forEach(tag => {
-            $('#bifurcate_location').tagEditor('addTag', tag); 
-        });
+        // adBifurcateData.bifurcate_location.split(',').forEach(tag => {
+        //     $('#bifurcate_location').tagEditor('addTag', tag); 
+        // });
+        $('#bifurcate_location').tagEditor('addTag', adBifurcateData.bifurcate_location.split(',')); 
     }
 
     var bifurcate_native_loading = (adBifurcateData && adBifurcateData.native_loading) ? adBifurcateData.native_loading : 'onload';
@@ -577,9 +579,10 @@ function FillSettingData(){
     $("#bifurcate_vpn_carrier_id").val((adBifurcateData && adBifurcateData.vpn_carrier_id) ? adBifurcateData.vpn_carrier_id : '');
     clearTageditor('#bifurcate_vpn_country');
     if(adBifurcateData && adBifurcateData.vpn_country && adBifurcateData.vpn_country != ""){
-        JSON.parse(adBifurcateData.vpn_country).forEach(tag => {
-            $('#bifurcate_vpn_country').tagEditor('addTag', tag); 
-        });
+        // JSON.parse(adBifurcateData.vpn_country).forEach(tag => {
+        //     $('#bifurcate_vpn_country').tagEditor('addTag', tag); 
+        // });
+        $('#bifurcate_vpn_country').tagEditor('addTag', JSON.parse(adBifurcateData.vpn_country));
     }
 
     manageFormfields(1);

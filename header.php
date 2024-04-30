@@ -127,7 +127,7 @@ var urlParam = "";
 
 			<!-- ========== Topbar Start ========== -->
 			<div class="navbar-custom topnav-navbar pe-0">
-				<div class="container-fluid detached-nav ps-4 pe-0">
+				<div class="container-fluid detached-nav">
 
 					<!-- Topbar Logo -->
 					<div class="logo-topbar">

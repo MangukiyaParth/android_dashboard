@@ -374,7 +374,8 @@ echo $include_javscript_at_bottom;
 						$(".topbar-menu .action-btn").removeClass('d-none');
 						$(".action-btn").removeClass('d-none').addClass('d-inline-flex');
 						let title_width = $(".page-name").width();
-						$(".action-btn").css('width','calc(100% - '+(title_width+30)+'px)');
+						var toggle_btn_width = ($(".button-toggle-menu-mobile:visible").length > 0) ? $(".button-toggle-menu-mobile").width() : 0;
+						$(".action-btn").css('width','calc(100% - '+(title_width+toggle_btn_width+30)+'px)');
 					}else{
 						$(".topbar-menu .action-btn").addClass('d-none');
 						$(".action-btn").removeClass('d-inline-flex').addClass('d-none');

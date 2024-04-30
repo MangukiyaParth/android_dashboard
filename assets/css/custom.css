@@ -373,9 +373,9 @@ img[src="#"] {
 	margin-left: 10px;
 }
 
-.app-action{
-	margin-right: 30px;
-}
+/* .app-action{
+	margin-right: 20px;
+} */
 
 .multi-box .box{
 	background-color: #FAFAFA;
@@ -427,7 +427,7 @@ img[src="#"] {
 	width: 100%;
     height: 644px;
     background-repeat: no-repeat;
-    background-position-x: center;
+    /* background-position-x: center; */
     z-index: 999;
     position: absolute;
 }
