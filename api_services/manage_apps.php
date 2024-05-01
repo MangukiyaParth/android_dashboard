@@ -122,44 +122,22 @@ function manage_apps()
 		$formevent = $gh->read("formevent");
 
 		if($formevent =='submit'){
-			$file_url='';
-			$file_data='';
-			$id=$gh->generateuuid();
-			if(isset($_POST["file"]))
-			{
-				$newData = uploadDropzoneFiles($_POST["file"],$id);
-				$file_url= $newData['file_url'][0];
-				$file_data= $newData['file_data'];
+			$exist_count = $db->get_row_count('tbl_apps', "package_name='$package_name'");
+			if($exist_count > 0){
+				$outputjson['message'] = "Packagename already exist";
 			}
-			$data = array(
-				"id" => $id,
-				"playstore" => $playstore,
-				"adx" => $adx,
-				"app_code" => $app_code,
-				"app_name" => $app_name,
-				"package_name" => $package_name,
-				"web_url" => $web_url,
-				"notes" => $notes,
-				"status" => $status,
-				"file" => $file_url,
-				"file_data" => $file_data,
-				"entry_uid" => $user_id,
-				"entry_date" => $date,
-			);
-			$res = $db->insert("tbl_apps", $data);
-
-			$outputjson['result'] = $res;
-			$outputjson['success'] = 1;
-			$outputjson['message'] = "Data added successfully";
-		}else{																						//update
-			$existing_data = [];
-			$query = "SELECT file FROM tbl_apps WHERE id = '" . $id ."'";
-			$rows = $db->execute($query);
-			if ($rows != null && is_array($rows) && count($rows) > 0) {
-				$existing_data = $rows[0];
-			}	
-			if ($id != "") {
+			else{
+				$file_url='';
+				$file_data='';
+				$id=$gh->generateuuid();
+				if(isset($_POST["file"]))
+				{
+					$newData = uploadDropzoneFiles($_POST["file"],$id);
+					$file_url= $newData['file_url'][0];
+					$file_data= $newData['file_data'];
+				}
 				$data = array(
+					"id" => $id,
 					"playstore" => $playstore,
 					"adx" => $adx,
 					"app_code" => $app_code,
@@ -168,33 +146,68 @@ function manage_apps()
 					"web_url" => $web_url,
 					"notes" => $notes,
 					"status" => $status,
-					"update_uid" => $user_id,
-					"update_date" => $date,
+					"file" => $file_url,
+					"file_data" => $file_data,
+					"entry_uid" => $user_id,
+					"entry_date" => $date,
 				);
-				if(isset($_POST["file"]))
-				{
-					if(str_contains($_POST["file"], 'tmp/')){
-						$newData = uploadDropzoneFiles($_POST["file"],$id);
-						$data['file'] = $newData['file_url'][0];
-						$data['file_data'] = $newData['file_data'];
-						if ($existing_data != null && $existing_data != []) {
-							unlink($existing_data['file']);
+				$res = $db->insert("tbl_apps", $data);
+
+				$outputjson['result'] = $res;
+				$outputjson['success'] = 1;
+				$outputjson['message'] = "Data added successfully";
+			}
+		}else{	
+			if ($id != "") {
+				$exist_count = $db->get_row_count('tbl_apps', "package_name='$package_name' AND id <> '$id'");
+				if($exist_count > 0){
+					$outputjson['message'] = "Packagename already exist";
+				}
+				else{																					//update
+					$existing_data = [];
+					$query = "SELECT file FROM tbl_apps WHERE id = '" . $id ."'";
+					$rows = $db->execute($query);
+					if ($rows != null && is_array($rows) && count($rows) > 0) {
+						$existing_data = $rows[0];
+					}	
+				
+					$data = array(
+						"playstore" => $playstore,
+						"adx" => $adx,
+						"app_code" => $app_code,
+						"app_name" => $app_name,
+						"package_name" => $package_name,
+						"web_url" => $web_url,
+						"notes" => $notes,
+						"status" => $status,
+						"update_uid" => $user_id,
+						"update_date" => $date,
+					);
+					if(isset($_POST["file"]))
+					{
+						if(str_contains($_POST["file"], 'tmp/')){
+							$newData = uploadDropzoneFiles($_POST["file"],$id);
+							$data['file'] = $newData['file_url'][0];
+							$data['file_data'] = $newData['file_data'];
+							if ($existing_data != null && $existing_data != []) {
+								unlink($existing_data['file']);
+							}
 						}
 					}
-				}
-				else {
-					// $data['file'] = "";
-					$data['file_data'] = "";
-					if ($existing_data != null && $existing_data != []) {
-						// unlink($existing_data['file']);
+					else {
+						// $data['file'] = "";
+						$data['file_data'] = "";
+						if ($existing_data != null && $existing_data != []) {
+							// unlink($existing_data['file']);
+						}
 					}
-				}
-				$rows = $db->update('tbl_apps', $data, array("id" => $id));
+					$rows = $db->update('tbl_apps', $data, array("id" => $id));
 
-				$outputjson['success'] = 1;
-				$outputjson['message'] = 'Data updated successfully.';
-				$outputjson["data"] = $rows;
-			} 
+					$outputjson['success'] = 1;
+					$outputjson['message'] = 'Data updated successfully.';
+					$outputjson["data"] = $rows;
+				} 
+			}
 		} 
 	}else if($action == "update_status"){
 		$id = $gh->read("id");

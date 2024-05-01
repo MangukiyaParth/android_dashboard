@@ -24,7 +24,7 @@
         <div class="row mt-3">
             <div class="col-xl-12 col-lg-12">
                 <div class="card border-radius-15">
-                    <div class="card-body d-flex justify-content-between">
+                    <div class="card-body d-flex justify-content-between filter-div">
                         <div class="app-sub-action">
                             <a class="btn btn-outline-soft-warning user-view-btn sub-view-btn me-2" href="javascript:void(0)" onclick="changeSubView(1)">User</a>
                             <a class="btn btn-light retention-view-btn sub-view-btn me-2" href="javascript:void(0)" onclick="changeSubView(2)">Retention</a>
@@ -32,11 +32,12 @@
                             <a class="btn btn-light setting-m-view-btn sub-view-btn me-2" href="javascript:void(0)" onclick="changeSubView(4)">Setting (M)</a>
                         </div>
                         <div class="data-extra-filter float-right w-25">
-                            <select class="form-select" id="time_filter">
+                            <!-- <select class="form-select" id="time_filter">
                                 <option value="">All</option>
                                 <option value="1">Today</option>
                                 <option value="2">Yestarday</option>
-                            </select>
+                            </select> -->
+                            <input type="text" class="form-control" id="time_filter" data-toggle="date-range-picker" autocomplete="false">
                         </div>
                     </div>
                 </div>

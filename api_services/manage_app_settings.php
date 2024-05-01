@@ -54,14 +54,22 @@ function manage_app_settings()
 		$org_con = " AND INSTR(installerurl,'gclid') = 0 ";
 		$mrk_con = " AND INSTR(installerurl,'gclid') > 0 ";
 
-		if($time_filter == 1)
-		{
-			$whereData .= $today_con;
-			$cntWhereData .= $today_con;
-		}
-		else if($time_filter == 2) {
-			$whereData .= $yestarday_con;
-			$cntWhereData .= $yestarday_con;
+		// if($time_filter == 1)
+		// {
+		// 	$whereData .= $today_con;
+		// 	$cntWhereData .= $today_con;
+		// }
+		// else if($time_filter == 2) {
+		// 	$whereData .= $yestarday_con;
+		// 	$cntWhereData .= $yestarday_con;
+		// }
+		if($time_filter != ""){
+			$exp_time_filter = explode(' - ', $time_filter);
+			$startDate = $exp_time_filter[0]; 
+			$endDate = $exp_time_filter[1]; 
+			$time_con = " AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('$startDate','%d/%m/%Y') AND STR_TO_DATE('$endDate','%d/%m/%Y') ";
+			$whereData .= $time_con;
+			$cntWhereData .= $time_con;
 		}
 		$whereData .= " AND (u.package LIKE '%" . $search . "%' OR 
 						u.as LIKE '%" . $search . "%' OR
@@ -96,10 +104,10 @@ function manage_app_settings()
 		if ($orderindex >0) {
 			$orderby = " ORDER BY ".$ordercolumn . " " . $orderdir;
 		}
-		$query_port_rates = "SELECT DISTINCT u.* FROM tbl_app_users as u
+		$query_users = "SELECT DISTINCT u.* FROM tbl_app_users as u
 			INNER JOIN tbl_apps as a ON a.package_name = u.package
 			WHERE " . $whereData . " " . $orderby . " LIMIT " . $start . "," . $length . "";
-		$rows = $db->execute($query_port_rates);
+		$rows = $db->execute($query_users);
 
 		/***** extra cnt *****/
 		$all_count_query = "SELECT count(DISTINCT u.id) as cnt 
@@ -136,6 +144,7 @@ function manage_app_settings()
 			$outputjson['all_count'] = $all_count;
 			$outputjson['org_count'] = $org_count;
 			$outputjson['mrkt_count'] = $mrkt_count;
+			$outputjson['query_users'] = $query_users;
 			$outputjson['message'] = "No Products found!";
 		}
 	}

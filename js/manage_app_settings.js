@@ -160,7 +160,7 @@ function get_user_data() {
         ]
     });
     // $(".extra-option").css('right', ($("#datatable_filter label").width() + 50)+'px');
-    $("#time_filter").on('change', function(){
+    $("#time_filter").on('change cancel.daterangepicker', function(){
         manageDataFilter();
     });
 }

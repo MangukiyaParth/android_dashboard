@@ -369,10 +369,47 @@ function manage_app_user()
 		$outputjson['success'] = 1;
 		$outputjson['status'] = 1;
 		$outputjson['message'] = 'success.';
-		$outputjson["data"] = $res_data;
+
+		$auth_token = $_SERVER['HTTP_AUTH_TOKEN'];
+		$from = $gh->read("from", "");
+		$final_res_data = encrypt("mvjfhcbgyrjdnclgoidhcjsyrkalswuq","bahdtfyclupowbvh",json_encode($res_data));
+		if ($auth_token != "") {
+			$isvalidate = $gh->validatejwt($auth_token,$from);
+			// print_r($isvalidate);
+			if($isvalidate['status'] == 1){
+				$final_res_data = $res_data;
+			}
+			else{
+				$outputjson["res"] = "status";
+			}
+		}
+		else{
+			$outputjson["res"] = "tkn";
+		}
+
+		$outputjson["data"] = $final_res_data;
 	}else {
 		$outputjson["data"] = [];
 		$outputjson['message'] = "Error!";
 	}
 		
+}
+
+//https://stackoverflow.com/questions/44234719/encryption-between-php-java
+function encrypt($key, $iv, $data) {
+	$OPENSSL_CIPHER_NAME = "aes-256-cbc";
+	$CIPHER_KEY_LEN = 16;
+	// if (strlen($key) < $CIPHER_KEY_LEN) {
+	// 	$key = str_pad("$key", $CIPHER_KEY_LEN, "0"); //0 pad to len 16
+	// } else if (strlen($key) > $CIPHER_KEY_LEN) {
+	// 	$key = substr($key, 0, $CIPHER_KEY_LEN); //truncate to 16 bytes
+	// }
+
+	$encodedEncryptedData = base64_encode(openssl_encrypt($data, $OPENSSL_CIPHER_NAME, $key, OPENSSL_RAW_DATA, $iv));
+	// $encodedIV = base64_encode($iv);
+	// $encryptedPayload = $encodedEncryptedData.":".$encodedIV;
+	$encryptedPayload = $encodedEncryptedData;
+
+	return $encryptedPayload;
+
 }

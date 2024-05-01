@@ -93,6 +93,40 @@ function apply_after_page_load(){
         }
     });
 
+    // date range picker
+    var defaultOptions = {
+        cancelClass: "btn-light",
+        applyButtonClasses: "btn-success",
+        autoApply: false,
+        alwaysShowCalendars: true,
+        showDropdowns: true,
+        singleDatePicker: false,
+        // autoUpdateInput: false,
+        minYear: 2023,
+        maxYear: parseInt(moment().format('YYYY'),10),
+        locale: {
+            cancelLabel: 'Clear',
+            format: 'DD/MM/YYYY'
+        },
+        ranges: {
+            'Today': [moment(), moment()],
+            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+            'This Month': [moment().startOf('month'), moment().endOf('month')],
+            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        }
+    };
+
+    $('[data-toggle="date-range-picker"]').each(function (idx, obj) {
+        var objOptions = $.extend({}, defaultOptions, $(obj).data());
+        $(obj).daterangepicker(objOptions);
+    });
+    $('[data-toggle="date-range-picker"]').on('cancel.daterangepicker', function(ev, picker) {
+        //do something, like clearing an input
+        $(this).val('');
+    });
+    
     // Datetime and date range picker
     var defaultOptions = {
         cancelClass: "btn-light",
