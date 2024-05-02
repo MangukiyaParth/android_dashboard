@@ -43,6 +43,7 @@ function manage_app_settings()
 		$ordercolumn = $columnsarr[$orderindex]['name'];
 		$filt_data = json_decode($extra_option, true);
 		$time_filter = $filt_data['time_filter'];
+		$sub_view = $filt_data['sub_view'];
 		$app_id = $filt_data['app_id'];
 
 		$main_where = " a.id = '$app_id' ";
@@ -70,6 +71,12 @@ function manage_app_settings()
 			$time_con = " AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('$startDate','%d/%m/%Y') AND STR_TO_DATE('$endDate','%d/%m/%Y') ";
 			$whereData .= $time_con;
 			$cntWhereData .= $time_con;
+		}
+		if($sub_view != ""){
+			$retansion = ($sub_view == "1") ? "false" : "true"; 
+			$retansion_con = " AND u.retention = '$retansion' ";
+			$whereData .= $retansion_con;
+			$cntWhereData .= $retansion_con;
 		}
 		$whereData .= " AND (u.package LIKE '%" . $search . "%' OR 
 						u.as LIKE '%" . $search . "%' OR
@@ -144,7 +151,6 @@ function manage_app_settings()
 			$outputjson['all_count'] = $all_count;
 			$outputjson['org_count'] = $org_count;
 			$outputjson['mrkt_count'] = $mrkt_count;
-			$outputjson['query_users'] = $query_users;
 			$outputjson['message'] = "No Products found!";
 		}
 	}

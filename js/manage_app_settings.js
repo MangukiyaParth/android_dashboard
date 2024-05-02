@@ -13,8 +13,8 @@ var MrktBifurcateData = [];
 jQuery(function () {
     PRIMARY_ID = localStorage.getItem('primary_id');
     if($(".button-toggle-menu-mobile:visible").length > 0){  $("#main_page_data").css('padding-top', '140px'); }
-    manageDataFilter(false);
-    changeSubView(1);
+    // manageDataFilter(false);
+    changeSubView(1, false);
     manageDefaultInit();
     fill_app_details();
     get_user_data();
@@ -24,6 +24,7 @@ async function manageDataFilter(resetDatatable = true){
     var time_filter = $("#time_filter").val();
     var filt = {
         "time_filter": time_filter,
+        "sub_view": subView,
         "app_id": PRIMARY_ID
     }
     $("#extra_option").val(JSON.stringify(filt));
@@ -82,15 +83,17 @@ function setDataVariable(data){
     MrktBifurcateData = data.mrkt_bifurcate_ad;
 }
 
-function changeSubView(v){
+function changeSubView(v, resetDatatable = true){
     subView = v;
     if(v==1){
+        manageDataFilter(resetDatatable);
         $(".sub-view-btn").addClass('btn-light').removeClass('btn-outline-soft-warning');
         $(".user-view-btn").removeClass('btn-light').addClass('btn-outline-soft-warning').blur();
         $(".setting-div").addClass('d-none');
         $(".user-div, .data-extra-filter").removeClass('d-none');
     }
     else if(v==2){
+        manageDataFilter(resetDatatable);
         $(".sub-view-btn").addClass('btn-light').removeClass('btn-outline-soft-warning');
         $(".retention-view-btn").removeClass('btn-light').addClass('btn-outline-soft-warning').blur();
         $(".setting-div").addClass('d-none');

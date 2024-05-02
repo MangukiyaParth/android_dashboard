@@ -2,6 +2,11 @@
 php_flag session.auto_start 1
 </IfModule>
 
+<Files .env>
+    Order allow,deny
+    Deny from all
+</Files>
+
 RewriteEngine on
 RewriteRule ^(.*)\.[\d]{10}\.(css|js)$ $1.$2 [L]
 

@@ -372,7 +372,7 @@ function manage_app_user()
 
 		$auth_token = $_SERVER['HTTP_AUTH_TOKEN'];
 		$from = $gh->read("from", "");
-		$final_res_data = encrypt("mvjfhcbgyrjdnclgoidhcjsyrkalswuq","bahdtfyclupowbvh",json_encode($res_data));
+		$final_res_data = encrypt($_ENV['ENCR_KEY'],$_ENV['ENCR_IV'],json_encode($res_data));
 		if ($auth_token != "") {
 			$isvalidate = $gh->validatejwt($auth_token,$from);
 			// print_r($isvalidate);

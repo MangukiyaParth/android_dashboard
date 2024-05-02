@@ -525,6 +525,7 @@ img[src="#"] {
 .status-data .status-diff{
 	font-size: 14px;
 	font-weight: 600;
+	display: none;
 }
 
 .status-data .status-diff.up,
