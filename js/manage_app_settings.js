@@ -935,7 +935,7 @@ function saveBifurcate_AdSettings(){
     var extra_field = [];
     $("#bifurcate_setting_table tr.extra").each(function() {
         var idx = $(this).attr('data-index');
-        let obj = extra_setting_fields.find(o => o.idx === idx);
+        let obj = extra_bifurcate_setting_fields.find(o => o.idx === idx);
         var val1 = "";
         var val2 = "";
         if(obj.field_type == 1){
