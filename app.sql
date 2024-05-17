@@ -2,7 +2,8 @@
 SQLyog Ultimate v11.11 (32 bit)
 MySQL - 5.5.5-10.4.28-MariaDB : Database - db_android
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -180,24 +181,24 @@ CREATE TABLE `tbl_apps_settings` (
   `g1_account_name` varchar(100) DEFAULT NULL,
   `g2_account_name` varchar(100) DEFAULT NULL,
   `g3_account_name` varchar(100) DEFAULT NULL,
-  `g1_banner` varchar(50) DEFAULT NULL,
-  `g2_banner` varchar(50) DEFAULT NULL,
-  `g3_banner` varchar(50) DEFAULT NULL,
-  `g1_inter` varchar(50) DEFAULT NULL,
-  `g2_inter` varchar(50) DEFAULT NULL,
-  `g3_inter` varchar(50) DEFAULT NULL,
-  `g1_native` varchar(50) DEFAULT NULL,
-  `g2_native` varchar(50) DEFAULT NULL,
-  `g3_native` varchar(50) DEFAULT NULL,
-  `g1_native2` varchar(50) DEFAULT NULL,
-  `g2_native2` varchar(50) DEFAULT NULL,
-  `g3_native2` varchar(50) DEFAULT NULL,
-  `g1_appopen` varchar(50) DEFAULT NULL,
-  `g2_appopen` varchar(50) DEFAULT NULL,
-  `g3_appopen` varchar(50) DEFAULT NULL,
-  `g1_appid` varchar(50) DEFAULT NULL,
-  `g2_appid` varchar(50) DEFAULT NULL,
-  `g3_appid` varchar(50) DEFAULT NULL,
+  `g1_banner` varchar(150) DEFAULT NULL,
+  `g2_banner` varchar(150) DEFAULT NULL,
+  `g3_banner` varchar(150) DEFAULT NULL,
+  `g1_inter` varchar(150) DEFAULT NULL,
+  `g2_inter` varchar(150) DEFAULT NULL,
+  `g3_inter` varchar(150) DEFAULT NULL,
+  `g1_native` varchar(150) DEFAULT NULL,
+  `g2_native` varchar(150) DEFAULT NULL,
+  `g3_native` varchar(150) DEFAULT NULL,
+  `g1_native2` varchar(150) DEFAULT NULL,
+  `g2_native2` varchar(150) DEFAULT NULL,
+  `g3_native2` varchar(150) DEFAULT NULL,
+  `g1_appopen` varchar(150) DEFAULT NULL,
+  `g2_appopen` varchar(150) DEFAULT NULL,
+  `g3_appopen` varchar(150) DEFAULT NULL,
+  `g1_appid` varchar(150) DEFAULT NULL,
+  `g2_appid` varchar(150) DEFAULT NULL,
+  `g3_appid` varchar(150) DEFAULT NULL,
   `app_remove_flag` varchar(10) DEFAULT NULL,
   `app_version` varchar(10) DEFAULT NULL,
   `app_remove_title` varchar(100) DEFAULT NULL,
