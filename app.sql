@@ -100,6 +100,7 @@ DROP TABLE IF EXISTS `tbl_app_users`;
 CREATE TABLE `tbl_app_users` (
   `id` varchar(50) NOT NULL,
   `package` varchar(150) DEFAULT NULL,
+  `app_id` VARCHAR(50) NOT NULL,
   `as` varchar(150) DEFAULT NULL,
   `asname` varchar(100) DEFAULT NULL,
   `callingCode` varchar(10) DEFAULT NULL,
@@ -139,6 +140,7 @@ CREATE TABLE `tbl_app_users` (
 
 insert  into `tbl_app_users`(`id`,`package`,`as`,`asname`,`callingCode`,`city`,`continent`,`continentCode`,`country`,`countryCode`,`countryCode3`,`currency`,`currentTime`,`district`,`hosting`,`isp`,`lat`,`lon`,`mobile`,`offset`,`org`,`proxy`,`query`,`region`,`regionName`,`reverse`,`status`,`timezone`,`zip`,`device_id`,`retention`,`installerinfo`,`installerurl`,`entry_date`) values ('17136051-0439-0071-2f06-79eaed4f4e7d','ldqloanemicalc.loanemitools.loanemicalculator.tssipcalculator','AS24560 Bharti Airtel Ltd., Telemedia Services','AIRTELBROADBAND-AS-AP','91','Ahmedabad','Asia','AS','India','IN','IND','INR','2023-07-25T16:14:55+','','false','Bharti Airtel Limited',23.0276,72.5871,'true',19800,'BHARTI','false','171.50.187','GJ','Gujarat','','success','Asia/Kolkata','380006','69bca4780574c969','false','false','utm_source=google-play&utm_medium=organic','2024-04-20 15:08:33'),('17138515-7643-7755-319d-e0cf8b164a19','ldqloanemicalc.loanemitools.loanemicalculator.tssipcalculator','AS24560 Bharti Airtel Ltd., Telemedia Services','AIRTELBROADBAND-AS-AP','91','Ahmedabad','Asia','AS','India','IN','IND','INR','2023-07-25T16:14:55+','','false','Bharti Airtel Limited',23.0276,72.5871,'true',19800,'BHARTI','false','171.50.187','GJ','Gujarat','','success','Asia/Kolkata','380006','69bca4780574c969','false','false','utm_source=google-play&utm_medium=organic','2024-04-23 11:22:56'),('17139338-5394-7213-445b-0cd8e0a14b35','ldqloanemicalc.loanemitools.loanemicalculator.tssipcalculator','AS24560 Bharti Airtel Ltd., Telemedia Services','AIRTELBROADBAND-AS-AP','91','Ahmedabad','Asia','AS','India','IN','IND','INR','2023-07-25T16:14:55+','','false','Bharti Airtel Limited',23.0276,72.5871,'true',19800,'BHARTI','false','171.50.187','GJ','Gujarat','','success','Asia/Kolkata','380006','69bca4780574c969','false','false','utm_source=google-play&utm_medium=organic','2024-04-24 10:14:13');
 
+update tbl_app_users u inner join tbl_apps a on a.package_name = u.package set u.app_id = a.id;
 /*Table structure for table `tbl_apps` */
 
 DROP TABLE IF EXISTS `tbl_apps`;

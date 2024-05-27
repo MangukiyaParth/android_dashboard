@@ -115,7 +115,7 @@
                                 <div class="col-lg-3">
                                     <div class="card border-radius-15 shadow-none border-dark status-data">
                                         <div class="card-body today_cnt_div">
-                                            <div class="status-cnt-div"><span class="today_cnt status-cnt">261</span><span class="today_diff status-diff up">76.4%</span><i class="status-diff-symbole fa-solid fa-caret-up"></i></div>
+                                            <div class="status-cnt-div"><span class="today_cnt status-cnt">0</span><span class="today_diff status-diff up">76.4%</span><i class="status-diff-symbole fa-solid fa-caret-up"></i></div>
                                             <div class="status-title">Today</div>
                                         </div>
                                     </div>
@@ -123,7 +123,7 @@
                                 <div class="col-lg-3">
                                     <div class="card border-radius-15 shadow-none border-dark status-data">
                                         <div class="card-body yestarday_cnt_div">
-                                            <div class="status-cnt-div"><span class="yestarday_cnt status-cnt">261</span><span class="today_diff status-diff up">76.4%</span><i class="status-diff-symbole fa-solid fa-caret-up"></i></div>
+                                            <div class="status-cnt-div"><span class="yestarday_cnt status-cnt">0</span><span class="today_diff status-diff up">76.4%</span><i class="status-diff-symbole fa-solid fa-caret-up"></i></div>
                                             <div class="status-title">Yestarday</div>
                                         </div>
                                     </div>
@@ -131,7 +131,7 @@
                                 <div class="col-lg-3">
                                     <div class="card border-radius-15 shadow-none border-dark status-data">
                                         <div class="card-body week_cnt_div">
-                                            <div class="status-cnt-div"><span class="week_cnt status-cnt">261</span><span class="today_diff status-diff down">76.4%</span><i class="status-diff-symbole fa-solid fa-caret-down"></i></div>
+                                            <div class="status-cnt-div"><span class="week_cnt status-cnt">0</span><span class="today_diff status-diff down">76.4%</span><i class="status-diff-symbole fa-solid fa-caret-down"></i></div>
                                             <div class="status-title">Last 7 Days</div>
                                         </div>
                                     </div>
@@ -139,7 +139,7 @@
                                 <div class="col-lg-3">
                                     <div class="card border-radius-15 shadow-none border-dark status-data">
                                         <div class="card-body month_cnt_div">
-                                            <div class="status-cnt-div"><span class="month_cnt status-cnt">261</span><span class="today_diff status-diff up">76.4%</span><i class="status-diff-symbole fa-solid fa-caret-up"></i></div>
+                                            <div class="status-cnt-div"><span class="month_cnt status-cnt">0</span><span class="today_diff status-diff up">76.4%</span><i class="status-diff-symbole fa-solid fa-caret-up"></i></div>
                                             <div class="status-title">Last 30 Days</div>
                                         </div>
                                     </div>

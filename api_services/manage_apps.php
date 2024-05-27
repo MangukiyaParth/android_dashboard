@@ -27,24 +27,29 @@ function manage_apps()
 		$prevMonthdayCnt = "";
 		if($status != ""){
 			$whereData .= " a.status = $status AND ";
-			if($status == 3){
+			if($status == 3 && false){
+				// $qry_cnt = "SELECT
+				// (SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`package_name` = u.`package` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date('Y-m-d')."') AS today_cnt,
+				// (SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`package_name` = u.`package` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date("Y-m-d", strtotime("-1 day"))."') AS yestarday_cnt,
+				// (SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`package_name` = u.`package` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-2 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d', strtotime("-1 day"))."','%Y-%m-%d') ) AS prev_yestarday_cnt,
+				// (SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`package_name` = u.`package` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-6 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d')."','%Y-%m-%d') ) AS weekday_cnt,
+				// (SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`package_name` = u.`package` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-13 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d', strtotime("-7 day"))."','%Y-%m-%d') ) AS prev_weekday_cnt,
+				// (SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`package_name` = u.`package` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-29 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d')."','%Y-%m-%d') ) AS monthday_cnt,
+				// (SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`package_name` = u.`package` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-59 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d', strtotime("-30 day"))."','%Y-%m-%d') ) AS prev_monthday_cnt";
 				$qry_cnt = "SELECT
-				(SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`package_name` = u.`package` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date('Y-m-d')."') AS today_cnt,
-				(SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`package_name` = u.`package` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date("Y-m-d", strtotime("-1 day"))."') AS yestarday_cnt,
-				(SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`package_name` = u.`package` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-2 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d', strtotime("-1 day"))."','%Y-%m-%d') ) AS prev_yestarday_cnt,
-				(SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`package_name` = u.`package` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-6 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d')."','%Y-%m-%d') ) AS weekday_cnt,
-				(SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`package_name` = u.`package` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-13 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d', strtotime("-7 day"))."','%Y-%m-%d') ) AS prev_weekday_cnt,
-				(SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`package_name` = u.`package` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-29 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d')."','%Y-%m-%d') ) AS monthday_cnt,
-				(SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`package_name` = u.`package` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-59 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d', strtotime("-30 day"))."','%Y-%m-%d') ) AS prev_monthday_cnt";
+				(SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`id` = u.`app_id` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date('Y-m-d')."') AS today_cnt,
+				(SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`id` = u.`app_id` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date("Y-m-d", strtotime("-1 day"))."') AS yestarday_cnt,
+				(SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`id` = u.`app_id` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-6 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d')."','%Y-%m-%d') ) AS weekday_cnt,
+				(SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`id` = u.`app_id` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-29 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d')."','%Y-%m-%d') ) AS monthday_cnt";
 				$rows_cnt = $db->execute($qry_cnt);
 				$counts = $rows_cnt[0];
 				$todayCnt = $counts['today_cnt'];
 				$yestardayCnt = $counts['yestarday_cnt'];
-				$prevYestardayCnt = $counts['prev_yestarday_cnt'];
+				// $prevYestardayCnt = $counts['prev_yestarday_cnt'];
 				$weekdayCnt = $counts['weekday_cnt'];
-				$prevWeekdayCnt = $counts['prev_weekday_cnt'];
+				// $prevWeekdayCnt = $counts['prev_weekday_cnt'];
 				$monthdayCnt = $counts['monthday_cnt'];
-				$prevMonthdayCnt = $counts['prev_monthday_cnt'];
+				// $prevMonthdayCnt = $counts['prev_monthday_cnt'];
 			}
 		}
 		$whereData .= "(a.playstore LIKE '%" . $search . "%' OR 
@@ -70,9 +75,9 @@ function manage_apps()
 		}
 		$query_port_rates = "SELECT DISTINCT a.*,p.name AS playstore_name, adx.name AS adx_name,
 			CASE WHEN DATEDIFF(CURDATE(),STR_TO_DATE(a.entry_date, '%Y-%m-%d')) = 0 THEN 'Today' ELSE CONCAT(DATEDIFF(CURDATE(),STR_TO_DATE(a.entry_date, '%Y-%m-%d')),' Days') END AS `days`,
-			IFNULL((SELECT count(DISTINCT u.id) FROM tbl_app_users as u WHERE u.package = a.package_name),0) AS total_cnt, 
-			IFNULL((SELECT count(DISTINCT u.id) FROM tbl_app_users as u WHERE u.package = a.package_name AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date('Y-m-d')."' ),0) AS today_cnt, 
-			IFNULL((SELECT count(DISTINCT u.id) FROM tbl_app_users as u WHERE u.package = a.package_name AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date("Y-m-d", strtotime("-1 day"))."' ),0) AS yestarday_cnt
+			IFNULL((SELECT count(DISTINCT u.id) FROM tbl_app_users as u WHERE u.app_id = a.id),0) AS total_cnt, 
+			IFNULL((SELECT count(DISTINCT u.id) FROM tbl_app_users as u WHERE u.app_id = a.id AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date('Y-m-d')."' ),0) AS today_cnt, 
+			IFNULL((SELECT count(DISTINCT u.id) FROM tbl_app_users as u WHERE u.app_id = a.id AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date("Y-m-d", strtotime("-1 day"))."' ),0) AS yestarday_cnt
 			FROM tbl_apps as a 
 			LEFT JOIN tbl_play_store as p ON p.id = a.playstore
 			LEFT JOIN tbl_adx as adx ON adx.id = a.adx
@@ -107,6 +112,48 @@ function manage_apps()
 			$outputjson['recordsFiltered'] = 0;
 			$outputjson['message'] = "No Products found!";
 		}
+	}else if($action == "get_user_cnt"){ 
+		$todayCnt = "";
+		$yestardayCnt = "";
+		$prevYestardayCnt = "";
+		$weekdayCnt = "";
+		$prevWeekdayCnt = "";
+		$monthdayCnt = "";
+		$prevMonthdayCnt = "";
+		// $qry_cnt = "SELECT
+		// (SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`package_name` = u.`package` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date('Y-m-d')."') AS today_cnt,
+		// (SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`package_name` = u.`package` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date("Y-m-d", strtotime("-1 day"))."') AS yestarday_cnt,
+		// (SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`package_name` = u.`package` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-2 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d', strtotime("-1 day"))."','%Y-%m-%d') ) AS prev_yestarday_cnt,
+		// (SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`package_name` = u.`package` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-6 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d')."','%Y-%m-%d') ) AS weekday_cnt,
+		// (SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`package_name` = u.`package` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-13 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d', strtotime("-7 day"))."','%Y-%m-%d') ) AS prev_weekday_cnt,
+		// (SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`package_name` = u.`package` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-29 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d')."','%Y-%m-%d') ) AS monthday_cnt,
+		// (SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`package_name` = u.`package` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-59 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d', strtotime("-30 day"))."','%Y-%m-%d') ) AS prev_monthday_cnt";
+		$qry_cnt = "SELECT
+		(SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`id` = u.`app_id` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date('Y-m-d')."') AS today_cnt,
+		(SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`id` = u.`app_id` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date("Y-m-d", strtotime("-1 day"))."') AS yestarday_cnt,
+		(SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`id` = u.`app_id` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-6 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d')."','%Y-%m-%d') ) AS weekday_cnt,
+		(SELECT COUNT(u.id) FROM `tbl_app_users` u INNER JOIN tbl_apps a ON a.`id` = u.`app_id` WHERE a.status = 3 AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') BETWEEN STR_TO_DATE('".date("Y-m-d", strtotime("-29 day"))."','%Y-%m-%d') AND STR_TO_DATE('".date('Y-m-d')."','%Y-%m-%d') ) AS monthday_cnt";
+		$rows_cnt = $db->execute($qry_cnt);
+		$counts = $rows_cnt[0];
+		$todayCnt = $counts['today_cnt'];
+		$yestardayCnt = $counts['yestarday_cnt'];
+		// $prevYestardayCnt = $counts['prev_yestarday_cnt'];
+		$weekdayCnt = $counts['weekday_cnt'];
+		// $prevWeekdayCnt = $counts['prev_weekday_cnt'];
+		$monthdayCnt = $counts['monthday_cnt'];
+		// $prevMonthdayCnt = $counts['prev_monthday_cnt'];
+
+		$outputjson['todayCnt'] = $todayCnt;
+		$outputjson['yestardayCnt'] = $yestardayCnt;
+		// $outputjson['prevYestardayCnt'] = $prevYestardayCnt;
+		$outputjson['weekdayCnt'] = $weekdayCnt;
+		// $outputjson['prevWeekdayCnt'] = $prevWeekdayCnt;
+		$outputjson['monthdayCnt'] = $monthdayCnt;
+		// $outputjson['prevMonthdayCnt'] = $prevMonthdayCnt;
+		$outputjson['success'] = 1;
+		$outputjson['status'] = 1;
+		$outputjson['message'] = 'success.';
+
 	}else if($action == "add_data"){
 		$id = $gh->read("id");
 		$user_id = $gh->read("user_id", 0);

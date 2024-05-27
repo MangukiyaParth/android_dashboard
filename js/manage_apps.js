@@ -9,6 +9,9 @@ jQuery(function () {
         var extra_option = $(this).attr('data-filter-type');
         $("#extra_option").val(extra_option);
         await table.clearPipeline().draw();
+        if(extra_option == 3){
+            getUserCounts();
+        }
     });
 });
 function resetform(){
@@ -71,6 +74,33 @@ function fill_details(){
     }
 }
 
+function getUserCounts(){
+    var req_data = {
+        op: CURRENT_PAGE
+        , action: "get_user_cnt"
+    };
+    doAPICall(req_data, async function(data){
+        if (data && data != null && data.success) {
+            hideLoading();
+            var cntData = data.data;
+            const todayCnt = cntData.todayCnt;
+            const yestardayCnt = cntData.yestardayCnt;
+            const weekdayCnt = cntData.weekdayCnt;
+            const monthdayCnt = cntData.monthdayCnt;
+
+            $(".status-cnt-div .today_cnt").html(to_number_format(todayCnt));
+            $(".status-cnt-div .yestarday_cnt").html(to_number_format(yestardayCnt));
+            $(".status-cnt-div .week_cnt").html(to_number_format(weekdayCnt));
+            $(".status-cnt-div .month_cnt").html(to_number_format(monthdayCnt));
+            return false;
+        }
+        else if (data && data != null && !data.success) {
+            hideLoading();
+            return false;
+        }
+    });
+}
+
 function get_data() {
     table = $('#datatable').DataTable({
         processing: true,
@@ -83,100 +113,6 @@ function get_data() {
             $(".dataTables_paginate > .pagination").addClass("pagination-rounded");
             var filter = $(".table-filter-data.active").attr('data-filter-type');
             if(filter == 3){
-                const todayCnt = res.json.todayCnt;
-                const yestardayCnt = res.json.yestardayCnt;
-                const prevYestardayCnt = res.json.prevYestardayCnt;
-                const weekdayCnt = res.json.weekdayCnt;
-                const prevWeekdayCnt = res.json.prevWeekdayCnt;
-                const monthdayCnt = res.json.monthdayCnt;
-                const prevMonthdayCnt = res.json.prevMonthdayCnt;
-
-                $(".status-cnt-div .today_cnt").html(todayCnt);
-                if(todayCnt > yestardayCnt){
-                    let diff = (yestardayCnt * 100) / todayCnt;
-                    if(yestardayCnt == 0) { diff = 100; }
-                    $(".today_cnt_div .status-diff-symbole").removeClass('d-none').removeClass('fa-caret-down').addClass('fa-caret-up');
-                    $(".today_cnt_div .status-diff").removeClass('down').addClass('up');
-                    $(".today_cnt_div .status-diff").html(diff+'%');
-                }
-                else if(todayCnt > yestardayCnt){
-                    let diff = (todayCnt * 100) / yestardayCnt;
-                    if(todayCnt == 0) { diff = 100; }
-                    $(".today_cnt_div .status-diff-symbole").removeClass('d-none').removeClass('fa-caret-up').addClass('fa-caret-down');
-                    $(".today_cnt_div .status-diff").removeClass('up').addClass('down');
-                    $(".today_cnt_div .status-diff").html(diff+'%');
-                }
-                else{
-                    $(".today_cnt_div .status-diff-symbole").addClass('d-none').removeClass('fa-caret-up').removeClass('fa-caret-down');
-                    $(".today_cnt_div .status-diff").removeClass('up').removeClass('down');
-                    $(".today_cnt_div .status-diff").html('0%');
-                }
-
-                // Yestarday
-                $(".status-cnt-div .yestarday_cnt").html(yestardayCnt);
-                if(yestardayCnt > prevYestardayCnt){
-                    let diff = (prevYestardayCnt * 100) / yestardayCnt;
-                    if(prevYestardayCnt == 0) { diff = 100; }
-                    $(".yestarday_cnt_div .status-diff-symbole").removeClass('d-none').removeClass('fa-caret-down').addClass('fa-caret-up');
-                    $(".yestarday_cnt_div .status-diff").removeClass('down').addClass('up');
-                    $(".yestarday_cnt_div .status-diff").html(diff+'%');
-                }
-                else if(yestardayCnt > prevYestardayCnt){
-                    let diff = (yestardayCnt * 100) / prevYestardayCnt;
-                    if(yestardayCnt == 0) { diff = 100; }
-                    $(".yestarday_cnt_div .status-diff-symbole").removeClass('d-none').removeClass('fa-caret-up').addClass('fa-caret-down');
-                    $(".yestarday_cnt_div .status-diff").removeClass('up').addClass('down');
-                    $(".yestarday_cnt_div .status-diff").html(diff+'%');
-                }
-                else{
-                    $(".yestarday_cnt_div .status-diff-symbole").addClass('d-none').removeClass('fa-caret-up').removeClass('fa-caret-down');
-                    $(".yestarday_cnt_div .status-diff").removeClass('up').removeClass('down');
-                    $(".yestarday_cnt_div .status-diff").html('0%');
-                }
-
-                // Last 7 Days
-                $(".status-cnt-div .week_cnt").html(weekdayCnt);
-                if(weekdayCnt > prevWeekdayCnt){
-                    let diff = (prevWeekdayCnt * 100) / weekdayCnt;
-                    if(prevWeekdayCnt == 0) { diff = 100; }
-                    $(".week_cnt_div .status-diff-symbole").removeClass('d-none').removeClass('fa-caret-down').addClass('fa-caret-up');
-                    $(".week_cnt_div .status-diff").removeClass('down').addClass('up');
-                    $(".week_cnt_div .status-diff").html(diff+'%');
-                }
-                else if(weekdayCnt > prevWeekdayCnt){
-                    let diff = (weekdayCnt * 100) / prevWeekdayCnt;
-                    if(weekdayCnt == 0) { diff = 100; }
-                    $(".week_cnt_div .status-diff-symbole").removeClass('d-none').removeClass('fa-caret-up').addClass('fa-caret-down');
-                    $(".week_cnt_div .status-diff").removeClass('up').addClass('down');
-                    $(".week_cnt_div .status-diff").html(diff+'%');
-                }
-                else{
-                    $(".week_cnt_div .status-diff-symbole").addClass('d-none').removeClass('fa-caret-up').removeClass('fa-caret-down');
-                    $(".week_cnt_div .status-diff").removeClass('up').removeClass('down');
-                    $(".week_cnt_div .status-diff").html('0%');
-                }
-
-                // Last 30 Days
-                $(".status-cnt-div .month_cnt").html(monthdayCnt);
-                if(monthdayCnt > prevMonthdayCnt){
-                    let diff = (prevMonthdayCnt * 100) / monthdayCnt;
-                    if(prevMonthdayCnt == 0) { diff = 100; }
-                    $(".month_cnt_div .status-diff-symbole").removeClass('d-none').removeClass('fa-caret-down').addClass('fa-caret-up');
-                    $(".month_cnt_div .status-diff").removeClass('down').addClass('up');
-                    $(".month_cnt_div .status-diff").html(diff+'%');
-                }
-                else if(monthdayCnt > prevMonthdayCnt){
-                    let diff = (monthdayCnt * 100) / prevMonthdayCnt;
-                    if(monthdayCnt == 0) { diff = 100; }
-                    $(".month_cnt_div .status-diff-symbole").removeClass('d-none').removeClass('fa-caret-up').addClass('fa-caret-down');
-                    $(".month_cnt_div .status-diff").removeClass('up').addClass('down');
-                    $(".month_cnt_div .status-diff").html(diff+'%');
-                }
-                else{
-                    $(".month_cnt_div .status-diff-symbole").addClass('d-none').removeClass('fa-caret-up').removeClass('fa-caret-down');
-                    $(".month_cnt_div .status-diff").removeClass('up').removeClass('down');
-                    $(".month_cnt_div .status-diff").html('0%');
-                }
                 $(".user-states").removeClass("d-none");
             }
             else{
