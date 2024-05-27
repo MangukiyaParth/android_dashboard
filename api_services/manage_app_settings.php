@@ -535,9 +535,11 @@ function manage_app_settings()
 			$data['vpn_country'] = $vpn_country;
 			$data['vpn_url'] = $vpn_url;
 			$data['vpn_carrier_id'] = $vpn_carrier_id;
+
+			$id = $gh->read("bifurcate_id");
 		}
 
-		if($id > 0){
+		if($id){
 			$data["update_uid"] = $user_id;
 			$data["update_date"] = $date;
 			$res = $db->update("tbl_app_ad_settings", $data, array("id"=>$id));
@@ -555,6 +557,7 @@ function manage_app_settings()
 
 		get_all_setting_data($app_id);
 		$outputjson['result'] = $res;
+		$outputjson['data_ref'] = $id;
 		$outputjson['success'] = 1;
 		$outputjson['message'] = "Data updated successfully";
 	}

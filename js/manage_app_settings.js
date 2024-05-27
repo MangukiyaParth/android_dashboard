@@ -490,7 +490,7 @@ function FillSettingData(){
     clearTageditor('#bifurcate_location');    
     var bhtml = "";
     adBifurcateData.forEach(function(bifurcateData) {
-        bhtml += `<div class="blocation d-flex align-items-center">
+        bhtml += `<div class="blocation d-flex align-items-center loc-${bifurcateData.id}">
             <span class="cursor-pointer" onclick="edit_bifurcate('${bifurcateData.id}')">${bifurcateData.bifurcate_location}</span>
             <i class="fa fa-close ms-1 text-danger cursor-pointer" onclick="conform_delete_bifurecate('${bifurcateData.id}')"></i>
         </div>`;
@@ -571,6 +571,8 @@ function edit_bifurcate(id){
     $("#bifurcate_id").val("");
     
     if(id != "NEW"){
+        $(`.blocation`).removeClass('active');
+        $(`.loc-${id}`).addClass('active');
         let adBifurcateData = [];
         if(subView == 3){
             adBifurcateData = OrgBifurcateData;
@@ -620,6 +622,7 @@ function edit_bifurcate(id){
         $("[name='bifurcate_app_open'][value='"+bifurcate_app_open+"']").prop('checked', true);
     }
     else {
+        $(`.blocation`).removeClass('active');
         $("#bifurcate_app_color").val('#000000');
         $("#bifurcate_app_background_color").val('#FFFFFF');
         $("[name='bifurcate_native_loading'][value='onload']").prop('checked', true);
@@ -646,6 +649,7 @@ function edit_bifurcate(id){
     manage_preview_clr(1);
     manageFormfields(2);
     manage_preview_clr(2);
+    manageSelectedColor();
 }
 
 //================= Google Functions =================
@@ -1010,6 +1014,7 @@ function saveBifurcate_AdSettings(){
     });
     var req_data = {
         bifurcate_location: $('#bifurcate_location').tagEditor('getTags')[0].tags.join(',')
+        , bifurcate_id: $("#bifurcate_id").val()
         , app_color: $("#bifurcate_app_color").val()
         , app_background_color: $("#bifurcate_app_background_color").val()
         , native_loading: $("[name='bifurcate_native_loading']:checked").val()
@@ -1065,6 +1070,9 @@ function saveAdsSettings(is_bifurcate = 0, req_data){
         if (data && data != null && data.success) {
             hideLoading();
             setDataVariable(data);
+            if(is_bifurcate){
+                $("#bifurcate_id").val(data.data_ref);
+            }
             showMessage(data.message);
             return false;
         }
