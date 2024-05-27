@@ -259,11 +259,67 @@ function manage_apps()
 	}else if($action == "update_status"){
 		$id = $gh->read("id");
 		$status = $gh->read("status");
+		$user_id = $gh->read("user_id", 0);
+		$date = date('Y-m-d H:i:s');
 
 		$data = array(
 			"status" => $status
 		);
 		$rows = $db->update('tbl_apps', $data, array("id" => $id));
+
+		$count_query = "SELECT id from tbl_app_ad_settings WHERE app_id = '$id' AND `type` = 1 AND is_bifurcate = 0";
+		$sid = $db->execute_scalar($count_query);
+		$data = array(
+			"app_color" => "#000000",
+			"app_background_color" => "#FFFFFF",
+			"native_loading" => "onload",
+			"bottom_banner" => "hide",
+			"all_screen_native" => "hide",
+			"list_native" => "hide",
+			"list_native_cnt" => "0",
+			"exit_dialoge_native" => "hide",
+			"native_btn" => "default",
+			"native_btn_text" => "",
+			"native_background_color" => "#FFFEFF",
+			"native_text_color" => "#808080",
+			"native_button_background_color" => "#4285F4",
+			"native_button_text_color" => "#FFFEFF",
+			"alternate_with_appopen" => "hide",
+			"inter_loading" => "onload",
+			"inter_interval" => "0",
+			"back_click_inter" => "0",
+			"app_open_loading" => "onload",
+			"splash_ads" => "hide",
+			"app_open" => "hide",
+			"all_ads" => "hide",
+			"fullscreen" => "hide",
+			"adblock_version" => "",
+			"continue_screen" => "hide",
+			"lets_start_screen" => "hide",
+			"age_screen" => "hide",
+			"next_screen" => "hide",
+			"next_inner_screen" => "hide",
+			"contact_screen" => "hide",
+			"start_screen" => "hide",
+			"real_casting_flow" => "hide",
+			"app_stop" => "hide",
+		);
+
+		if($sid > 0){
+			$data["update_uid"] = $user_id;
+			$data["update_date"] = $date;
+			$res = $db->update("tbl_app_ad_settings", $data, array("id"=>$sid));
+		}
+		else{
+			$sid=$gh->generateuuid();
+			$data["id"] = $sid;
+			$data["app_id"] = $id;
+			$data["type"] = 1;
+			$data["is_bifurcate"] = 0;
+			$data["entry_uid"] = $user_id;
+			$data["entry_date"] = $date;
+			$res = $db->insert("tbl_app_ad_settings", $data);
+		}
 
 		$outputjson['success'] = 1;
 		$outputjson['message'] = 'Data updated successfully.';

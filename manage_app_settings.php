@@ -267,7 +267,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mt-2">
+                                <div class="row mt-2 btn-submit-div full-width">
                                     <div class="col-sm-12 text-end">
                                         <button type="button" class="btn btn-primary" onclick="saveGoogleId()">Update</button>
                                         <button type="button" class="btn btn-primary" onclick="addGoogleTestId()">Add Test Id</button>
@@ -545,10 +545,12 @@
                                                 </table>
                                             </div>
                                         </div>
-                                        <hr>
-                                        <div class="row mt-2">
-                                            <div class="col-sm-12 text-end">
-                                                <button type="button" class="btn btn-primary" onclick="saveAdSettings()">Update</button>
+                                        <div class="btn-submit-div">
+                                            <hr>
+                                            <div class="row mt-2">
+                                                <div class="col-sm-12 text-end">
+                                                    <button type="button" class="btn btn-primary" onclick="saveAdSettings()">Update</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -587,6 +589,11 @@
                                                     <div class="mb-3 col-sm-12">
                                                         <label class="form-label" for="bifurcate_location">Location</label>
                                                         <input type="text" id="bifurcate_location" name="bifurcate_location" class="form-control">
+                                                    </div>
+                                                    <div class="mb-3 col-sm-12">
+                                                        <input type="hidden" name="bifurcate_id" id="bifurcate_id">
+                                                        <div class="row d-flex px-2" id="location_div">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1086,10 +1093,12 @@
                                                 </table>
                                             </div>
                                         </div>
-                                        <hr>
-                                        <div class="row mt-2">
-                                            <div class="col-sm-12 text-end">
-                                                <button type="button" class="btn btn-primary" onclick="saveBifurcate_AdSettings()">Update</button>
+                                        <div class="btn-submit-div">
+                                            <hr class="mt-0">
+                                            <div class="row mt-2">
+                                                <div class="col-sm-12 text-end">
+                                                    <button type="button" class="btn btn-primary" onclick="saveBifurcate_AdSettings()">Update</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -1278,7 +1287,7 @@
                                     </div>
                                 </div>
                                 <hr>
-                                <div class="row mt-2">
+                                <div class="row mt-2 btn-submit-div full-width">
                                     <div class="col-sm-12 text-end">
                                         <button type="button" class="btn btn-primary" onclick="saveOtherSettings()">Update</button>
                                         <button type="button" class="btn btn-primary" onclick="add_setting_field()">Add Field</button>
@@ -1355,7 +1364,7 @@
                                     </div>
                                 </div>
                                 <hr>
-                                <div class="row mt-2">
+                                <div class="row mt-2 btn-submit-div full-width">
                                     <div class="col-sm-12 text-end">
                                         <button type="button" class="btn btn-primary" onclick="saveVPNSettings()">Update</button>
                                     </div>
@@ -1420,7 +1429,7 @@
                                     </div>
                                 </div>
                                 <hr>
-                                <div class="row mt-2">
+                                <div class="row mt-2 btn-submit-div full-width">
                                     <div class="col-sm-12 text-end">
                                         <button type="button" class="btn btn-primary" onclick="saveAppRemoveSettings()">Update</button>
                                     </div>

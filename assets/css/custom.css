@@ -561,6 +561,33 @@ img[src="#"] {
 	background-color: rgba(10, 207, 151, 0.18) !important;
 }
 
+.blocation{
+	width: auto !important;
+    padding: 5px 15px 3px;
+    border: 1px solid #EEE;
+    border-radius: 5px;
+	margin: 5px 3px;
+}
+
+.blocation.active{
+	background-color: #1A73E8;
+	color: #FFF;
+}
+
+.btn-submit-div{
+	position: fixed;
+    background: #ffffff6a;
+    bottom: 0px;
+    width: 50%;
+    z-index: 9999;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.btn-submit-div.full-width{
+	width: 75%;
+}
+
 @media (max-width:992px) {
     .app-title {
 		width: 40%;
@@ -574,5 +601,9 @@ img[src="#"] {
 	.filter-div .data-extra-filter{
 		width: 100% !important;
 		margin-top: 10px;
+	}
+
+	.btn-submit-div{
+		padding-right: 50%;
 	}
 }

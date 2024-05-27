@@ -589,9 +589,9 @@ function get_all_setting_data($app_id){
 	$outputjson["org_data"] = $rows_org[0];
 	$outputjson["mrkt_data"] = $rows_mrkt[0];
 	$outputjson["org_ad"] = $rows_org_ad[0];
-	$outputjson["org_bifurcate_ad"] = $rows_org_bifurcate_ad[0];
+	$outputjson["org_bifurcate_ad"] = $rows_org_bifurcate_ad;
 	$outputjson["mrkt_ad"] = $rows_mrkt_ad[0];
-	$outputjson["mrkt_bifurcate_ad"] = $rows_mrkt_bifurcate_ad[0];
+	$outputjson["mrkt_bifurcate_ad"] = $rows_mrkt_bifurcate_ad;
 }
 
 function outputCsv( $assocDataArray ) {

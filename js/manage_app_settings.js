@@ -487,47 +487,18 @@ function FillSettingData(){
     $("[name='app_open'][value='"+app_open+"']").prop('checked', true);
     
 
-    clearTageditor('#bifurcate_location');
-    if(adBifurcateData && adBifurcateData.bifurcate_location && adBifurcateData.bifurcate_location != ""){
-        // adBifurcateData.bifurcate_location.split(',').forEach(tag => {
-        //     $('#bifurcate_location').tagEditor('addTag', tag); 
-        // });
-        $('#bifurcate_location').tagEditor('addTag', adBifurcateData.bifurcate_location.split(',')); 
-    }
-
-    var bifurcate_native_loading = (adBifurcateData && adBifurcateData.native_loading) ? adBifurcateData.native_loading : 'onload';
-    var bifurcate_bottom_banner = (adBifurcateData && adBifurcateData.bottom_banner) ? adBifurcateData.bottom_banner : 'native';
-    var bifurcate_all_screen_native = (adBifurcateData && adBifurcateData.all_screen_native) ? adBifurcateData.all_screen_native : 'hide';
-    var bifurcate_list_native = (adBifurcateData && adBifurcateData.list_native) ? adBifurcateData.list_native : 'hide';
-    var bifurcate_exit_dialoge_native = (adBifurcateData && adBifurcateData.exit_dialoge_native) ? adBifurcateData.exit_dialoge_native : 'hide';
-    var bifurcate_native_btn = (adBifurcateData && adBifurcateData.native_btn) ? adBifurcateData.native_btn : 'default';
-    var bifurcate_alternate_with_appopen = (adBifurcateData && adBifurcateData.alternate_with_appopen) ? adBifurcateData.alternate_with_appopen : 'hide';
-    var bifurcate_inter_loading = (adBifurcateData && adBifurcateData.inter_loading) ? adBifurcateData.inter_loading : 'onload';
-    var bifurcate_app_open_loading = (adBifurcateData && adBifurcateData.app_open_loading) ? adBifurcateData.app_open_loading : 'onload';
-    var bifurcate_splash_ads = (adBifurcateData && adBifurcateData.splash_ads) ? adBifurcateData.splash_ads : 'hide';
-    var bifurcate_app_open = (adBifurcateData && adBifurcateData.app_open) ? adBifurcateData.app_open : 'onetime';
-
-    $("#bifurcate_app_color").val((adBifurcateData && adBifurcateData.app_color) ? adBifurcateData.app_color : '#000000');
-    $("#bifurcate_app_background_color").val((adBifurcateData && adBifurcateData.app_background_color) ? adBifurcateData.app_background_color : '#FFFFFF');
-    $("[name='bifurcate_native_loading'][value='"+bifurcate_native_loading+"']").prop('checked', true);
-    $("[name='bifurcate_bottom_banner'][value='"+bifurcate_bottom_banner+"']").prop('checked', true);
-    $("[name='bifurcate_all_screen_native'][value='"+bifurcate_all_screen_native+"']").prop('checked', true);
-    $("[name='bifurcate_list_native'][value='"+bifurcate_list_native+"']").prop('checked', true);
-    $("#bifurcate_list_native_cnt").val((adBifurcateData && adBifurcateData.list_native_cnt) ? adBifurcateData.list_native_cnt : '0');
-    $("[name='bifurcate_exit_dialoge_native'][value='"+bifurcate_exit_dialoge_native+"']").prop('checked', true);
-    $("[name='bifurcate_native_btn'][value='"+bifurcate_native_btn+"']").prop('checked', true);
-    $("#bifurcate_native_btn_text").val((adBifurcateData && adBifurcateData.native_btn_text) ? adBifurcateData.native_btn_text : '');
-    $("#bifurcate_native_background_color").val((adBifurcateData && adBifurcateData.native_background_color) ? adBifurcateData.native_background_color : '#FFFEFF');
-    $("#bifurcate_native_text_color").val((adBifurcateData && adBifurcateData.native_text_color) ? adBifurcateData.native_text_color : '#808080');
-    $("#bifurcate_native_button_background_color").val((adBifurcateData && adBifurcateData.native_button_background_color) ? adBifurcateData.native_button_background_color : '#4285F4');
-    $("#bifurcate_native_button_text_color").val((adBifurcateData && adBifurcateData.native_button_text_color) ? adBifurcateData.native_button_text_color : '#FFFEFF');
-    $("[name='bifurcate_alternate_with_appopen'][value='"+bifurcate_alternate_with_appopen+"']").prop('checked', true);
-    $("[name='bifurcate_inter_loading'][value='"+bifurcate_inter_loading+"']").prop('checked', true);
-    $("#bifurcate_inter_interval").val((adBifurcateData && adBifurcateData.inter_interval) ? adBifurcateData.inter_interval : '0');
-    $("#bifurcate_back_click_inter").val((adBifurcateData && adBifurcateData.back_click_inter) ? adBifurcateData.back_click_inter : '0');
-    $("[name='bifurcate_app_open_loading'][value='"+bifurcate_app_open_loading+"']").prop('checked', true);
-    $("[name='bifurcate_splash_ads'][value='"+bifurcate_splash_ads+"']").prop('checked', true);
-    $("[name='bifurcate_app_open'][value='"+bifurcate_app_open+"']").prop('checked', true);
+    clearTageditor('#bifurcate_location');    
+    var bhtml = "";
+    adBifurcateData.forEach(function(bifurcateData) {
+        bhtml += `<div class="blocation d-flex align-items-center">
+            <span class="cursor-pointer" onclick="edit_bifurcate('${bifurcateData.id}')">${bifurcateData.bifurcate_location}</span>
+            <i class="fa fa-close ms-1 text-danger cursor-pointer" onclick="conform_delete_bifurecate('${bifurcateData.id}')"></i>
+        </div>`;
+    });
+    bhtml += `<div class="blocation d-flex align-items-center">
+            <span class="cursor-pointer" onclick="edit_bifurcate('NEW')"><i class="fa fa-plus me-1"></i>New</span>
+    </div>`;
+    $("#location_div").html(bhtml);
 
     var all_ads = (adBifurcateData && adBifurcateData.all_ads) ? adBifurcateData.all_ads : 'hide';
     var fullscreen = (adBifurcateData && adBifurcateData.fullscreen) ? adBifurcateData.fullscreen : 'hide';
@@ -593,6 +564,88 @@ function FillSettingData(){
     manageFormfields(2);
     manage_preview_clr(2);
     manageSelectedColor();
+}
+
+function edit_bifurcate(id){
+    clearTageditor('#bifurcate_location');
+    $("#bifurcate_id").val("");
+    
+    if(id != "NEW"){
+        let adBifurcateData = [];
+        if(subView == 3){
+            adBifurcateData = OrgBifurcateData;
+        }
+        else{
+            adBifurcateData = MrktBifurcateData;
+        }
+        adBifurcateData = adBifurcateData.find((o) => { return o.id === id });
+
+        $("#bifurcate_id").val(adBifurcateData.id ? adBifurcateData.id : "");
+        if(adBifurcateData && adBifurcateData.bifurcate_location && adBifurcateData.bifurcate_location != ""){
+            $('#bifurcate_location').tagEditor('addTag', adBifurcateData.bifurcate_location.split(',')); 
+        }
+
+        var bifurcate_native_loading = (adBifurcateData && adBifurcateData.native_loading) ? adBifurcateData.native_loading : 'onload';
+        var bifurcate_bottom_banner = (adBifurcateData && adBifurcateData.bottom_banner) ? adBifurcateData.bottom_banner : 'native';
+        var bifurcate_all_screen_native = (adBifurcateData && adBifurcateData.all_screen_native) ? adBifurcateData.all_screen_native : 'hide';
+        var bifurcate_list_native = (adBifurcateData && adBifurcateData.list_native) ? adBifurcateData.list_native : 'hide';
+        var bifurcate_exit_dialoge_native = (adBifurcateData && adBifurcateData.exit_dialoge_native) ? adBifurcateData.exit_dialoge_native : 'hide';
+        var bifurcate_native_btn = (adBifurcateData && adBifurcateData.native_btn) ? adBifurcateData.native_btn : 'default';
+        var bifurcate_alternate_with_appopen = (adBifurcateData && adBifurcateData.alternate_with_appopen) ? adBifurcateData.alternate_with_appopen : 'hide';
+        var bifurcate_inter_loading = (adBifurcateData && adBifurcateData.inter_loading) ? adBifurcateData.inter_loading : 'onload';
+        var bifurcate_app_open_loading = (adBifurcateData && adBifurcateData.app_open_loading) ? adBifurcateData.app_open_loading : 'onload';
+        var bifurcate_splash_ads = (adBifurcateData && adBifurcateData.splash_ads) ? adBifurcateData.splash_ads : 'hide';
+        var bifurcate_app_open = (adBifurcateData && adBifurcateData.app_open) ? adBifurcateData.app_open : 'onetime';
+
+        $("#bifurcate_app_color").val((adBifurcateData && adBifurcateData.app_color) ? adBifurcateData.app_color : '#000000');
+        $("#bifurcate_app_background_color").val((adBifurcateData && adBifurcateData.app_background_color) ? adBifurcateData.app_background_color : '#FFFFFF');
+        $("[name='bifurcate_native_loading'][value='"+bifurcate_native_loading+"']").prop('checked', true);
+        $("[name='bifurcate_bottom_banner'][value='"+bifurcate_bottom_banner+"']").prop('checked', true);
+        $("[name='bifurcate_all_screen_native'][value='"+bifurcate_all_screen_native+"']").prop('checked', true);
+        $("[name='bifurcate_list_native'][value='"+bifurcate_list_native+"']").prop('checked', true);
+        $("#bifurcate_list_native_cnt").val((adBifurcateData && adBifurcateData.list_native_cnt) ? adBifurcateData.list_native_cnt : '0');
+        $("[name='bifurcate_exit_dialoge_native'][value='"+bifurcate_exit_dialoge_native+"']").prop('checked', true);
+        $("[name='bifurcate_native_btn'][value='"+bifurcate_native_btn+"']").prop('checked', true);
+        $("#bifurcate_native_btn_text").val((adBifurcateData && adBifurcateData.native_btn_text) ? adBifurcateData.native_btn_text : '');
+        $("#bifurcate_native_background_color").val((adBifurcateData && adBifurcateData.native_background_color) ? adBifurcateData.native_background_color : '#FFFEFF');
+        $("#bifurcate_native_text_color").val((adBifurcateData && adBifurcateData.native_text_color) ? adBifurcateData.native_text_color : '#808080');
+        $("#bifurcate_native_button_background_color").val((adBifurcateData && adBifurcateData.native_button_background_color) ? adBifurcateData.native_button_background_color : '#4285F4');
+        $("#bifurcate_native_button_text_color").val((adBifurcateData && adBifurcateData.native_button_text_color) ? adBifurcateData.native_button_text_color : '#FFFEFF');
+        $("[name='bifurcate_alternate_with_appopen'][value='"+bifurcate_alternate_with_appopen+"']").prop('checked', true);
+        $("[name='bifurcate_inter_loading'][value='"+bifurcate_inter_loading+"']").prop('checked', true);
+        $("#bifurcate_inter_interval").val((adBifurcateData && adBifurcateData.inter_interval) ? adBifurcateData.inter_interval : '0');
+        $("#bifurcate_back_click_inter").val((adBifurcateData && adBifurcateData.back_click_inter) ? adBifurcateData.back_click_inter : '0');
+        $("[name='bifurcate_app_open_loading'][value='"+bifurcate_app_open_loading+"']").prop('checked', true);
+        $("[name='bifurcate_splash_ads'][value='"+bifurcate_splash_ads+"']").prop('checked', true);
+        $("[name='bifurcate_app_open'][value='"+bifurcate_app_open+"']").prop('checked', true);
+    }
+    else {
+        $("#bifurcate_app_color").val('#000000');
+        $("#bifurcate_app_background_color").val('#FFFFFF');
+        $("[name='bifurcate_native_loading'][value='onload']").prop('checked', true);
+        $("[name='bifurcate_bottom_banner'][value='native']").prop('checked', true);
+        $("[name='bifurcate_all_screen_native'][value='hide']").prop('checked', true);
+        $("[name='bifurcate_list_native'][value='hide']").prop('checked', true);
+        $("#bifurcate_list_native_cnt").val('0');
+        $("[name='bifurcate_exit_dialoge_native'][value='hide']").prop('checked', true);
+        $("[name='bifurcate_native_btn'][value='default']").prop('checked', true);
+        $("#bifurcate_native_btn_text").val('');
+        $("#bifurcate_native_background_color").val('#FFFEFF');
+        $("#bifurcate_native_text_color").val('#808080');
+        $("#bifurcate_native_button_background_color").val('#4285F4');
+        $("#bifurcate_native_button_text_color").val('#FFFEFF');
+        $("[name='bifurcate_alternate_with_appopen'][value='hide']").prop('checked', true);
+        $("[name='bifurcate_inter_loading'][value='onload']").prop('checked', true);
+        $("#bifurcate_inter_interval").val('0');
+        $("#bifurcate_back_click_inter").val('0');
+        $("[name='bifurcate_app_open_loading'][value='onload']").prop('checked', true);
+        $("[name='bifurcate_splash_ads'][value='hide']").prop('checked', true);
+        $("[name='bifurcate_app_open'][value='onetime']").prop('checked', true);
+    }
+    manageFormfields(1);
+    manage_preview_clr(1);
+    manageFormfields(2);
+    manage_preview_clr(2);
 }
 
 //================= Google Functions =================
