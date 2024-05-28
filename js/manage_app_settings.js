@@ -500,34 +500,8 @@ function FillSettingData(){
     </div>`;
     $("#location_div").html(bhtml);
 
-    var all_ads = (adBifurcateData && adBifurcateData.all_ads) ? adBifurcateData.all_ads : 'hide';
-    var fullscreen = (adBifurcateData && adBifurcateData.fullscreen) ? adBifurcateData.fullscreen : 'hide';
-    var continue_screen = (adBifurcateData && adBifurcateData.continue_screen) ? adBifurcateData.continue_screen : 'hide';
-    var lets_start_screen = (adBifurcateData && adBifurcateData.lets_start_screen) ? adBifurcateData.lets_start_screen : 'hide';
-    var age_screen = (adBifurcateData && adBifurcateData.age_screen) ? adBifurcateData.age_screen : 'hide';
-    var next_screen = (adBifurcateData && adBifurcateData.next_screen) ? adBifurcateData.next_screen : 'hide';
-    var next_inner_screen = (adBifurcateData && adBifurcateData.next_inner_screen) ? adBifurcateData.next_inner_screen : 'hide';
-    var contact_screen = (adBifurcateData && adBifurcateData.contact_screen) ? adBifurcateData.contact_screen : 'hide';
-    var start_screen = (adBifurcateData && adBifurcateData.start_screen) ? adBifurcateData.start_screen : 'hide';
-    var real_casting_flow = (adBifurcateData && adBifurcateData.real_casting_flow) ? adBifurcateData.real_casting_flow : 'hide';
-    var app_stop = (adBifurcateData && adBifurcateData.app_stop) ? adBifurcateData.app_stop : 'hide';
-
-    $("[name='bifurcate_all_ads'][value='"+all_ads+"']").prop('checked', true);
-    $("[name='bifurcate_fullscreen'][value='"+fullscreen+"']").prop('checked', true);
-    $("#bifurcate_adblock_version").val((adBifurcateData && adBifurcateData.adblock_version) ? adBifurcateData.adblock_version : '');
-    $("[name='bifurcate_continue_screen'][value='"+continue_screen+"']").prop('checked', true);
-    $("[name='bifurcate_lets_start_screen'][value='"+lets_start_screen+"']").prop('checked', true);
-    $("[name='bifurcate_age_screen'][value='"+age_screen+"']").prop('checked', true);
-    $("[name='bifurcate_next_screen'][value='"+next_screen+"']").prop('checked', true);
-    $("[name='bifurcate_next_inner_screen'][value='"+next_inner_screen+"']").prop('checked', true);
-    $("[name='bifurcate_contact_screen'][value='"+contact_screen+"']").prop('checked', true);
-    $("[name='bifurcate_start_screen'][value='"+start_screen+"']").prop('checked', true);
-    $("[name='bifurcate_real_casting_flow'][value='"+real_casting_flow+"']").prop('checked', true);
-    $("[name='bifurcate_app_stop'][value='"+app_stop+"']").prop('checked', true);
-    extra_bifurcate_setting_fields = [];
-    $("#bifurcate_setting_table tr.extra").remove();
-    if(adBifurcateData && adBifurcateData.additional_fields != "" && adBifurcateData.additional_fields != null){
-        var additional_fields = JSON.parse(adBifurcateData.additional_fields);
+    if(adData && adData.additional_fields != "" && adData.additional_fields != null){
+        var additional_fields = JSON.parse(adData.additional_fields);
         var loop_idx = 0;
         additional_fields.forEach((fields) => {
             var new_index = Date.now().toString()+loop_idx;
@@ -542,23 +516,6 @@ function FillSettingData(){
         });
     }
 
-
-    var vpn = (adBifurcateData && adBifurcateData.vpn) ? adBifurcateData.vpn : 'hide';
-    var vpn_dialog = (adBifurcateData && adBifurcateData.vpn_dialog) ? adBifurcateData.vpn_dialog : 'hide';
-    var vpn_dialog_open = (adBifurcateData && adBifurcateData.vpn_dialog_open) ? adBifurcateData.vpn_dialog_open : 'hide';
-    $("[name='bifurcate_vpn'][value='"+vpn+"']").prop('checked', true);
-    $("[name='bifurcate_vpn_dialog'][value='"+vpn_dialog+"']").prop('checked', true);
-    $("[name='bifurcate_vpn_dialog_open'][value='"+vpn_dialog_open+"']").prop('checked', true);
-    $("#bifurcate_vpn_url").val((adBifurcateData && adBifurcateData.vpn_url) ? adBifurcateData.vpn_url : '');
-    $("#bifurcate_vpn_carrier_id").val((adBifurcateData && adBifurcateData.vpn_carrier_id) ? adBifurcateData.vpn_carrier_id : '');
-    clearTageditor('#bifurcate_vpn_country');
-    if(adBifurcateData && adBifurcateData.vpn_country && adBifurcateData.vpn_country != ""){
-        // JSON.parse(adBifurcateData.vpn_country).forEach(tag => {
-        //     $('#bifurcate_vpn_country').tagEditor('addTag', tag); 
-        // });
-        $('#bifurcate_vpn_country').tagEditor('addTag', JSON.parse(adBifurcateData.vpn_country));
-    }
-
     manageFormfields(1);
     manage_preview_clr(1);
     manageFormfields(2);
@@ -568,7 +525,10 @@ function FillSettingData(){
 
 function edit_bifurcate(id){
     clearTageditor('#bifurcate_location');
+    clearTageditor('#bifurcate_vpn_country');
     $("#bifurcate_id").val("");
+    extra_bifurcate_setting_fields = [];
+    $("#bifurcate_setting_table tr.extra").remove();
     
     if(id != "NEW"){
         $(`.blocation`).removeClass('active');
@@ -620,8 +580,70 @@ function edit_bifurcate(id){
         $("[name='bifurcate_app_open_loading'][value='"+bifurcate_app_open_loading+"']").prop('checked', true);
         $("[name='bifurcate_splash_ads'][value='"+bifurcate_splash_ads+"']").prop('checked', true);
         $("[name='bifurcate_app_open'][value='"+bifurcate_app_open+"']").prop('checked', true);
+
+        var all_ads = (adBifurcateData && adBifurcateData.all_ads) ? adBifurcateData.all_ads : 'hide';
+        var fullscreen = (adBifurcateData && adBifurcateData.fullscreen) ? adBifurcateData.fullscreen : 'hide';
+        var continue_screen = (adBifurcateData && adBifurcateData.continue_screen) ? adBifurcateData.continue_screen : 'hide';
+        var lets_start_screen = (adBifurcateData && adBifurcateData.lets_start_screen) ? adBifurcateData.lets_start_screen : 'hide';
+        var age_screen = (adBifurcateData && adBifurcateData.age_screen) ? adBifurcateData.age_screen : 'hide';
+        var next_screen = (adBifurcateData && adBifurcateData.next_screen) ? adBifurcateData.next_screen : 'hide';
+        var next_inner_screen = (adBifurcateData && adBifurcateData.next_inner_screen) ? adBifurcateData.next_inner_screen : 'hide';
+        var contact_screen = (adBifurcateData && adBifurcateData.contact_screen) ? adBifurcateData.contact_screen : 'hide';
+        var start_screen = (adBifurcateData && adBifurcateData.start_screen) ? adBifurcateData.start_screen : 'hide';
+        var real_casting_flow = (adBifurcateData && adBifurcateData.real_casting_flow) ? adBifurcateData.real_casting_flow : 'hide';
+        var app_stop = (adBifurcateData && adBifurcateData.app_stop) ? adBifurcateData.app_stop : 'hide';
+
+        $("[name='bifurcate_all_ads'][value='"+all_ads+"']").prop('checked', true);
+        $("[name='bifurcate_fullscreen'][value='"+fullscreen+"']").prop('checked', true);
+        $("#bifurcate_adblock_version").val((adBifurcateData && adBifurcateData.adblock_version) ? adBifurcateData.adblock_version : '');
+        $("[name='bifurcate_continue_screen'][value='"+continue_screen+"']").prop('checked', true);
+        $("[name='bifurcate_lets_start_screen'][value='"+lets_start_screen+"']").prop('checked', true);
+        $("[name='bifurcate_age_screen'][value='"+age_screen+"']").prop('checked', true);
+        $("[name='bifurcate_next_screen'][value='"+next_screen+"']").prop('checked', true);
+        $("[name='bifurcate_next_inner_screen'][value='"+next_inner_screen+"']").prop('checked', true);
+        $("[name='bifurcate_contact_screen'][value='"+contact_screen+"']").prop('checked', true);
+        $("[name='bifurcate_start_screen'][value='"+start_screen+"']").prop('checked', true);
+        $("[name='bifurcate_real_casting_flow'][value='"+real_casting_flow+"']").prop('checked', true);
+        $("[name='bifurcate_app_stop'][value='"+app_stop+"']").prop('checked', true);
+        
+        if(adBifurcateData && adBifurcateData.additional_fields != "" && adBifurcateData.additional_fields != null){
+            var additional_fields = JSON.parse(adBifurcateData.additional_fields);
+            var loop_idx = 0;
+            additional_fields.forEach((fields) => {
+                var new_index = Date.now().toString()+loop_idx;
+                var new_field = {
+                    field_name: fields.field_name,
+                    field_type: fields.field_type,
+                    idx: new_index
+                };
+                extra_bifurcate_setting_fields.push(new_field);
+                add_extra_setting_field(new_field, new_index, fields.value, fields.value2, 1);
+                loop_idx++;
+            });
+        }
+
+        var vpn = (adBifurcateData && adBifurcateData.vpn) ? adBifurcateData.vpn : 'hide';
+        var vpn_dialog = (adBifurcateData && adBifurcateData.vpn_dialog) ? adBifurcateData.vpn_dialog : 'hide';
+        var vpn_dialog_open = (adBifurcateData && adBifurcateData.vpn_dialog_open) ? adBifurcateData.vpn_dialog_open : 'hide';
+        $("[name='bifurcate_vpn'][value='"+vpn+"']").prop('checked', true);
+        $("[name='bifurcate_vpn_dialog'][value='"+vpn_dialog+"']").prop('checked', true);
+        $("[name='bifurcate_vpn_dialog_open'][value='"+vpn_dialog_open+"']").prop('checked', true);
+        $("#bifurcate_vpn_url").val((adBifurcateData && adBifurcateData.vpn_url) ? adBifurcateData.vpn_url : '');
+        $("#bifurcate_vpn_carrier_id").val((adBifurcateData && adBifurcateData.vpn_carrier_id) ? adBifurcateData.vpn_carrier_id : '');
+        
+        if(adBifurcateData && adBifurcateData.vpn_country && adBifurcateData.vpn_country != ""){
+            $('#bifurcate_vpn_country').tagEditor('addTag', JSON.parse(adBifurcateData.vpn_country));
+        }
     }
     else {
+        let adData = [];
+        if(subView == 3){
+            adData = OrgAdData;
+        }
+        else{
+            adData = MrktAdData;
+        }
+        
         $(`.blocation`).removeClass('active');
         $("#bifurcate_app_color").val('#000000');
         $("#bifurcate_app_background_color").val('#FFFFFF');
@@ -644,6 +666,41 @@ function edit_bifurcate(id){
         $("[name='bifurcate_app_open_loading'][value='onload']").prop('checked', true);
         $("[name='bifurcate_splash_ads'][value='hide']").prop('checked', true);
         $("[name='bifurcate_app_open'][value='onetime']").prop('checked', true);
+
+        $("[name='bifurcate_all_ads'][value='hide']").prop('checked', true);
+        $("[name='bifurcate_fullscreen'][value='hide']").prop('checked', true);
+        $("#bifurcate_adblock_version").val('');
+        $("[name='bifurcate_continue_screen'][value='hide']").prop('checked', true);
+        $("[name='bifurcate_lets_start_screen'][value='hide']").prop('checked', true);
+        $("[name='bifurcate_age_screen'][value='hide']").prop('checked', true);
+        $("[name='bifurcate_next_screen'][value='hide']").prop('checked', true);
+        $("[name='bifurcate_next_inner_screen'][value='hide']").prop('checked', true);
+        $("[name='bifurcate_contact_screen'][value='hide']").prop('checked', true);
+        $("[name='bifurcate_start_screen'][value='hide']").prop('checked', true);
+        $("[name='bifurcate_real_casting_flow'][value='hide']").prop('checked', true);
+        $("[name='bifurcate_app_stop'][value='hide']").prop('checked', true);
+
+        if(adData && adData.additional_fields != "" && adData.additional_fields != null){
+            var additional_fields = JSON.parse(adData.additional_fields);
+            var loop_idx = 0;
+            additional_fields.forEach((fields) => {
+                var new_index = Date.now().toString()+loop_idx;
+                var new_field = {
+                    field_name: fields.field_name,
+                    field_type: fields.field_type,
+                    idx: new_index
+                };
+                extra_bifurcate_setting_fields.push(new_field);
+                add_extra_setting_field(new_field, new_index, fields.value, fields.value2, 1);
+                loop_idx++;
+            });
+        }
+
+        $("[name='bifurcate_vpn'][value='hide']").prop('checked', true);
+        $("[name='bifurcate_vpn_dialog'][value='hide']").prop('checked', true);
+        $("[name='bifurcate_vpn_dialog_open'][value='hide']").prop('checked', true);
+        $("#bifurcate_vpn_url").val('');
+        $("#bifurcate_vpn_carrier_id").val('');
     }
     manageFormfields(1);
     manage_preview_clr(1);
@@ -843,7 +900,7 @@ function add_extra_setting_field(fieldData, index = '0', val1 = "", val2 = "", b
     var prefix = (bifurcate_flag) ? "bifurcate_" : "";
     var html = `<tr class="extra" id="${prefix}extra${index}" data-index="${index}">
                     <td>
-                        <span class="delete-div" data-index="${index}" onclick="removeExtraField('${index}')"><i class="fa fa-close"></i></span>
+                        <span class="delete-div text-danger cursor-pointer" data-index="${index}" onclick="removeExtraField('${index}')"><i class="fa fa-close"></i></span>
                         ${fieldData.field_name}
                         <input type="hidden" class="fld_name" value="${fieldData.field_name}" />
                     </td>

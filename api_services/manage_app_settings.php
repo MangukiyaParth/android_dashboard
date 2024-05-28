@@ -299,6 +299,26 @@ function manage_app_settings()
 				"update_uid" => $user_id,
 				"update_date" => $date,
 			);
+			if($additional_fields != ""){
+				$af = json_decode($additional_fields, true);
+				foreach($af as $fields){
+					
+					$query_bif = "SELECT * FROM tbl_app_ad_settings
+						WHERE app_id = '$app_id' AND `type` = $type AND is_bifurcate = 1";
+					$row_bif = $db->execute($query_bif);
+					foreach($row_bif as $bifData){
+						$bif_af = json_decode($bifData['additional_fields'], true);
+						$search_val = $fields['field_name'];
+						$outputjson['search_val'] = $search_val;
+
+						$serach_res = $gh->findArrayByValue($bif_af, 'field_name', $search_val);
+						if(empty($serach_res) || $serach_res == null){
+							array_push($bif_af, $fields);
+							$db->update("tbl_app_ad_settings", array("additional_fields" => json_encode($bif_af, true)), array("id"=>$bifData['id']));
+						}
+					}
+				}
+			}
 			$res = $db->update("tbl_app_ad_settings", $data, array("id"=>$id));
 		}
 		else{
