@@ -438,7 +438,7 @@ function FillSettingData(){
     clearTageditor('#vpn_country');
     if(adData && adData.vpn_country && adData.vpn_country != ""){
         JSON.parse(adData.vpn_country).forEach(tag => {
-            $('#vpn_country').tagEditor('addTag', tag); 
+            $('#vpn_country').tagEditor('addTag', tag, true); 
         });
     }
 
@@ -486,19 +486,8 @@ function FillSettingData(){
     $("[name='splash_ads'][value='"+splash_ads+"']").prop('checked', true);
     $("[name='app_open'][value='"+app_open+"']").prop('checked', true);
     
-
-    clearTageditor('#bifurcate_location');    
-    var bhtml = "";
-    adBifurcateData.forEach(function(bifurcateData) {
-        bhtml += `<div class="blocation d-flex align-items-center loc-${bifurcateData.id}">
-            <span class="cursor-pointer" onclick="edit_bifurcate('${bifurcateData.id}')">${bifurcateData.bifurcate_location}</span>
-            <i class="fa fa-close ms-1 text-danger cursor-pointer" onclick="conform_delete_bifurecate('${bifurcateData.id}')"></i>
-        </div>`;
-    });
-    bhtml += `<div class="blocation d-flex align-items-center">
-            <span class="cursor-pointer" onclick="edit_bifurcate('NEW')"><i class="fa fa-plus me-1"></i>New</span>
-    </div>`;
-    $("#location_div").html(bhtml);
+    clearTageditor('#bifurcate_location');
+    manage_bifurcate_location();
 
     if(adData && adData.additional_fields != "" && adData.additional_fields != null){
         var additional_fields = JSON.parse(adData.additional_fields);
@@ -523,6 +512,29 @@ function FillSettingData(){
     manageSelectedColor();
 }
 
+function manage_bifurcate_location(active_id){
+    let adBifurcateData = [];
+    if(subView == 3){
+        adBifurcateData = OrgBifurcateData;
+    }
+    else{
+        adBifurcateData = MrktBifurcateData;
+    }
+        
+    var bhtml = "";
+    adBifurcateData.forEach(function(bifurcateData) {
+        var activeClass = (bifurcateData.id == active_id) ? 'active' : '';
+        bhtml += `<div class="blocation ${activeClass} d-flex align-items-center loc-${bifurcateData.id}">
+            <span class="cursor-pointer" onclick="edit_bifurcate('${bifurcateData.id}')">${bifurcateData.bifurcate_location}</span>
+            <i class="fa fa-close ms-1 text-danger cursor-pointer" onclick="conform_delete_bifurecate('${bifurcateData.id}')"></i>
+        </div>`;
+    });
+    bhtml += `<div class="blocation d-flex align-items-center">
+            <span class="cursor-pointer" onclick="edit_bifurcate('NEW')"><i class="fa fa-plus me-1"></i>New</span>
+    </div>`;
+    $("#location_div").html(bhtml);
+}
+
 function edit_bifurcate(id){
     clearTageditor('#bifurcate_location');
     clearTageditor('#bifurcate_vpn_country');
@@ -544,7 +556,7 @@ function edit_bifurcate(id){
 
         $("#bifurcate_id").val(adBifurcateData.id ? adBifurcateData.id : "");
         if(adBifurcateData && adBifurcateData.bifurcate_location && adBifurcateData.bifurcate_location != ""){
-            $('#bifurcate_location').tagEditor('addTag', adBifurcateData.bifurcate_location.split(',')); 
+            $('#bifurcate_location').tagEditor('addTag', adBifurcateData.bifurcate_location.split(','), true); 
         }
 
         var bifurcate_native_loading = (adBifurcateData && adBifurcateData.native_loading) ? adBifurcateData.native_loading : 'onload';
@@ -632,7 +644,7 @@ function edit_bifurcate(id){
         $("#bifurcate_vpn_carrier_id").val((adBifurcateData && adBifurcateData.vpn_carrier_id) ? adBifurcateData.vpn_carrier_id : '');
         
         if(adBifurcateData && adBifurcateData.vpn_country && adBifurcateData.vpn_country != ""){
-            $('#bifurcate_vpn_country').tagEditor('addTag', JSON.parse(adBifurcateData.vpn_country));
+            $('#bifurcate_vpn_country').tagEditor('addTag', JSON.parse(adBifurcateData.vpn_country), true);
         }
     }
     else {
@@ -707,6 +719,35 @@ function edit_bifurcate(id){
     manageFormfields(2);
     manage_preview_clr(2);
     manageSelectedColor();
+}
+
+function conform_delete_bifurecate(id){
+    $("#delete_bif_modal .conform-btn").attr('onclick',"delete_bifurcate_record('"+id+"')");
+    $("#delete_bif_modal").modal('show');
+}
+
+function delete_bifurcate_record(id){
+    showLoading();
+    var req_data = {
+        op: CURRENT_PAGE
+        , action: "delete_bifurcate_data"
+        , id: id
+    };
+    doAPICall(req_data, async function(data){
+        if (data && data != null && data.success) {
+            hideLoading();
+            $(`.loc-${id}`).remove();
+            setDataVariable(data);
+            edit_bifurcate('NEW');
+            showMessage(data.message);
+            return false;
+        }
+        else if (data && data != null && !data.success) {
+            hideLoading();
+            showError(data.message);
+            return false;
+        }
+    });
 }
 
 //================= Google Functions =================
@@ -1129,6 +1170,7 @@ function saveAdsSettings(is_bifurcate = 0, req_data){
             setDataVariable(data);
             if(is_bifurcate){
                 $("#bifurcate_id").val(data.data_ref);
+                manage_bifurcate_location(data.data_ref);
             }
             showMessage(data.message);
             return false;

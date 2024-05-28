@@ -1503,3 +1503,19 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<div id="delete_bif_modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-sm">
+		<div class="modal-content">
+			<div class="modal-body p-4">
+				<div class="text-center">
+					<i class="ri-alert-line h1 text-warning"></i>
+					<h4 class="mt-2">Are you sure?</h4>
+					<p class="mt-3">you want to delete bifurcate data?</p>
+					<button type="button" class="btn btn-warning my-2 conform-btn" data-bs-dismiss="modal" onclick="delete_bifurcate_record()">Continue</button>
+					<button type="button" class="btn btn-default my-2" data-bs-dismiss="modal" onclick="PRIMARY_ID = 0;">close</button>
+				</div>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div>

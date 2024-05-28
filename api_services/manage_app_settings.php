@@ -581,6 +581,19 @@ function manage_app_settings()
 		$outputjson['success'] = 1;
 		$outputjson['message'] = "Data updated successfully";
 	}
+	else if($action == "delete_bifurcate_data"){
+		$id = $gh->read("id");
+		if ($id != "") {
+			$app_id_query = "SELECT app_id from tbl_app_ad_settings WHERE id = '$id'";
+			$app_id = $db->execute_scalar($app_id_query);
+			$db->delete('tbl_app_ad_settings', array("id" => $id));
+			get_all_setting_data($app_id);
+			$outputjson['message'] = 'data deleted successfully.';
+			$outputjson['success'] = 1;
+		} else {
+			$outputjson['message'] = "Sorry, somthing went wrong!";
+		}
+	}
 	else {
 		$outputjson["data"] = [];
 		$outputjson['message'] = "Error!";

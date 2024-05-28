@@ -579,7 +579,7 @@ img[src="#"] {
     background: #ffffff6a;
     bottom: 0px;
     width: 50%;
-    z-index: 9999;
+    z-index: 1000;
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
