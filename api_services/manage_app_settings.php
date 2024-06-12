@@ -304,7 +304,7 @@ function manage_app_settings()
 				foreach($af as $fields){
 					
 					$query_bif = "SELECT * FROM tbl_app_ad_settings
-						WHERE app_id = '$app_id' AND `type` = $type AND is_bifurcate = 1";
+						WHERE app_id = '$app_id' AND `type` = $type AND is_bifurcate = 1 AND additional_fields != '' AND additional_fields != NULL AND additional_fields != '[]'";
 					$row_bif = $db->execute($query_bif);
 					foreach($row_bif as $bifData){
 						$bif_af = json_decode($bifData['additional_fields'], true);

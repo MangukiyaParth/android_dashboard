@@ -345,6 +345,15 @@ function manage_app_user()
 					'dialogApp' => $ad_setting['app_stop'],
 					'additionalFields' => json_decode($ad_setting['additional_fields'])
 				);
+				
+				if($ad_setting['additional_fields'] != "" && $ad_setting['additional_fields'] != null && $ad_setting['additional_fields'] != []){
+					$additional_fields = json_decode($ad_setting['additional_fields'], true);
+					foreach($additional_fields as $af){
+						$field_name = $af['field_name'];
+						$field_value = $af['value'];
+						$other_settings[$field_name] = $field_value;
+					}
+				}
 			}
 			
 			/************ VPN Settings ************/
