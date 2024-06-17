@@ -865,6 +865,10 @@ function saveOtherSettings(){
             val1 = $(this).find("[name='extra_field_"+idx+"']:checked").val();
             val2 = $(this).find("#extraFieldText"+idx+"").val();
         }
+        else if(obj.field_type == 4){
+            val1 = $(this).find("#extraFieldText"+idx+"").val();
+            val2 = $(this).find("#extraFieldText2"+idx+"").val();
+        }
         extra_field.push({
             field_name: obj.field_name,
             field_type: obj.field_type,
@@ -946,7 +950,11 @@ function add_extra_setting_field(fieldData, index = '0', val1 = "", val2 = "", b
                         <input type="hidden" class="fld_name" value="${fieldData.field_name}" />
                     </td>
                     <td>`;
-                    if(fieldData.field_type == 3){
+					if(fieldData.field_type == 4){
+						html+=`<input type="text" id="${prefix}extraFieldText${index}" name="${prefix}extraFieldText${index}" class="form-control d-inline w-50" value="${val1}">
+							<input type="text" id="${prefix}extraFieldText2${index}" name="${prefix}extraFieldText2${index}" class="form-control d-inline" value="${val2}" style="width: 49%;">`;
+					}
+                    else if(fieldData.field_type == 3){
                         html+=`<div class="form-check form-radio-success form-check-inline">
                                     <input type="radio" id="${prefix}extraField${index}Show" name="${prefix}extra_field_${index}" class="form-check-input" value="show" ${(val1 == 'show') ? 'checked' : ''}>
                                     <label class="form-check-label" for="extraField${index}Show">Show</label>
@@ -1102,6 +1110,10 @@ function saveBifurcate_AdSettings(){
         else if(obj.field_type == 3){
             val1 = $(this).find("[name='bifurcate_extra_field_"+idx+"']:checked").val();
             val2 = $(this).find("#bifurcate_extraFieldText"+idx+"").val();
+        }
+        else if(obj.field_type == 4){
+            val1 = $(this).find("#bifurcate_extraFieldText"+idx+"").val();
+            val2 = $(this).find("#bifurcate_extraFieldText2"+idx+"").val();
         }
         extra_field.push({
             field_name: obj.field_name,

@@ -1477,6 +1477,10 @@
                                 <input type="radio" id="field_type_both" name="field_type" class="form-check-input" value="3">
                                 <label class="form-check-label" for="field_type_both">Radio + Textbox</label>
                             </div>
+                            <div class="form-check form-radio-success mb-1">
+                                <input type="radio" id="field_type_both_text" name="field_type" class="form-check-input" value="4">
+                                <label class="form-check-label" for="field_type_both_text">Textbox + Textbox</label>
+                            </div>
                         </div>
                     </div>
                 </form>
