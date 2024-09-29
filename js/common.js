@@ -946,7 +946,7 @@ async function delete_all_record(data) {
 function clearTageditor(ele){
     var tags = $(ele).tagEditor('getTags')[0].tags;
     if(tags){
-        for (i = 0; i < tags.length; i++) { $(ele).tagEditor('removeTag', tags[i]); }
+        for (i = 0; i < tags.length; i++) { $(ele).tagEditor('removeTag', tags[i], true); }
     }
 }
 

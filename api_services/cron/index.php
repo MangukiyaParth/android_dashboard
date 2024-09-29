@@ -103,7 +103,6 @@ if ($live_apps != null && is_array($live_apps) && count($live_apps) > 0) {
         // $html = file_get_contents('https://play.google.com/store/apps/details?id=com.allsocialvideos.multimedia.videodlpro');
         $http_response_code = $http_response_header[0];
         if (strpos($http_response_code, '200') !== false) {
-            
 
         } else {
             $data = array(

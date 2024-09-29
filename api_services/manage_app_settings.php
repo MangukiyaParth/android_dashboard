@@ -299,6 +299,26 @@ function manage_app_settings()
 				"update_uid" => $user_id,
 				"update_date" => $date,
 			);
+			if($additional_fields != ""){
+				$af = json_decode($additional_fields, true);
+				foreach($af as $fields){
+					
+					$query_bif = "SELECT * FROM tbl_app_ad_settings
+						WHERE app_id = '$app_id' AND `type` = $type AND is_bifurcate = 1 AND additional_fields != '' AND additional_fields != NULL AND additional_fields != '[]'";
+					$row_bif = $db->execute($query_bif);
+					foreach($row_bif as $bifData){
+						$bif_af = json_decode($bifData['additional_fields'], true);
+						$search_val = $fields['field_name'];
+						$outputjson['search_val'] = $search_val;
+
+						$serach_res = $gh->findArrayByValue($bif_af, 'field_name', $search_val);
+						if(empty($serach_res) || $serach_res == null){
+							array_push($bif_af, $fields);
+							$db->update("tbl_app_ad_settings", array("additional_fields" => json_encode($bif_af, true)), array("id"=>$bifData['id']));
+						}
+					}
+				}
+			}
 			$res = $db->update("tbl_app_ad_settings", $data, array("id"=>$id));
 		}
 		else{
@@ -535,9 +555,11 @@ function manage_app_settings()
 			$data['vpn_country'] = $vpn_country;
 			$data['vpn_url'] = $vpn_url;
 			$data['vpn_carrier_id'] = $vpn_carrier_id;
+
+			$id = $gh->read("bifurcate_id");
 		}
 
-		if($id > 0){
+		if($id){
 			$data["update_uid"] = $user_id;
 			$data["update_date"] = $date;
 			$res = $db->update("tbl_app_ad_settings", $data, array("id"=>$id));
@@ -555,8 +577,22 @@ function manage_app_settings()
 
 		get_all_setting_data($app_id);
 		$outputjson['result'] = $res;
+		$outputjson['data_ref'] = $id;
 		$outputjson['success'] = 1;
 		$outputjson['message'] = "Data updated successfully";
+	}
+	else if($action == "delete_bifurcate_data"){
+		$id = $gh->read("id");
+		if ($id != "") {
+			$app_id_query = "SELECT app_id from tbl_app_ad_settings WHERE id = '$id'";
+			$app_id = $db->execute_scalar($app_id_query);
+			$db->delete('tbl_app_ad_settings', array("id" => $id));
+			get_all_setting_data($app_id);
+			$outputjson['message'] = 'data deleted successfully.';
+			$outputjson['success'] = 1;
+		} else {
+			$outputjson['message'] = "Sorry, somthing went wrong!";
+		}
 	}
 	else {
 		$outputjson["data"] = [];

@@ -407,12 +407,12 @@ img[src="#"] {
 	position: relative;
 }
 
+#bifurcate_setting_table .delete-div,
 #setting_table .delete-div{
 	position: absolute;
-    left: -2px;
     padding-top: 2px;
-    color: #F00;
 	cursor: pointer;
+	margin-left: -15px;
 }
 
 /*************** Mobile Design ***************/
@@ -579,7 +579,7 @@ img[src="#"] {
     background: #ffffff6a;
     bottom: 0px;
     width: 50%;
-    z-index: 9999;
+    z-index: 1000;
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
