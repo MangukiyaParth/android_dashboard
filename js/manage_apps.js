@@ -9,7 +9,7 @@ jQuery(function () {
         var extra_option = $(this).attr('data-filter-type');
         $("#extra_option").val(extra_option);
         await table.clearPipeline().draw();
-        if(extra_option == 3){
+      	if(extra_option == 3){
             getUserCounts();
         }
     });
@@ -82,7 +82,7 @@ function getUserCounts(){
     doAPICall(req_data, async function(data){
         if (data && data != null && data.success) {
             hideLoading();
-            var cntData = data.data;
+            var cntData = data;
             const todayCnt = cntData.todayCnt;
             const yestardayCnt = cntData.yestardayCnt;
             const weekdayCnt = cntData.weekdayCnt;

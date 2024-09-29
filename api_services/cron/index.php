@@ -49,15 +49,22 @@ if ($upload_apps != null && is_array($upload_apps) && count($upload_apps) > 0) {
             // $console_name = $node->nodeValue;
             // echo $console_name.'<br>';
 
-            $app_name_div = $xpath->query("//h1[contains(@itemprop, 'name')]");
+            // $app_name_div = $xpath->query("//h1[contains(@itemprop, 'name')]");
+            // $app_namediv = $app_name_div[0];
+            // $app_name = $app_namediv->textContent;
+
+            $app_name_div = $xpath->query("//span[contains(@itemprop, 'name')]");
             $app_namediv = $app_name_div[0];
             $app_name = $app_namediv->textContent;
 
-            $logo_div = $xpath->query("//div[contains(@class, 'Il7kR')]");
-            $logodiv = $logo_div[0];
-            $logo_nodes = $logodiv->childNodes;
-            $logo_node = $logo_nodes[0];
-            $app_logo = $logo_node->attributes[0]->textContent;
+            // $logo_div = $xpath->query("//div[contains(@class, 'Il7kR')]");
+            // $logodiv = $logo_div[0];
+            // $logo_nodes = $logodiv->childNodes;
+            // $logo_node = $logo_nodes[0];
+            // $app_logo = $logo_node->attributes[0]->textContent;
+            $logo_div = $xpath->query("//img[contains(@itemprop, 'image')]");
+            $app_logodiv = $logo_div[0];
+            $app_logo = $app_logodiv->attributes[0]->value;
 
             $data = array(
                 "status" => 3,
@@ -116,6 +123,35 @@ if ($live_apps != null && is_array($live_apps) && count($live_apps) > 0) {
             );
             $db->insert('tbl_notification', $noti_data);
         }
+    }
+}
+
+$qry_live_apps = "SELECT id, app_name, package_name, file FROM tbl_apps WHERE is_deleted = 0 AND status = 3";
+$live_apps = $db->execute($qry_live_apps);
+if ($live_apps != null && is_array($live_apps) && count($live_apps) > 0) {
+    foreach($live_apps as $app){
+
+        // Update Download Count
+        $qry_cnt = "select IFNULL((SELECT count(DISTINCT u.id) FROM tbl_app_users as u WHERE u.app_id = '" . $app['id'] . "'),0) AS total_cnt, 
+        IFNULL((SELECT count(DISTINCT u.id) FROM tbl_app_users as u WHERE u.app_id = '" . $app['id'] . "' AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date('Y-m-d')."' ),0) AS today_cnt, 
+        IFNULL((SELECT count(DISTINCT u.id) FROM tbl_app_users as u WHERE u.app_id = '" . $app['id'] . "' AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date("Y-m-d", strtotime("-1 day"))."' ),0) AS yestarday_cnt";
+        $res_cnt = $db->execute($qry_cnt);
+        $total_cnt = 0;
+        $today_cnt = 0;
+        $yestarday_cnt = 0;
+        if ($res_cnt != null && is_array($res_cnt) && count($res_cnt) > 0) {
+            $cnts = $res_cnt[0];
+            $total_cnt = $cnts['total_cnt'];
+            $today_cnt = $cnts['today_cnt'];
+            $yestarday_cnt = $cnts['yestarday_cnt'];
+        }
+        $data = array(
+            "total_cnt" => $total_cnt,
+            "today_cnt" => $today_cnt,
+            "yestarday_cnt" => $yestarday_cnt,
+        );
+        $db->update('tbl_apps', $data, array("id" => $app['id']));
+
     }
 }
 ?>

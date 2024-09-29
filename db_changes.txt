@@ -1,0 +1,4 @@
+ALTER TABLE `tbl_apps`   
+  ADD COLUMN `total_cnt` INT 0 AFTER `file_data`,
+  ADD COLUMN `yestarday_cnt` INT 0 AFTER `total_cnt`,
+  ADD COLUMN `today_cnt` INT 0 AFTER `yestarday_cnt`;

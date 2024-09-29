@@ -73,11 +73,17 @@ function manage_apps()
 		if ($orderindex >0) {
 			$orderby = " ORDER BY ".$ordercolumn . " " . $orderdir;
 		}
+		// $query_port_rates = "SELECT DISTINCT a.*,p.name AS playstore_name, adx.name AS adx_name,
+		// 	CASE WHEN DATEDIFF(CURDATE(),STR_TO_DATE(a.entry_date, '%Y-%m-%d')) = 0 THEN 'Today' ELSE CONCAT(DATEDIFF(CURDATE(),STR_TO_DATE(a.entry_date, '%Y-%m-%d')),' Days') END AS `days`,
+		// 	IFNULL((SELECT count(DISTINCT u.id) FROM tbl_app_users as u WHERE u.app_id = a.id),0) AS total_cnt, 
+		// 	IFNULL((SELECT count(DISTINCT u.id) FROM tbl_app_users as u WHERE u.app_id = a.id AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date('Y-m-d')."' ),0) AS today_cnt, 
+		// 	IFNULL((SELECT count(DISTINCT u.id) FROM tbl_app_users as u WHERE u.app_id = a.id AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date("Y-m-d", strtotime("-1 day"))."' ),0) AS yestarday_cnt
+		// 	FROM tbl_apps as a 
+		// 	LEFT JOIN tbl_play_store as p ON p.id = a.playstore
+		// 	LEFT JOIN tbl_adx as adx ON adx.id = a.adx
+		// 	WHERE " . $whereData . " " . $orderby . " LIMIT " . $start . "," . $length . "";
 		$query_port_rates = "SELECT DISTINCT a.*,p.name AS playstore_name, adx.name AS adx_name,
-			CASE WHEN DATEDIFF(CURDATE(),STR_TO_DATE(a.entry_date, '%Y-%m-%d')) = 0 THEN 'Today' ELSE CONCAT(DATEDIFF(CURDATE(),STR_TO_DATE(a.entry_date, '%Y-%m-%d')),' Days') END AS `days`,
-			IFNULL((SELECT count(DISTINCT u.id) FROM tbl_app_users as u WHERE u.app_id = a.id),0) AS total_cnt, 
-			IFNULL((SELECT count(DISTINCT u.id) FROM tbl_app_users as u WHERE u.app_id = a.id AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date('Y-m-d')."' ),0) AS today_cnt, 
-			IFNULL((SELECT count(DISTINCT u.id) FROM tbl_app_users as u WHERE u.app_id = a.id AND DATE_FORMAT(u.entry_date, '%Y-%m-%d') = '".date("Y-m-d", strtotime("-1 day"))."' ),0) AS yestarday_cnt
+			CASE WHEN DATEDIFF(CURDATE(),STR_TO_DATE(a.entry_date, '%Y-%m-%d')) = 0 THEN 'Today' ELSE CONCAT(DATEDIFF(CURDATE(),STR_TO_DATE(a.entry_date, '%Y-%m-%d')),' Days') END AS `days`
 			FROM tbl_apps as a 
 			LEFT JOIN tbl_play_store as p ON p.id = a.playstore
 			LEFT JOIN tbl_adx as adx ON adx.id = a.adx
