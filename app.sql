@@ -2,8 +2,7 @@
 SQLyog Ultimate v11.11 (32 bit)
 MySQL - 5.5.5-10.4.28-MariaDB : Database - db_android
 *********************************************************************
-*/
-
+*/
 
 /*!40101 SET NAMES utf8 */;
 
@@ -91,7 +90,7 @@ CREATE TABLE `tbl_app_ad_settings` (
 
 /*Data for the table `tbl_app_ad_settings` */
 
-insert  into `tbl_app_ad_settings`(`id`,`app_id`,`type`,`is_bifurcate`,`bifurcate_location`,`app_color`,`app_background_color`,`native_loading`,`bottom_banner`,`all_screen_native`,`list_native`,`list_native_cnt`,`exit_dialoge_native`,`native_btn`,`native_btn_text`,`native_background_color`,`native_text_color`,`native_button_background_color`,`native_button_text_color`,`alternate_with_appopen`,`inter_loading`,`inter_interval`,`back_click_inter`,`app_open_loading`,`splash_ads`,`app_open`,`all_ads`,`fullscreen`,`adblock_version`,`continue_screen`,`lets_start_screen`,`age_screen`,`next_screen`,`next_inner_screen`,`contact_screen`,`start_screen`,`real_casting_flow`,`app_stop`,`additional_fields`,`vpn`,`vpn_dialog`,`vpn_dialog_open`,`vpn_country`,`vpn_url`,`vpn_carrier_id`,`entry_uid`,`entry_date`,`update_uid`,`update_date`) values ('17019352-1247-1172-9a37-27852d564b27','17137879-9287-8269-df0c-06222d4c49a1',1,1,'gujarat,Gujarat,Surat,surat','#000000','#FFFFFF','onload','banner','hide','hide',0,'hide','default','','#FFFEFF','#808080','#4285F4','#FFFEFF','hide','onload',2,2,'onload','hide','onetime','hide','hide','','hide','hide','hide','hide','hide','hide','hide','hide','hide','[]','hide','hide','hide','[]','','','17019352-1247-1172-9a37-27852d564b27','2024-04-24 10:37:18','17019352-1247-1172-9a37-27852d564b27','2024-04-24 10:39:15'),('17135007-0679-1356-3993-d30362c84f1d','17128887-3017-7352-897e-c7c144174289',1,0,'','#F58F00','#999CFF','onload','banner','show','show',0,'hide','manual','Test','#61D0FF','#EB0000','#0542A3','#FF6BFF','show','preload',1,1,'onload','openads','everytime','show','hide','123','hide','show','show','hide','hide','show','show','show','hide','[]',NULL,NULL,NULL,NULL,NULL,NULL,'17019352-1247-1172-9a37-27852d564b27','2024-04-19 09:55:06','17019352-1247-1172-9a37-27852d564b27','2024-04-23 15:17:18'),('17135232-9163-5369-713a-c4819cdf414d','17128887-3017-7352-897e-c7c144174289',1,1,'ind,IN,Surat','#000000','#FFFFFF','onload','native','hide','hide',0,'hide','default','','#FFFEFF','#808080','#4285F4','#FFFEFF','hide','onload',0,0,'onload','hide','onetime',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'17019352-1247-1172-9a37-27852d564b27','2024-04-19 16:11:31',NULL,NULL);
+insert  into `tbl_app_ad_settings`(`id`,`app_id`,`type`,`is_bifurcate`,`bifurcate_location`,`app_color`,`app_background_color`,`native_loading`,`bottom_banner`,`all_screen_native`,`list_native`,`list_native_cnt`,`exit_dialoge_native`,`native_btn`,`native_btn_text`,`native_background_color`,`native_text_color`,`native_button_background_color`,`native_button_text_color`,`alternate_with_appopen`,`inter_loading`,`inter_interval`,`back_click_inter`,`app_open_loading`,`splash_ads`,`app_open`,`all_ads`,`fullscreen`,`adblock_version`,`continue_screen`,`lets_start_screen`,`age_screen`,`next_screen`,`next_inner_screen`,`contact_screen`,`start_screen`,`real_casting_flow`,`app_stop`,`additional_fields`,`vpn`,`vpn_dialog`,`vpn_dialog_open`,`vpn_country`,`vpn_url`,`vpn_carrier_id`,`entry_uid`,`entry_date`,`update_uid`,`update_date`) values ('17019352-1247-1172-9a37-27852d564b27','17137879-9287-8269-df0c-06222d4c49a1',1,1,'gujarat,Gujarat,Surat,surat','#000000','#FFFFFF','onload','banner','hide','hide',0,'hide','default','','#FFFEFF','#808080','#4285F4','#FFFEFF','hide','onload',2,2,'onload','hide','onetime','hide','hide','','hide','hide','hide','hide','hide','hide','hide','hide','hide','[]','hide','hide','hide','[]','','','17019352-1247-1172-9a37-27852d564b27','2024-04-24 10:37:18','17019352-1247-1172-9a37-27852d564b27','2024-04-24 10:39:15'),('17135007-0679-1356-3993-d30362c84f1d','17128887-3017-7352-897e-c7c144174289',1,0,'','#F58F00','#999CFF','onload','banner','show','show',0,'hide','default','','#61D0FF','#EB0000','#0542A3','#FF6BFF','show','preload',1,1,'onload','openads','everytime','show','hide','123','hide','show','show','hide','hide','show','show','show','hide','[{\"field_name\":\"test1\",\"field_type\":\"1\",\"value\":\"hide\",\"value2\":\"\"}]',NULL,NULL,NULL,NULL,NULL,NULL,'17019352-1247-1172-9a37-27852d564b27','2024-04-19 09:55:06','17019352-1247-1172-9a37-27852d564b27','2024-04-25 16:14:47'),('17135232-9163-5369-713a-c4819cdf414d','17128887-3017-7352-897e-c7c144174289',1,1,'ind,IN,Surat','#000000','#FFFFFF','onload','banner','hide','hide',0,'hide','default','','#FFFEFF','#808080','#4285F4','#FFFEFF','hide','onload',0,0,'onload','hide','onetime','hide','hide','','hide','hide','hide','hide','hide','hide','hide','hide','hide','[]','hide','hide','hide','[]','','','17019352-1247-1172-9a37-27852d564b27','2024-04-19 16:11:31','17019352-1247-1172-9a37-27852d564b27','2024-04-25 16:13:04'),('17140417-6710-3306-b53b-9576be7b4783','17128887-3017-7352-897e-c7c144174289',2,1,'','#000000','#FFFFFF','onload','native','hide','show',2,'hide','default','','#FFFEFF','#808080','#4285F4','#FFFEFF','hide','onload',0,0,'onload','hide','onetime','hide','hide','','hide','hide','hide','hide','hide','hide','hide','hide','hide','[]','hide','hide','hide','[]','','','17019352-1247-1172-9a37-27852d564b27','2024-04-25 16:12:47',NULL,NULL),('17140419-0204-7795-4838-b43add124430','17128887-3017-7352-897e-c7c144174289',2,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'hide','hide','','hide','hide','hide','hide','hide','hide','hide','hide','hide','[{\"field_name\":\"test2\",\"field_type\":\"2\",\"value\":\"ABC\",\"value2\":\"\"}]',NULL,NULL,NULL,NULL,NULL,NULL,'17019352-1247-1172-9a37-27852d564b27','2024-04-25 16:15:02','17019352-1247-1172-9a37-27852d564b27','2024-04-25 16:33:45'),('17167842-3293-7453-b87e-1cffaed840b5','17145700-2690-0266-06a5-1bac51ea4028',1,0,NULL,'#000000','#FFFFFF','onload','hide','hide','hide',0,'hide','default','','#FFFEFF','#808080','#4285F4','#FFFEFF','hide','onload',0,0,'onload','hide','hide','hide','hide','','hide','hide','hide','hide','hide','hide','hide','hide','hide',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'17019352-1247-1172-9a37-27852d564b27','2024-05-27 10:00:32',NULL,NULL),('17167962-1961-6429-7c7d-5e1322204f7e','17145700-2690-0266-06a5-1bac51ea4028',1,1,'Gujarat,GJ,gujarat','#000000','#FFFFFF','onload','native','hide','hide',0,'hide','default','','#FFFEFF','#808080','#4285F4','#FFFEFF','hide','onload',0,0,'onload','hide','onetime','hide','hide','','hide','hide','hide','hide','hide','hide','hide','hide','hide','[]','hide','hide','hide','[]','','','17019352-1247-1172-9a37-27852d564b27','2024-05-27 13:20:19','17019352-1247-1172-9a37-27852d564b27','2024-05-27 15:28:02');
 
 /*Table structure for table `tbl_app_users` */
 
@@ -100,7 +99,7 @@ DROP TABLE IF EXISTS `tbl_app_users`;
 CREATE TABLE `tbl_app_users` (
   `id` varchar(50) NOT NULL,
   `package` varchar(150) DEFAULT NULL,
-  `app_id` VARCHAR(50) NOT NULL,
+  `app_id` varchar(50) DEFAULT NULL,
   `as` varchar(150) DEFAULT NULL,
   `asname` varchar(100) DEFAULT NULL,
   `callingCode` varchar(10) DEFAULT NULL,
@@ -133,14 +132,17 @@ CREATE TABLE `tbl_app_users` (
   `installerinfo` varchar(10) DEFAULT NULL,
   `installerurl` varchar(250) DEFAULT NULL,
   `entry_date` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `app_id` (`app_id`),
+  KEY `package` (`package`),
+  CONSTRAINT `tbl_app_users_ibfk_1` FOREIGN KEY (`app_id`) REFERENCES `tbl_apps` (`id`),
+  CONSTRAINT `tbl_app_users_ibfk_2` FOREIGN KEY (`package`) REFERENCES `tbl_apps` (`package_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tbl_app_users` */
 
-insert  into `tbl_app_users`(`id`,`package`,`as`,`asname`,`callingCode`,`city`,`continent`,`continentCode`,`country`,`countryCode`,`countryCode3`,`currency`,`currentTime`,`district`,`hosting`,`isp`,`lat`,`lon`,`mobile`,`offset`,`org`,`proxy`,`query`,`region`,`regionName`,`reverse`,`status`,`timezone`,`zip`,`device_id`,`retention`,`installerinfo`,`installerurl`,`entry_date`) values ('17136051-0439-0071-2f06-79eaed4f4e7d','ldqloanemicalc.loanemitools.loanemicalculator.tssipcalculator','AS24560 Bharti Airtel Ltd., Telemedia Services','AIRTELBROADBAND-AS-AP','91','Ahmedabad','Asia','AS','India','IN','IND','INR','2023-07-25T16:14:55+','','false','Bharti Airtel Limited',23.0276,72.5871,'true',19800,'BHARTI','false','171.50.187','GJ','Gujarat','','success','Asia/Kolkata','380006','69bca4780574c969','false','false','utm_source=google-play&utm_medium=organic','2024-04-20 15:08:33'),('17138515-7643-7755-319d-e0cf8b164a19','ldqloanemicalc.loanemitools.loanemicalculator.tssipcalculator','AS24560 Bharti Airtel Ltd., Telemedia Services','AIRTELBROADBAND-AS-AP','91','Ahmedabad','Asia','AS','India','IN','IND','INR','2023-07-25T16:14:55+','','false','Bharti Airtel Limited',23.0276,72.5871,'true',19800,'BHARTI','false','171.50.187','GJ','Gujarat','','success','Asia/Kolkata','380006','69bca4780574c969','false','false','utm_source=google-play&utm_medium=organic','2024-04-23 11:22:56'),('17139338-5394-7213-445b-0cd8e0a14b35','ldqloanemicalc.loanemitools.loanemicalculator.tssipcalculator','AS24560 Bharti Airtel Ltd., Telemedia Services','AIRTELBROADBAND-AS-AP','91','Ahmedabad','Asia','AS','India','IN','IND','INR','2023-07-25T16:14:55+','','false','Bharti Airtel Limited',23.0276,72.5871,'true',19800,'BHARTI','false','171.50.187','GJ','Gujarat','','success','Asia/Kolkata','380006','69bca4780574c969','false','false','utm_source=google-play&utm_medium=organic','2024-04-24 10:14:13');
+insert  into `tbl_app_users`(`id`,`package`,`app_id`,`as`,`asname`,`callingCode`,`city`,`continent`,`continentCode`,`country`,`countryCode`,`countryCode3`,`currency`,`currentTime`,`district`,`hosting`,`isp`,`lat`,`lon`,`mobile`,`offset`,`org`,`proxy`,`query`,`region`,`regionName`,`reverse`,`status`,`timezone`,`zip`,`device_id`,`retention`,`installerinfo`,`installerurl`,`entry_date`) values ('17136051-0439-0071-2f06-79eaed4f4e7d','ldqloanemicalc.loanemitools.loanemicalculator.tssipcalculator','17128887-3017-7352-897e-c7c144174289','AS24560 Bharti Airtel Ltd., Telemedia Services','AIRTELBROADBAND-AS-AP','91','Ahmedabad','Asia','AS','India','IN','IND','INR','2023-07-25T16:14:55+','','false','Bharti Airtel Limited',23.0276,72.5871,'true',19800,'BHARTI','false','171.50.187','GJ','Gujarat','','success','Asia/Kolkata','380006','69bca4780574c969','false','false','utm_source=google-play&utm_medium=organic','2024-04-20 15:08:33'),('17138515-7643-7755-319d-e0cf8b164a19','ldqloanemicalc.loanemitools.loanemicalculator.tssipcalculator','17128887-3017-7352-897e-c7c144174289','AS24560 Bharti Airtel Ltd., Telemedia Services','AIRTELBROADBAND-AS-AP','91','Ahmedabad','Asia','AS','India','IN','IND','INR','2023-07-25T16:14:55+','','false','Bharti Airtel Limited',23.0276,72.5871,'true',19800,'BHARTI','false','171.50.187','GJ','Gujarat','','success','Asia/Kolkata','380006','69bca4780574c969','false','false','utm_source=google-play&utm_medium=organic','2024-04-23 11:22:56'),('17139338-5394-7213-445b-0cd8e0a14b35','ldqloanemicalc.loanemitools.loanemicalculator.tssipcalculator','17128887-3017-7352-897e-c7c144174289','AS24560 Bharti Airtel Ltd., Telemedia Services','AIRTELBROADBAND-AS-AP','91','Ahmedabad','Asia','AS','India','IN','IND','INR','2023-07-25T16:14:55+','','false','Bharti Airtel Limited',23.0276,72.5871,'true',19800,'BHARTI','false','171.50.187','GJ','Gujarat','','success','Asia/Kolkata','380006','69bca4780574c969','false','false','utm_source=google-play&utm_medium=organic','2024-04-24 10:14:13'),('17144837-9895-2778-02b1-26a3a64a42df','ldqloanemicalc.loanemitools.loanemicalculator.tssipcalculator','17128887-3017-7352-897e-c7c144174289','AS24560 Bharti Airtel Ltd., Telemedia Services','AIRTELBROADBAND-AS-AP','91','Ahmedabad','Asia','AS','India','IN','IND','INR','2023-07-25T16:14:55+','','false','Bharti Airtel Limited',23.0276,72.5871,'true',19800,'BHARTI','false','171.50.187','GJ','Gujarat','','success','Asia/Kolkata','380006','69bca4780574c969','false','false','utm_source=google-play&utm_medium=organic','2024-04-30 18:59:58'),('17144843-5697-3189-0015-f534970c4940','ldqloanemicalc.loanemitools.loanemicalculator.tssipcalculator','17128887-3017-7352-897e-c7c144174289','AS24560 Bharti Airtel Ltd., Telemedia Services','AIRTELBROADBAND-AS-AP','91','Ahmedabad','Asia','AS','India','IN','IND','INR','2023-07-25T16:14:55+','','false','Bharti Airtel Limited',23.0276,72.5871,'true',19800,'BHARTI','false','171.50.187','GJ','Gujarat','','success','Asia/Kolkata','380006','69bca4780574c969','false','false','utm_source=google-play&utm_medium=organic','2024-04-30 19:09:16'),('17144844-6596-1545-f025-954a25614ba7','ldqloanemicalc.loanemitools.loanemicalculator.tssipcalculator','17128887-3017-7352-897e-c7c144174289','AS24560 Bharti Airtel Ltd., Telemedia Services','AIRTELBROADBAND-AS-AP','91','Ahmedabad','Asia','AS','India','IN','IND','INR','2023-07-25T16:14:55+','','false','Bharti Airtel Limited',23.0276,72.5871,'true',19800,'BHARTI','false','171.50.187','GJ','Gujarat','','success','Asia/Kolkata','380006','69bca4780574c969','false','false','utm_source=google-play&utm_medium=organic','2024-04-30 19:11:05'),('17144844-8232-7803-2573-faf347cb461e','ldqloanemicalc.loanemitools.loanemicalculator.tssipcalculator','17128887-3017-7352-897e-c7c144174289','AS24560 Bharti Airtel Ltd., Telemedia Services','AIRTELBROADBAND-AS-AP','91','Ahmedabad','Asia','AS','India','IN','IND','INR','2023-07-25T16:14:55+','','false','Bharti Airtel Limited',23.0276,72.5871,'true',19800,'BHARTI','false','171.50.187','GJ','Gujarat','','success','Asia/Kolkata','380006','69bca4780574c969','false','false','utm_source=google-play&utm_medium=organic','2024-04-30 19:11:22'),('17144844-8780-8690-ecd5-5f6935ff47ca','ldqloanemicalc.loanemitools.loanemicalculator.tssipcalculator','17128887-3017-7352-897e-c7c144174289','AS24560 Bharti Airtel Ltd., Telemedia Services','AIRTELBROADBAND-AS-AP','91','Ahmedabad','Asia','AS','India','IN','IND','INR','2023-07-25T16:14:55+','','false','Bharti Airtel Limited',23.0276,72.5871,'true',19800,'BHARTI','false','171.50.187','GJ','Gujarat','','success','Asia/Kolkata','380006','69bca4780574c969','false','false','utm_source=google-play&utm_medium=organic','2024-04-30 19:11:27'),('17144846-6966-2166-e120-845615034771','ldqloanemicalc.loanemitools.loanemicalculator.tssipcalculator','17128887-3017-7352-897e-c7c144174289','AS24560 Bharti Airtel Ltd., Telemedia Services','AIRTELBROADBAND-AS-AP','91','Ahmedabad','Asia','AS','India','IN','IND','INR','2023-07-25T16:14:55+','','false','Bharti Airtel Limited',23.0276,72.5871,'true',19800,'BHARTI','false','171.50.187','GJ','Gujarat','','success','Asia/Kolkata','380006','69bca4780574c969','false','false','utm_source=google-play&utm_medium=organic','2024-04-30 19:14:29'),('17145429-4801-6866-b6e6-7274b97141b5','ldqloanemicalc.loanemitools.loanemicalculator.tssipcalculator','17128887-3017-7352-897e-c7c144174289','AS24560 Bharti Airtel Ltd., Telemedia Services','AIRTELBROADBAND-AS-AP','91','Ahmedabad','Asia','AS','India','IN','IND','INR','2023-07-25T16:14:55+','','false','Bharti Airtel Limited',23.0276,72.5871,'true',19800,'BHARTI','false','171.50.187','GJ','Gujarat','','success','Asia/Kolkata','380006','69bca4780574c969','false','false','utm_source=google-play&utm_medium=organic','2024-05-01 11:25:48'),('17145431-0740-2706-d0b6-0a49d0cf4165','ldqloanemicalc.loanemitools.loanemicalculator.tssipcalculator','17128887-3017-7352-897e-c7c144174289','AS24560 Bharti Airtel Ltd., Telemedia Services','AIRTELBROADBAND-AS-AP','91','Ahmedabad','Asia','AS','India','IN','IND','INR','2023-07-25T16:14:55+','','false','Bharti Airtel Limited',23.0276,72.5871,'true',19800,'BHARTI','false','171.50.187','GJ','Gujarat','','success','Asia/Kolkata','380006','69bca4780574c969','false','false','utm_source=google-play&utm_medium=organic','2024-05-01 11:28:27'),('17145432-0253-8990-51ed-4bb22ddd4cd5','ldqloanemicalc.loanemitools.loanemicalculator.tssipcalculator','17128887-3017-7352-897e-c7c144174289','AS24560 Bharti Airtel Ltd., Telemedia Services','AIRTELBROADBAND-AS-AP','91','Ahmedabad','Asia','AS','India','IN','IND','INR','2023-07-25T16:14:55+','','false','Bharti Airtel Limited',23.0276,72.5871,'true',19800,'BHARTI','false','171.50.187','GJ','Gujarat','','success','Asia/Kolkata','380006','69bca4780574c969','false','false','utm_source=google-play&utm_medium=organic','2024-05-01 11:30:02'),('17145433-4884-7470-d189-ae66f9f24304','ldqloanemicalc.loanemitools.loanemicalculator.tssipcalculator','17128887-3017-7352-897e-c7c144174289','AS24560 Bharti Airtel Ltd., Telemedia Services','AIRTELBROADBAND-AS-AP','91','Ahmedabad','Asia','AS','India','IN','IND','INR','2023-07-25T16:14:55+','','false','Bharti Airtel Limited',23.0276,72.5871,'true',19800,'BHARTI','false','171.50.187','GJ','Gujarat','','success','Asia/Kolkata','380006','69bca4780574c969','false','false','utm_source=google-play&utm_medium=organic','2024-05-01 11:32:28'),('17145472-5408-9116-4e00-78200baf47c1','ldqloanemicalc.loanemitools.loanemicalculator.tssipcalculator','17128887-3017-7352-897e-c7c144174289','AS24560 Bharti Airtel Ltd., Telemedia Services','AIRTELBROADBAND-AS-AP','91','Ahmedabad','Asia','AS','India','IN','IND','INR','2023-07-25T16:14:55+','','false','Bharti Airtel Limited',23.0276,72.5871,'true',19800,'BHARTI','false','171.50.187','GJ','Gujarat','','success','Asia/Kolkata','380006','69bca4780574c969','false','false','utm_source=google-play&utm_medium=organic','2024-05-01 12:37:34'),('17146273-1324-8704-031e-d8109039455a','com.allsocialvideos.multimedia.videodlpro',NULL,'AS24560 Bharti Airtel Ltd., Telemedia Services','AIRTELBROADBAND-AS-AP','91','Ahmedabad','Asia','AS','India','IN','IND','INR','2023-07-25T16:14:55+','','false','Bharti Airtel Limited',23.0276,72.5871,'true',19800,'BHARTI','false','171.50.187','GJ','Gujarata','','success','Asia/Kolkata','380006','69bca4780574c969','false','false','utm_source=google-play&utm_medium=organic','2024-05-02 10:51:53');
 
-update tbl_app_users u inner join tbl_apps a on a.package_name = u.package set u.app_id = a.id;
 /*Table structure for table `tbl_apps` */
 
 DROP TABLE IF EXISTS `tbl_apps`;
@@ -151,23 +153,27 @@ CREATE TABLE `tbl_apps` (
   `adx` varchar(100) DEFAULT NULL,
   `app_code` varchar(50) DEFAULT NULL,
   `app_name` varchar(100) DEFAULT NULL,
-  `package_name` varchar(100) DEFAULT NULL,
+  `package_name` varchar(150) DEFAULT NULL,
   `web_url` varchar(100) DEFAULT NULL,
   `notes` longtext DEFAULT NULL,
   `status` int(11) DEFAULT 1,
   `file` longtext DEFAULT NULL,
   `file_data` longtext DEFAULT NULL,
+  `total_cnt` int(11) DEFAULT NULL,
+  `yestarday_cnt` int(11) DEFAULT NULL,
+  `today_cnt` int(11) DEFAULT NULL,
   `is_deleted` tinyint(4) DEFAULT 0,
   `entry_uid` varchar(50) DEFAULT NULL,
   `entry_date` datetime DEFAULT NULL,
   `update_uid` varchar(50) DEFAULT NULL,
   `update_date` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `package_name` (`package_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tbl_apps` */
 
-insert  into `tbl_apps`(`id`,`playstore`,`adx`,`app_code`,`app_name`,`package_name`,`web_url`,`notes`,`status`,`file`,`file_data`,`is_deleted`,`entry_uid`,`entry_date`,`update_uid`,`update_date`) values ('17128887-3017-7352-897e-c7c144174289','17128160-3311-2597-5cb4-f07cb4164d21','17128327-9266-1036-73d7-310de75d4c9b','12345','Test 123','ldqloanemicalc.loanemitools.loanemicalculator.tssipcalculator','www.test.com','test',4,'upload/images/app/17128887-3017-7352-897e-c7c144174289/Screenshot 2024-03-19 101809.png','[{\"uuid\":\"88fd32ac-c8c8-4e2a-a53b-69af029c57b3\",\"name\":\"Screenshot 2024-03-19 101809.png\",\"filename\":\"Screenshot 2024-03-19 101809.png\",\"size\":386970,\"total\":386970,\"bytesSent\":386970,\"url\":\"upload/images/app/17128887-3017-7352-897e-c7c144174289/Screenshot 2024-03-19 101809.png\"}]',0,'17019352-1247-1172-9a37-27852d564b27','2024-04-12 07:55:30','17019352-1247-1172-9a37-27852d564b27','2024-04-23 10:51:44'),('17137879-9287-8269-df0c-06222d4c49a1','','','','sdfsdf','','','',1,'upload/images/app/17137879-9287-8269-df0c-06222d4c49a1/images.png','[{\"uuid\":\"ec47ffb9-93dd-49c3-963f-b7e0696ce650\",\"name\":\"images.png\",\"filename\":\"images.png\",\"size\":3475,\"total\":3475,\"bytesSent\":3475,\"url\":\"upload/images/app/17137879-9287-8269-df0c-06222d4c49a1/images.png\"}]',0,'17019352-1247-1172-9a37-27852d564b27','2024-04-22 17:43:12','17019352-1247-1172-9a37-27852d564b27','2024-04-22 17:51:28');
+insert  into `tbl_apps`(`id`,`playstore`,`adx`,`app_code`,`app_name`,`package_name`,`web_url`,`notes`,`status`,`file`,`file_data`,`total_cnt`,`yestarday_cnt`,`today_cnt`,`is_deleted`,`entry_uid`,`entry_date`,`update_uid`,`update_date`) values ('17128887-3017-7352-897e-c7c144174289','17128160-3311-2597-5cb4-f07cb4164d21','17128327-9266-1036-73d7-310de75d4c9b','12345','Test 123','ldqloanemicalc.loanemitools.loanemicalculator.tssipcalculator','www.test.com','test',4,'upload/images/app/17128887-3017-7352-897e-c7c144174289/Screenshot 2024-03-19 101809.png','[{\"uuid\":\"88fd32ac-c8c8-4e2a-a53b-69af029c57b3\",\"name\":\"Screenshot 2024-03-19 101809.png\",\"filename\":\"Screenshot 2024-03-19 101809.png\",\"size\":386970,\"total\":386970,\"bytesSent\":386970,\"url\":\"upload/images/app/17128887-3017-7352-897e-c7c144174289/Screenshot 2024-03-19 101809.png\"}]',NULL,NULL,NULL,0,'17019352-1247-1172-9a37-27852d564b27','2024-04-12 07:55:30','17019352-1247-1172-9a37-27852d564b27','2024-04-23 10:51:44'),('17137879-9287-8269-df0c-06222d4c49a1','','','','sdfsdf','asd.sdgdsg.dsg','','',1,'upload/images/app/17137879-9287-8269-df0c-06222d4c49a1/images.png','[{\"uuid\":\"ec47ffb9-93dd-49c3-963f-b7e0696ce650\",\"name\":\"images.png\",\"filename\":\"images.png\",\"size\":3475,\"total\":3475,\"bytesSent\":3475,\"url\":\"upload/images/app/17137879-9287-8269-df0c-06222d4c49a1/images.png\"}]',NULL,NULL,NULL,0,'17019352-1247-1172-9a37-27852d564b27','2024-04-22 17:43:12','17019352-1247-1172-9a37-27852d564b27','2024-05-01 17:08:30'),('17145700-2690-0266-06a5-1bac51ea4028','','','','asd','com.allsocialvideos.multimedia.videodlpro','','',2,'','',NULL,NULL,NULL,0,'17019352-1247-1172-9a37-27852d564b27','2024-05-01 18:57:06','17019352-1247-1172-9a37-27852d564b27','2024-05-01 18:57:25');
 
 /*Table structure for table `tbl_apps_settings` */
 
@@ -183,24 +189,24 @@ CREATE TABLE `tbl_apps_settings` (
   `g1_account_name` varchar(100) DEFAULT NULL,
   `g2_account_name` varchar(100) DEFAULT NULL,
   `g3_account_name` varchar(100) DEFAULT NULL,
-  `g1_banner` varchar(150) DEFAULT NULL,
-  `g2_banner` varchar(150) DEFAULT NULL,
-  `g3_banner` varchar(150) DEFAULT NULL,
-  `g1_inter` varchar(150) DEFAULT NULL,
-  `g2_inter` varchar(150) DEFAULT NULL,
-  `g3_inter` varchar(150) DEFAULT NULL,
-  `g1_native` varchar(150) DEFAULT NULL,
-  `g2_native` varchar(150) DEFAULT NULL,
-  `g3_native` varchar(150) DEFAULT NULL,
-  `g1_native2` varchar(150) DEFAULT NULL,
-  `g2_native2` varchar(150) DEFAULT NULL,
-  `g3_native2` varchar(150) DEFAULT NULL,
-  `g1_appopen` varchar(150) DEFAULT NULL,
-  `g2_appopen` varchar(150) DEFAULT NULL,
-  `g3_appopen` varchar(150) DEFAULT NULL,
-  `g1_appid` varchar(150) DEFAULT NULL,
-  `g2_appid` varchar(150) DEFAULT NULL,
-  `g3_appid` varchar(150) DEFAULT NULL,
+  `g1_banner` varchar(50) DEFAULT NULL,
+  `g2_banner` varchar(50) DEFAULT NULL,
+  `g3_banner` varchar(50) DEFAULT NULL,
+  `g1_inter` varchar(50) DEFAULT NULL,
+  `g2_inter` varchar(50) DEFAULT NULL,
+  `g3_inter` varchar(50) DEFAULT NULL,
+  `g1_native` varchar(50) DEFAULT NULL,
+  `g2_native` varchar(50) DEFAULT NULL,
+  `g3_native` varchar(50) DEFAULT NULL,
+  `g1_native2` varchar(50) DEFAULT NULL,
+  `g2_native2` varchar(50) DEFAULT NULL,
+  `g3_native2` varchar(50) DEFAULT NULL,
+  `g1_appopen` varchar(50) DEFAULT NULL,
+  `g2_appopen` varchar(50) DEFAULT NULL,
+  `g3_appopen` varchar(50) DEFAULT NULL,
+  `g1_appid` varchar(50) DEFAULT NULL,
+  `g2_appid` varchar(50) DEFAULT NULL,
+  `g3_appid` varchar(50) DEFAULT NULL,
   `app_remove_flag` varchar(10) DEFAULT NULL,
   `app_version` varchar(10) DEFAULT NULL,
   `app_remove_title` varchar(100) DEFAULT NULL,
@@ -275,7 +281,7 @@ CREATE TABLE `tbl_notification` (
 
 /*Data for the table `tbl_notification` */
 
-insert  into `tbl_notification`(`id`,`app_id`,`app_name`,`app_package`,`app_logo`,`type`,`is_read`,`entry_date`) values ('17138719-8128-6958-270e-ea4b04a14437','17128887-3017-7352-897e-c7c144174289','Test 123','ldqloanemicalc.loanemitools.loanemicalculator.tssipcalculator','upload/images/app/17128887-3017-7352-897e-c7c144174289/Screenshot 2024-03-19 101809.png',2,0,'2024-04-23 17:03:01');
+insert  into `tbl_notification`(`id`,`app_id`,`app_name`,`app_package`,`app_logo`,`type`,`is_read`,`entry_date`) values ('17138719-8128-6958-270e-ea4b04a14437','17128887-3017-7352-897e-c7c144174289','Test 123','ldqloanemicalc.loanemitools.loanemicalculator.tssipcalculator','upload/images/app/17128887-3017-7352-897e-c7c144174289/Screenshot 2024-03-19 101809.png',2,1,'2024-04-23 17:03:01');
 
 /*Table structure for table `tbl_play_store` */
 
@@ -419,7 +425,7 @@ CREATE TABLE `tbl_users` (
 
 /*Data for the table `tbl_users` */
 
-insert  into `tbl_users`(`id`,`name`,`username`,`password`,`role_id`,`last_logged_in`,`last_login_offset`,`insert_at`,`phone`,`email`,`token`,`otp`) values ('17019352-1247-1172-9a37-27852d564b27','Admin','a','0cc175b9c0f1b6a831c399e269772661','17019350-1059-3172-f8de-9c507e9e4901','2024-04-22 17:14:05','330','2023-02-01 11:49:50',NULL,'admin@admin.com','',386110);
+insert  into `tbl_users`(`id`,`name`,`username`,`password`,`role_id`,`last_logged_in`,`last_login_offset`,`insert_at`,`phone`,`email`,`token`,`otp`) values ('17019352-1247-1172-9a37-27852d564b27','Admin','a','0cc175b9c0f1b6a831c399e269772661','17019350-1059-3172-f8de-9c507e9e4901','2024-05-27 12:42:55','330','2023-02-01 11:49:50',NULL,'admin@admin.com','',386110);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
