@@ -26,10 +26,10 @@
                 <div class="card border-radius-15">
                     <div class="card-body d-flex justify-content-between filter-div">
                         <div class="app-sub-action">
-                            <a class="btn btn-outline-soft-warning user-view-btn sub-view-btn me-2" href="javascript:void(0)" onclick="changeSubView(1)">User</a>
-                            <a class="btn btn-light retention-view-btn sub-view-btn me-2" href="javascript:void(0)" onclick="changeSubView(2)">Retention</a>
-                            <a class="btn btn-light setting-o-view-btn sub-view-btn me-2" href="javascript:void(0)" onclick="changeSubView(3)">Setting (O)</a>
+                            <a class="btn btn-outline-soft-warning setting-o-view-btn sub-view-btn me-2" href="javascript:void(0)" onclick="changeSubView(3)">Setting (O)</a>
                             <a class="btn btn-light setting-m-view-btn sub-view-btn me-2" href="javascript:void(0)" onclick="changeSubView(4)">Setting (M)</a>
+                            <a class="btn btn-light user-view-btn sub-view-btn me-2" href="javascript:void(0)" onclick="changeSubView(1)">User</a>
+                            <a class="btn btn-light retention-view-btn sub-view-btn me-2" href="javascript:void(0)" onclick="changeSubView(2)">Retention</a>
                         </div>
                         <div class="data-extra-filter float-right w-25">
                             <!-- <select class="form-select" id="time_filter">

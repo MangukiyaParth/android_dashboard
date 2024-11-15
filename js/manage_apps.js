@@ -9,9 +9,14 @@ jQuery(function () {
         var extra_option = $(this).attr('data-filter-type');
         $("#extra_option").val(extra_option);
         await table.clearPipeline().draw();
-      	if(extra_option == 3){
-            getUserCounts();
-        }
+        // if(extra_option == 3){
+            //     getUserCounts();
+            // }
+    });
+    $("#load_cnt").on('click', async function(){
+        getUserCounts();
+        $(".cnt_show_btn_div").addClass("d-none");
+        $(".cnt_div").removeClass("d-none");
     });
 });
 function resetform(){

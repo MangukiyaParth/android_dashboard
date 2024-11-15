@@ -10,14 +10,15 @@ var OrgAdData = [];
 var OrgBifurcateData = [];
 var MrktAdData = [];
 var MrktBifurcateData = [];
+var getUserData = false;
 jQuery(function () {
     PRIMARY_ID = localStorage.getItem('primary_id');
     if($(".button-toggle-menu-mobile:visible").length > 0){  $("#main_page_data").css('padding-top', '140px'); }
     // manageDataFilter(false);
-    changeSubView(1, false);
     manageDefaultInit();
     fill_app_details();
-    get_user_data();
+    // changeSubView(3, false);
+    // get_user_data();
 });
 
 async function manageDataFilter(resetDatatable = true){
@@ -49,6 +50,7 @@ function fill_app_details(){
             hideLoading();
             appData = data.data;
             setDataVariable(data);
+            changeSubView(3, false);
             var logo_url = (appData.file.includes("upload/")) ? WEB_API_FOLDER + appData.file : appData.file;
             var html = `<div class="app-title-div">
                             <div class="app-title">
@@ -86,14 +88,24 @@ function setDataVariable(data){
 function changeSubView(v, resetDatatable = true){
     subView = v;
     if(v==1){
-        manageDataFilter(resetDatatable);
+        if(!getUserData){
+            manageDataFilter(false);
+            get_user_data();
+        }else{
+        	manageDataFilter(resetDatatable);
+        }
         $(".sub-view-btn").addClass('btn-light').removeClass('btn-outline-soft-warning');
         $(".user-view-btn").removeClass('btn-light').addClass('btn-outline-soft-warning').blur();
         $(".setting-div").addClass('d-none');
         $(".user-div, .data-extra-filter").removeClass('d-none');
     }
     else if(v==2){
-        manageDataFilter(resetDatatable);
+        if(!getUserData){
+            manageDataFilter(false);
+            get_user_data();
+        }else{
+        	manageDataFilter(resetDatatable);
+        }
         $(".sub-view-btn").addClass('btn-light').removeClass('btn-outline-soft-warning');
         $(".retention-view-btn").removeClass('btn-light').addClass('btn-outline-soft-warning').blur();
         $(".setting-div").addClass('d-none');
@@ -162,6 +174,7 @@ function get_user_data() {
             { data: 'installerurl', name: 'installerurl', width: "5%" },
         ]
     });
+    getUserData = true;
     // $(".extra-option").css('right', ($("#datatable_filter label").width() + 50)+'px');
     $("#time_filter").on('change cancel.daterangepicker', function(){
         manageDataFilter();
